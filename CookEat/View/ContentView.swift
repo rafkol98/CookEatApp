@@ -14,10 +14,10 @@ struct ContentView: View {
         NavigationView {
             
             TabView {
-                FeedView()
-                    .tabItem { Image(systemName: "house")
-                        Text("home")
-                    }
+//                FeedView()
+//                    .tabItem { Image(systemName: "house")
+//                        Text("home")
+//                    }
 
                 
                 FeedView()

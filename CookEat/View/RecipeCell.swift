@@ -11,24 +11,21 @@ struct RecipeCell: View {
     var body: some View {
         VStack {
             HStack( alignment: .top) {
-                Image("burger")
-                    .resizable()
-                    .scaledToFill()
-                    .clipped()
-                    .frame(width: 150, height: 150)
-                    .cornerRadius(20)
-                    
-                
+
                 VStack(alignment: .leading) {
-                    Text("Bruce Wayne")
-                        .font(.system(size: 14, weight: .semibold))
-                    HStack{
-                        Text("@Batman")
-                            .foregroundColor(.gray)
+                    HStack {
+                        Image("icon")
+                            .resizable()
+                            .scaledToFill()
+                            .clipped()
+                            .frame(width: 15, height: 15)
                         
-                        Text("2w")
-                            .foregroundColor(.gray)
+                        Text("Bruce Wayne")
+                        Text("/ pizza-mia")
+                            
                     }
+                    .font(.system(size: 18, weight: .semibold))
+                    
                     
                     Text("It's not what I am that defines me, but what I cook!")
                 

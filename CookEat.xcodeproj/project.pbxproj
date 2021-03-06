@@ -1,0 +1,413 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CB6C3DBD25EC253C00149528 /* CookEatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C3DBC25EC253C00149528 /* CookEatApp.swift */; };
+		CB6C3DBF25EC253C00149528 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C3DBE25EC253C00149528 /* ContentView.swift */; };
+		CB6C3DC125EC253E00149528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB6C3DC025EC253E00149528 /* Assets.xcassets */; };
+		CB6C3DC425EC253E00149528 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB6C3DC325EC253E00149528 /* Preview Assets.xcassets */; };
+		CB6C3DD225EC2BA200149528 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C3DD125EC2BA200149528 /* FeedView.swift */; };
+		CB6C3DD525EC361000149528 /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C3DD425EC361000149528 /* RecipeCell.swift */; };
+		CB96D59625ED3B6600457589 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D59525ED3B6600457589 /* SearchBar.swift */; };
+		CB96D59A25ED3E0300457589 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D59925ED3E0300457589 /* SearchView.swift */; };
+		CB96D59D25ED3F4600457589 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D59C25ED3F4600457589 /* UserCell.swift */; };
+		CB96D5A125ED432B00457589 /* ConversationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5A025ED432B00457589 /* ConversationsView.swift */; };
+		CB96D5A425ED433700457589 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5A325ED433700457589 /* ConversationCell.swift */; };
+		CB96D5A725ED4C7A00457589 /* MessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5A625ED4C7A00457589 /* MessageInputView.swift */; };
+		CB96D5AA25ED4D2A00457589 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5A925ED4D2A00457589 /* ChatView.swift */; };
+		CB96D5AD25ED519300457589 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5AC25ED519300457589 /* ChatBubble.swift */; };
+		CB96D5B025ED542600457589 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5AF25ED542600457589 /* Message.swift */; };
+		CB96D5B325ED58DF00457589 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5B225ED58DF00457589 /* MessageView.swift */; };
+		CB96D5B625ED59E100457589 /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5B525ED59E100457589 /* NewMessageView.swift */; };
+		CB96D5B925ED62C200457589 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5B825ED62C200457589 /* HomeView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CB6C3DB925EC253C00149528 /* CookEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB6C3DBC25EC253C00149528 /* CookEatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookEatApp.swift; sourceTree = "<group>"; };
+		CB6C3DBE25EC253C00149528 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CB6C3DC025EC253E00149528 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CB6C3DC325EC253E00149528 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CB6C3DC525EC253E00149528 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB6C3DD125EC2BA200149528 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		CB6C3DD425EC361000149528 /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
+		CB96D59525ED3B6600457589 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		CB96D59925ED3E0300457589 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		CB96D59C25ED3F4600457589 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		CB96D5A025ED432B00457589 /* ConversationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsView.swift; sourceTree = "<group>"; };
+		CB96D5A325ED433700457589 /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
+		CB96D5A625ED4C7A00457589 /* MessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputView.swift; sourceTree = "<group>"; };
+		CB96D5A925ED4D2A00457589 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		CB96D5AC25ED519300457589 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		CB96D5AF25ED542600457589 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		CB96D5B225ED58DF00457589 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		CB96D5B525ED59E100457589 /* NewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
+		CB96D5B825ED62C200457589 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CB6C3DB625EC253C00149528 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CB6C3DB025EC253C00149528 = {
+			isa = PBXGroup;
+			children = (
+				CB6C3DBB25EC253C00149528 /* CookEat */,
+				CB6C3DBA25EC253C00149528 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CB6C3DBA25EC253C00149528 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB6C3DB925EC253C00149528 /* CookEat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CB6C3DBB25EC253C00149528 /* CookEat */ = {
+			isa = PBXGroup;
+			children = (
+				CB6C3DCF25EC2B7200149528 /* View */,
+				CB6C3DCC25EC2B5400149528 /* Model */,
+				CB6C3DBC25EC253C00149528 /* CookEatApp.swift */,
+				CB6C3DC025EC253E00149528 /* Assets.xcassets */,
+				CB6C3DC525EC253E00149528 /* Info.plist */,
+				CB6C3DC225EC253E00149528 /* Preview Content */,
+			);
+			path = CookEat;
+			sourceTree = "<group>";
+		};
+		CB6C3DC225EC253E00149528 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CB6C3DC325EC253E00149528 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CB6C3DCC25EC2B5400149528 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CB96D5AF25ED542600457589 /* Message.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CB6C3DCF25EC2B7200149528 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB96D59F25ED431400457589 /* Messages */,
+				CB6C3DBE25EC253C00149528 /* ContentView.swift */,
+				CB6C3DD125EC2BA200149528 /* FeedView.swift */,
+				CB6C3DD425EC361000149528 /* RecipeCell.swift */,
+				CB96D5B825ED62C200457589 /* HomeView.swift */,
+				CB96D59525ED3B6600457589 /* SearchBar.swift */,
+				CB96D59925ED3E0300457589 /* SearchView.swift */,
+				CB96D59C25ED3F4600457589 /* UserCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB96D59F25ED431400457589 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				CB96D5A025ED432B00457589 /* ConversationsView.swift */,
+				CB96D5A325ED433700457589 /* ConversationCell.swift */,
+				CB96D5A625ED4C7A00457589 /* MessageInputView.swift */,
+				CB96D5A925ED4D2A00457589 /* ChatView.swift */,
+				CB96D5B225ED58DF00457589 /* MessageView.swift */,
+				CB96D5B525ED59E100457589 /* NewMessageView.swift */,
+				CB96D5AC25ED519300457589 /* ChatBubble.swift */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CB6C3DB825EC253C00149528 /* CookEat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB6C3DC825EC253E00149528 /* Build configuration list for PBXNativeTarget "CookEat" */;
+			buildPhases = (
+				CB6C3DB525EC253C00149528 /* Sources */,
+				CB6C3DB625EC253C00149528 /* Frameworks */,
+				CB6C3DB725EC253C00149528 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CookEat;
+			productName = CookEat;
+			productReference = CB6C3DB925EC253C00149528 /* CookEat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CB6C3DB125EC253C00149528 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					CB6C3DB825EC253C00149528 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = CB6C3DB425EC253C00149528 /* Build configuration list for PBXProject "CookEat" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CB6C3DB025EC253C00149528;
+			productRefGroup = CB6C3DBA25EC253C00149528 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CB6C3DB825EC253C00149528 /* CookEat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CB6C3DB725EC253C00149528 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB6C3DC425EC253E00149528 /* Preview Assets.xcassets in Resources */,
+				CB6C3DC125EC253E00149528 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CB6C3DB525EC253C00149528 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB96D59625ED3B6600457589 /* SearchBar.swift in Sources */,
+				CB96D5A725ED4C7A00457589 /* MessageInputView.swift in Sources */,
+				CB6C3DBF25EC253C00149528 /* ContentView.swift in Sources */,
+				CB6C3DD225EC2BA200149528 /* FeedView.swift in Sources */,
+				CB96D5AA25ED4D2A00457589 /* ChatView.swift in Sources */,
+				CB96D5A125ED432B00457589 /* ConversationsView.swift in Sources */,
+				CB6C3DD525EC361000149528 /* RecipeCell.swift in Sources */,
+				CB96D5AD25ED519300457589 /* ChatBubble.swift in Sources */,
+				CB96D59A25ED3E0300457589 /* SearchView.swift in Sources */,
+				CB96D5B625ED59E100457589 /* NewMessageView.swift in Sources */,
+				CB96D5B025ED542600457589 /* Message.swift in Sources */,
+				CB6C3DBD25EC253C00149528 /* CookEatApp.swift in Sources */,
+				CB96D59D25ED3F4600457589 /* UserCell.swift in Sources */,
+				CB96D5B925ED62C200457589 /* HomeView.swift in Sources */,
+				CB96D5B325ED58DF00457589 /* MessageView.swift in Sources */,
+				CB96D5A425ED433700457589 /* ConversationCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CB6C3DC625EC253E00149528 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CB6C3DC725EC253E00149528 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CB6C3DC925EC253E00149528 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"CookEat/Preview Content\"";
+				DEVELOPMENT_TEAM = M2QGZKTZZ7;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = CookEat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.newcastle.csc3122.rafael.CookEat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CB6C3DCA25EC253E00149528 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"CookEat/Preview Content\"";
+				DEVELOPMENT_TEAM = M2QGZKTZZ7;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = CookEat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.newcastle.csc3122.rafael.CookEat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CB6C3DB425EC253C00149528 /* Build configuration list for PBXProject "CookEat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB6C3DC625EC253E00149528 /* Debug */,
+				CB6C3DC725EC253E00149528 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB6C3DC825EC253E00149528 /* Build configuration list for PBXNativeTarget "CookEat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB6C3DC925EC253E00149528 /* Debug */,
+				CB6C3DCA25EC253E00149528 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CB6C3DB125EC253C00149528 /* Project object */;
+}

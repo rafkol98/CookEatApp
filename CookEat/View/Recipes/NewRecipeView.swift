@@ -9,23 +9,51 @@ import SwiftUI
 
 struct NewRecipeView: View {
     @Binding var isPresented : Bool
+    @State var username: String = ""
+
     var body: some View {
         NavigationView {
+           
             VStack {
-                HStack {
-                    Image("lady")
-                        .resizable()
-                        .scaledToFill()
-                        .clipped()
-                        .frame(width: 64, height: 64)
-                        .cornerRadius(32)
-                    
-                    Text("Type something...")
-                        .foregroundColor(.gray)
-                    
-                    Spacer()
+
+                Text("Instructions")
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.leading)
+
+                VStack(alignment: .leading) {
+                
+                   
+                    TextEditor(text: $username)
+                                .foregroundColor(Color.gray)
+                                .font(.custom("HelveticaNeue", size: 13))
+                                .lineSpacing(5)
+                                
                 }
+                .overlay(
+                         RoundedRectangle(cornerRadius: 25)
+                           .stroke(Color.gray, lineWidth: 2)
+                         )
                 .padding()
+                
+                Text("Ingredients")
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.leading)
+                    
+                
+                VStack(alignment: .leading) {
+                    
+                    TextEditor(text: $username)
+                                .foregroundColor(Color.gray)
+                                .font(.custom("HelveticaNeue", size: 13))
+                                .lineSpacing(5)
+                                
+                }
+                .overlay(
+                         RoundedRectangle(cornerRadius: 25)
+                           .stroke(Color.gray, lineWidth: 2)
+                         )
+                .padding()
+
 //  On cancel, toggle isPresented variable -> this will close the screen.
                 .navigationBarItems(leading: Button(action: { isPresented.toggle() }, label: {
                     Text("Cancel")

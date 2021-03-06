@@ -27,3 +27,4 @@ struct MessageInputView_Previews: PreviewProvider {
         MessageInputView(messageText: .constant("Message..."))
     }
 }
+

@@ -16,6 +16,12 @@ struct SearchView: View {
             VStack(alignment: .leading) {
                 ForEach(0..<19) { _ in
                     HStack {Spacer()}
+                    
+                    NavigationLink(
+                        destination: UserProfileView(),
+                        label: {
+                            UserCell()
+                        })
                     UserCell()
                 }
             }.padding(.leading)
@@ -29,3 +35,4 @@ struct SearchView_Previews: PreviewProvider {
         SearchView()
     }
 }
+

@@ -27,8 +27,6 @@ struct ConversationsView: View {
                             label: {
                                 ConversationCell()
                             })
-                        
-                        
                     }
                 }.padding()
             }

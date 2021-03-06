@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct FeedView: View {
+//    Is showing new recipe flag.
+    @State var isShowingNewRecipeView = false
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             ScrollView {
@@ -19,7 +21,8 @@ struct FeedView: View {
                 }.padding()
             }
             
-            Button(action: {}, label: {
+//            On button pressed, make the isShowingNewRecipeView flag true.
+            Button(action: {isShowingNewRecipeView.toggle()}, label: {
                 Image(systemName:"plus")
                     .resizable()
                     .frame(width:32, height:32)
@@ -29,6 +32,9 @@ struct FeedView: View {
             .foregroundColor(.white)
             .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
             .padding()
+            .fullScreenCover(isPresented: $isShowingNewRecipeView) {
+                NewRecipeView(isPresented: $isShowingNewRecipeView)
+            }
         }
     }
 }

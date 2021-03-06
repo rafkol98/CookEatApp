@@ -50,3 +50,4 @@ struct RecipeView_Previews: PreviewProvider {
         RecipeCell()
     }
 }
+

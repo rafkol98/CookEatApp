@@ -9,7 +9,9 @@ import SwiftUI
 
 struct NewRecipeView: View {
     @Binding var isPresented : Bool
-    @State var username: String = ""
+    @State var instructions: String = ""
+    @State var ingredients: String = ""
+    
 
     var body: some View {
         NavigationView {
@@ -23,7 +25,7 @@ struct NewRecipeView: View {
                 VStack(alignment: .leading) {
                 
                    
-                    TextEditor(text: $username)
+                    TextEditor(text: $instructions)
                                 .foregroundColor(Color.gray)
                                 .font(.custom("HelveticaNeue", size: 13))
                                 .lineSpacing(5)
@@ -42,7 +44,7 @@ struct NewRecipeView: View {
                 
                 VStack(alignment: .leading) {
                     
-                    TextEditor(text: $username)
+                    TextEditor(text: $ingredients)
                                 .foregroundColor(Color.gray)
                                 .font(.custom("HelveticaNeue", size: 13))
                                 .lineSpacing(5)

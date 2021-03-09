@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB452B5A25F54E0B0020681B /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB452B5925F54E0B0020681B /* TextArea.swift */; };
 		CB6C3DBD25EC253C00149528 /* CookEatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C3DBC25EC253C00149528 /* CookEatApp.swift */; };
 		CB6C3DBF25EC253C00149528 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C3DBE25EC253C00149528 /* ContentView.swift */; };
 		CB6C3DC125EC253E00149528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB6C3DC025EC253E00149528 /* Assets.xcassets */; };
@@ -30,9 +31,14 @@
 		CB96D5B325ED58DF00457589 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5B225ED58DF00457589 /* MessageView.swift */; };
 		CB96D5B625ED59E100457589 /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5B525ED59E100457589 /* NewMessageView.swift */; };
 		CB96D5B925ED62C200457589 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5B825ED62C200457589 /* HomeView.swift */; };
+		CBEAAC5A25F80E050064A32B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAAC5925F80E050064A32B /* LoginView.swift */; };
+		CBEAAC5E25F80EB00064A32B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAAC5D25F80EB00064A32B /* CustomTextField.swift */; };
+		CBEAAC6125F813EA0064A32B /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAAC6025F813EA0064A32B /* CustomSecureField.swift */; };
+		CBEAAC6425F81B660064A32B /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAAC6325F81B660064A32B /* RegistrationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB452B5925F54E0B0020681B /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
 		CB6C3DB925EC253C00149528 /* CookEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6C3DBC25EC253C00149528 /* CookEatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookEatApp.swift; sourceTree = "<group>"; };
 		CB6C3DBE25EC253C00149528 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +64,10 @@
 		CB96D5B225ED58DF00457589 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		CB96D5B525ED59E100457589 /* NewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
 		CB96D5B825ED62C200457589 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CBEAAC5925F80E050064A32B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		CBEAAC5D25F80EB00064A32B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		CBEAAC6025F813EA0064A32B /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
+		CBEAAC6325F81B660064A32B /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +81,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB452B5625F54DDA0020681B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CB452B5725F54DF80020681B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CB452B5825F54DFF0020681B /* Views */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CB452B5825F54DFF0020681B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CB452B5925F54E0B0020681B /* TextArea.swift */,
+				CBEAAC5D25F80EB00064A32B /* CustomTextField.swift */,
+				CBEAAC6025F813EA0064A32B /* CustomSecureField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CB6C3DB025EC253C00149528 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +125,8 @@
 		CB6C3DBB25EC253C00149528 /* CookEat */ = {
 			isa = PBXGroup;
 			children = (
+				CB452B5725F54DF80020681B /* Utils */,
+				CB452B5625F54DDA0020681B /* ViewModels */,
 				CB6C3DCF25EC2B7200149528 /* View */,
 				CB6C3DCC25EC2B5400149528 /* Model */,
 				CB6C3DBC25EC253C00149528 /* CookEatApp.swift */,
@@ -119,6 +156,7 @@
 		CB6C3DCF25EC2B7200149528 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CBEAAC5825F80DD90064A32B /* Auth */,
 				CB903FD025F403E900297DD9 /* Recipes */,
 				CB903FCF25F403E300297DD9 /* Profile */,
 				CB96D59F25ED431400457589 /* Messages */,
@@ -164,6 +202,15 @@
 				CB96D5AC25ED519300457589 /* ChatBubble.swift */,
 			);
 			path = Messages;
+			sourceTree = "<group>";
+		};
+		CBEAAC5825F80DD90064A32B /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CBEAAC5925F80E050064A32B /* LoginView.swift */,
+				CBEAAC6325F81B660064A32B /* RegistrationView.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,7 +285,9 @@
 				CB96D59625ED3B6600457589 /* SearchBar.swift in Sources */,
 				CB96D5A725ED4C7A00457589 /* MessageInputView.swift in Sources */,
 				CB6C3DBF25EC253C00149528 /* ContentView.swift in Sources */,
+				CBEAAC6425F81B660064A32B /* RegistrationView.swift in Sources */,
 				CB6C3DD225EC2BA200149528 /* FeedView.swift in Sources */,
+				CBEAAC5A25F80E050064A32B /* LoginView.swift in Sources */,
 				CB96D5AA25ED4D2A00457589 /* ChatView.swift in Sources */,
 				CB96D5A125ED432B00457589 /* ConversationsView.swift in Sources */,
 				CB903FDB25F404D500297DD9 /* FilterButtonView.swift in Sources */,
@@ -248,12 +297,15 @@
 				CB96D5B625ED59E100457589 /* NewMessageView.swift in Sources */,
 				CB903FD225F4041E00297DD9 /* UserProfileView.swift in Sources */,
 				CB903FD825F404AE00297DD9 /* ProfileActionButtonView.swift in Sources */,
+				CB452B5A25F54E0B0020681B /* TextArea.swift in Sources */,
 				CB96D5B025ED542600457589 /* Message.swift in Sources */,
 				CB6C3DBD25EC253C00149528 /* CookEatApp.swift in Sources */,
 				CB903FD525F4047700297DD9 /* ProfileHeaderView.swift in Sources */,
 				CB96D59D25ED3F4600457589 /* UserCell.swift in Sources */,
 				CB96D5B925ED62C200457589 /* HomeView.swift in Sources */,
+				CBEAAC5E25F80EB00064A32B /* CustomTextField.swift in Sources */,
 				CB903FDE25F4055700297DD9 /* NewRecipeView.swift in Sources */,
+				CBEAAC6125F813EA0064A32B /* CustomSecureField.swift in Sources */,
 				CB96D5B325ED58DF00457589 /* MessageView.swift in Sources */,
 				CB96D5A425ED433700457589 /* ConversationCell.swift in Sources */,
 			);

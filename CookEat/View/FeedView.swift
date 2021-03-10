@@ -16,7 +16,7 @@ struct FeedView: View {
                 VStack {
                     ForEach(0..<10) { _ in
                         RecipeCell()
-                        
+
                     }
                 }.padding()
             }
@@ -32,6 +32,7 @@ struct FeedView: View {
             .foregroundColor(.white)
             .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
             .padding()
+//            On click of add new recipe button show newRecipeView.
             .fullScreenCover(isPresented: $isShowingNewRecipeView) {
                 NewRecipeView(isPresented: $isShowingNewRecipeView)
             }

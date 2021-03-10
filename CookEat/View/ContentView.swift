@@ -31,10 +31,7 @@ struct ContentView: View {
                         Text("Search")
                     }
                 
-                ConversationsView()
-                    .tabItem { Image(systemName: "envelope")
-                        Text("Messages")
-                    }
+
             }
             .accentColor(.red)
             .navigationBarTitle("Home")

@@ -2,7 +2,7 @@
 //  RecipeView.swift
 //  CookEat
 //
-//  Created by Rafael Kollyfas on 28/02/2021.
+//  Created by Rafael Kollyfas on 01/03/2021.
 //
 
 import SwiftUI
@@ -20,7 +20,7 @@ struct RecipeCell: View {
                             .clipped()
                             .frame(width: 15, height: 15)
                         
-                        Text("Bruce Wayne")
+                        Text("Bruce Mario")
                         Text("/ pizza-mia")
                             
                     }

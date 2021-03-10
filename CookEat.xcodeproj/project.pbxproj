@@ -22,14 +22,7 @@
 		CB96D59625ED3B6600457589 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D59525ED3B6600457589 /* SearchBar.swift */; };
 		CB96D59A25ED3E0300457589 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D59925ED3E0300457589 /* SearchView.swift */; };
 		CB96D59D25ED3F4600457589 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D59C25ED3F4600457589 /* UserCell.swift */; };
-		CB96D5A125ED432B00457589 /* ConversationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5A025ED432B00457589 /* ConversationsView.swift */; };
-		CB96D5A425ED433700457589 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5A325ED433700457589 /* ConversationCell.swift */; };
-		CB96D5A725ED4C7A00457589 /* MessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5A625ED4C7A00457589 /* MessageInputView.swift */; };
-		CB96D5AA25ED4D2A00457589 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5A925ED4D2A00457589 /* ChatView.swift */; };
-		CB96D5AD25ED519300457589 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5AC25ED519300457589 /* ChatBubble.swift */; };
 		CB96D5B025ED542600457589 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5AF25ED542600457589 /* Message.swift */; };
-		CB96D5B325ED58DF00457589 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5B225ED58DF00457589 /* MessageView.swift */; };
-		CB96D5B625ED59E100457589 /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5B525ED59E100457589 /* NewMessageView.swift */; };
 		CB96D5B925ED62C200457589 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D5B825ED62C200457589 /* HomeView.swift */; };
 		CBEAAC5A25F80E050064A32B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAAC5925F80E050064A32B /* LoginView.swift */; };
 		CBEAAC5E25F80EB00064A32B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAAC5D25F80EB00064A32B /* CustomTextField.swift */; };
@@ -55,14 +48,7 @@
 		CB96D59525ED3B6600457589 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CB96D59925ED3E0300457589 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		CB96D59C25ED3F4600457589 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
-		CB96D5A025ED432B00457589 /* ConversationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsView.swift; sourceTree = "<group>"; };
-		CB96D5A325ED433700457589 /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
-		CB96D5A625ED4C7A00457589 /* MessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputView.swift; sourceTree = "<group>"; };
-		CB96D5A925ED4D2A00457589 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		CB96D5AC25ED519300457589 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
 		CB96D5AF25ED542600457589 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		CB96D5B225ED58DF00457589 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
-		CB96D5B525ED59E100457589 /* NewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
 		CB96D5B825ED62C200457589 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CBEAAC5925F80E050064A32B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		CBEAAC5D25F80EB00064A32B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -159,7 +145,6 @@
 				CBEAAC5825F80DD90064A32B /* Auth */,
 				CB903FD025F403E900297DD9 /* Recipes */,
 				CB903FCF25F403E300297DD9 /* Profile */,
-				CB96D59F25ED431400457589 /* Messages */,
 				CB6C3DBE25EC253C00149528 /* ContentView.swift */,
 				CB6C3DD125EC2BA200149528 /* FeedView.swift */,
 				CB6C3DD425EC361000149528 /* RecipeCell.swift */,
@@ -188,20 +173,6 @@
 				CB903FDD25F4055700297DD9 /* NewRecipeView.swift */,
 			);
 			path = Recipes;
-			sourceTree = "<group>";
-		};
-		CB96D59F25ED431400457589 /* Messages */ = {
-			isa = PBXGroup;
-			children = (
-				CB96D5A025ED432B00457589 /* ConversationsView.swift */,
-				CB96D5A325ED433700457589 /* ConversationCell.swift */,
-				CB96D5A625ED4C7A00457589 /* MessageInputView.swift */,
-				CB96D5A925ED4D2A00457589 /* ChatView.swift */,
-				CB96D5B225ED58DF00457589 /* MessageView.swift */,
-				CB96D5B525ED59E100457589 /* NewMessageView.swift */,
-				CB96D5AC25ED519300457589 /* ChatBubble.swift */,
-			);
-			path = Messages;
 			sourceTree = "<group>";
 		};
 		CBEAAC5825F80DD90064A32B /* Auth */ = {
@@ -283,18 +254,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB96D59625ED3B6600457589 /* SearchBar.swift in Sources */,
-				CB96D5A725ED4C7A00457589 /* MessageInputView.swift in Sources */,
 				CB6C3DBF25EC253C00149528 /* ContentView.swift in Sources */,
 				CBEAAC6425F81B660064A32B /* RegistrationView.swift in Sources */,
 				CB6C3DD225EC2BA200149528 /* FeedView.swift in Sources */,
 				CBEAAC5A25F80E050064A32B /* LoginView.swift in Sources */,
-				CB96D5AA25ED4D2A00457589 /* ChatView.swift in Sources */,
-				CB96D5A125ED432B00457589 /* ConversationsView.swift in Sources */,
 				CB903FDB25F404D500297DD9 /* FilterButtonView.swift in Sources */,
 				CB6C3DD525EC361000149528 /* RecipeCell.swift in Sources */,
-				CB96D5AD25ED519300457589 /* ChatBubble.swift in Sources */,
 				CB96D59A25ED3E0300457589 /* SearchView.swift in Sources */,
-				CB96D5B625ED59E100457589 /* NewMessageView.swift in Sources */,
 				CB903FD225F4041E00297DD9 /* UserProfileView.swift in Sources */,
 				CB903FD825F404AE00297DD9 /* ProfileActionButtonView.swift in Sources */,
 				CB452B5A25F54E0B0020681B /* TextArea.swift in Sources */,
@@ -306,8 +272,6 @@
 				CBEAAC5E25F80EB00064A32B /* CustomTextField.swift in Sources */,
 				CB903FDE25F4055700297DD9 /* NewRecipeView.swift in Sources */,
 				CBEAAC6125F813EA0064A32B /* CustomSecureField.swift in Sources */,
-				CB96D5B325ED58DF00457589 /* MessageView.swift in Sources */,
-				CB96D5A425ED433700457589 /* ConversationCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

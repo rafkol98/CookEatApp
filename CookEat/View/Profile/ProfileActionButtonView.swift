@@ -24,14 +24,7 @@ struct ProfileActionButtonView: View {
             HStack {
                 Button(action: {}, label: {
                     Text("Follow")
-                        .frame(width: 180, height: 40)
-                        .background(Color.red)
-                        .foregroundColor(.white)
-                })
-                
-                Button(action: {}, label: {
-                    Text("Message")
-                        .frame(width: 180, height: 40)
+                        .frame(width: 360, height: 40)
                         .background(Color.red)
                         .foregroundColor(.white)
                 })

@@ -2,7 +2,7 @@
 //  FilterButtonView.swift
 //  CookEat
 //
-//  Created by Rafael Kollyfas on 06/03/2021.
+//  Created by Rafael Kollyfas on 07/03/2021.
 //
 
 import SwiftUI
@@ -25,9 +25,6 @@ struct FilterButtonView: View {
     
     private let underlineWidth = UIScreen.main.bounds.width / CGFloat(FilterOptions.allCases.count)
     
-//    private var padding: CGFloat {
-//        let
-//    }
     
     private var padding: CGFloat {
         let rawValue = CGFloat(selectedOption.rawValue)

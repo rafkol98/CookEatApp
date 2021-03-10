@@ -18,11 +18,11 @@ struct ProfileHeaderView: View {
                 .cornerRadius(120/2)
                 .shadow(radius: 10)
             
-            Text("Bruce Wayne")
+            Text("Lady Cook")
                 .font(.system(size: 16, weight:.semibold))
                 .padding(.top, 8)
             
-            Text("@batman")
+            Text("@cook_lady")
                 .font(.subheadline)
                 .foregroundColor(.gray)
             

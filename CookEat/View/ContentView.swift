@@ -8,36 +8,42 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     var body: some View {
-        
-        //       Bottom Navigation
-        NavigationView {
-            
-            TabView {
-//                FeedView()
-//                    .tabItem { Image(systemName: "house")
-//                        Text("home")
-//                    }
-
-                
-                FeedView()
-                    .tabItem { Image(systemName: "livephoto")
-                        Text("Feed")
+        Group {
+            if viewModel.userSession != nil {
+                NavigationView {
+                    
+                    TabView {
+                        //                FeedView()
+                        //                    .tabItem { Image(systemName: "house")
+                        //                        Text("home")
+                        //                    }
+                        
+                        
+                        FeedView()
+                            .tabItem { Image(systemName: "livephoto")
+                                Text("Feed")
+                            }
+                        
+                        SearchView()
+                            .tabItem {
+                                Image(systemName: "magnifyingglass")
+                                Text("Search")
+                            }
+                        
+                        
                     }
-                
-                SearchView()
-                    .tabItem {
-                        Image(systemName: "magnifyingglass")
-                        Text("Search")
-                    }
-                
-
+                    .accentColor(.red)
+                    .navigationBarTitle("Home")
+                    .navigationBarTitleDisplayMode(.inline)
+                }
+            } else {
+                LoginView()
             }
-            .accentColor(.red)
-            .navigationBarTitle("Home")
-            .navigationBarTitleDisplayMode(.inline)
-        }
     }
+}
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -45,3 +51,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+

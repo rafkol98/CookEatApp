@@ -15,8 +15,8 @@ struct RegistrationView: View {
     @State var addImage = false
     @State var selectedUIImage: UIImage?
     @State var image: Image?
-   
-//    Create instance of AuthViewModel
+    
+    //    Create instance of AuthViewModel
     @ObservedObject var viewModel = AuthViewModel()
     
     //conert a ui image into a SwiftUI image.
@@ -28,7 +28,7 @@ struct RegistrationView: View {
     var body: some View {
         
         ZStack{
-           
+            
             VStack {
                 Button(action: { addImage.toggle() }, label: {
                     ZStack {
@@ -39,13 +39,13 @@ struct RegistrationView: View {
                                 .frame(width: 150, height: 150)
                                 .cornerRadius(70)
                                 .padding()
-                                
-                        
+                            
+                            
                             
                         } else {
                             Image("add_photo")
                                 .resizable()
-            //                    Rendering mode allows us to add a colour to the image.
+                                //                    Rendering mode allows us to add a colour to the image.
                                 .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
                                 .scaledToFill()
                                 .frame(width: 150, height: 150)
@@ -60,9 +60,9 @@ struct RegistrationView: View {
                 })
                 
                 
-               
                 
-//                Email and password fields.
+                
+                //                Email and password fields.
                 VStack(spacing:16) {
                     CustomTextField(text: $email, placeholder: Text("Email"), imageName: "envelope")
                         .padding()
@@ -87,13 +87,13 @@ struct RegistrationView: View {
                         .background(Color(.init(white: 0.5, alpha: 0.05)))
                         .cornerRadius(10)
                         .padding(.horizontal)
-                
+                    
                 }
                 
-//                Sign in button
+                //                Sign up button
                 Button(action: {
-//                    print("hereee")
- guard let image = selectedUIImage else { return }
+                    //                    print("hereee")
+                    guard let image = selectedUIImage else { return }
                     viewModel.registerUser(email: email, password: password, username: username, fullname: fullname, profileImage: image)
                 }, label: {
                     Text("Sign Up")
@@ -104,9 +104,9 @@ struct RegistrationView: View {
                         .clipShape(Capsule())
                         .padding()
                 })
-
                 
-                    Spacer()
+                
+                Spacer()
                 
             }
             .padding()

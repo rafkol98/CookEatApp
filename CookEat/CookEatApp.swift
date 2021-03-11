@@ -17,6 +17,9 @@ struct CookEatApp: App {
     
     var body: some Scene {
         WindowGroup {
+            ContentView().environmentObject(AuthViewModel())
+            
+            
             LoginView()
 //            ContentView()
         }

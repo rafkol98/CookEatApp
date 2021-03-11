@@ -15,6 +15,9 @@ struct RegistrationView: View {
     @State var addImage = false
     @State var selectedUIImage: UIImage?
     @State var image: Image?
+   
+//    Create instance of AuthViewModel
+    @ObservedObject var viewModel = AuthViewModel()
     
     //conert a ui image into a SwiftUI image.
     func loadImage() {
@@ -88,7 +91,11 @@ struct RegistrationView: View {
                 }
                 
 //                Sign in button
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                Button(action: {
+//                    print("hereee")
+ guard let image = selectedUIImage else { return }
+                    viewModel.registerUser(email: email, password: password, username: username, fullname: fullname, profileImage: image)
+                }, label: {
                     Text("Sign Up")
                         .font(.headline)
                         .foregroundColor(.white)

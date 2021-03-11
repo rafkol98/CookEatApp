@@ -11,8 +11,8 @@ import SwiftUI
 struct CookEatApp: App {
     var body: some Scene {
         WindowGroup {
-//            LoginView()
-            ContentView()
+            LoginView()
+//            ContentView()
         }
     }
 }

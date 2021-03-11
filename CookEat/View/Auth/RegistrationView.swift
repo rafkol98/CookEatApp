@@ -12,19 +12,52 @@ struct RegistrationView: View {
     @State var username = ""
     @State var email = ""
     @State var password = ""
+    @State var addImage = false
+    @State var selectedUIImage: UIImage?
+    @State var image: Image?
+    
+    //conert a ui image into a SwiftUI image.
+    func loadImage() {
+        guard let selectedImage = selectedUIImage else {return}
+        image = Image(uiImage: selectedImage)
+    }
     
     var body: some View {
         
         ZStack{
            
             VStack {
+                Button(action: { addImage.toggle() }, label: {
+                    ZStack {
+                        if let image = image {
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 150, height: 150)
+                                .cornerRadius(70)
+                                .padding()
+                                
+                        
+                            
+                        } else {
+                            Image("add_photo")
+                                .resizable()
+            //                    Rendering mode allows us to add a colour to the image.
+                                .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
+                                .scaledToFill()
+                                .frame(width: 150, height: 150)
+                                .padding()
+                                .foregroundColor(.red)
+                        }
+                        
+                    }
+                    
+                }).sheet(isPresented: $addImage, onDismiss: loadImage, content: {
+                    ImagePicker(image: $selectedUIImage)
+                })
                 
-                HStack {
-                    Text("Sign Up")
-                        .font(.title)
-                    Spacer()
-                }
-                .padding()
+                
+               
                 
 //                Email and password fields.
                 VStack(spacing:16) {

@@ -10,7 +10,7 @@ import SwiftUI
 struct LoginView: View {
     @State var email = ""
     @State var password = ""
-    @ObservedObject var viewModel = AuthViewModel()
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         NavigationView {
@@ -20,7 +20,7 @@ struct LoginView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 220, height: 100)
-                        .padding(.top, 80)
+                        .padding(.top)
                         .padding(.bottom, 32)
                     
                     //                Email and password fields.
@@ -63,7 +63,7 @@ struct LoginView: View {
                         Text("Sign In")
                             .font(.headline)
                             .foregroundColor(.white)
-                            .frame(width: 360, height: 50)
+                            .frame(width: 300, height: 50)
                             .background(Color.red)
                             .clipShape(Capsule())
                             .padding()

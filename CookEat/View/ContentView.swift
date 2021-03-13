@@ -12,15 +12,11 @@ struct ContentView: View {
     
     var body: some View {
         Group {
+//            If user is signed in, display the main content.
             if viewModel.userSession != nil {
                 NavigationView {
                     
                     TabView {
-                        //                FeedView()
-                        //                    .tabItem { Image(systemName: "house")
-                        //                        Text("home")
-                        //                    }
-                        
                         
                         FeedView()
                             .tabItem { Image(systemName: "livephoto")
@@ -33,13 +29,14 @@ struct ContentView: View {
                                 Text("Search")
                             }
                         
-                        
                     }
                     .accentColor(.red)
                     .navigationBarTitle("Home")
                     .navigationBarTitleDisplayMode(.inline)
                 }
-            } else {
+            }
+//            If user is not logged in, display the loginView.
+            else {
                 LoginView()
             }
     }

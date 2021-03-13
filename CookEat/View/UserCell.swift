@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct UserCell: View {
+    let user: User
+    
     var body: some View {
 // HStack containing picture of user and their username and full name.
         HStack(spacing: 15) {
-            Image("lady")
+            KFImage(URL(string: user.profileImageUrl))
                 .resizable()
                 .scaledToFill()
                 .clipped()
@@ -19,10 +22,10 @@ struct UserCell: View {
                 .cornerRadius(28)
 // Put username and last name on top of each other.
             VStack(alignment: .leading, spacing: 4){
-                Text("@UserName")
+                Text(user.username)
                     .font(.system(size: 16, weight: .semibold))
                 
-                Text("Name Last")
+                Text(user.fullname)
                     .font(.system(size: 14))
             }
             .foregroundColor(.black)
@@ -30,8 +33,4 @@ struct UserCell: View {
     }
 }
 
-struct UserCell_Previews: PreviewProvider {
-    static var previews: some View {
-        UserCell()
-    }
-}
+

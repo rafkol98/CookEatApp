@@ -19,9 +19,6 @@ struct CookEatApp: App {
         WindowGroup {
             ContentView().environmentObject(AuthViewModel())
             
-            
-            LoginView()
-//            ContentView()
         }
     }
 }

@@ -10,6 +10,9 @@ import SwiftUI
 struct FeedView: View {
 //    Is showing new recipe flag.
     @State var isShowingNewRecipeView = false
+//    Get environmentObject of whether user is logged in.
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             ScrollView {
@@ -22,7 +25,10 @@ struct FeedView: View {
             }
             
 //            On button pressed, make the isShowingNewRecipeView flag true.
-            Button(action: {isShowingNewRecipeView.toggle()}, label: {
+            Button(action: {
+                viewModel.signOut()
+//                    isShowingNewRecipeView.toggle()
+            }, label: {
                 Image(systemName:"plus")
                     .resizable()
                     .frame(width:32, height:32)

@@ -20,9 +20,9 @@ struct SearchView: View {
                     NavigationLink(
                         destination: UserProfileView(),
                         label: {
-                            UserCell()
+                            UserCell(user: <#User#>)
                         })
-                    UserCell()
+                    UserCell(user: <#User#>)
                 }
             }.padding(.leading)
         }

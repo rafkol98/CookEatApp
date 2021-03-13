@@ -9,20 +9,21 @@ import SwiftUI
 
 struct SearchView: View {
     @State var searchText = ""
+    @ObservedObject var viewModel = SearchViewModel()
+    
     var body: some View {
         ScrollView {
             SearchBar(text: $searchText).padding()
             
             VStack(alignment: .leading) {
-                ForEach(0..<19) { _ in
+                ForEach(viewModel.users) { user in
                     HStack {Spacer()}
                     
                     NavigationLink(
                         destination: UserProfileView(),
                         label: {
-                            UserCell(user: <#User#>)
+                            UserCell(user: user)
                         })
-                    UserCell(user: <#User#>)
                 }
             }.padding(.leading)
         }

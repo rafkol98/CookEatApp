@@ -37,7 +37,7 @@ struct RegistrationView: View {
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 150, height: 150)
-                                .cornerRadius(70)
+                                .cornerRadius(75)
                                 .padding()
                             
                             

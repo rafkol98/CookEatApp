@@ -14,7 +14,7 @@
 		CB1E5E0525FA428A00049676 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CB1E5E0425FA428A00049676 /* FirebaseFirestore */; };
 		CB1E5E0825FA457700049676 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1E5E0725FA457700049676 /* AuthViewModel.swift */; };
 		CB452B5A25F54E0B0020681B /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB452B5925F54E0B0020681B /* TextArea.swift */; };
-		CB453D0625FD6BC0001C6DB4 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB453D0525FD6BC0001C6DB4 /* SearchViewModel.swift */; };
+		CB453D0625FD6BC0001C6DB4 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB453D0525FD6BC0001C6DB4 /* UsersViewModel.swift */; };
 		CB453D0925FD6C4B001C6DB4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB453D0825FD6C4B001C6DB4 /* Constants.swift */; };
 		CB506E0A25FA293C00A28D92 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB506E0925FA293C00A28D92 /* ImagePicker.swift */; };
 		CB6C3DBD25EC253C00149528 /* CookEatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C3DBC25EC253C00149528 /* CookEatApp.swift */; };
@@ -44,7 +44,7 @@
 		CB1E5DFA25FA40B900049676 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB1E5E0725FA457700049676 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		CB452B5925F54E0B0020681B /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
-		CB453D0525FD6BC0001C6DB4 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		CB453D0525FD6BC0001C6DB4 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		CB453D0825FD6C4B001C6DB4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CB506E0925FA293C00A28D92 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		CB6C3DB925EC253C00149528 /* CookEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,7 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				CB1E5E0725FA457700049676 /* AuthViewModel.swift */,
-				CB453D0525FD6BC0001C6DB4 /* SearchViewModel.swift */,
+				CB453D0525FD6BC0001C6DB4 /* UsersViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -290,7 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB453D0625FD6BC0001C6DB4 /* SearchViewModel.swift in Sources */,
+				CB453D0625FD6BC0001C6DB4 /* UsersViewModel.swift in Sources */,
 				CB1E5E0825FA457700049676 /* AuthViewModel.swift in Sources */,
 				CB96D59625ED3B6600457589 /* SearchBar.swift in Sources */,
 				CB6C3DBF25EC253C00149528 /* ContentView.swift in Sources */,

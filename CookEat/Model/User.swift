@@ -2,10 +2,11 @@
 //  User.swift
 //  CookEat
 //
-//  Created by Rafael Kollyfas on 13/03/2021.
+//  Created by Rafael Kollyfas on 14/03/2021.
 //
 
 import Foundation
+import Firebase
 
 struct User: Identifiable {
 //    User data
@@ -14,6 +15,7 @@ struct User: Identifiable {
     let username: String
     let profileImageUrl: String
     let fullname: String
+    let currentUser: Bool
     
 //    Initialize variables from dictionary that we get from Firebase.
     init(dictionary: [String: Any]) {
@@ -22,5 +24,7 @@ struct User: Identifiable {
         self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
         self.email = dictionary["email"] as? String ?? ""
         self.fullname = dictionary["fullname"] as? String ?? ""
+//        Set boolean to true if user trying to fetch is the current user.
+        self.currentUser = Auth.auth().currentUser?.uid == self.id
     }
 }

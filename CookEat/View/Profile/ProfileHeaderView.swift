@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ProfileHeaderView: View {
+    let user: User
+    
     var body: some View {
         VStack {
-            Image("lady")
+            KFImage(URL(string: user.profileImageUrl))
                 .resizable()
                 .scaledToFill()
                 .clipped()
@@ -18,11 +21,11 @@ struct ProfileHeaderView: View {
                 .cornerRadius(120/2)
                 .shadow(radius: 10)
             
-            Text("Lady Cook")
+            Text(user.fullname)
                 .font(.system(size: 16, weight:.semibold))
                 .padding(.top, 8)
             
-            Text("@cook_lady")
+            Text("@\(user.username)")
                 .font(.subheadline)
                 .foregroundColor(.gray)
             
@@ -49,15 +52,9 @@ struct ProfileHeaderView: View {
             }
             .padding()
             
-            ProfileActionButtonView(isCurrentUser: false)
+            ProfileActionButtonView(isCurrentUser: user.currentUser)
             
             Spacer()
         }
-    }
-}
-
-struct ProfileHeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileHeaderView()
     }
 }

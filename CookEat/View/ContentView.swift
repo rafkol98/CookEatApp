@@ -37,6 +37,7 @@ struct ContentView: View {
             }
 //            If user is not logged in, display the loginView.
             else {
+//                LoginView()
                 RecipeDetails()
             }
     }

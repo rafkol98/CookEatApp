@@ -40,6 +40,7 @@
 		CBEAAC5E25F80EB00064A32B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAAC5D25F80EB00064A32B /* CustomTextField.swift */; };
 		CBEAAC6125F813EA0064A32B /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAAC6025F813EA0064A32B /* CustomSecureField.swift */; };
 		CBEAAC6425F81B660064A32B /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAAC6325F81B660064A32B /* RegistrationView.swift */; };
+		CBEB88802604FCED00F8B497 /* DropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB887F2604FCED00F8B497 /* DropdownView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		CBEAAC5D25F80EB00064A32B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		CBEAAC6025F813EA0064A32B /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
 		CBEAAC6325F81B660064A32B /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		CBEB887F2604FCED00F8B497 /* DropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 				CB903FDD25F4055700297DD9 /* NewRecipeView.swift */,
 				CB4DAB212602A7D0009E44E8 /* RecipeDetails.swift */,
 				CB4DAB242602AD55009E44E8 /* RecipeTitleView.swift */,
+				CBEB887F2604FCED00F8B497 /* DropdownView.swift */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				CB6C3DBD25EC253C00149528 /* CookEatApp.swift in Sources */,
 				CB903FD525F4047700297DD9 /* ProfileHeaderView.swift in Sources */,
 				CB96D59D25ED3F4600457589 /* UserCell.swift in Sources */,
+				CBEB88802604FCED00F8B497 /* DropdownView.swift in Sources */,
 				CB96D5B925ED62C200457589 /* HomeView.swift in Sources */,
 				CBEAAC5E25F80EB00064A32B /* CustomTextField.swift in Sources */,
 				CB903FDE25F4055700297DD9 /* NewRecipeView.swift in Sources */,

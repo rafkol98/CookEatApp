@@ -29,6 +29,6 @@ struct RecipeTitleView: View {
 
 struct RecipeTitleView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeTitleView(username: .constant("Bruce"), recipeName:.constant("Wayne"))
+        RecipeTitleView(username: .constant("Username"), recipeName:.constant("Recipe"))
     }
 }

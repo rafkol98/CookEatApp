@@ -13,6 +13,11 @@ struct RecipeDetails: View {
     @State var username = "Bruce"
     @State var recipeName = "burger"
     
+    //    Use them later.
+    @State var title = "Ingredients"
+    @State var text_desc = "Είπα να μην κολαστώ αλλά δεν μπορώ :)"
+    
+    
     var body: some View {
         
         VStack {
@@ -26,70 +31,85 @@ struct RecipeDetails: View {
             
             ZStack {
                 //                ScrollView{
-                RoundedRectangle(cornerRadius: 40)
-                    
+                RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(Color(red: 255/255, green: 255/255, blue: 255/255))
-                    
                     .shadow(radius: 10)
+                
                 //Users contributed.
-                VStack{
-                    HStack {
-                        ForEach(0..<2) { _ in
-                            Image("lady")
-                                .resizable()
-                                .scaledToFill()
-                                .clipped()
-                                .frame(width: 40, height: 40)
-                                .cornerRadius(50/2)
-                                .shadow(radius: 2)
-                        }
-                        Spacer()
-                    }
-                    .padding(10)
-                    
-                    HStack {
-                        RecipeTitleView(username: $username, recipeName: $recipeName)
-                            .padding(.horizontal)
+                ScrollView {
+                    VStack{
                         
-                        Spacer()
-                    }
-                    //Description.
-                    ScrollView{
-                        TextEditor(text: .constant("Είπα να μην κολαστώ αλλά δεν μπορώ :) ... Σοφοκλέους έχει καμιά ανακοίνωση για την διαιτησία πόψε; :)"))
-                            .frame(width: .infinity, height: 80)
-                            .padding(.horizontal)
-                            .foregroundColor(Color(red: 40/255, green: 40/255, blue: 40/255))
-                            .font(.system(size: 14))
-                    }.frame(height:70)
-                    
-//                    Dropdown box.
-                    DisclosureGroup("Ingredients", isExpanded: $isExpanded) {
-                        VStack {
-                            ScrollView{
-                                TextEditor(text: .constant("Είπα να μην κολαστώ αλλά δεν μπορώ :) ... Σοφοκλέους έχει καμιά ανακοίνωση για την διαιτησία πόψε; :)"))
-                                    .frame(width: .infinity, height: 80)
-                                    .padding(.horizontal)
-                                    .foregroundColor(Color(red: 40/255, green: 40/255, blue: 40/255))
-                                    .font(.system(size: 14))
-                            }.frame(height:150)
+                        HStack {
+                            ForEach(0..<2) { _ in
+                                Image("lady")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .clipped()
+                                    .frame(width: 40, height: 40)
+                                    .cornerRadius(50/2)
+                                    .shadow(radius: 2)
+                            }
+                            Spacer()
                         }
+                        .padding(10)
+                        
+                        HStack {
+                            RecipeTitleView(username: $username, recipeName: $recipeName)
+                                .padding(.horizontal)
+                            
+                            Spacer()
+                        }
+                        //Description.
+                        ScrollView{
+                            TextEditor(text: .constant("Είπα να μην κολαστώ αλλά δεν μπορώ :) ... Σοφοκλέους έχει καμιά ανακοίνωση για την διαιτησία πόψε; :)"))
+                                .frame(width: .infinity, height: 80)
+                                .padding(.horizontal)
+                                .foregroundColor(Color(red: 40/255, green: 40/255, blue: 40/255))
+                                .font(.system(size: 14))
+                        }.frame(height:70)
+                        
+                        //                    Dropdown box.
+                        VStack {
+                            DropdownView(title: .constant("Ingredients"), text: .constant("Είπα να μην κολαστώ αλλά δεν μπορώ :)"), isExpanded: $isExpanded)
+                            
+                            DropdownView(title: .constant("Instructions"), text: .constant("Είπα να μην κολαστώ αλλά δεν μπορώ :)"), isExpanded: $isExpanded)
+                        }
+                        Spacer()
+                        HStack{
+                            Button(action: {
+                                
+                            }, label: {
+                                Text("Fork")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: .infinity, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: 50, maxHeight: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                    .background(Color.red)
+                                    .clipShape(Capsule())
+                                    .padding()
+                                    
+                            })
+                            
+                            Button(action: {
+                                
+                            }, label: {
+                                Text("Contribute")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: .infinity, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: 50, maxHeight: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                    .background(Color.red)
+                                    .clipShape(Capsule())
+                                    .padding()
+                                    
+                            })
+                            
+                        }
+                        
                     }
-                    .accentColor(.red)
-                    .padding(10)
-                    .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.red, lineWidth: 2)
-                            )
-                    .padding()
-                    
-                    
-                    Spacer()
-                    
                 }
                 
                 
                 
-            }.frame(maxWidth: .infinity, maxHeight: heightBox,
+            }.frame(maxWidth: .infinity, maxHeight: .infinity,
                     alignment: .topLeading)
             
         }

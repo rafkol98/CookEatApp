@@ -23,7 +23,7 @@ struct RecipeTitleView: View {
             Text("/")
             Text(recipeName)
                 
-        }
+        }.font(.system(size: 18, weight: .semibold))
     }
 }
 

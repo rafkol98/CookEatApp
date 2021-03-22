@@ -29,6 +29,7 @@ struct DropdownView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.red, lineWidth: 2)
+               
         )
         .padding()
     }

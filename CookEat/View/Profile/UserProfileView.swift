@@ -10,11 +10,17 @@ import SwiftUI
 struct UserProfileView: View {
     @State var selectedFilter: FilterOptions = .recipes
     let user: User
+    @ObservedObject var viewModel: ProfileViewModel
+    
+    init(user: User) {
+        self.user = user
+        self.viewModel = ProfileViewModel(user: user)
+    }
     
     var body: some View {
         ScrollView{
             VStack {
-                ProfileHeaderView(user: user)
+                ProfileHeaderView(isFollowed: $viewModel.isFollowed, viewModel: viewModel)
                     .padding()
                 
                 FilterButtonView(selectedOption: $selectedFilter)

@@ -10,6 +10,7 @@ import SwiftUI
 struct RecipeDetails: View {
     let heightBox = UIScreen.main.bounds.height / 1.3
     @State private var isExpanded = false
+    @State private var isExpandedInstr = false
     @State var username = "Bruce"
     @State var recipeName = "burger"
     
@@ -72,7 +73,7 @@ struct RecipeDetails: View {
                         VStack {
                             DropdownView(title: .constant("Ingredients"), text: .constant("Είπα να μην κολαστώ αλλά δεν μπορώ :)"), isExpanded: $isExpanded)
                             
-                            DropdownView(title: .constant("Instructions"), text: .constant("Είπα να μην κολαστώ αλλά δεν μπορώ :)"), isExpanded: $isExpanded)
+                            DropdownView(title: .constant("Instructions"), text: .constant("Είπα να μην κολαστώ αλλά δεν μπορώ :)"), isExpanded: $isExpandedInstr)
                         }
                         Spacer()
                         HStack{

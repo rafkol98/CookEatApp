@@ -19,7 +19,7 @@ struct RegistrationView: View {
     //    Create instance of AuthViewModel
     @EnvironmentObject var viewModel: AuthViewModel
     
-    //conert a ui image into a SwiftUI image.
+    //convert a ui image into a SwiftUI image.
     func loadImage() {
         guard let selectedImage = selectedUIImage else {return}
         image = Image(uiImage: selectedImage)

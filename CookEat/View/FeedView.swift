@@ -18,7 +18,14 @@ struct FeedView: View {
             ScrollView {
                 VStack {
                     ForEach(0..<10) { _ in
-                        RecipeCell()
+//                        NavigationLink
+                        NavigationLink(
+                            destination: RecipeDetails(),
+                            label: {
+    //                            Place user in a userCell.
+                                RecipeCell()
+                            }).foregroundColor(.black)
+                        
 
                     }
                 }.padding()

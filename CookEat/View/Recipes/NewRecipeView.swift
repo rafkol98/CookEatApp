@@ -11,52 +11,67 @@ struct NewRecipeView: View {
     @Binding var isPresented : Bool
     @State var instructions: String = ""
     @State var ingredients: String = ""
+    @State var recipeName = ""
     
-
+    
     var body: some View {
         NavigationView {
-           
+            
             VStack {
-
+                
+                CustomTextField(text: $recipeName, placeholder: Text("Recipe Name"), imageName: "applescript")
+                    .padding()
+                    .background(Color(.init(white: 0.5, alpha: 0.05)))
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+                
+                
                 Text("Instructions")
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)
-
-                VStack(alignment: .leading) {
                 
-                   
-                    TextEditor(text: $instructions)
-                                .foregroundColor(Color.gray)
-                                .font(.custom("HelveticaNeue", size: 13))
-                                .lineSpacing(5)
-                                
-                }
-                .overlay(
-                         RoundedRectangle(cornerRadius: 25)
-                           .stroke(Color.gray, lineWidth: 2)
-                         )
-                .padding()
+                CustomTextArea(text: $ingredients, placeholder: Text("Recipe Name"))
+                    .padding()
+                    .background(Color(.init(white: 0.5, alpha: 0.05)))
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+              
+//                VStack(alignment: .leading) {
+//
+//                    TextEditor(text: $instructions)
+//                        .foregroundColor(Color.gray)
+//                        .font(.custom("HelveticaNeue", size: 13))
+//
+//                        .lineSpacing(5)
+//
+//                }
+//                .overlay(
+//                    RoundedRectangle(cornerRadius: 25)
+//                        .stroke(Color.white, lineWidth: 2)
+//                        .background(Color(.init(white: 0.5, alpha: 0.05)))
+//                )
+//                .padding()
                 
                 Text("Ingredients")
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)
-                    
+                
                 
                 VStack(alignment: .leading) {
                     
                     TextEditor(text: $ingredients)
-                                .foregroundColor(Color.gray)
-                                .font(.custom("HelveticaNeue", size: 13))
-                                .lineSpacing(5)
-                                
+                        .foregroundColor(Color.gray)
+                        .font(.custom("HelveticaNeue", size: 13))
+                        .lineSpacing(5)
+                    
                 }
                 .overlay(
-                         RoundedRectangle(cornerRadius: 25)
-                           .stroke(Color.gray, lineWidth: 2)
-                         )
+                    RoundedRectangle(cornerRadius: 25)
+                        .stroke(Color.gray, lineWidth: 2)
+                )
                 .padding()
-
-//  On cancel, toggle isPresented variable -> this will close the screen.
+                
+                //  On cancel, toggle isPresented variable -> this will close the screen.
                 .navigationBarItems(leading: Button(action: { isPresented.toggle() }, label: {
                     Text("Cancel")
                         .foregroundColor(.red)
@@ -67,7 +82,7 @@ struct NewRecipeView: View {
                         .background(Color.red)
                         .foregroundColor(.white)
                         .clipShape(Capsule())
-            }))
+                }))
                 Spacer()
             }
         }

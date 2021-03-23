@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB101303260AA6AD00C32A21 /* AddRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB101302260AA6AD00C32A21 /* AddRecipeView.swift */; };
+		CB101306260AAB8A00C32A21 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB101305260AAB8A00C32A21 /* Settings.swift */; };
 		CB1E5DFB25FA40B900049676 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB1E5DFA25FA40B900049676 /* GoogleService-Info.plist */; };
 		CB1E5DFF25FA428A00049676 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = CB1E5DFE25FA428A00049676 /* FirebaseFunctions */; };
 		CB1E5E0125FA428A00049676 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CB1E5E0025FA428A00049676 /* FirebaseStorage */; };
@@ -46,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB101302260AA6AD00C32A21 /* AddRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeView.swift; sourceTree = "<group>"; };
+		CB101305260AAB8A00C32A21 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		CB1E5DFA25FA40B900049676 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB1E5E0725FA457700049676 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		CB452B5925F54E0B0020681B /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 				CB96D59525ED3B6600457589 /* SearchBar.swift */,
 				CB96D59925ED3E0300457589 /* SearchView.swift */,
 				CB96D59C25ED3F4600457589 /* UserCell.swift */,
+				CB101305260AAB8A00C32A21 /* Settings.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 				CB903FDD25F4055700297DD9 /* NewRecipeView.swift */,
 				CB4DAB212602A7D0009E44E8 /* RecipeDetails.swift */,
 				CB4DAB242602AD55009E44E8 /* RecipeTitleView.swift */,
+				CB101302260AA6AD00C32A21 /* AddRecipeView.swift */,
 				CBEB887F2604FCED00F8B497 /* DropdownView.swift */,
 			);
 			path = Recipes;
@@ -312,6 +318,7 @@
 				CBEAAC6425F81B660064A32B /* RegistrationView.swift in Sources */,
 				CB6C3DD225EC2BA200149528 /* FeedView.swift in Sources */,
 				CB7EDDD52608DDC800A1E3A8 /* ProfileViewModel.swift in Sources */,
+				CB101303260AA6AD00C32A21 /* AddRecipeView.swift in Sources */,
 				CB453D0925FD6C4B001C6DB4 /* Constants.swift in Sources */,
 				CBEAAC5A25F80E050064A32B /* LoginView.swift in Sources */,
 				CB903FDB25F404D500297DD9 /* FilterButtonView.swift in Sources */,
@@ -328,6 +335,7 @@
 				CB96D59D25ED3F4600457589 /* UserCell.swift in Sources */,
 				CBEB88802604FCED00F8B497 /* DropdownView.swift in Sources */,
 				CB96D5B925ED62C200457589 /* HomeView.swift in Sources */,
+				CB101306260AAB8A00C32A21 /* Settings.swift in Sources */,
 				CBEAAC5E25F80EB00064A32B /* CustomTextField.swift in Sources */,
 				CB903FDE25F4055700297DD9 /* NewRecipeView.swift in Sources */,
 				CB4DAB252602AD55009E44E8 /* RecipeTitleView.swift in Sources */,

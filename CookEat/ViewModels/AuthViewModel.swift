@@ -22,7 +22,7 @@ class AuthViewModel: ObservableObject {
         fetchUser()
     }
     
-    
+    //Login user.
     func login(withEmail email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
@@ -32,6 +32,7 @@ class AuthViewModel: ObservableObject {
             
             //            attach user to the user session.
             self.userSession = result?.user
+            self.fetchUser()
             print("Logged in...")
         }
     }
@@ -59,13 +60,14 @@ class AuthViewModel: ObservableObject {
                         return
                     }
                     
-                    //                    Check if user exists.
+                    //Check if user exists.
                     guard let user = result?.user else { return }
                     
                     let data = ["email": email, "username": username.lowercased(), "fullname": fullname, "profileImageUrl": profileImageUrl, "uid": user.uid]
                     
                     Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
                         self.userSession = user
+                        self.fetchUser()
                         print("Successfully uploaded user data")
                         
                     }
@@ -75,7 +77,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    
+    //Sign out of the application.
     func signOut() {
         userSession = nil
         try? Auth.auth().signOut()
@@ -84,6 +86,7 @@ class AuthViewModel: ObservableObject {
     func fetchUser() {
         guard let uid = userSession?.uid else { return }
         
+        //Get user from firestore and place them in a User variable.
         Firestore.firestore().collection("users").document(uid).getDocument { snapshot, _ in
             guard let data = snapshot?.data() else { return }
             let user = User(dictionary: data)

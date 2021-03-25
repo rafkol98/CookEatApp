@@ -8,10 +8,6 @@
 import SwiftUI
 
 struct FeedView: View {
-//    Is showing new recipe flag.
-    @State var isShowingNewRecipeView = false
-//    Get environmentObject of whether user is logged in.
-    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -31,24 +27,6 @@ struct FeedView: View {
                 }.padding()
             }
             
-//            On button pressed, make the isShowingNewRecipeView flag true.
-            Button(action: {
-                viewModel.signOut()
-//                    isShowingNewRecipeView.toggle()
-            }, label: {
-                Image(systemName:"plus")
-                    .resizable()
-                    .frame(width:32, height:32)
-                    .padding()
-            })
-            .background(Color(.systemRed))
-            .foregroundColor(.white)
-            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-            .padding()
-//            On click of add new recipe button show newRecipeView.
-            .fullScreenCover(isPresented: $isShowingNewRecipeView) {
-                NewRecipeView(isPresented: $isShowingNewRecipeView)
-            }
         }
     }
 }

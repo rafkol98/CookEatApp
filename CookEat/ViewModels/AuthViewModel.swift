@@ -14,7 +14,10 @@ class AuthViewModel: ObservableObject {
     @Published var isAuthenticating = false
     //    Message to the user.
     @Published var error: Error?
-    //    @Published var user: User?
+    @Published var user: User?
+    
+    //  Static variable to be able to access user from every screen without reinitializing AuthViewModel every time.
+    static let shared = AuthViewModel()
     
     //    If logged in, show the main screen.
     init() {

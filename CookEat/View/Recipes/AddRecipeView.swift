@@ -18,14 +18,25 @@ struct AddRecipeView: View {
     
     var body: some View {
         VStack{
-            
+            HStack(alignment: .top ){
+                               if let user = AuthViewModel.shared.user{
+                                   KFImage(URL(string: user.profileImageUrl))
+                                       .resizable()
+                                       .scaledToFill()
+                                       .clipped()
+                                       .frame(width: 64, height: 64)
+                                       .cornerRadius(32)
+                               }
+                              Text("test")
+                               Spacer()
+                           }
             SmallInput(name: "RecipeName", stringIn: $name)
             LargeInput(name: "Description", stringIn: $description)
             LargeInput(name: "Ingredients", stringIn: $ingredients)
             LargeInput(name: "Instructions", stringIn: $instructions)
             
             Button(action: {
-                viewModel.upload(recipeName: name, description: description, ingredients: ingredients, instructions: instructions)
+                viewModel.upload(name: name, description: description, ingredients: ingredients, instructions: instructions)
             }, label: {
                 Text("Add Recipe")
                     .font(.headline)

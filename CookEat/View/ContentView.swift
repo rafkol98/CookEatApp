@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: AuthViewModel
-    
     var body: some View {
         Group {
 //            If user is signed in, display the main content.

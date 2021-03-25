@@ -36,7 +36,6 @@ class AuthViewModel: ObservableObject {
             //            attach user to the user session.
             self.userSession = result?.user
             self.fetchUser()
-            print("Logged in...")
         }
     }
     
@@ -71,8 +70,6 @@ class AuthViewModel: ObservableObject {
                     Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
                         self.userSession = user
                         self.fetchUser()
-                        print("Successfully uploaded user data")
-                        
                     }
                 }
             }
@@ -92,8 +89,8 @@ class AuthViewModel: ObservableObject {
         //Get user from firestore and place them in a User variable.
         Firestore.firestore().collection("users").document(uid).getDocument { snapshot, _ in
             guard let data = snapshot?.data() else { return }
-            let user = User(dictionary: data)
-            print("Debug: Username: \(user.username)")
+            self.user = User(dictionary: data)
+            
         }
     }
     

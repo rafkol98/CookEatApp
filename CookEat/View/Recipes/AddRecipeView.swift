@@ -2,25 +2,30 @@
 //  AddRecipeView.swift
 //  CookEat
 //
-//  Created by Rafael Kollyfas on 24/03/2021.
+//  Created by Rafael Kollyfas on 25/03/2021.
 //
 
 import SwiftUI
+import Kingfisher
 
 struct AddRecipeView: View {
     @State var name: String = ""
+    @State var description: String = ""
     @State var ingredients: String = ""
     @State var instructions: String = ""
-    @State var description: String = ""
+   
+    @ObservedObject var viewModel = UploadRecipeViewModel()
     
     var body: some View {
         VStack{
+            
             SmallInput(name: "RecipeName", stringIn: $name)
             LargeInput(name: "Description", stringIn: $description)
             LargeInput(name: "Ingredients", stringIn: $ingredients)
             LargeInput(name: "Instructions", stringIn: $instructions)
             
             Button(action: {
+                viewModel.upload(recipeName: name, description: description, ingredients: ingredients, instructions: instructions)
             }, label: {
                 Text("Add Recipe")
                     .font(.headline)

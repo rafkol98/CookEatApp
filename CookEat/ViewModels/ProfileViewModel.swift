@@ -18,7 +18,7 @@ class ProfileViewModel: ObservableObject {
         checkIfFollowing()
     }
     
-    //    Follow another user.
+    //    Follow user displayed.
     func follow() {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         let followingRef = COLLECTION_FOLLOWING.document(userUid).collection("user-following")
@@ -34,6 +34,7 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
+//  Unfollow user displayed.
     func unfollow() {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         let followingRef = COLLECTION_FOLLOWING.document(userUid).collection("user-following")
@@ -46,6 +47,7 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
+//   Check if the current user is following the user displayed now.
     func checkIfFollowing() {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         let followingRef = COLLECTION_FOLLOWING.document(userUid).collection("user-following")

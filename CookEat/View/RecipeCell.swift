@@ -9,10 +9,8 @@ import SwiftUI
 import Kingfisher
 
 struct RecipeCell: View {
-    let recipe: Recipe
     
-    @State var username = "Marios"
-    @State var recipeName = "Pizza Mia"
+    let recipe: Recipe
     
     var body: some View {
         VStack {
@@ -20,7 +18,19 @@ struct RecipeCell: View {
 
                 VStack(alignment: .leading) {
                 
-                    RecipeTitleView(username: $username, recipeName: $recipeName)
+                    HStack {
+                        Image("icon")
+                            .resizable()
+                            .scaledToFill()
+                            .clipped()
+                            .frame(width: 15, height: 15)
+                        
+                        Text(recipe.username)
+                        Text("/")
+                        Text(recipe.recipeName)
+                        Spacer()
+                            
+                    }.font(.system(size: 18, weight: .semibold))
                     
                     Text(recipe.description)
                 
@@ -36,10 +46,3 @@ struct RecipeCell: View {
         
     }
 }
-
-struct RecipeView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecipeCell()
-    }
-}
-

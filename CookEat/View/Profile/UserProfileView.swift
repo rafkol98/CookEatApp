@@ -28,8 +28,8 @@ struct UserProfileView: View {
             }
             
             ForEach(0..<9) { recipe in
-                RecipeCell()
-                    .padding()
+//                RecipeCell(recipe: recipe)
+//                    .padding()
             }
             
 //            .navigationTitle("User")

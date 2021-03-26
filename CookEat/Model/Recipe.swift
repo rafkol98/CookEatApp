@@ -24,7 +24,7 @@ struct Recipe: Identifiable {
     
 //    Initialize variables from dictionary that we get from Firebase.
     init(dictionary: [String: Any]) {
-        self.id = dictionary["uid"] as? String ?? ""
+        self.id = dictionary["id"] as? String ?? ""
         self.recipeName = dictionary["recipeName"] as? String ?? ""
         self.description = dictionary["description"] as? String ?? ""
         self.ingredients = dictionary["ingredients"] as? String ?? ""

@@ -14,13 +14,13 @@ struct FeedView: View {
         ZStack(alignment: .bottomTrailing) {
             ScrollView {
                 VStack {
-                    ForEach(viewModel.recipes) { _ in
+                    ForEach(viewModel.recipes) { recipe in
 //                        NavigationLink
                         NavigationLink(
                             destination: RecipeDetails(),
                             label: {
     //                            Place user in a userCell.
-                                RecipeCell()
+                                RecipeCell(recipe: recipe)
                             }).foregroundColor(.black)
                         
 

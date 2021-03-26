@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct FeedView: View {
+    @ObservedObject var viewModel = FeedViewModel()
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             ScrollView {
                 VStack {
-                    ForEach(0..<10) { _ in
+                    ForEach(viewModel.recipes) { _ in
 //                        NavigationLink
                         NavigationLink(
                             destination: RecipeDetails(),

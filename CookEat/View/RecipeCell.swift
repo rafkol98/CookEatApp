@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct RecipeCell: View {
+    let recipe: Recipe
+    
     @State var username = "Marios"
     @State var recipeName = "Pizza Mia"
     
@@ -19,7 +22,7 @@ struct RecipeCell: View {
                 
                     RecipeTitleView(username: $username, recipeName: $recipeName)
                     
-                    Text("It's not what I am that defines me, but what I cook!")
+                    Text(recipe.description)
                 
                     Text("View Recipe").foregroundColor(.red).padding(.trailing).padding(.top)
                     

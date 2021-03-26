@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct RecipeTitleView: View {
-    @Binding var username: String
-    @Binding var recipeName: String
+    @State var username: String
+    @State var recipeName: String
     
     var body: some View {
         HStack {

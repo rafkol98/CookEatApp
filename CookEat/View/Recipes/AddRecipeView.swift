@@ -13,23 +13,27 @@ struct AddRecipeView: View {
     @State var description: String = ""
     @State var ingredients: String = ""
     @State var instructions: String = ""
-   
+    
     @ObservedObject var viewModel = UploadRecipeViewModel()
     
     var body: some View {
         VStack{
             HStack(alignment: .top ){
-                               if let user = AuthViewModel.shared.user{
-                                   KFImage(URL(string: user.profileImageUrl))
-                                       .resizable()
-                                       .scaledToFill()
-                                       .clipped()
-                                       .frame(width: 64, height: 64)
-                                       .cornerRadius(32)
-                               }
-                              Text("test")
-                               Spacer()
-                           }
+                if let user = AuthViewModel.shared.user{
+                    KFImage(URL(string: user.profileImageUrl))
+                        .resizable()
+                        .scaledToFill()
+                        .clipped()
+                        .frame(width: 64, height: 64)
+                        .cornerRadius(32)
+                }
+                VStack(alignment: .center) {
+                    Text("Add Recipe")
+                        .font(.system(size: 28))
+                }
+                
+                Spacer()
+            }
             SmallInput(name: "RecipeName", stringIn: $name)
             LargeInput(name: "Description", stringIn: $description)
             LargeInput(name: "Ingredients", stringIn: $ingredients)
@@ -85,7 +89,7 @@ struct LargeInput: View {
             Text(name)
             Spacer()
         }
-    
+        
         TextEditor(text:  $stringIn)
             .foregroundColor(Color.gray)
             .font(.custom("HelveticaNeue", size: 14))

@@ -21,6 +21,8 @@ struct Recipe: Identifiable {
     let uid: String
     let likes: Int
     let timestamp: Timestamp
+    let foodImageUrl: String
+
     
 //    Initialize variables from dictionary that we get from Firebase.
     init(dictionary: [String: Any]) {
@@ -31,6 +33,7 @@ struct Recipe: Identifiable {
         self.instructions = dictionary["instructions"] as? String ?? ""
         self.username = dictionary["username"] as? String ?? ""
         self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
+        self.foodImageUrl = dictionary["foodImageUrl"] as? String ?? ""
         self.fullname = dictionary["fullname"] as? String ?? ""
         self.likes = dictionary["likes"] as? Int ?? 0
         self.uid = dictionary["uid"] as? String ?? ""

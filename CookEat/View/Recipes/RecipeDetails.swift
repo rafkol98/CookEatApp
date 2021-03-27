@@ -6,23 +6,19 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct RecipeDetails: View {
     let heightBox = UIScreen.main.bounds.height / 1.3
     @State private var isExpanded = false
     @State private var isExpandedInstr = false
-    @State var username = "Bruce"
-    @State var recipeName = "burger"
-    
-    //    Use them later.
-    @State var title = "Ingredients"
-    @State var text_desc = "Είπα να μην κολαστώ αλλά δεν μπορώ :)"
-    
+
+    let recipe: Recipe
     
     var body: some View {
         
         VStack {
-            Image("burger")
+            KFImage(URL(string: recipe.foodImageUrl))
                 .resizable()
                 .scaledToFill()
                 .clipped()
@@ -41,8 +37,8 @@ struct RecipeDetails: View {
                     VStack{
                         
                         HStack {
-                            ForEach(0..<2) { _ in
-                                Image("lady")
+                            ForEach(0..<1) { _ in
+                                KFImage(URL(string: recipe.profileImageUrl))
                                     .resizable()
                                     .scaledToFill()
                                     .clipped()
@@ -55,14 +51,20 @@ struct RecipeDetails: View {
                         .padding(10)
                         
                         HStack {
-                            RecipeTitleView(username: $username, recipeName: $recipeName)
+                            RecipeTitleView(username: .constant(recipe.username), recipeName: .constant(recipe.recipeName))
                                 .padding(.horizontal)
                             
+                            Spacer()
+                            
+                            Image(systemName: "heart")
+                                .font(.system(size:16))
+                                .frame(width:32, height:32)
+                            Text("0")
                             Spacer()
                         }
                         //Description.
                         ScrollView{
-                            TextEditor(text: .constant("Είπα να μην κολαστώ αλλά δεν μπορώ :) ... Σοφοκλέους έχει καμιά ανακοίνωση για την διαιτησία πόψε; :)"))
+                            TextEditor(text: .constant(recipe.description))
                                 .frame(width: .infinity, height: 80)
                                 .padding(.horizontal)
                                 .foregroundColor(Color(red: 40/255, green: 40/255, blue: 40/255))
@@ -71,9 +73,9 @@ struct RecipeDetails: View {
                         
                         //                    Dropdown box.
                         VStack {
-                            DropdownView(title: .constant("Ingredients"), text: .constant("Είπα να μην κολαστώ αλλά δεν μπορώ :)"), isExpanded: $isExpanded)
+                            DropdownView(title: .constant("Ingredients"), text: .constant(recipe.ingredients), isExpanded: $isExpanded)
                             
-                            DropdownView(title: .constant("Instructions"), text: .constant("Είπα να μην κολαστώ αλλά δεν μπορώ :)"), isExpanded: $isExpandedInstr)
+                            DropdownView(title: .constant("Instructions"), text: .constant(recipe.instructions), isExpanded: $isExpandedInstr)
                         }
                         Spacer()
                         HStack{
@@ -118,10 +120,3 @@ struct RecipeDetails: View {
     
 }
 
-
-
-struct RecipeDetails_Previews: PreviewProvider {
-    static var previews: some View {
-        RecipeDetails()
-    }
-}

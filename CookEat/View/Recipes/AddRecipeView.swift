@@ -13,26 +13,59 @@ struct AddRecipeView: View {
     @State var description: String = ""
     @State var ingredients: String = ""
     @State var instructions: String = ""
+    @State var addImage = false
+    @State var selectedUIImage: UIImage?
+    @State var image: Image?
     
     @ObservedObject var viewModel = UploadRecipeViewModel()
+    
+    //convert a ui image into a SwiftUI image. REPETITIVE -> FIX THIS LATER.
+    func loadImage() {
+        guard let selectedImage = selectedUIImage else {return}
+        image = Image(uiImage: selectedImage)
+    }
     
     var body: some View {
         VStack{
             HStack(alignment: .top ){
-                if let user = AuthViewModel.shared.user{
-                    KFImage(URL(string: user.profileImageUrl))
-                        .resizable()
-                        .scaledToFill()
-                        .clipped()
-                        .frame(width: 64, height: 64)
-                        .cornerRadius(32)
-                }
-                VStack(alignment: .center) {
-                    Text("Add Recipe")
-                        .font(.system(size: 28))
-                }
-                
-                Spacer()
+//                if let user = AuthViewModel.shared.user{
+//                    KFImage(URL(string: user.profileImageUrl))
+//                        .resizable()
+//                        .scaledToFill()
+//                        .clipped()
+//                        .frame(width: 64, height: 64)
+//                        .cornerRadius(32)
+//                }
+//
+                Button(action: { addImage.toggle() }, label: {
+                    ZStack {
+                        if let image = image {
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 120, height: 120)
+                                .cornerRadius(60)
+                                .padding()
+                            
+                            
+                            
+                        } else {
+                            Image("add_photo")
+                                .resizable()
+                                //                    Rendering mode allows us to add a colour to the image.
+                                .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
+                                .scaledToFill()
+                                .frame(width: 120, height: 120)
+                                .padding()
+                                .foregroundColor(.red)
+                        }
+                        
+                    }
+                    
+                }).sheet(isPresented: $addImage, onDismiss: loadImage, content: {
+                    ImagePicker(image: $selectedUIImage)
+                })
+            
             }
             SmallInput(name: "RecipeName", stringIn: $name)
             LargeInput(name: "Description", stringIn: $description)
@@ -40,7 +73,8 @@ struct AddRecipeView: View {
             LargeInput(name: "Instructions", stringIn: $instructions)
             
             Button(action: {
-                viewModel.upload(name: name, description: description, ingredients: ingredients, instructions: instructions)
+                guard let image = selectedUIImage else { return }
+                viewModel.upload(name: name, description: description, ingredients: ingredients, instructions: instructions, image: image)
             }, label: {
                 Text("Add Recipe")
                     .font(.headline)
@@ -68,7 +102,7 @@ struct SmallInput: View {
             Spacer()
         }
         TextField("", text: $stringIn)
-            .foregroundColor(Color.gray)
+            .foregroundColor(Color.black)
             .font(.custom("HelveticaNeue", size: 14))
             .padding()
             .overlay(
@@ -91,7 +125,7 @@ struct LargeInput: View {
         }
         
         TextEditor(text:  $stringIn)
-            .foregroundColor(Color.gray)
+            .foregroundColor(Color.black)
             .font(.custom("HelveticaNeue", size: 14))
             .lineSpacing(5)
             .overlay(

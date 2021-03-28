@@ -8,12 +8,19 @@
 import SwiftUI
 import Kingfisher
 
-struct RecipeDetails: View {
+struct RecipeDetailsView: View {
+    
     let heightBox = UIScreen.main.bounds.height / 1.3
     @State private var isExpanded = false
     @State private var isExpandedInstr = false
-
+    
     let recipe: Recipe
+    @ObservedObject var viewModel: RecipeViewModel
+    
+    init(recipe: Recipe) {
+        self.recipe = recipe
+        self.viewModel = RecipeViewModel(recipe: recipe)
+    }
     
     var body: some View {
         
@@ -55,20 +62,26 @@ struct RecipeDetails: View {
                                 .padding(.horizontal)
                             
                             Spacer()
-                            
-                            Image(systemName: "heart")
-                                .font(.system(size:16))
-                                .frame(width:32, height:32)
-                            Text("0")
-                            Spacer()
+                            Button(action: {
+                                viewModel.didLike ? viewModel.unlikeRecipe() :viewModel.likeRecipe()
+                            }, label: {
+                                Image(systemName: viewModel.didLike ? "heart.fill" : "heart")
+                                    .font(.system(size:16))
+                                    .frame(width:32, height:32)
+                                    .foregroundColor(viewModel.didLike ? .red : .gray)
+                                Text("\(recipe.likes)")
+                                Spacer()})
                         }
+                        
+                        
+                        
                         //Description.
                         ScrollView{
                             TextEditor(text: .constant(recipe.description))
                                 .frame(width: .infinity, height: 80)
                                 .padding(.horizontal)
                                 .foregroundColor(Color(red: 40/255, green: 40/255, blue: 40/255))
-                                .font(.system(size: 14))
+                                .font(.system(size: 17))
                         }.frame(height:70)
                         
                         //                    Dropdown box.
@@ -89,7 +102,7 @@ struct RecipeDetails: View {
                                     .background(Color.red)
                                     .clipShape(Capsule())
                                     .padding()
-                                    
+                                
                             })
                             
                             Button(action: {
@@ -102,7 +115,7 @@ struct RecipeDetails: View {
                                     .background(Color.red)
                                     .clipShape(Capsule())
                                     .padding()
-                                    
+                                
                             })
                             
                         }

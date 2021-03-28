@@ -70,7 +70,9 @@ struct RecipeDetailsView: View {
                                     .frame(width:32, height:32)
                                     .foregroundColor(viewModel.didLike ? .red : .gray)
                                 Text("\(recipe.likes)")
-                                Spacer()})
+                                    .padding()
+                            }
+                            )
                         }
                         
                         

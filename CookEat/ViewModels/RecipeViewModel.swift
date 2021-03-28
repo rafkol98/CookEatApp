@@ -40,7 +40,7 @@ class RecipeViewModel: ObservableObject {
         let recipeLikesRef = COLLECTION_RECIPES.document(recipe.id).collection("recipe-likes")
         let userLikesRef = COLLECTION_USERS.document(uid).collection("user-likes")
         
-        COLLECTION_RECIPES.document(recipe.id).updateData(["likes": recipe.likes - 1 ]){ _ in
+        COLLECTION_RECIPES.document(recipe.id).updateData(["likes": recipe.likes - 1]){ _ in
             recipeLikesRef.document(uid).delete { _ in
                 userLikesRef.document(self.recipe.id).delete { _ in
                     self.didLike = false

@@ -15,31 +15,29 @@ class FeedViewModel: ObservableObject {
         fetchRecipes()
     }
     
+    
     func fetchRecipes(){
-        //        COLLECTION_RECIPES.getDocuments { snapshot, _ in
-        //            guard let documents = snapshot?.documents else { return }
-        //
-        //            self.recipes = documents.map({ Recipe(dictionary: $0.data()) })
-        //        }
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         
-        COLLECTION_RECIPES.addSnapshotListener { (querySnaphot, error) in
-            guard let documents = querySnaphot?.documents else { return }
-            
-            self.recipes = documents.map{ (queryDocumentSnapshot) -> Recipe in
-                let data = queryDocumentSnapshot.data()
-                let uid = data["uid"]
-                
-                
-                print(uid ?? "no")
-                let recipe = Recipe(dictionary: data)
-                return recipe
+//        Fetch recipes of only the users we are following.
+        COLLECTION_USERS.document(userUid).collection("users-following").addSnapshotListener { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    COLLECTION_RECIPES.whereField("uid", in: [document.documentID]).addSnapshotListener { (querySnaphot, error) in
+                        guard let documents = querySnaphot?.documents else { return }
+                        
+                        self.recipes = documents.map{ (queryDocumentSnapshot) -> Recipe in
+                            let data = queryDocumentSnapshot.data()
+                            
+                            let recipe = Recipe(dictionary: data)
+                            return recipe
+                        }
+                        
+                    }
+                }
             }
-            
-            
-            
         }
-        
-        
     }
 }

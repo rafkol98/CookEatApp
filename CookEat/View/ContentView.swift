@@ -42,7 +42,6 @@ struct ContentView: View {
                         
                     }
                     .accentColor(.red)
-                    .navigationBarTitle("Home")
                     .navigationBarTitleDisplayMode(.inline)
                 }
             }

@@ -10,14 +10,16 @@ import SwiftUI
 struct SearchView: View {
     @State var searchText = ""
     @ObservedObject var usersViewModel = UsersViewModel()
-    
+  
+        
     var body: some View {
         ScrollView {
             SearchBar(text: $searchText).padding()
             
             VStack(alignment: .leading) {
 //                Loop through users.
-                ForEach(usersViewModel.users) { user in
+                var users = usersViewModel.users
+                ForEach(users.filter({"\($0)".contains(searchText) || searchText.isEmpty})) { user in
                     HStack {Spacer()}
                     
                     NavigationLink(

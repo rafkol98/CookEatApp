@@ -34,11 +34,23 @@ class RecipeViewModel: ObservableObject {
         
     }
     
+    //bug goes -1.
     func unlikeRecipe() {
         guard let uid = AuthViewModel.shared.userSession?.uid else { return }
         
         let recipeLikesRef = COLLECTION_RECIPES.document(recipe.id).collection("recipe-likes")
         let userLikesRef = COLLECTION_USERS.document(uid).collection("user-likes")
+//
+////        recipeLikesRef.getDocument { snapshot, _ in
+////
+////        }
+//
+//        COLLECTION_RECIPES.document(recipe.id).getDocument { snapshot, _ in
+//
+//
+//        }
+//
+        
         
         COLLECTION_RECIPES.document(recipe.id).updateData(["likes": recipe.likes - 1]){ _ in
             recipeLikesRef.document(uid).delete { _ in

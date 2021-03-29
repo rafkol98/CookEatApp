@@ -27,7 +27,6 @@ class UploadRecipeViewModel: ObservableObject {
             storageRef.downloadURL { url, _ in
                 guard let foodImageUrl = url?.absoluteString else { return }
                 
-                
                 let docRef = COLLECTION_RECIPES.document()
                 
                 let data : [String: Any] = ["uid": user.id,

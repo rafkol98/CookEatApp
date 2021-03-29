@@ -21,38 +21,38 @@ class ProfileViewModel: ObservableObject {
     //    Follow user displayed.
     func follow() {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
-        let followingRef = COLLECTION_FOLLOWING.document(userUid).collection("user-following")
-        let followersRef = COLLECTION_FOLLOWERS.document(user.id).collection("user-followers")
         
-        //        Add uid of user to be followed in the current user's following document.
-        followingRef.document(user.id).setData([:]) { _ in
-            
-            //            Add current user's uid in the followers list of the other user.
-            followersRef.document(self.user.id).collection("user-followers").document(userUid).setData([:]) { _ in
+        let followingRef = COLLECTION_USERS.document(userUid).collection("users-following")
+        let followersRef = COLLECTION_USERS.document(user.id).collection("users-followers")
+        
+        followingRef.document(self.user.id).setData([:]) { _ in
+            followersRef.document(userUid).setData([:]) { _ in
                 self.isFollowed = true
             }
         }
     }
     
-//  Unfollow user displayed.
+    //  Unfollow user displayed.
     func unfollow() {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
-        let followingRef = COLLECTION_FOLLOWING.document(userUid).collection("user-following")
-        let followersRef = COLLECTION_FOLLOWERS.document(user.id).collection("user-followers")
         
-        followingRef.document(user.id).delete{ _ in
-            followersRef.document(userUid).delete {_ in
+        let followingRef = COLLECTION_USERS.document(userUid).collection("users-following")
+        let followersRef = COLLECTION_USERS.document(user.id).collection("users-followers")
+        
+        followingRef.document(self.user.id).delete { _ in
+            followersRef.document(userUid).delete { _ in
                 self.isFollowed = false
+                
             }
         }
     }
     
-//   Check if the current user is following the user displayed now.
+    //   Check if the current user is following the user displayed now.
     func checkIfFollowing() {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
-        let followingRef = COLLECTION_FOLLOWING.document(userUid).collection("user-following")
+        let followingRef = COLLECTION_USERS.document(userUid).collection("users-following")
         
-        followingRef.document(user.id).getDocument { snapshot, _ in
+        followingRef.document(self.user.id).getDocument { snapshot, _ in
             guard let isFollowed = snapshot?.exists else {return}
             self.isFollowed = isFollowed
         }

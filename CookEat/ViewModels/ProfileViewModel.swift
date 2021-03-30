@@ -13,6 +13,8 @@ class ProfileViewModel: ObservableObject {
     @Published var isFollowed = false
     @Published var userRecipes = [Recipe]()
     @Published var likedRecipes = [Recipe]()
+    @Published var followers = 0
+    @Published var following = 0
     
     
     init(user: User) {
@@ -20,6 +22,7 @@ class ProfileViewModel: ObservableObject {
         checkIfFollowing()
         fetchUserRecipes()
         fetchLikedRecipes()
+        getCount()
     }
     
     //    Follow user displayed.
@@ -92,6 +95,18 @@ class ProfileViewModel: ObservableObject {
         switch filter {
         case .recipes: return userRecipes
         case .likes: return likedRecipes
+        }
+    }
+    
+    //Get count of followers and followings.
+    func getCount() {
+        COLLECTION_USERS.document(user.id).collection("users-followers").addSnapshotListener { snapshot, _ in
+            guard let followerCount = snapshot?.documents.count else { return }
+            self.followers = followerCount
+        }
+        COLLECTION_USERS.document(user.id).collection("users-following").addSnapshotListener { snapshot, _ in
+            guard let followingCount = snapshot?.documents.count else { return }
+            self.following = followingCount
         }
     }
 }

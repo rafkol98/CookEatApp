@@ -34,7 +34,6 @@ class FeedViewModel: ObservableObject {
                             let recipe = Recipe(dictionary: data)
                             return recipe
                         }
-                        
                     }
                 }
             }

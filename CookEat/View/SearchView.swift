@@ -9,19 +9,21 @@ import SwiftUI
 
 struct SearchView: View {
     @State var searchText = ""
-    @ObservedObject var usersViewModel = UsersViewModel()
+    @State var selectedFilter: FilterOptions = .recipes
+    @ObservedObject var searchViewModel = SearchViewModel()
   
         
     var body: some View {
         ScrollView {
             SearchBar(text: $searchText).padding()
+            FilterButtonView(selectedOption: $selectedFilter)
             
             VStack(alignment: .leading) {
 //                Loop through users.
-                var users = usersViewModel.users
+                let users = searchViewModel.users
                 ForEach(users.filter({"\($0)".contains(searchText) || searchText.isEmpty})) { user in
                     HStack {Spacer()}
-                    
+
                     NavigationLink(
                         destination: UserProfileView(user: user),
                         label: {
@@ -30,6 +32,20 @@ struct SearchView: View {
                         })
                 }
             }.padding(.leading)
+//            VStack(alignment: .leading) {
+////                Loop through users.
+//                let recipes = searchViewModel.recipes
+//                ForEach(recipes.filter({"\($0)".contains(searchText) || searchText.isEmpty})) { recipe in
+//                    HStack {Spacer()}
+//
+//                    NavigationLink(
+//                        destination: RecipeDetailsView(recipe: recipe),
+//                        label: {
+////                            Place user in a userCell.
+//                            RecipeCell(recipe: recipe)
+//                        }).foregroundColor(.black)
+//                }
+//            }.padding(.leading)
         }
         
     }

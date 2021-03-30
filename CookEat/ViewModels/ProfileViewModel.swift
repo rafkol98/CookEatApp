@@ -11,11 +11,15 @@ import Firebase
 class ProfileViewModel: ObservableObject {
     let user: User
     @Published var isFollowed = false
+    @Published var userRecipes = [Recipe]()
+    @Published var likedRecipes = [Recipe]()
     
     
     init(user: User) {
         self.user = user
         checkIfFollowing()
+        fetchUserRecipes()
+        fetchLikedRecipes()
     }
     
     //    Follow user displayed.
@@ -55,6 +59,34 @@ class ProfileViewModel: ObservableObject {
         followingRef.document(self.user.id).getDocument { snapshot, _ in
             guard let isFollowed = snapshot?.exists else {return}
             self.isFollowed = isFollowed
+        }
+    }
+    
+    //Fetch recipes of the user.
+    func fetchUserRecipes() {
+        COLLECTION_RECIPES.whereField("uid", isEqualTo: user.id).addSnapshotListener { snapshot, _ in
+            guard let documents = snapshot?.documents else { return }
+            documents.forEach { document in
+                print("DEBUG: Doc data is \(document.data())")
+            }
+        }
+    }
+    
+    //Fetch recipes that the user likes.
+    func fetchLikedRecipes() {
+        COLLECTION_USERS.document(user.id).collection("user-likes").addSnapshotListener { snapshot, _ in
+            guard let documents = snapshot?.documents else { return }
+            let recipeIDs = documents.map({$0.documentID})
+            
+            recipeIDs.forEach { id in
+                COLLECTION_RECIPES.document(id).addSnapshotListener { snapshot, _ in
+                    guard let data = snapshot?.data() else { return }
+                    let recipe = Recipe(dictionary: data)
+                    
+                    print("Debug: Liked recipe is \(recipe)")
+                }
+            }
+           
         }
     }
 }

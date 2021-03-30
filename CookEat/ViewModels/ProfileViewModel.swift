@@ -66,9 +66,8 @@ class ProfileViewModel: ObservableObject {
     func fetchUserRecipes() {
         COLLECTION_RECIPES.whereField("uid", isEqualTo: user.id).addSnapshotListener { snapshot, _ in
             guard let documents = snapshot?.documents else { return }
-            documents.forEach { document in
-                print("DEBUG: Doc data is \(document.data())")
-            }
+            //Populate user recipes.
+            self.userRecipes = documents.map({ Recipe(dictionary: $0.data()) })
         }
     }
     
@@ -82,11 +81,17 @@ class ProfileViewModel: ObservableObject {
                 COLLECTION_RECIPES.document(id).addSnapshotListener { snapshot, _ in
                     guard let data = snapshot?.data() else { return }
                     let recipe = Recipe(dictionary: data)
-                    
-                    print("Debug: Liked recipe is \(recipe)")
+                    self.likedRecipes.append(recipe)
                 }
             }
-           
+            
+        }
+    }
+    
+    func recipes(forFilter filter: FilterOptions) -> [Recipe] {
+        switch filter {
+        case .recipes: return userRecipes
+        case .likes: return likedRecipes
         }
     }
 }

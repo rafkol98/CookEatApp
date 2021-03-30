@@ -25,14 +25,15 @@ struct UserProfileView: View {
                 
                 FilterButtonView(selectedOption: $selectedFilter)
                     .padding()
+                
+                ForEach(viewModel.recipes(forFilter: selectedFilter)) { recipe in
+                    RecipeCell(recipe: recipe)
+                        .padding()
+                }.padding(.horizontal)
             }
             
-            ForEach(0..<9) { recipe in
-//                RecipeCell(recipe: recipe)
-//                    .padding()
-            }
             
-//            .navigationTitle("User")
+            
         }
     }
 }

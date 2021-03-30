@@ -10,12 +10,12 @@ import SwiftUI
 
 enum FilterOptions: Int, CaseIterable {
     case recipes
-    case saved
+    case likes
     
     var title: String {
         switch self {
         case .recipes: return "Recipes"
-        case .saved: return "Saved"
+        case .likes: return "Likes"
         }
     }
 }

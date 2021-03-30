@@ -17,7 +17,7 @@ struct FeedView: View {
                     ForEach(viewModel.recipes) { recipe in
 //                        NavigationLink
                         NavigationLink(
-                            destination: RecipeDetailsView(recipe: recipe),
+                            destination: LazyView(RecipeDetailsView(recipe: recipe)),
                             label: {
     //                            Place user in a userCell.
                                 RecipeCell(recipe: recipe)

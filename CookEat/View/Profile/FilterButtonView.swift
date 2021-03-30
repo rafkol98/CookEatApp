@@ -9,13 +9,14 @@ import SwiftUI
 
 
 enum FilterOptions: Int, CaseIterable {
-    case recipes
-    case likes
+    case one
+    case two
+  
     
-    var title: String {
+    var title : String {
         switch self {
-        case .recipes: return "Recipes"
-        case .likes: return "Likes"
+        case .one: return "Recipes"
+        case .two: return "Likes"
         }
     }
 }
@@ -59,6 +60,6 @@ struct FilterButtonView: View {
 
 struct FilterButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        FilterButtonView(selectedOption: .constant(.recipes))
+        FilterButtonView(selectedOption: .constant(.one))
     }
 }

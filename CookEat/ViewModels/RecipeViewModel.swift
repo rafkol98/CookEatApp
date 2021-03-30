@@ -50,6 +50,7 @@ class RecipeViewModel: ObservableObject {
         }
     }
     
+    //Check if user liked a recipe.
     func checkIfUserLiked() {
         guard let uid = AuthViewModel.shared.userSession?.uid else { return }
         let userLikesRef = COLLECTION_USERS.document(uid).collection("user-likes").document(recipe.id)
@@ -58,7 +59,22 @@ class RecipeViewModel: ObservableObject {
             guard let didLike = snapshot?.exists else { return }
             self.didLike = didLike
         }
-        
     }
     
+    //Fork recipe
+    func forkRecipe() {
+        guard let uid = AuthViewModel.shared.userSession?.uid else { return }
+        
+       COLLECTION_RECIPES.document(recipe.id).getDocument{ snapshot, _ in
+            guard var data = snapshot?.data() else { return }
+            let docRef = COLLECTION_RECIPES.document()
+        
+            //update value.
+            data.updateValue(uid, forKey: "uid")
+            
+            docRef.setData(data) { (_) in
+                print("Successfully uploaded recipe")
+            }
+        }
+    }
 }

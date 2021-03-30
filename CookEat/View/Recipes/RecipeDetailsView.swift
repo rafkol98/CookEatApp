@@ -95,7 +95,7 @@ struct RecipeDetailsView: View {
                         Spacer()
                         HStack{
                             Button(action: {
-                                
+                                viewModel.forkRecipe()
                             }, label: {
                                 Text("Fork")
                                     .font(.headline)

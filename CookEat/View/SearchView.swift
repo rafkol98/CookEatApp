@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     @State var searchText = ""
-    @State var selectedFilter: FilterOptions = .recipes
+    @State var selectedFilter: FilterOptions = .one
     @ObservedObject var searchViewModel = SearchViewModel()
   
         

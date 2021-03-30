@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserProfileView: View {
-    @State var selectedFilter: FilterOptions = .recipes
+    @State var selectedFilter: FilterOptions = .one
     let user: User
     @ObservedObject var viewModel: ProfileViewModel
     

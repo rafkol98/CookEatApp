@@ -91,13 +91,6 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    func recipes(forFilter filter: FilterOptions) -> [Recipe] {
-        switch filter {
-        case .recipes: return userRecipes
-        case .likes: return likedRecipes
-        }
-    }
-    
     //Get count of followers and followings.
     func getCount() {
         COLLECTION_USERS.document(user.id).collection("users-followers").addSnapshotListener { snapshot, _ in
@@ -107,6 +100,14 @@ class ProfileViewModel: ObservableObject {
         COLLECTION_USERS.document(user.id).collection("users-following").addSnapshotListener { snapshot, _ in
             guard let followingCount = snapshot?.documents.count else { return }
             self.following = followingCount
+        }
+    }
+    
+    //Used for the filter between recipes and likes.
+    func recipes(forFilter filter: FilterOptions) -> [Recipe] {
+        switch filter {
+        case .one: return userRecipes
+        case .two: return likedRecipes
         }
     }
 }

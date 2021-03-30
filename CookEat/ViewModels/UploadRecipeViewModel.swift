@@ -42,7 +42,7 @@ class UploadRecipeViewModel: ObservableObject {
                                             "foodImageUrl": foodImageUrl]
                 
                 docRef.setData(data) { (_) in
-                    print("Successfully uploaded tweet")
+                    print("Successfully uploaded recipe")
                 }
                 
             }

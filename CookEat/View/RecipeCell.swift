@@ -15,9 +15,7 @@ struct RecipeCell: View {
     var body: some View {
         VStack {
             HStack( alignment: .top) {
-
                 VStack(alignment: .leading) {
-                
                     HStack {
                         Image("icon")
                             .resizable()

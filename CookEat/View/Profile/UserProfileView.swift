@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct UserProfileView: View {
+    
+    //Selected filter for the view.
     @State var selectedFilter: FilterOptions = .one
     let user: User
     @ObservedObject var viewModel: ProfileViewModel
@@ -27,13 +29,18 @@ struct UserProfileView: View {
                     .padding()
                 
                 ForEach(viewModel.recipes(forFilter: selectedFilter)) { recipe in
-                    RecipeCell(recipe: recipe)
+                    
+                    NavigationLink(
+                        destination: LazyView(RecipeDetailsView(recipe: recipe)),
+                        label: {
+//                            Place user in a userCell.
+                            RecipeCell(recipe: recipe)
+                        })
+                        .foregroundColor(.black)
                         .padding()
+                    
                 }.padding(.horizontal)
             }
-            
-            
-            
         }
     }
 }

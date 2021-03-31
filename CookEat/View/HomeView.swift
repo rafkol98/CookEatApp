@@ -17,7 +17,6 @@ struct HomeView: View {
                 .scaledToFit()
                 .shadow(radius: 4 )
             
-        
             
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {

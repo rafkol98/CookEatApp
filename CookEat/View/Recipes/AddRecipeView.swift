@@ -16,6 +16,7 @@ struct AddRecipeView: View {
     @State var addImage = false
     @State var selectedUIImage: UIImage?
     @State var image: Image?
+    @State var added = false
     
     @ObservedObject var viewModel = UploadRecipeViewModel()
     
@@ -28,15 +29,6 @@ struct AddRecipeView: View {
     var body: some View {
         VStack{
             HStack(alignment: .top ){
-//                if let user = AuthViewModel.shared.user{
-//                    KFImage(URL(string: user.profileImageUrl))
-//                        .resizable()
-//                        .scaledToFill()
-//                        .clipped()
-//                        .frame(width: 64, height: 64)
-//                        .cornerRadius(32)
-//                }
-//
                 Button(action: { addImage.toggle() }, label: {
                     ZStack {
                         if let image = image {
@@ -73,8 +65,10 @@ struct AddRecipeView: View {
             LargeInput(name: "Instructions", stringIn: $instructions)
             
             Button(action: {
+                
                 guard let image = selectedUIImage else { return }
                 viewModel.upload(name: name, description: description, ingredients: ingredients, instructions: instructions, image: image)
+                added.toggle()
             }, label: {
                 Text("Add Recipe")
                     .font(.headline)
@@ -83,7 +77,9 @@ struct AddRecipeView: View {
                     .background(Color.red)
                     .clipShape(Capsule())
                     .padding()
-            })
+            }).fullScreenCover(isPresented: $added ){
+                RecipeAdded()
+            }
             
         }.padding()
         .foregroundColor(.black)
@@ -134,6 +130,14 @@ struct LargeInput: View {
             )
     }
 }
+
+//Transition.
+struct RecipeAdded: View {
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+}
+
 
 struct AddRecipeView_Previews: PreviewProvider {
     static var previews: some View {

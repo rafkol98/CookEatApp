@@ -63,15 +63,20 @@ class RecipeViewModel: ObservableObject {
     
     //Fork recipe
     func forkRecipe() {
+        guard let user = AuthViewModel.shared.user else {return}
         guard let uid = AuthViewModel.shared.userSession?.uid else { return }
         
        COLLECTION_RECIPES.document(recipe.id).getDocument{ snapshot, _ in
             guard var data = snapshot?.data() else { return }
             let docRef = COLLECTION_RECIPES.document()
         
-            //update value.
+            //update values.
             data.updateValue(uid, forKey: "uid")
-            
+            data.updateValue(user.username, forKey: "username")
+            data.updateValue(user.fullname, forKey: "fullname")
+            data.updateValue(0, forKey: "likes")
+            data.updateValue(Timestamp(date: Date()), forKey: "timestamp")
+        
             docRef.setData(data) { (_) in
                 print("Successfully uploaded recipe")
             }

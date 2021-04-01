@@ -20,6 +20,31 @@ struct AddRecipeView: View {
     
     @ObservedObject var viewModel = UploadRecipeViewModel()
     
+    //Disable button
+    var disableButton: Bool {
+        return invalid(varIn: name) ||  invalid(varIn: description) ||  invalid(varIn: ingredients) ||  invalid(varIn: instructions)
+    }
+    
+    var validName: Color {
+        //Check if input is valid.
+        return (name.count <= 50) ? .green : .accentColor
+    }
+    
+    func validBox(varIn: String) -> Color {
+        //Check if input is valid.
+        return (varIn.count <= 1000) ? .green : .accentColor
+    }
+    
+    //Invalid input
+    func invalid(varIn: String) -> Bool {
+        return varIn.isEmpty || varIn.count > 1000
+    }
+    
+    //Add red color to the button when all the inputs are valid.
+    var buttonColor: Color {
+        return disableButton ? .accentColor : .red
+    }
+    
     //convert a ui image into a SwiftUI image. REPETITIVE -> FIX THIS LATER.
     func loadImage() {
         guard let selectedImage = selectedUIImage else {return}
@@ -57,12 +82,12 @@ struct AddRecipeView: View {
                 }).sheet(isPresented: $addImage, onDismiss: loadImage, content: {
                     ImagePicker(image: $selectedUIImage)
                 })
-            
+                
             }
-            SmallInput(name: "RecipeName", stringIn: $name)
-            LargeInput(name: "Description", stringIn: $description)
-            LargeInput(name: "Ingredients", stringIn: $ingredients)
-            LargeInput(name: "Instructions", stringIn: $instructions)
+            SmallInput(name: "RecipeName", stringIn: $name, valid: validName)
+            LargeInput(name: "Description", stringIn: $description, valid: validBox(varIn: description))
+            LargeInput(name: "Ingredients", stringIn: $ingredients, valid: validBox(varIn: ingredients))
+            LargeInput(name: "Instructions", stringIn: $instructions, valid: validBox(varIn: instructions))
             
             Button(action: {
                 
@@ -74,12 +99,16 @@ struct AddRecipeView: View {
                     .font(.headline)
                     .foregroundColor(.white)
                     .frame(width: 360, height: 50)
-                    .background(Color.red)
+                    .background(buttonColor)
                     .clipShape(Capsule())
                     .padding()
-            }).fullScreenCover(isPresented: $added ){
-                RecipeAdded()
-            }
+            }).disabled(disableButton)
+            
+            
+            //            .fullScreenCover(isPresented: $added ){
+            //                RecipeAdded()
+            //            }
+            
             
         }.padding()
         .foregroundColor(.black)
@@ -87,10 +116,12 @@ struct AddRecipeView: View {
     }
 }
 
+//Small input text.
 struct SmallInput: View {
     let name: String
     @Binding
     var stringIn: String
+    var valid: Color
     
     var body: some View {
         HStack{
@@ -103,16 +134,17 @@ struct SmallInput: View {
             .padding()
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.gray, lineWidth: 2)
+                    .stroke(stringIn.isEmpty ? Color.black : valid, lineWidth: 2)
             )
     }
 }
 
-
+//Large input text.
 struct LargeInput: View {
     let name: String
     @Binding
     var stringIn: String
+    var valid: Color
     
     var body: some View {
         HStack{
@@ -126,8 +158,9 @@ struct LargeInput: View {
             .lineSpacing(5)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.gray, lineWidth: 2)
+                    .stroke(stringIn.isEmpty ? Color.black : valid, lineWidth: 2)
             )
+            
     }
 }
 

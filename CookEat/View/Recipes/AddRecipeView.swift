@@ -22,7 +22,7 @@ struct AddRecipeView: View {
     
     //Disable button
     var disableButton: Bool {
-        return invalid(varIn: name) ||  invalid(varIn: description) ||  invalid(varIn: ingredients) ||  invalid(varIn: instructions)
+        return invalid(varIn: name) ||  invalid(varIn: description) ||  invalid(varIn: ingredients) ||  invalid(varIn: instructions) || selectedUIImage==nil
     }
     
     var validName: Color {
@@ -64,12 +64,10 @@ struct AddRecipeView: View {
                                 .cornerRadius(60)
                                 .padding()
                             
-                            
-                            
                         } else {
                             Image("add_photo")
                                 .resizable()
-                                //                    Rendering mode allows us to add a colour to the image.
+                                //Rendering mode allows us to add a colour to the image.
                                 .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
                                 .scaledToFill()
                                 .frame(width: 120, height: 120)

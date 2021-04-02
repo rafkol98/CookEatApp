@@ -26,8 +26,12 @@ struct Settings: View {
                     .shadow(radius: 10)
                     .padding()
 
-                Text(viewModel.user!.username)
-                    .font(.system(size: 22, weight: .semibold))
+                VStack {
+                    Text(viewModel.user!.fullname)
+                        .font(.system(size: 22, weight: .semibold))
+                    Text("@\(viewModel.user!.username)")
+                        .font(.system(size: 16))
+                }
                 Spacer()
 
             }

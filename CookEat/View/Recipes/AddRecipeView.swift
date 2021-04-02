@@ -82,13 +82,13 @@ struct AddRecipeView: View {
                 })
                 
             }
+
             SmallInput(name: "RecipeName", stringIn: $name, valid: validName)
             LargeInput(name: "Description", stringIn: $description, valid: validBox(varIn: description))
             LargeInput(name: "Ingredients", stringIn: $ingredients, valid: validBox(varIn: ingredients))
             LargeInput(name: "Instructions", stringIn: $instructions, valid: validBox(varIn: instructions))
             
             Button(action: {
-                
                 guard let image = selectedUIImage else { return }
                 viewModel.upload(name: name, description: description, ingredients: ingredients, instructions: instructions, image: image)
                 added.toggle()

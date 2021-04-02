@@ -15,11 +15,11 @@ struct FeedView: View {
             ScrollView {
                 VStack {
                     ForEach(viewModel.recipes) { recipe in
-//                        NavigationLink
+
                         NavigationLink(
                             destination: LazyView(RecipeDetailsView(recipe: recipe)),
                             label: {
-    //                            Place user in a userCell.
+                                //Place user in a userCell.
                                 RecipeCell(recipe: recipe)
                             }).foregroundColor(.black)
                         

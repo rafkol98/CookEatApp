@@ -25,7 +25,7 @@ struct Settings: View {
                     .cornerRadius(120/2)
                     .shadow(radius: 10)
                     .padding()
-
+                
                 VStack {
                     Text(viewModel.user!.fullname)
                         .font(.system(size: 22, weight: .semibold))
@@ -33,24 +33,24 @@ struct Settings: View {
                         .font(.system(size: 16))
                 }
                 Spacer()
-
+                
             }
             .padding()
-        
+            
             NavigationLink(
                 destination: LazyView(UserProfileView(user: viewModel.user!)),
                 label: {
-//                            Place user in a userCell.
+                    //                            Place user in a userCell.
                     SettingsOption(icon: "person.crop.circle", text: "View Profile")
                 })
                 .foregroundColor(.black)
             
-             
+            
             
             SettingsOption(icon: "square.stack.3d.up.fill", text: "Contributions")
-
+            
             SettingsOption(icon: "tray.and.arrow.down.fill", text: "Requests Received")
-
+            
             
             Spacer()
             Button(action: {
@@ -60,14 +60,14 @@ struct Settings: View {
                     .font(.system(size: 22, weight: .semibold))
                     .padding()
                     .frame(width: 300, height: 45, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-               
+                
             })
             .background(Color(.systemRed))
             .foregroundColor(.white)
             .clipShape(Capsule())
             .padding()    }
-        }
-        
+    }
+    
 }
 
 struct Settings_Previews: PreviewProvider {

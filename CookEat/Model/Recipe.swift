@@ -13,8 +13,8 @@ struct Recipe: Identifiable {
     let id: String
     let recipeName: String
     let description: String
-    let ingredients: String
-    let instructions: String
+    let ingredients: Array<String>
+    let instructions: Array<String>
     let username: String
     let profileImageUrl: String
     let fullname: String
@@ -29,8 +29,8 @@ struct Recipe: Identifiable {
         self.id = dictionary["id"] as? String ?? ""
         self.recipeName = dictionary["recipeName"] as? String ?? ""
         self.description = dictionary["description"] as? String ?? ""
-        self.ingredients = dictionary["ingredients"] as? String ?? ""
-        self.instructions = dictionary["instructions"] as? String ?? ""
+        self.ingredients = dictionary["ingredients"] as? Array<String> ?? []
+        self.instructions = dictionary["instructions"] as? Array<String> ?? []
         self.username = dictionary["username"] as? String ?? ""
         self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
         self.foodImageUrl = dictionary["foodImageUrl"] as? String ?? ""

@@ -37,15 +37,20 @@ struct Settings: View {
             }
             .padding()
         
-
-            SettingsOption(icon: "person.crop.circle", text: "View Profile")
-             Divider()
+            NavigationLink(
+                destination: LazyView(UserProfileView(user: viewModel.user!)),
+                label: {
+//                            Place user in a userCell.
+                    SettingsOption(icon: "person.crop.circle", text: "View Profile")
+                })
+                .foregroundColor(.black)
+            
+             
             
             SettingsOption(icon: "square.stack.3d.up.fill", text: "Contributions")
-            Divider()
-          
+
             SettingsOption(icon: "tray.and.arrow.down.fill", text: "Requests Received")
-            Divider()
+
             
             Spacer()
             Button(action: {

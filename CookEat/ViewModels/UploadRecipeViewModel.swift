@@ -28,12 +28,15 @@ class UploadRecipeViewModel: ObservableObject {
                 guard let foodImageUrl = url?.absoluteString else { return }
                 
                 let docRef = COLLECTION_RECIPES.document()
-                
+                //Split the ingredients and instructions into arrays. These way it will be easier to understand when something was removed.
+                let ingredientsLines = ingredients.components(separatedBy: "\n")
+                let instructionsLines = instructions.components(separatedBy: "\n")
+          
                 let data : [String: Any] = ["uid": user.id,
                                             "recipeName": name,
                                             "description": description,
-                                            "ingredients": ingredients,
-                                            "instructions": instructions,
+                                            "ingredients": ingredientsLines,
+                                            "instructions": instructionsLines,
                                             "fullname": user.fullname,
                                             "timestamp": Timestamp(date: Date()),
                                             "username": user.username,

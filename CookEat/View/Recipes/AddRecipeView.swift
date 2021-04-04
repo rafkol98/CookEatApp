@@ -20,6 +20,7 @@ struct AddRecipeView: View {
     
     @ObservedObject var viewModel = UploadRecipeViewModel()
     
+    
     //Disable button
     var disableButton: Bool {
         return invalid(varIn: name) ||  invalid(varIn: description) ||  invalid(varIn: ingredients) ||  invalid(varIn: instructions) || selectedUIImage==nil
@@ -101,11 +102,9 @@ struct AddRecipeView: View {
                     .clipShape(Capsule())
                     .padding()
             }).disabled(disableButton)
-            
-            
-            //            .fullScreenCover(isPresented: $added ){
-            //                RecipeAdded()
-            //            }
+            .fullScreenCover(isPresented: $added ){
+                RecipeAdded()
+            }
             
             
         }.padding()
@@ -165,13 +164,31 @@ struct LargeInput: View {
 //Transition.
 struct RecipeAdded: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationLink(
+            destination: FeedView(),
+            label: {
+                Button(action: {
+                   
+                }, label: {
+                    Text("Awesome")
+                        .font(.system(size: 22, weight: .semibold))
+                        .padding()
+                        .frame(width: 300, height: 45, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    
+                })
+                .background(Color(.systemRed))
+                .foregroundColor(.white)
+                .clipShape(Capsule())
+                .padding()
+            })
+            .foregroundColor(.black)
+        
     }
 }
-
 
 struct AddRecipeView_Previews: PreviewProvider {
     static var previews: some View {
         AddRecipeView()
     }
 }
+

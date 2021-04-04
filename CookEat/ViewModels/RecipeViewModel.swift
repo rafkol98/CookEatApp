@@ -74,6 +74,7 @@ class RecipeViewModel: ObservableObject {
             data.updateValue(uid, forKey: "uid")
             data.updateValue(user.username, forKey: "username")
             data.updateValue(user.fullname, forKey: "fullname")
+            data.updateValue(user.profileImageUrl, forKey: "profileImageUrl")
             data.updateValue(0, forKey: "likes")
             data.updateValue(Timestamp(date: Date()), forKey: "timestamp")
         

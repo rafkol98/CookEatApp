@@ -21,7 +21,7 @@ struct DropdownView: View {
                         .frame(width: .infinity, height: 80)
                         .padding(.horizontal)
                         .foregroundColor(Color(red: 40/255, green: 40/255, blue: 40/255))
-                        .font(.system(size: 15))
+                        .font(.system(size: 18))
                 }.frame(height:150)
             }
         }

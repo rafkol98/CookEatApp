@@ -40,7 +40,8 @@ struct UserProfileView: View {
                         .padding()
                     
                 }.padding(.horizontal)
-            }
+                
+            }.scaledToFit()
         }
     }
 }

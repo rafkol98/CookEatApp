@@ -13,6 +13,7 @@ struct RecipeDetailsView: View {
     let heightBox = UIScreen.main.bounds.height / 1.3
     @State private var isExpanded = false
     @State private var isExpandedInstr = false
+    @State var isLinkActive = false
     
     let recipe: Recipe
     @ObservedObject var viewModel: RecipeViewModel
@@ -107,18 +108,23 @@ struct RecipeDetailsView: View {
                                 
                             })
                             
-                            Button(action: {
-                                
-                            }, label: {
-                                Text("Contribute")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: .infinity, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: 50, maxHeight: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                    .background(Color.red)
-                                    .clipShape(Capsule())
-                                    .padding()
-                                
-                            })
+                            NavigationLink(
+                                destination: LazyView(ContributeView(recipe: recipe)),  isActive: $isLinkActive,
+                                label: {
+                                    Button(action: {
+                                        self.isLinkActive = true
+                                    }, label: {
+                                        Text("Contribute")
+                                            .font(.headline)
+                                            .foregroundColor(.white)
+                                            .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: .infinity, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: 50, maxHeight: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                            .background(Color.red)
+                                            .clipShape(Capsule())
+                                            .padding()
+                                        
+                                    })
+                                })
+                         
                             
                         }
                         

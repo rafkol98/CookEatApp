@@ -48,6 +48,8 @@
 		CBEAAC6125F813EA0064A32B /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAAC6025F813EA0064A32B /* CustomSecureField.swift */; };
 		CBEAAC6425F81B660064A32B /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAAC6325F81B660064A32B /* RegistrationView.swift */; };
 		CBEB88802604FCED00F8B497 /* DropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB887F2604FCED00F8B497 /* DropdownView.swift */; };
+		CBFB0768261BB9BC00546E38 /* ContributionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFB0767261BB9BC00546E38 /* ContributionsView.swift */; };
+		CBFB076B261BC21900546E38 /* ContributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFB076A261BC21900546E38 /* ContributeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +91,8 @@
 		CBEAAC6025F813EA0064A32B /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
 		CBEAAC6325F81B660064A32B /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		CBEB887F2604FCED00F8B497 /* DropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownView.swift; sourceTree = "<group>"; };
+		CBFB0767261BB9BC00546E38 /* ContributionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributionsView.swift; sourceTree = "<group>"; };
+		CBFB076A261BC21900546E38 /* ContributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +212,7 @@
 			children = (
 				CB101305260AAB8A00C32A21 /* Settings.swift */,
 				CB91569A2617D0430086994B /* SettingsOption.swift */,
+				CBFB0767261BB9BC00546E38 /* ContributionsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -228,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				CB6C3DD425EC361000149528 /* RecipeCell.swift */,
+				CBFB076A261BC21900546E38 /* ContributeView.swift */,
 				CB4DAB212602A7D0009E44E8 /* RecipeDetailsView.swift */,
 				CB4DAB242602AD55009E44E8 /* RecipeTitleView.swift */,
 				CB101302260AA6AD00C32A21 /* AddRecipeView.swift */,
@@ -373,10 +379,12 @@
 				CB101306260AAB8A00C32A21 /* Settings.swift in Sources */,
 				CBEAAC5E25F80EB00064A32B /* CustomTextField.swift in Sources */,
 				CB4DAB252602AD55009E44E8 /* RecipeTitleView.swift in Sources */,
+				CBFB0768261BB9BC00546E38 /* ContributionsView.swift in Sources */,
 				CBEAAC6125F813EA0064A32B /* CustomSecureField.swift in Sources */,
 				CB91569B2617D0430086994B /* SettingsOption.swift in Sources */,
 				CB822034260E8AF3001EECE7 /* Recipe.swift in Sources */,
 				CBE119A525FD62E400AE4E22 /* User.swift in Sources */,
+				CBFB076B261BC21900546E38 /* ContributeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

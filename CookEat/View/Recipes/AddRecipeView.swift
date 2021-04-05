@@ -54,6 +54,12 @@ struct AddRecipeView: View {
     
     var body: some View {
         VStack{
+            HStack {
+                Text("Add Recipe")
+                    .font(.title)
+                Spacer()
+            }.padding()
+            
             HStack(alignment: .top ){
                 Button(action: { addImage.toggle() }, label: {
                     ZStack {

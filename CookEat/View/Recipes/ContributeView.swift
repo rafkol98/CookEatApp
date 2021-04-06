@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ContributeView: View {
-        
+    
     @State private var addedIngredients = [String]()
     @State private var addedInstructions = [String]()
     let recipe: Recipe
     @ObservedObject var viewModel: RecipeViewModel
     var ingredients: Array<String>
     var instructions: Array<String>
-  
+    
     
     @State private var newIngredient = ""
     @State private var newInstruction = ""
@@ -29,30 +29,36 @@ struct ContributeView: View {
     
     
     var body: some View {
-            HStack{
-               RecipeTitleView(username: .constant(recipe.username), recipeName: .constant(recipe.recipeName))
-                   .padding()
-                Spacer()
-            }
+        HStack{
+            RecipeTitleView(username: .constant(recipe.username), recipeName: .constant(recipe.recipeName))
+                .padding()
+            Spacer()
+        }
+        Divider()
         
-            VStack {
-                TextField("Enter an ingredient", text : $newIngredient, onCommit: addNewIngredient)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-                
-                List(addedIngredients + ingredients, id: \.self) {
-                    Text($0)
-                }
-                
-                TextField("Enter an instruction", text : $newInstruction, onCommit: addNewInstruction)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-                
-                List(addedInstructions + instructions, id: \.self) {
-                    Text($0)
-                }
+        VStack {
+            //TODO: fix this
+            Heading(name: "Ingredients")
+            TextField("Enter an ingredient", text : $newIngredient, onCommit: addNewIngredient)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            
+            List(addedIngredients + ingredients, id: \.self) {
+                Text($0)
             }
-    
+            
+            Divider()
+            
+            Heading(name: "Instructions")
+            TextField("Enter an instruction", text : $newInstruction, onCommit: addNewInstruction)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            
+            List(addedInstructions + instructions, id: \.self) {
+                Text($0)
+            }
+        }
+        
     }
     
     //TODO: FIX THIS, its horrible!!!
@@ -81,5 +87,16 @@ struct ContributeView: View {
         
         addedInstructions.insert(changed, at: 0)
         newInstruction = ""
+    }
+}
+
+struct Heading: View {
+    @State var name: String
+    var body: some View {
+        HStack{
+            Text(name).font(.headline)
+            Spacer()
+        }
+        .padding()
     }
 }

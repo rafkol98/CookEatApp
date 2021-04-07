@@ -15,7 +15,7 @@ struct DropdownView: View {
     
     var body: some View {
         DisclosureGroup(title, isExpanded: $isExpanded) {
-            VStack {
+          
                 ScrollView{
                     TextEditor(text: .constant(text.joined(separator:", \n")))
                         .frame(width: .infinity, height: 80)
@@ -23,13 +23,13 @@ struct DropdownView: View {
                         .foregroundColor(Color(red: 40/255, green: 40/255, blue: 40/255))
                         .font(.system(size: 18))
                 }.frame(height:150)
-            }
+            
         }
         .accentColor(.red)
         .padding(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.black, lineWidth: 3)
+                .stroke(Color(.systemGray3), lineWidth: 3)
                
         )
         .padding()

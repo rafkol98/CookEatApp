@@ -76,21 +76,11 @@ struct RecipeDetailsView: View {
                             )
                         }
                         
-                        
-                        
-                        //Description.
-                        ScrollView{
-                            TextEditor(text: .constant(recipe.description))
-                                .frame(width: .infinity, height: 80)
-                                .padding(.horizontal)
-                                .foregroundColor(Color(red: 40/255, green: 40/255, blue: 40/255))
-                                .font(.system(size: 17))
-                        }.frame(height:70)
+                        RecipeDescriptionView(recipe: recipe)
                         
                         //                    Dropdown box.
                         VStack {
                             DropdownView(title: .constant("Ingredients"), text: .constant(recipe.ingredients), isExpanded: $isExpanded)
-                            
                             DropdownView(title: .constant("Instructions"), text: .constant(recipe.instructions), isExpanded: $isExpandedInstr)
                         }
                         Spacer()

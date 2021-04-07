@@ -84,4 +84,24 @@ class RecipeViewModel: ObservableObject {
         }
     }
     
+    //TODO: added ingredients and instructions
+    func contributeRecipe(added: Array<String>) {
+        guard let user = AuthViewModel.shared.user else {return}
+        
+        let recipeSuggestedRef = COLLECTION_RECIPES.document(recipe.id).collection("Suggested")
+        
+        let data : [String: Any] = ["uid": user.id,
+                                    "added": added,
+                                    "fullname": user.fullname,
+                                    "timestamp": Timestamp(date: Date()),
+                                    "username": user.username,
+                                    "profileImageUrl": user.profileImageUrl]
+        
+        recipeSuggestedRef.document(user.id).setData(data) { (_) in
+            print("Successfully contributed to recipe")
+        }
+        
+        
+    }
+    
 }

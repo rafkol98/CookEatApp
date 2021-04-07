@@ -9,16 +9,18 @@ import SwiftUI
 
 struct ContributeView: View {
     
-    @State private var addedIngredients = [String]()
-    @State private var addedInstructions = [String]()
+   
     let recipe: Recipe
-    @ObservedObject var viewModel: RecipeViewModel
     var ingredients: Array<String>
     var instructions: Array<String>
     
+    @ObservedObject var viewModel: RecipeViewModel
     
     @State private var newIngredient = ""
     @State private var newInstruction = ""
+    @State private var addedIngredients = [String]()
+    @State private var addedInstructions = [String]()
+    
     
     init(recipe: Recipe) {
         self.recipe = recipe
@@ -34,14 +36,13 @@ struct ContributeView: View {
                 .padding()
             Spacer()
         }
-        Divider()
         
         VStack {
             //TODO: fix this
             Heading(name: "Ingredients")
             TextField("Enter an ingredient", text : $newIngredient, onCommit: addNewIngredient)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+                .padding(.horizontal)
             
             List(addedIngredients + ingredients, id: \.self) {
                 Text($0)
@@ -52,11 +53,25 @@ struct ContributeView: View {
             Heading(name: "Instructions")
             TextField("Enter an instruction", text : $newInstruction, onCommit: addNewInstruction)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+                .padding(.horizontal)
             
             List(addedInstructions + instructions, id: \.self) {
                 Text($0)
             }
+            
+            Button(action: {
+                viewModel.contributeRecipe(added: addedInstructions)
+            }, label: {
+                Text("Contribute")
+                    .font(.system(size: 22, weight: .semibold))
+                    .padding()
+                    .frame(width: 300, height: 45, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                
+            })
+            .background(Color(.systemRed))
+            .foregroundColor(.white)
+            .clipShape(Capsule())
+            .padding()
         }
         
     }
@@ -94,7 +109,7 @@ struct Heading: View {
     @State var name: String
     var body: some View {
         HStack{
-            Text(name).font(.headline)
+            Text(name).font(.title2).bold()
             Spacer()
         }
         .padding()

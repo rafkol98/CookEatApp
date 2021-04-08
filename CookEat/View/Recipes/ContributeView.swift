@@ -7,30 +7,34 @@
 
 import SwiftUI
 
+
 struct ContributeView: View {
     
-   
     let recipe: Recipe
-    var ingredients: Array<String>
-    var instructions: Array<String>
     
+    @State private var ingredients = [String]()
+    @State private var instructions = [String]()
+
     @ObservedObject var viewModel: RecipeViewModel
     
     @State private var newIngredient = ""
     @State private var newInstruction = ""
     @State private var addedIngredients = [String]()
     @State private var addedInstructions = [String]()
+    @State private var removedIngredients = [String]()
+    @State private var removedInstructions = [String]()
+    @State private var flag = false
     
     
     init(recipe: Recipe) {
         self.recipe = recipe
         self.viewModel = RecipeViewModel(recipe: recipe)
-        self.ingredients = recipe.ingredients
-        self.instructions = recipe.instructions
     }
     
+    //    @State private var x = viewModel.fetchIngredients()
     
     var body: some View {
+        
         HStack{
             RecipeTitleView(username: .constant(recipe.username), recipeName: .constant(recipe.recipeName))
                 .padding()
@@ -44,8 +48,12 @@ struct ContributeView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal)
             
-            List(addedIngredients + ingredients, id: \.self) {
-                Text($0)
+            
+            List {
+                ForEach(addedIngredients + ingredients, id: \.self) { ingredient in
+                    Text(ingredient)
+                }
+                .onDelete(perform: deleteIngredient)
             }
             
             Divider()
@@ -55,12 +63,16 @@ struct ContributeView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal)
             
-            List(addedInstructions + instructions, id: \.self) {
-                Text($0)
+            List {
+                ForEach(addedInstructions + instructions, id: \.self) { instruction in
+                    Text(instruction)
+                }
+                .onDelete(perform: deleteInstruction)
             }
             
+            
             Button(action: {
-                viewModel.contributeRecipe(added: addedInstructions)
+                viewModel.contributeRecipe(addedIngredients: addedIngredients, addedInstructions: addedInstructions, removedIngredients: removedIngredients, removedInstructions: removedInstructions)
             }, label: {
                 Text("Contribute")
                     .font(.system(size: 22, weight: .semibold))
@@ -72,6 +84,10 @@ struct ContributeView: View {
             .foregroundColor(.white)
             .clipShape(Capsule())
             .padding()
+        }.onAppear {
+            // Prefer, Life cycle method
+            self.ingredients = recipe.ingredients
+            self.instructions = recipe.instructions
         }
         
     }
@@ -84,9 +100,8 @@ struct ContributeView: View {
         guard ingredient.count > 0 else {
             return
         }
-        let changed = "+++  \(ingredient)"
         
-        addedIngredients.insert(changed, at: 0)
+        addedIngredients.insert(ingredient, at: 0)
         newIngredient = ""
     }
     
@@ -98,11 +113,24 @@ struct ContributeView: View {
         guard instruction.count > 0 else {
             return
         }
-        let changed = "+++  \(instruction)"
         
-        addedInstructions.insert(changed, at: 0)
+        addedInstructions.insert(instruction, at: 0)
         newInstruction = ""
     }
+    
+    func deleteIngredient(at offsets: IndexSet) {
+        let index = offsets[offsets.startIndex]
+        removedIngredients.insert(ingredients[index], at: 0)
+        ingredients.remove(atOffsets: offsets)
+       
+    }
+    
+    func deleteInstruction(at offsets: IndexSet) {
+        let index = offsets[offsets.startIndex]
+        removedInstructions.insert(instructions[index], at: 0)
+        instructions.remove(atOffsets: offsets)
+    }
+    
 }
 
 struct Heading: View {

@@ -85,13 +85,16 @@ class RecipeViewModel: ObservableObject {
     }
     
     //TODO: added ingredients and instructions
-    func contributeRecipe(added: Array<String>) {
+    func contributeRecipe(addedIngredients: Array<String>, addedInstructions: Array<String>, removedIngredients: Array<String>, removedInstructions: Array<String>) {
         guard let user = AuthViewModel.shared.user else {return}
         
         let recipeSuggestedRef = COLLECTION_RECIPES.document(recipe.id).collection("Suggested")
         
         let data : [String: Any] = ["uid": user.id,
-                                    "added": added,
+                                    "addedIngredients": addedIngredients,
+                                    "addedInstructions": addedInstructions,
+                                    "removedIngredients": removedIngredients,
+                                    "removedInstructions": removedInstructions,
                                     "fullname": user.fullname,
                                     "timestamp": Timestamp(date: Date()),
                                     "username": user.username,
@@ -102,6 +105,10 @@ class RecipeViewModel: ObservableObject {
         }
         
         
+    }
+    
+    func fetchIngredients() -> Array<String> {
+        return recipe.ingredients
     }
     
 }

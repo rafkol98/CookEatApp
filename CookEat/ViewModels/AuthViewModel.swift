@@ -93,6 +93,8 @@ class AuthViewModel: ObservableObject {
 
         }
     }
+    
+    
 
 
 }

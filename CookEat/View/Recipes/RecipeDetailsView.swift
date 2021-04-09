@@ -80,8 +80,8 @@ struct RecipeDetailsView: View {
                         
                         //                    Dropdown box.
                         VStack {
-                            DropdownView(title: .constant("Ingredients"), text: .constant(recipe.ingredients), isExpanded: $isExpanded)
-                            DropdownView(title: .constant("Instructions"), text: .constant(recipe.instructions), isExpanded: $isExpandedInstr)
+                            DropdownView(imageName: "applescript",title: .constant("Ingredients"), text: .constant(recipe.ingredients), isExpanded: $isExpanded)
+                            DropdownView(imageName: "list.number", title: .constant("Instructions"), text: .constant(recipe.instructions), isExpanded: $isExpandedInstr)
                         }
                         Spacer()
                         HStack{
@@ -126,6 +126,8 @@ struct RecipeDetailsView: View {
             }.frame(maxWidth: .infinity, maxHeight: .infinity,
                     alignment: .topLeading)
             
+        }.onAppear {
+            viewModel.fetchSuggestedRecipes()
         }
     }
     

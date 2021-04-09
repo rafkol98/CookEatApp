@@ -11,6 +11,7 @@ import Firebase
 class RecipeViewModel: ObservableObject {
     let recipe: Recipe
     @Published var didLike = false
+    @Published var suggestedRecipes = [Suggested]()
     
     init(recipe: Recipe) {
         self.recipe = recipe
@@ -88,9 +89,10 @@ class RecipeViewModel: ObservableObject {
     func contributeRecipe(addedIngredients: Array<String>, addedInstructions: Array<String>, removedIngredients: Array<String>, removedInstructions: Array<String>) {
         guard let user = AuthViewModel.shared.user else {return}
         
-        let recipeSuggestedRef = COLLECTION_RECIPES.document(recipe.id).collection("Suggested")
+        let recipeSuggestedRef = COLLECTION_RECIPES.document(recipe.id).collection("Suggested").document()
         
-        let data : [String: Any] = ["uid": user.id,
+        let data : [String: Any] = ["id": recipeSuggestedRef.documentID,
+                                    "uid": user.id,
                                     "addedIngredients": addedIngredients,
                                     "addedInstructions": addedInstructions,
                                     "removedIngredients": removedIngredients,
@@ -100,7 +102,7 @@ class RecipeViewModel: ObservableObject {
                                     "username": user.username,
                                     "profileImageUrl": user.profileImageUrl]
         
-        recipeSuggestedRef.document(user.id).setData(data) { (_) in
+        recipeSuggestedRef.setData(data) { (_) in
             print("Successfully contributed to recipe")
         }
         
@@ -109,6 +111,36 @@ class RecipeViewModel: ObservableObject {
     
     func fetchIngredients() -> Array<String> {
         return recipe.ingredients
+    }
+    
+    //Fetch recipes of the user.
+    func fetchSuggestedRecipes() {
+        guard let user = AuthViewModel.shared.user else {return}
+        
+        COLLECTION_RECIPES.whereField("uid", isEqualTo: user.id).addSnapshotListener { snapshot, _ in
+            guard let documents = snapshot?.documents else { return }
+            let userRecipes = documents.map({ Recipe(dictionary: $0.data()) })
+            
+            userRecipes.forEach { recipe in
+                let docRef = COLLECTION_RECIPES.document(recipe.id).collection("Suggested")
+                
+                docRef.getDocuments { (document, error) in
+                    if document != nil {
+                        let suggested = document?.documents
+                        suggested?.forEach { recipe in
+                            let sugRecipe = Suggested(dictionary: recipe.data())
+                            print(sugRecipe)
+                            self.suggestedRecipes.append(sugRecipe)
+                       
+                        }
+                    
+                    }
+                }
+
+                
+            }
+        
+        }
     }
     
 }

@@ -37,13 +37,13 @@ struct ContributeView: View {
         
         HStack{
             RecipeTitleView(username: .constant(recipe.username), recipeName: .constant(recipe.recipeName))
-                .padding()
             Spacer()
-        }
+        }.padding()
         
         VStack {
             //TODO: fix this
-            Heading(name: "Ingredients")
+            HeadingView(name: "Ingredients", image: "applescript")
+            
             TextField("Enter an ingredient", text : $newIngredient, onCommit: addNewIngredient)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal)
@@ -57,8 +57,8 @@ struct ContributeView: View {
             }
             
             Divider()
+            HeadingView(name: "Instructions", image: "list.number")
             
-            Heading(name: "Instructions")
             TextField("Enter an instruction", text : $newInstruction, onCommit: addNewInstruction)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal)

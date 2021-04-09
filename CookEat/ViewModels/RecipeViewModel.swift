@@ -11,7 +11,7 @@ import Firebase
 class RecipeViewModel: ObservableObject {
     let recipe: Recipe
     @Published var didLike = false
-    @Published var suggestedRecipes = [Suggested]()
+   
     
     init(recipe: Recipe) {
         self.recipe = recipe
@@ -93,10 +93,13 @@ class RecipeViewModel: ObservableObject {
         
         let data : [String: Any] = ["id": recipeSuggestedRef.documentID,
                                     "uid": user.id,
+                                    "recipeName": recipe.recipeName,
                                     "addedIngredients": addedIngredients,
                                     "addedInstructions": addedInstructions,
                                     "removedIngredients": removedIngredients,
                                     "removedInstructions": removedInstructions,
+                                    "originalIngredients": recipe.ingredients,
+                                    "originalInstructions": recipe.instructions,
                                     "fullname": user.fullname,
                                     "timestamp": Timestamp(date: Date()),
                                     "username": user.username,
@@ -113,34 +116,6 @@ class RecipeViewModel: ObservableObject {
         return recipe.ingredients
     }
     
-    //Fetch recipes of the user.
-    func fetchSuggestedRecipes() {
-        guard let user = AuthViewModel.shared.user else {return}
-        
-        COLLECTION_RECIPES.whereField("uid", isEqualTo: user.id).addSnapshotListener { snapshot, _ in
-            guard let documents = snapshot?.documents else { return }
-            let userRecipes = documents.map({ Recipe(dictionary: $0.data()) })
-            
-            userRecipes.forEach { recipe in
-                let docRef = COLLECTION_RECIPES.document(recipe.id).collection("Suggested")
-                
-                docRef.getDocuments { (document, error) in
-                    if document != nil {
-                        let suggested = document?.documents
-                        suggested?.forEach { recipe in
-                            let sugRecipe = Suggested(dictionary: recipe.data())
-                            print(sugRecipe)
-                            self.suggestedRecipes.append(sugRecipe)
-                       
-                        }
-                    
-                    }
-                }
-
-                
-            }
-        
-        }
-    }
+   
     
 }

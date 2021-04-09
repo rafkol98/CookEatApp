@@ -54,8 +54,16 @@ struct Settings: View {
                     })
                     .foregroundColor(.black)
                 
+                NavigationLink(
+                    destination: LazyView(RequestsRecView(user: viewModel.user!)),
+                    label: {
+                        //                            Place user in a userCell.
+                        SettingsOption(icon: "tray.and.arrow.down.fill", text: "Requests Received")
+                    })
+                    .foregroundColor(.black)
                 
-                SettingsOption(icon: "tray.and.arrow.down.fill", text: "Requests Received")
+                
+                
                 
                 
                 Spacer()

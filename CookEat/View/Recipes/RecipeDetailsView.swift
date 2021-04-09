@@ -126,8 +126,6 @@ struct RecipeDetailsView: View {
             }.frame(maxWidth: .infinity, maxHeight: .infinity,
                     alignment: .topLeading)
             
-        }.onAppear {
-            viewModel.fetchSuggestedRecipes()
         }
     }
     

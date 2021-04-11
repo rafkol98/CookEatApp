@@ -47,7 +47,7 @@ struct Settings: View {
                     .foregroundColor(.black)
                 
                 NavigationLink(
-                    destination: LazyView(ContributionsView()),
+                    destination: LazyView(ContributionsView(user: viewModel.user!)),
                     label: {
                         //                            Place user in a userCell.
                         SettingsOption(icon: "square.stack.3d.up.fill", text: "Contributions")
@@ -55,7 +55,7 @@ struct Settings: View {
                     .foregroundColor(.black)
                 
                 NavigationLink(
-                    destination: LazyView(RequestsRecView(user: viewModel.user!)),
+                    destination: LazyView(RequestsReceivedView(user: viewModel.user!)),
                     label: {
                         //                            Place user in a userCell.
                         SettingsOption(icon: "tray.and.arrow.down.fill", text: "Requests Received")

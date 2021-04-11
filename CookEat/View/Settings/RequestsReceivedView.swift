@@ -1,15 +1,15 @@
 //
-//  Contributions.swift
+//  RequestsRecView.swift
 //  CookEat
 //
-//  Created by Rafael Kollyfas on 06/04/2021.
+//  Created by Rafael Kollyfas on 10/04/2021.
 //
 
 import SwiftUI
 import Kingfisher
 
-
-struct ContributionsView: View {
+struct RequestsReceivedView: View {
+    
     let user: User
     @ObservedObject var viewModel : ContributeViewModel
     
@@ -22,16 +22,16 @@ struct ContributionsView: View {
     var body: some View {
         VStack{
             HStack {
-                Text("Contributions")
+                Text("Requests")
                     .font(.title)
                 Spacer()
             }.padding()
             
-            ForEach(viewModel.contributedRecipes) { recipe in
+            ForEach(viewModel.receivedRecipes) { recipe in
                 VStack {
                     
                     HStack {
-                        KFImage(URL(string: recipe.originalProfileImageUrl))
+                        KFImage(URL(string: recipe.profileImageUrl))
                             .resizable()
                             .scaledToFill()
                             .clipped()
@@ -41,12 +41,12 @@ struct ContributionsView: View {
                             .padding()
                         VStack {
                             HStack {
-                                Text("You contributed to this recipe:")
+                                Text("@\(recipe.username) contributed to this recipe:")
                                 Spacer()
                             }
                             
                             HStack {
-                                RecipeTitleView(username: .constant(recipe.originalUsername), recipeName: .constant(recipe.recipeName))
+                                RecipeTitleView(username: .constant(user.username), recipeName: .constant(recipe.recipeName))
                                 Spacer()
                             }
                         }

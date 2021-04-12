@@ -23,11 +23,10 @@ struct ContributionsView: View {
         VStack{
             TitleView(text: "Contributions Sent")
             
-            ForEach(viewModel.contributedRecipes) { recipe in
+            ForEach(viewModel.contributedRecipes) { contribution in
                 VStack {
-                    
                     HStack {
-                        KFImage(URL(string: recipe.originalProfileImageUrl))
+                        KFImage(URL(string: contribution.originalProfileImageUrl))
                             .resizable()
                             .scaledToFill()
                             .clipped()
@@ -35,20 +34,24 @@ struct ContributionsView: View {
                             .cornerRadius(120/2)
                             .shadow(radius: 4)
                             .padding()
+                        
                         VStack {
                             HStack {
-                                Text("You contributed to this recipe:")
+                                RecipeTitleView(username: .constant(contribution.originalUsername), recipeName: .constant(contribution.recipeName))
                                 Spacer()
                             }
-                            
-                            HStack {
-                                RecipeTitleView(username: .constant(recipe.originalUsername), recipeName: .constant(recipe.recipeName))
+                            HStack{
+                                Text("Status:").font(.system(size: 18, weight: .medium))
+                                Text("\(contribution.status)")
                                 Spacer()
                             }
+                           
                         }
                         
                     }.padding()
+                    
                 }
+                Divider()
             }
             Spacer()
         }

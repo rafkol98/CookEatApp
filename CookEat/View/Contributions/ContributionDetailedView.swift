@@ -107,7 +107,7 @@ struct ContributionDetailedView: View {
                 })
                 
                 Button(action: {
-                   
+                    viewModel.reject()
                 }, label: {
                     Text("Decline")
                         .font(.headline)

@@ -54,11 +54,18 @@ struct AddRecipeView: View {
     
     var body: some View {
         VStack{
-            HStack {
-                Text("Add Recipe")
-                    .font(.title)
-                Spacer()
-            }.padding()
+            if added {
+                Text("The recipe was added!")
+                    .font(.system(size:20))
+                    .foregroundColor(Color.black)
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.green, lineWidth: 5)
+                    )
+            }
+            
+            TitleView(text: "Add Recipe")
             
             HStack(alignment: .top ){
                 Button(action: { addImage.toggle() }, label: {
@@ -89,7 +96,7 @@ struct AddRecipeView: View {
                 })
                 
             }
-
+            
             SmallInput(name: "RecipeName", stringIn: $name, valid: validName)
             LargeInput(name: "Description", stringIn: $description, valid: validBox(varIn: description))
             LargeInput(name: "Ingredients", stringIn: $ingredients, valid: validBox(varIn: ingredients))
@@ -99,6 +106,12 @@ struct AddRecipeView: View {
                 guard let image = selectedUIImage else { return }
                 viewModel.upload(name: name, description: description, ingredients: ingredients, instructions: instructions, image: image)
                 added.toggle()
+                name = ""
+                description = ""
+                ingredients = ""
+                instructions = ""
+                selectedUIImage = nil
+                
             }, label: {
                 Text("Add Recipe")
                     .font(.headline)
@@ -108,9 +121,6 @@ struct AddRecipeView: View {
                     .clipShape(Capsule())
                     .padding()
             }).disabled(disableButton)
-            .fullScreenCover(isPresented: $added ){
-                RecipeAdded()
-            }
             
             
         }.padding()
@@ -163,38 +173,6 @@ struct LargeInput: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(stringIn.isEmpty ? Color.black : valid, lineWidth: 2)
             )
-            
-    }
-}
-
-//Transition.
-struct RecipeAdded: View {
-    var body: some View {
-        NavigationLink(
-            destination: FeedView(),
-            label: {
-                Button(action: {
-                   
-                }, label: {
-                    Text("Awesome")
-                        .font(.system(size: 22, weight: .semibold))
-                        .padding()
-                        .frame(width: 300, height: 45, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    
-                })
-                .background(Color(.systemRed))
-                .foregroundColor(.white)
-                .clipShape(Capsule())
-                .padding()
-            })
-            .foregroundColor(.black)
         
     }
 }
-
-struct AddRecipeView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddRecipeView()
-    }
-}
-

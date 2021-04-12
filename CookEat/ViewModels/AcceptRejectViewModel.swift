@@ -31,8 +31,9 @@ class AcceptRejectViewModel: ObservableObject {
         })
         
         
+        //Suggested recipe that the user suggested update status to 1-approved.
         COLLECTION_USERS.document(contribution.uid).collection("suggested").document(contribution.id).updateData([
-                "status": 1,
+                "status": "Approved",
             ]) { err in
                 if let err = err {
                     print("Error updating document: \(err)")
@@ -40,9 +41,23 @@ class AcceptRejectViewModel: ObservableObject {
                     print("Document successfully updated")
                 }
             }
-   
+    }
+    
+    func reject() {
+        //Delete the contribution from the receive and update the original recipe.
+        COLLECTION_USERS.document(contribution.originalUid).collection("received").document(contribution.id).delete(completion: { _ in
+            COLLECTION_USERS.document(self.contribution.uid).collection("suggested").document(self.contribution.id).updateData([
+                    "status": "Rejected",
+                ]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Document successfully updated")
+                    }
+                }
+        })
         
-        
+     
     }
     
 }

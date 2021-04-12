@@ -10,6 +10,7 @@ import Firebase
 
 struct Contribution: Identifiable {
     let id: String
+    let status: String
     let originalId: String
     let recipeName: String
     let addedIngredients: Array<String>
@@ -36,6 +37,7 @@ struct Contribution: Identifiable {
 //    Initialize variables from dictionary that we get from Firebase.
     init(dictionary: [String: Any]) {
         self.id = dictionary["id"] as? String ?? ""
+        self.status = dictionary["status"] as? String ?? ""
         self.originalId = dictionary["originalId"] as? String ?? ""
         self.recipeName = dictionary["recipeName"] as? String ?? ""
         self.originalIngredients = dictionary["originalIngredients"] as? Array<String> ?? []

@@ -96,6 +96,7 @@ class RecipeViewModel: ObservableObject {
         
         let data : [String: Any] = [
             "id": userSuggestedRef.documentID,
+            "status": "Waiting",
             "originalId": recipe.id,
             "uid": user.id,
             "originalUid": recipe.uid,

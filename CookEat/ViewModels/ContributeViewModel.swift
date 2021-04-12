@@ -12,8 +12,8 @@ import Firebase
 class ContributeViewModel: ObservableObject {
     
     let user: User
-    @Published var receivedRecipes = [Suggested]()
-    @Published var contributedRecipes = [Suggested]()
+    @Published var receivedRecipes = [Contribution]()
+    @Published var contributedRecipes = [Contribution]()
     
     init(user: User) {
         self.user = user
@@ -28,10 +28,10 @@ class ContributeViewModel: ObservableObject {
         COLLECTION_USERS.document(user.id).collection("received").addSnapshotListener { (querySnaphot, error) in
             guard let documents = querySnaphot?.documents else { return }
             
-            self.receivedRecipes = documents.map{ (queryDocumentSnapshot) -> Suggested in
+            self.receivedRecipes = documents.map{ (queryDocumentSnapshot) -> Contribution in
                 let data = queryDocumentSnapshot.data()
                 
-                let recipe = Suggested(dictionary: data)
+                let recipe = Contribution(dictionary: data)
                 return recipe
             }
         }
@@ -43,10 +43,10 @@ class ContributeViewModel: ObservableObject {
         COLLECTION_USERS.document(user.id).collection("suggested").addSnapshotListener { (querySnaphot, error) in
             guard let documents = querySnaphot?.documents else { return }
             
-            self.contributedRecipes = documents.map{ (queryDocumentSnapshot) -> Suggested in
+            self.contributedRecipes = documents.map{ (queryDocumentSnapshot) -> Contribution in
                 let data = queryDocumentSnapshot.data()
                 
-                let recipe = Suggested(dictionary: data)
+                let recipe = Contribution(dictionary: data)
                 return recipe
             }
         }

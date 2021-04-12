@@ -27,11 +27,10 @@ struct RequestsReceivedView: View {
                 Spacer()
             }.padding()
             
-            ForEach(viewModel.receivedRecipes) { recipe in
+            ForEach(viewModel.receivedRecipes) { contribution in
                 VStack {
-                    
                     HStack {
-                        KFImage(URL(string: recipe.profileImageUrl))
+                        KFImage(URL(string: contribution.profileImageUrl))
                             .resizable()
                             .scaledToFill()
                             .clipped()
@@ -41,14 +40,19 @@ struct RequestsReceivedView: View {
                             .padding()
                         VStack {
                             HStack {
-                                Text("@\(recipe.username) contributed to this recipe:")
+                                Text("@\(contribution.username) contributed to this recipe:")
                                 Spacer()
                             }
                             
-                            HStack {
-                                RecipeTitleView(username: .constant(user.username), recipeName: .constant(recipe.recipeName))
-                                Spacer()
-                            }
+                            NavigationLink(
+                                destination: LazyView(ContributionDetailedView(contribution: contribution)),
+                                label: {
+                                    HStack {
+                                        RecipeTitleView(username: .constant(user.username), recipeName: .constant(contribution.recipeName))
+                                        Spacer()
+                                    }
+                                }).foregroundColor(.black)
+                            
                         }
                         
                     }.padding()

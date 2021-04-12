@@ -8,7 +8,7 @@
 import Firebase
 
 
-struct Suggested: Identifiable {
+struct Contribution: Identifiable {
     let id: String
     let originalId: String
     let recipeName: String

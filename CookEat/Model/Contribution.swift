@@ -16,6 +16,8 @@ struct Contribution: Identifiable {
     let addedInstructions: Array<String>
     let removedIngredients: Array<String>
     let removedInstructions: Array<String>
+    let suggestedIngredients: Array<String>
+    let suggestedInstructions: Array<String>
     let username: String
     let originalUsername: String
     let profileImageUrl: String
@@ -40,6 +42,8 @@ struct Contribution: Identifiable {
         self.originalInstructions = dictionary["originalInstructions"] as? Array<String> ?? []
         self.addedIngredients = dictionary["addedIngredients"] as? Array<String> ?? []
         self.addedInstructions = dictionary["addedInstructions"] as? Array<String> ?? []
+        self.suggestedIngredients = dictionary["suggestedIngredients"] as? Array<String> ?? []
+        self.suggestedInstructions = dictionary["suggestedInstructions"] as? Array<String> ?? []
         self.removedIngredients = dictionary["removedIngredients"] as? Array<String> ?? []
         self.removedInstructions = dictionary["removedInstructions"] as? Array<String> ?? []
         self.username = dictionary["username"] as? String ?? ""

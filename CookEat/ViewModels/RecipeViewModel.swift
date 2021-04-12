@@ -86,7 +86,7 @@ class RecipeViewModel: ObservableObject {
     }
     
     //TODO: validation.
-    func contributeRecipe(addedIngredients: Array<String>, addedInstructions: Array<String>, removedIngredients: Array<String>, removedInstructions: Array<String>) {
+    func contributeRecipe(addedIngredients: Array<String>, addedInstructions: Array<String>, removedIngredients: Array<String>, removedInstructions: Array<String>, suggestedIngredients: Array<String>, suggestedInstructions: Array<String>) {
         guard let user = AuthViewModel.shared.user else {return}
         
         let userSuggestedRef = COLLECTION_USERS.document(user.id).collection("suggested").document()
@@ -105,6 +105,8 @@ class RecipeViewModel: ObservableObject {
             "removedInstructions": removedInstructions,
             "originalIngredients": recipe.ingredients,
             "originalInstructions": recipe.instructions,
+            "suggestedIngredients": suggestedIngredients,
+            "suggestedInstructions": suggestedInstructions,
             "fullname": user.fullname,
             "originalFullname": recipe.fullname,
             "timestamp": Timestamp(date: Date()),

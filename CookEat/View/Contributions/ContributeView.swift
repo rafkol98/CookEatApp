@@ -76,7 +76,7 @@ struct ContributeView: View {
             
             
             Button(action: {
-                viewModel.contributeRecipe(addedIngredients: addedIngredients, addedInstructions: addedInstructions, removedIngredients: removedIngredients, removedInstructions: removedInstructions)
+                viewModel.contributeRecipe(addedIngredients: addedIngredients, addedInstructions: addedInstructions, removedIngredients: removedIngredients, removedInstructions: removedInstructions, suggestedIngredients: ingredients, suggestedInstructions: instructions)
             }, label: {
                 Text("Contribute")
                     .font(.system(size: 22, weight: .semibold))

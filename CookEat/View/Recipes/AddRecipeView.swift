@@ -119,7 +119,6 @@ struct AddRecipeView: View {
                     ingredients = []
                     instructions = []
                     selectedUIImage = nil
-                    
                 }, label: {
                     Text("Add Recipe")
                         .font(.headline)

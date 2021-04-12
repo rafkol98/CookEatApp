@@ -34,19 +34,22 @@ struct ContributionsView: View {
                             .cornerRadius(120/2)
                             .shadow(radius: 4)
                             .padding()
+                        NavigationLink(
+                            destination: LazyView(ContributionDetailedView(contribution: contribution, received: false)),
+                            label: {
+                                VStack {
+                                    HStack {
+                                        RecipeTitleView(username: .constant(contribution.originalUsername), recipeName: .constant(contribution.recipeName))
+                                        Spacer()
+                                    }
+                                    HStack{
+                                        Text("Status:").font(.system(size: 18, weight: .medium))
+                                        Text("\(contribution.status)")
+                                        Spacer()
+                                    }
+                                }
+                            }).foregroundColor(.black)
                         
-                        VStack {
-                            HStack {
-                                RecipeTitleView(username: .constant(contribution.originalUsername), recipeName: .constant(contribution.recipeName))
-                                Spacer()
-                            }
-                            HStack{
-                                Text("Status:").font(.system(size: 18, weight: .medium))
-                                Text("\(contribution.status)")
-                                Spacer()
-                            }
-                           
-                        }
                         
                     }.padding()
                     

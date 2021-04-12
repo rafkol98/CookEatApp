@@ -42,7 +42,7 @@ struct RequestsReceivedView: View {
                                 }
                                 
                                 NavigationLink(
-                                    destination: LazyView(ContributionDetailedView(contribution: contribution)),
+                                    destination: LazyView(ContributionDetailedView(contribution: contribution, received: true)),
                                     label: {
                                         HStack {
                                             RecipeTitleView(username: .constant(user.username), recipeName: .constant(contribution.recipeName))

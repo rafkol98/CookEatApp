@@ -79,10 +79,11 @@ struct RecipeDetailsView: View {
                         RecipeDescriptionView(recipe: recipe)
                         
                         //                    Dropdown box.
-                        VStack {
-                            DropdownView(imageName: "applescript",title: .constant("Ingredients"), text: .constant(recipe.ingredients), isExpanded: $isExpanded)
-                            DropdownView(imageName: "list.number", title: .constant("Instructions"), text: .constant(recipe.instructions), isExpanded: $isExpandedInstr)
-                        }
+//                        VStack {
+//                            DropdownView(imageName: "applescript",title: .constant("Ingredients"), text: .constant(recipe.ingredients), isExpanded: $isExpanded)
+//                            DropdownView(imageName: "list.number", title: .constant("Instructions"), text: .constant(recipe.instructions), isExpanded: $isExpandedInstr)
+//                        }
+                        IngredientsInstructionsView(ingredients: .constant(recipe.ingredients), instructions: .constant(recipe.instructions))
                         Spacer()
                         HStack{
                             Button(action: {
@@ -131,3 +132,26 @@ struct RecipeDetailsView: View {
     
 }
 
+
+struct IngredientsInstructionsView: View {
+    @Binding var ingredients: Array<String>
+    @Binding var instructions: Array<String>
+    
+    var body: some View {
+        
+        HeadingView(name: "Ingredients", image: "applescript")
+        List {
+            ForEach(ingredients, id: \.self) { ingredient in
+                Text(ingredient)
+            }
+        }.frame(height:200)
+        
+        HeadingView(name: "Instruction", image: "list.number")
+        List {
+            ForEach(instructions, id: \.self) { instruction in
+                Text(instruction)
+            }
+        }.frame(height:200)
+        
+    }
+}

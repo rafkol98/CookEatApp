@@ -10,7 +10,7 @@ import Firebase
 
 class UploadRecipeViewModel: ObservableObject {
     //  Upload recipe.
-    func upload(name: String, description: String, ingredients: String, instructions: String, image: UIImage) {
+    func upload(name: String, description: String, ingredients: Array<String>, instructions: Array<String>, image: UIImage) {
         guard let user = AuthViewModel.shared.user else {return}
         
         //upload image.
@@ -28,15 +28,12 @@ class UploadRecipeViewModel: ObservableObject {
                 guard let foodImageUrl = url?.absoluteString else { return }
                 
                 let docRef = COLLECTION_RECIPES.document()
-                //Split the ingredients and instructions into arrays. These way it will be easier to understand when something was removed.
-                let ingredientsLines = ingredients.components(separatedBy: "\n")
-                let instructionsLines = instructions.components(separatedBy: "\n")
                 
                 let data : [String: Any] = ["uid": user.id,
                                             "recipeName": name,
                                             "description": description,
-                                            "ingredients": ingredientsLines,
-                                            "instructions": instructionsLines,
+                                            "ingredients": ingredients,
+                                            "instructions": instructions,
                                             "fullname": user.fullname,
                                             "timestamp": Timestamp(date: Date()),
                                             "username": user.username,

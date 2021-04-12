@@ -41,7 +41,7 @@ struct ContributeView: View {
         }.padding()
         
         VStack {
-            //TODO: fix this - maybe do a new view which takes arguments.
+
             HeadingView(name: "Ingredients", image: "applescript")
             
             TextField("Enter an ingredient", text : $newIngredient, onCommit: {

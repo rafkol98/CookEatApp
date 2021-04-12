@@ -22,7 +22,7 @@ struct RequestsReceivedView: View {
     var body: some View {
         ScrollView {
             VStack{
-                TitleView(text: "Requests Received")
+                TitleView(text: "Requests Received", iconName: "tray.and.arrow.down.fill")
                 
                 ForEach(viewModel.receivedRecipes) { contribution in
                     VStack {

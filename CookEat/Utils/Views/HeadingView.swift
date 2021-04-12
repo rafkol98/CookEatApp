@@ -13,8 +13,11 @@ struct HeadingView: View {
     
     var body: some View {
         HStack {
-            Image(systemName: image)
-            Heading(name: name)
+            Image(systemName: image).imageScale(.medium)
+                
+            Text(name)
+                .font(.system(size: 22, weight: .semibold))
+            Spacer()
         }.padding()
     }
 }

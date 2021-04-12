@@ -9,31 +9,36 @@ import SwiftUI
 
 struct SearchView: View {
     @State var searchText = ""
-    @State var selectedFilter: FilterOptions = .one
+    @State var selectedFilter: FilterOptions2 = .one
     @ObservedObject var searchViewModel = SearchViewModel()
     
     
     var body: some View {
+        
         ScrollView {
+            TitleView(text: "Search", iconName: "magnifyingglass")
             SearchBar(text: $searchText).padding()
-            FilterButtonView(selectedOption: $selectedFilter)
+            FilterButtonView2(selectedOption: $selectedFilter)
             
             switch selectedFilter {
+            
             case .two:
                 VStack(alignment: .leading) {
-    //                Loop through users.
+                    
+                    //Loop through users.
                     let users = searchViewModel.users
                     ForEach(users.filter({"\($0)".contains(searchText) || searchText.isEmpty})) { user in
                         HStack {Spacer()}
-    
+                        
                         NavigationLink(
                             destination: LazyView(UserProfileView(user: user)),
                             label: {
-    //                            Place user in a userCell.
+                                //                            Place user in a userCell.
                                 UserCell(user: user)
                             })
                     }
                 }.padding(.leading)
+                
             default:
                 VStack(alignment: .leading) {
                     //                Loop through users.
@@ -51,7 +56,7 @@ struct SearchView: View {
                 }.padding(.leading)
             }
             
-           
+            
             
         }
         

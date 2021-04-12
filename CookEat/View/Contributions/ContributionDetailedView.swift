@@ -25,7 +25,7 @@ struct ContributionDetailedView: View {
     var body: some View {
         VStack{
             
-            TitleView(text: "Contribution Details")
+            TitleView(text: "Contribution Details", iconName: "square.2.stack.3d.top.fill")
             
             HStack {
                 RecipeTitleView(username: .constant(contribution.originalUsername), recipeName: .constant(contribution.recipeName))

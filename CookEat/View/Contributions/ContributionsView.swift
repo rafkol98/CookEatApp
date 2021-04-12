@@ -21,7 +21,7 @@ struct ContributionsView: View {
     
     var body: some View {
         VStack{
-            TitleView(text: "Contributions Sent")
+            TitleView(text: "Contributions Sent", iconName: "square.stack.3d.up.fill")
             
             ForEach(viewModel.contributedRecipes) { contribution in
                 VStack {

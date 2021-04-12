@@ -14,7 +14,7 @@ struct ContributeView: View {
     
     @State private var ingredients = [String]()
     @State private var instructions = [String]()
-
+    
     @ObservedObject var viewModel: RecipeViewModel
     
     @State private var newIngredient = ""
@@ -41,16 +41,18 @@ struct ContributeView: View {
         }.padding()
         
         VStack {
-            //TODO: fix this
+            //TODO: fix this - maybe do a new view which takes arguments.
             HeadingView(name: "Ingredients", image: "applescript")
             
-            TextField("Enter an ingredient", text : $newIngredient, onCommit: addNewIngredient)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.horizontal)
-            
+            TextField("Enter an ingredient", text : $newIngredient, onCommit: {
+                add(text: &newIngredient, added: &addedIngredients, original: &ingredients)
+            })
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .padding(.horizontal)
+
             
             List {
-                ForEach(addedIngredients + ingredients, id: \.self) { ingredient in
+                ForEach(ingredients, id: \.self) { ingredient in
                     Text(ingredient)
                 }
                 .onDelete(perform: deleteIngredient)
@@ -59,12 +61,14 @@ struct ContributeView: View {
             Divider()
             HeadingView(name: "Instructions", image: "list.number")
             
-            TextField("Enter an instruction", text : $newInstruction, onCommit: addNewInstruction)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.horizontal)
+            TextField("Enter an instruction", text : $newInstruction, onCommit: {
+                add(text: &newInstruction, added: &addedInstructions, original: &instructions)
+            })
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .padding(.horizontal)
             
             List {
-                ForEach(addedInstructions + instructions, id: \.self) { instruction in
+                ForEach(instructions, id: \.self) { instruction in
                     Text(instruction)
                 }
                 .onDelete(perform: deleteInstruction)
@@ -91,42 +95,33 @@ struct ContributeView: View {
         }
         
     }
-    
-    //TODO: FIX THIS, its horrible!!!
-    //Add a new ingredient.
-    func addNewIngredient() {
-        let ingredient = newIngredient.trimmingCharacters(in: .whitespacesAndNewlines)
+
+    //Add ingredient/instruction.
+    func add(text: inout String, added: inout Array<String>, original: inout Array<String>) {
+        let item = text.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        guard ingredient.count > 0 else {
+        guard item.count > 0 else {
             return
         }
         
-        addedIngredients.insert(ingredient, at: 0)
-        newIngredient = ""
+        added.insert(item, at: 0)
+        original.insert(item, at: 0)
+        text = ""
     }
     
-    //Add a new instruction
-    func addNewInstruction() {
-        let instruction = newInstruction.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        
-        guard instruction.count > 0 else {
-            return
-        }
-        
-        addedInstructions.insert(instruction, at: 0)
-        newInstruction = ""
-    }
-    
+    //Delete ingredient.
     func deleteIngredient(at offsets: IndexSet) {
         let index = offsets[offsets.startIndex]
+        
         removedIngredients.insert(ingredients[index], at: 0)
         ingredients.remove(atOffsets: offsets)
-       
+        
     }
     
+    //Delete instruction.
     func deleteInstruction(at offsets: IndexSet) {
         let index = offsets[offsets.startIndex]
+        
         removedInstructions.insert(instructions[index], at: 0)
         instructions.remove(atOffsets: offsets)
     }

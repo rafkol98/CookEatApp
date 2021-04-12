@@ -21,11 +21,7 @@ struct ContributionsView: View {
     
     var body: some View {
         VStack{
-            HStack {
-                Text("Contributions")
-                    .font(.title)
-                Spacer()
-            }.padding()
+            TitleView(text: "Contributions Sent")
             
             ForEach(viewModel.contributedRecipes) { recipe in
                 VStack {

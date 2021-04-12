@@ -13,7 +13,7 @@ struct TitleView: View {
     var body: some View {
         HStack {
             Text(text)
-                .font(.title)
+                .font(.system(size: 28, weight: .semibold))
             
             
             Spacer()

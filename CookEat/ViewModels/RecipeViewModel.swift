@@ -73,6 +73,7 @@ class RecipeViewModel: ObservableObject {
             
             //update values.
             data.updateValue(uid, forKey: "uid")
+            data.updateValue(docRef.documentID, forKey: "id")
             data.updateValue(user.username, forKey: "username")
             data.updateValue(user.fullname, forKey: "fullname")
             data.updateValue(user.profileImageUrl, forKey: "profileImageUrl")

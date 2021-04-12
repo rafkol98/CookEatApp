@@ -22,11 +22,7 @@ struct RequestsReceivedView: View {
     var body: some View {
         ScrollView {
             VStack{
-                HStack {
-                    Text("Requests")
-                        .font(.title)
-                    Spacer()
-                }.padding()
+                TitleView(text: "Requests Received")
                 
                 ForEach(viewModel.receivedRecipes) { contribution in
                     VStack {

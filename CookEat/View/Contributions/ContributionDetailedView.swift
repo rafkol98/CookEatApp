@@ -11,8 +11,16 @@ import Kingfisher
 struct ContributionDetailedView: View {
     
     let contribution: Contribution
+    
+    @ObservedObject var viewModel: AcceptRejectViewModel
     @State private var isExpandedIngr = false
     @State private var isExpandedInstr = false
+    
+    init(contribution: Contribution) {
+        self.contribution = contribution
+        self.viewModel = AcceptRejectViewModel(contribution: contribution)
+    }
+    
     
     var body: some View {
         VStack{
@@ -83,9 +91,10 @@ struct ContributionDetailedView: View {
             .border(Color(.systemGray2), width: 3)
             .background(Color.red).padding()
             
+            //Accept reject
             HStack {
                 Button(action: {
-                   
+                    viewModel.accept()
                 }, label: {
                     Text("Accept")
                         .font(.headline)

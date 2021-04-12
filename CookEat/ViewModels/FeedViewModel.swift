@@ -26,8 +26,10 @@ class FeedViewModel: ObservableObject {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
+                    
                     COLLECTION_RECIPES.whereField("uid", in: [document.documentID]).addSnapshotListener { (querySnaphot, error) in
                         guard let documents = querySnaphot?.documents else { return }
+                        self.recipes = []
                         
                         self.recipes.append( contentsOf: documents.map{ (queryDocumentSnapshot) -> Recipe in
                             let data = queryDocumentSnapshot.data()

@@ -12,14 +12,13 @@ class SearchViewModel: ObservableObject {
     @Published var recipes = [Recipe]()
     @Published var users = [User]()
     
-    init() {
-        fetchUsers()
-        fetchRecipes()
-    }
+  
     
     //    Populate users array.
     func fetchUsers() {
-        COLLECTION_USERS.getDocuments { snapshot, _ in
+
+        COLLECTION_USERS.addSnapshotListener { snapshot, _ in
+            self.users = []
             guard let documents = snapshot?.documents else { return }
             
             documents.forEach { document in
@@ -32,7 +31,9 @@ class SearchViewModel: ObservableObject {
     }
     
     func fetchRecipes() {
-        COLLECTION_RECIPES.getDocuments { (querySnaphot, error) in
+     
+        COLLECTION_RECIPES.addSnapshotListener { (querySnaphot, error) in
+            self.recipes = []
             guard let documents = querySnaphot?.documents else { return }
             
             documents.forEach { document in

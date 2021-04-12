@@ -10,7 +10,7 @@ import SwiftUI
 struct SearchView: View {
     @State var searchText = ""
     @State var selectedFilter: FilterOptions2 = .one
-    @ObservedObject var searchViewModel = SearchViewModel()
+    @ObservedObject var viewModel = SearchViewModel()
     
     
     var body: some View {
@@ -26,7 +26,7 @@ struct SearchView: View {
                 VStack(alignment: .leading) {
                     
                     //Loop through users.
-                    let users = searchViewModel.users
+                    let users = viewModel.users
                     ForEach(users.filter({"\($0)".contains(searchText) || searchText.isEmpty})) { user in
                         HStack {Spacer()}
                         
@@ -42,7 +42,7 @@ struct SearchView: View {
             default:
                 VStack(alignment: .leading) {
                     //                Loop through users.
-                    let recipes = searchViewModel.recipes
+                    let recipes = viewModel.recipes
                     ForEach(recipes.filter({"\($0)".contains(searchText) || searchText.isEmpty})) { recipe in
                         HStack {Spacer()}
                         
@@ -58,6 +58,9 @@ struct SearchView: View {
             
             
             
+        }.onAppear {
+            self.viewModel.fetchUsers()
+            self.viewModel.fetchRecipes()
         }
         
     }

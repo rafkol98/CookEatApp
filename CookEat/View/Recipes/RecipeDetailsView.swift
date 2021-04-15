@@ -67,22 +67,15 @@ struct RecipeDetailsView: View {
                                 viewModel.didLike ? viewModel.unlikeRecipe() :viewModel.likeRecipe()
                             }, label: {
                                 Image(systemName: viewModel.didLike ? "heart.fill" : "heart")
-                                    .font(.system(size:16))
+                                    .font(.system(size:20))
                                     .frame(width:32, height:32)
                                     .foregroundColor(viewModel.didLike ? .red : .gray)
-                                Text("\(recipe.likes)")
-                                    .padding()
                             }
-                            )
+                            ).padding()
                         }
                         
                         RecipeDescriptionView(recipe: recipe)
-                        
-                        //                    Dropdown box.
-//                        VStack {
-//                            DropdownView(imageName: "applescript",title: .constant("Ingredients"), text: .constant(recipe.ingredients), isExpanded: $isExpanded)
-//                            DropdownView(imageName: "list.number", title: .constant("Instructions"), text: .constant(recipe.instructions), isExpanded: $isExpandedInstr)
-//                        }
+ 
                         IngredientsInstructionsView(ingredients: .constant(recipe.ingredients), instructions: .constant(recipe.instructions))
                         Spacer()
                         HStack{

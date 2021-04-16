@@ -11,11 +11,9 @@ struct EditProfileView: View {
     let user: User
     @State var name: String = ""
     
-    
-    
     var body: some View {
         VStack {
-            SmallInput(name: "Username", existingText: user.username, iconName: "textformat", stringIn: $name, valid: Color.gray)
+            SmallInput(name: "Username", existingText: user.username, iconName: "textformat", stringIn: $name, valid: Color.green)
             
            Spacer()
             

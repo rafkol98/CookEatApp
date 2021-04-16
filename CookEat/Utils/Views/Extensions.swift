@@ -17,15 +17,17 @@ struct SmallInput: View {
     var valid: Color
     
     var body: some View {
-        HeadingView(name: name, image: iconName)
-        TextField(existingText, text: $stringIn)
-            .foregroundColor(Color.black)
-            .font(.custom("HelveticaNeue", size: 14))
-            .padding()
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(stringIn.isEmpty ? Color(.systemGray3) : valid, lineWidth: 2)
-            )
+        VStack {
+            HeadingView(name: name, image: iconName)
+            TextField(existingText, text: $stringIn)
+                .foregroundColor(Color.black)
+                .font(.custom("HelveticaNeue", size: 14))
+                .padding()
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(stringIn.isEmpty ? Color(.systemGray3) : valid, lineWidth: 2)
+                )
+        }
     }
 }
 
@@ -98,21 +100,6 @@ struct adjustBtn: ViewModifier {
         
     }
 }
-
-//struct rejectBtn: ViewModifier {
-//    var color: Color
-//
-//    func body(content: Content) -> some View {
-//        content
-//            .font(.headline)
-//            .foregroundColor(.white)
-//            .frame(width: 300, height: 45)
-//            .background(color)
-//            .clipShape(Capsule())
-//            .padding()
-//    }
-//}
-
 
 
 extension View {

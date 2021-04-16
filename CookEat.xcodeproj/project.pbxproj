@@ -50,7 +50,9 @@
 		CBA8C5C026239A7500313596 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA8C5BF26239A7500313596 /* Extensions.swift */; };
 		CBADCDF32624835B0028C694 /* AcceptRejectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADCDF22624835B0028C694 /* AcceptRejectViewModel.swift */; };
 		CBAE68202628F0EF008C4A2D /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAE681F2628F0EF008C4A2D /* EditProfileView.swift */; };
+		CBCB32712629DE9F00136B4F /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB32702629DE9F00136B4F /* ListView.swift */; };
 		CBCF8C90260FF3DE00416611 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCF8C8F260FF3DE00416611 /* RecipeViewModel.swift */; };
+		CBD308DB2629D70A00D3DD19 /* EditNameDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD308DA2629D70A00D3DD19 /* EditNameDescriptionView.swift */; };
 		CBE119A525FD62E400AE4E22 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE119A425FD62E400AE4E22 /* User.swift */; };
 		CBE119A925FD6A4800AE4E22 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CBE119A825FD6A4800AE4E22 /* Kingfisher */; };
 		CBEAAC5A25F80E050064A32B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAAC5925F80E050064A32B /* LoginView.swift */; };
@@ -59,7 +61,7 @@
 		CBEAAC6425F81B660064A32B /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAAC6325F81B660064A32B /* RegistrationView.swift */; };
 		CBEB88802604FCED00F8B497 /* DropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB887F2604FCED00F8B497 /* DropdownView.swift */; };
 		CBFB0768261BB9BC00546E38 /* ContributionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFB0767261BB9BC00546E38 /* ContributionsView.swift */; };
-		CBFB076B261BC21900546E38 /* ContributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFB076A261BC21900546E38 /* ContributeView.swift */; };
+		CBFB076B261BC21900546E38 /* ContributeOrEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFB076A261BC21900546E38 /* ContributeOrEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,7 +106,9 @@
 		CBA8C5BF26239A7500313596 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CBADCDF22624835B0028C694 /* AcceptRejectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptRejectViewModel.swift; sourceTree = "<group>"; };
 		CBAE681F2628F0EF008C4A2D /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		CBCB32702629DE9F00136B4F /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		CBCF8C8F260FF3DE00416611 /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
+		CBD308DA2629D70A00D3DD19 /* EditNameDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameDescriptionView.swift; sourceTree = "<group>"; };
 		CBE119A425FD62E400AE4E22 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CBEAAC5925F80E050064A32B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		CBEAAC5D25F80EB00064A32B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -112,7 +116,7 @@
 		CBEAAC6325F81B660064A32B /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		CBEB887F2604FCED00F8B497 /* DropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownView.swift; sourceTree = "<group>"; };
 		CBFB0767261BB9BC00546E38 /* ContributionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributionsView.swift; sourceTree = "<group>"; };
-		CBFB076A261BC21900546E38 /* ContributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributeView.swift; sourceTree = "<group>"; };
+		CBFB076A261BC21900546E38 /* ContributeOrEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributeOrEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +140,7 @@
 			children = (
 				CB2250BA262109E9002196D2 /* RequestsReceivedView.swift */,
 				CBFB0767261BB9BC00546E38 /* ContributionsView.swift */,
-				CBFB076A261BC21900546E38 /* ContributeView.swift */,
+				CBFB076A261BC21900546E38 /* ContributeOrEditView.swift */,
 				CB07E79A26245D5100556132 /* ContributionDetailedView.swift */,
 			);
 			path = Contributions;
@@ -276,6 +280,8 @@
 				CBEB887F2604FCED00F8B497 /* DropdownView.swift */,
 				CB1B9BA8261E55D200DCF4A7 /* RecipeDescriptionView.swift */,
 				CB6061502629C5E500F4D70B /* EditRecipeView.swift */,
+				CBD308DA2629D70A00D3DD19 /* EditNameDescriptionView.swift */,
+				CBCB32702629DE9F00136B4F /* ListView.swift */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";
@@ -398,6 +404,7 @@
 				CB6C3DD225EC2BA200149528 /* FeedView.swift in Sources */,
 				CB7EDDD52608DDC800A1E3A8 /* ProfileViewModel.swift in Sources */,
 				CBCF8C90260FF3DE00416611 /* RecipeViewModel.swift in Sources */,
+				CBCB32712629DE9F00136B4F /* ListView.swift in Sources */,
 				CB101303260AA6AD00C32A21 /* AddRecipeView.swift in Sources */,
 				CB453D0925FD6C4B001C6DB4 /* Constants.swift in Sources */,
 				CBEAAC5A25F80E050064A32B /* LoginView.swift in Sources */,
@@ -405,6 +412,7 @@
 				CB6C3DD525EC361000149528 /* RecipeCell.swift in Sources */,
 				CB506E0A25FA293C00A28D92 /* ImagePicker.swift in Sources */,
 				CB96D59A25ED3E0300457589 /* SearchView.swift in Sources */,
+				CBD308DB2629D70A00D3DD19 /* EditNameDescriptionView.swift in Sources */,
 				CB822037260E8DFC001EECE7 /* FeedViewModel.swift in Sources */,
 				CB80AA452613AB0E004AF9F2 /* LazyView.swift in Sources */,
 				CB6DA2C7260CA15100C73C7A /* UploadRecipeViewModel.swift in Sources */,
@@ -428,7 +436,7 @@
 				CB91569B2617D0430086994B /* SettingsOption.swift in Sources */,
 				CB822034260E8AF3001EECE7 /* Recipe.swift in Sources */,
 				CBE119A525FD62E400AE4E22 /* User.swift in Sources */,
-				CBFB076B261BC21900546E38 /* ContributeView.swift in Sources */,
+				CBFB076B261BC21900546E38 /* ContributeOrEditView.swift in Sources */,
 				CB07E79B26245D5100556132 /* ContributionDetailedView.swift in Sources */,
 				CB2250B52620FEB9002196D2 /* Contribution.swift in Sources */,
 				CB6061512629C5E500F4D70B /* EditRecipeView.swift in Sources */,

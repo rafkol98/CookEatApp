@@ -18,7 +18,7 @@ struct HeadingView: View {
             Text(name)
                 .font(.system(size: 22, weight: .semibold))
             Spacer()
-        }.padding()
+        }.padding(.vertical)
     }
 }
 

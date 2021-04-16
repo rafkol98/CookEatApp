@@ -15,8 +15,16 @@ struct RecipeDetailsView: View {
     @State private var isExpandedInstr = false
     @State var isLinkActive = false
     
+    
+    
     let recipe: Recipe
     @ObservedObject var viewModel: RecipeViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
+    var flag: Bool {
+        let currentUid = authViewModel.user?.id
+        return currentUid == recipe.uid ? true : false
+    }
     
     init(recipe: Recipe) {
         self.recipe = recipe
@@ -35,7 +43,7 @@ struct RecipeDetailsView: View {
                 .shadow(radius: 2)
             
             ZStack {
-                //                ScrollView{
+                
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(Color(red: 255/255, green: 255/255, blue: 255/255))
                     .shadow(radius: 10)
@@ -77,35 +85,35 @@ struct RecipeDetailsView: View {
                         RecipeDescriptionView(recipe: recipe)
                         
                         IngredientsInstructionsView(ingredients: .constant(recipe.ingredients), instructions: .constant(recipe.instructions))
+                        
                         Spacer()
+                        
                         HStack{
-                            Button(action: {
-                                viewModel.forkRecipe()
-                            }, label: {
-                                Text("Fork")
-                                    .adjustButton(with: Color.red)
-                                
-                            })
+                            if !flag {
+                                Button(action: {
+                                    viewModel.forkRecipe()
+                                }, label: {
+                                    Text("Fork")
+                                        .adjustButton(with: Color.red) 
+                                })
+                            }
                             
                             NavigationLink(
-                                destination: LazyView(ContributeView(recipe: recipe, editFlag: false)),  isActive: $isLinkActive,
+                                destination: LazyView(ContributeOrEditView(recipe: recipe, editFlag: flag)),  isActive: $isLinkActive,
                                 label: {
                                     Button(action: {
                                         self.isLinkActive = true
                                     }, label: {
-                                        Text("Contribute")
+                                        Text(flag ? "Edit" : "Contribute")
                                             .adjustButton(with: Color.red)
                                         
                                     })
                                 })
-                            
-                            
                         }
+                        
                         
                     }
                 }
-                
-                
                 
             }.frame(maxWidth: .infinity, maxHeight: .infinity,
                     alignment: .topLeading)
@@ -121,20 +129,23 @@ struct IngredientsInstructionsView: View {
     @Binding var instructions: Array<String>
     
     var body: some View {
-        
-        HeadingView(name: "Ingredients", image: "applescript")
-        List {
-            ForEach(ingredients, id: \.self) { ingredient in
-                Text(ingredient)
+        VStack {
+            HeadingView(name: "Ingredients", image: "applescript")
+            List {
+                ForEach(ingredients, id: \.self) { ingredient in
+                    Text(ingredient)
+                }
+            }.frame(height:200)
+            
+            HeadingView(name: "Instruction", image: "list.number")
+            List {
+                ForEach(instructions, id: \.self) { instruction in
+                    Text(instruction)
+                }
             }
-        }.frame(height:200)
-        
-        HeadingView(name: "Instruction", image: "list.number")
-        List {
-            ForEach(instructions, id: \.self) { instruction in
-                Text(instruction)
-            }
-        }.frame(height:200)
+            .frame(height:200)
+        }
+        .padding(.horizontal)
         
     }
 }

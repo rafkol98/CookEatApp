@@ -35,7 +35,7 @@ class RecipeViewModel: ObservableObject {
         
     }
     
-    //TODO: fix bug goes -1.
+    //Unlike a recipe
     func unlikeRecipe() {
         guard let uid = AuthViewModel.shared.userSession?.uid else { return }
         
@@ -60,6 +60,26 @@ class RecipeViewModel: ObservableObject {
             guard let didLike = snapshot?.exists else { return }
             self.didLike = didLike
         }
+    }
+    
+    //Check if user liked a recipe.
+    func edit(name: String, description: String, ingredients: Array<String>, instructions: Array<String>) {
+//        let docRef = COLLECTION_RECIPES.document(recipe.id)
+        
+        COLLECTION_RECIPES.document(recipe.id).updateData([
+            "recipeName": name,
+            "description": description,
+            "ingredients": ingredients,
+            "instructions": instructions
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+        
     }
     
     //Fork recipe

@@ -63,10 +63,10 @@ struct ContributeOrEditView: View {
                 
                 if editFlag {
                     EditNameDescriptionView(name: $name, description: $description).padding(.horizontal)
+                    
                 }
                 
-                ListView(newIngredient: $newIngredient, ingredients: $ingredients, newInstruction: $newInstruction, instructions: $instructions).padding(.horizontal)
-                
+                ListView(newIngredient: $newIngredient, ingredients: $ingredients, newInstruction: $newInstruction, instructions: $instructions, addedIngredients: $addedIngredients, addedInstructions: $addedInstructions, removedIngredients: $removedIngredients, removedInstructions: $removedInstructions).padding(.horizontal)
                 
                 Button(action: {
                     if editFlag {
@@ -87,6 +87,35 @@ struct ContributeOrEditView: View {
             self.instructions = recipe.instructions
         }
         
+    }
+    //Add ingredient/instruction.
+    func add(text: inout String, added: inout Array<String>, original: inout Array<String>) {
+        let item = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard item.count > 0 else {
+            return
+        }
+        
+        added.insert(item, at: 0)
+        original.insert(item, at: 0)
+        text = ""
+    }
+    
+    //Delete ingredient.
+    func deleteIngredient(at offsets: IndexSet) {
+        let index = offsets[offsets.startIndex]
+        
+        removedIngredients.insert(ingredients[index], at: 0)
+        ingredients.remove(atOffsets: offsets)
+        
+    }
+    
+    //Delete instruction.
+    func deleteInstruction(at offsets: IndexSet) {
+        let index = offsets[offsets.startIndex]
+        
+        removedInstructions.insert(instructions[index], at: 0)
+        instructions.remove(atOffsets: offsets)
     }
     
 }

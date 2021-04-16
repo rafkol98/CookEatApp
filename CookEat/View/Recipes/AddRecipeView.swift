@@ -108,7 +108,7 @@ struct AddRecipeView: View {
                 
                 SmallInput(name: "RecipeName", existingText: "", iconName: "textformat", stringIn: $name, valid: validName)
                 LargeInput(name: "Description",  iconName: "bubble.right", stringIn: $description, valid: validBox(varIn: description))
-                ListView(newIngredient: $newIngredient, ingredients: $ingredients, newInstruction: $newInstruction, instructions: $instructions)
+                ListView2(newIngredient: $newIngredient, ingredients: $ingredients, newInstruction: $newInstruction, instructions: $instructions)
                 
                 Button(action: {
                     guard let image = selectedUIImage else { return }

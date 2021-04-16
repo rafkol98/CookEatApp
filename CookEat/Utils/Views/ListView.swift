@@ -13,6 +13,10 @@ struct ListView: View {
     @Binding var ingredients: Array<String>
     @Binding var newInstruction: String
     @Binding var instructions: Array<String>
+    @Binding var addedIngredients:  Array<String>
+    @Binding var addedInstructions:  Array<String>
+    @Binding var removedIngredients:  Array<String>
+    @Binding var removedInstructions:  Array<String>
     
     
     var body: some View {
@@ -20,7 +24,7 @@ struct ListView: View {
         HeadingView(name: "Ingredients", image: "applescript")
         VStack {
             TextField("Enter an ingredient", text : $newIngredient, onCommit: {
-                add(text: &newIngredient, list: &ingredients)
+                add(text: &newIngredient, added: &addedIngredients, original: &ingredients)
             })
             .textFieldStyle(RoundedBorderTextFieldStyle())
             
@@ -42,7 +46,7 @@ struct ListView: View {
         HeadingView(name: "Instruction", image: "list.number")
         VStack{
             TextField("Enter an instruction", text : $newInstruction, onCommit: {
-                add(text: &newInstruction, list: &instructions)
+                add(text: &newInstruction, added: &addedInstructions, original: &instructions)
             })
             .textFieldStyle(RoundedBorderTextFieldStyle())
             
@@ -52,7 +56,7 @@ struct ListView: View {
                 }
                 .onDelete(perform: deleteInstruction)
                 .onMove(perform: moveInstruction)
-
+                
             }
             .environment(\.editMode, Binding.constant(EditMode.active))
             
@@ -64,32 +68,40 @@ struct ListView: View {
     }
     
     //Add ingredient/instruction.
-    func add(text: inout String, list: inout Array<String>) {
+    func add(text: inout String, added: inout Array<String>, original: inout Array<String>) {
         let item = text.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard item.count > 0 else {
             return
         }
         
-        list.insert(item, at: 0)
+        added.insert(item, at: 0)
+        original.insert(item, at: 0)
         text = ""
     }
     
     //Delete ingredient.
     func deleteIngredient(at offsets: IndexSet) {
+        let index = offsets[offsets.startIndex]
+        
+        removedIngredients.insert(ingredients[index], at: 0)
         ingredients.remove(atOffsets: offsets)
+        
     }
     
-    //Delete ingredient.
+    //Delete instruction.
     func deleteInstruction(at offsets: IndexSet) {
+        let index = offsets[offsets.startIndex]
+        
+        removedInstructions.insert(instructions[index], at: 0)
         instructions.remove(atOffsets: offsets)
     }
     
     func moveInstruction(from source: IndexSet, to destination: Int) {
-         instructions.move(fromOffsets: source, toOffset: destination)
-     }
+        instructions.move(fromOffsets: source, toOffset: destination)
+    }
     
     func moveIngredient(from source: IndexSet, to destination: Int) {
-         ingredients.move(fromOffsets: source, toOffset: destination)
-     }
+        ingredients.move(fromOffsets: source, toOffset: destination)
+    }
 }

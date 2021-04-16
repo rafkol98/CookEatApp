@@ -21,6 +21,7 @@ struct RecipeDetailsView: View {
     @ObservedObject var viewModel: RecipeViewModel
     @EnvironmentObject var authViewModel: AuthViewModel
     
+    //Flag determines if the recipe belongs to the current user. It is used to adjust the screen accordingly.
     var flag: Bool {
         let currentUid = authViewModel.user?.id
         return currentUid == recipe.uid ? true : false
@@ -71,15 +72,18 @@ struct RecipeDetailsView: View {
                                 .padding(.horizontal)
                             
                             Spacer()
-                            Button(action: {
-                                viewModel.didLike ? viewModel.unlikeRecipe() :viewModel.likeRecipe()
-                            }, label: {
-                                Image(systemName: viewModel.didLike ? "heart.fill" : "heart")
-                                    .font(.system(size:20))
-                                    .frame(width:32, height:32)
-                                    .foregroundColor(viewModel.didLike ? .red : .gray)
+                            if !flag {
+                                Button(action: {
+                                    viewModel.didLike ? viewModel.unlikeRecipe() :viewModel.likeRecipe()
+                                }, label: {
+                                    Image(systemName: viewModel.didLike ? "heart.fill" : "heart")
+                                        .font(.system(size:20))
+                                        .frame(width:32, height:32)
+                                        .foregroundColor(viewModel.didLike ? .red : .gray)
+                                }
+                                ).padding()
                             }
-                            ).padding()
+                            
                         }
                         
                         RecipeDescriptionView(recipe: recipe)
@@ -93,8 +97,10 @@ struct RecipeDetailsView: View {
                                 Button(action: {
                                     viewModel.forkRecipe()
                                 }, label: {
-                                    Text("Fork")
-                                        .adjustButton(with: Color.red) 
+                                    HStack {
+                                        Image(systemName: "tuningfork")
+                                        Text("Fork")
+                                    } .adjustButton(with: Color.red)
                                 })
                             }
                             
@@ -104,8 +110,10 @@ struct RecipeDetailsView: View {
                                     Button(action: {
                                         self.isLinkActive = true
                                     }, label: {
-                                        Text(flag ? "Edit" : "Contribute")
-                                            .adjustButton(with: Color.red)
+                                        HStack {
+                                            Image(systemName: flag ? "pencil" : "rectangle.stack.badge.plus")
+                                            Text(flag ? "Edit" : "Contribute")
+                                        } .adjustButton(with: Color.red)
                                         
                                     })
                                 })

@@ -24,37 +24,47 @@ struct RequestsReceivedView: View {
             VStack{
                 TitleView(text: "Requests Received", iconName: "tray.and.arrow.down.fill")
                 
-                ForEach(viewModel.receivedRecipes) { contribution in
-                    VStack {
-                        HStack {
-                            KFImage(URL(string: contribution.profileImageUrl))
-                                .resizable()
-                                .scaledToFill()
-                                .clipped()
-                                .frame(width: 50, height: 50)
-                                .cornerRadius(120/2)
-                                .shadow(radius: 4)
-                                .padding()
-                            VStack {
-                                HStack {
-                                    Text("@\(contribution.username) contributed to this recipe:")
-                                    Spacer()
+                if viewModel.receivedRecipes.count != 0 {
+                    
+                    ForEach(viewModel.receivedRecipes) { contribution in
+                        VStack {
+                            HStack {
+                                KFImage(URL(string: contribution.profileImageUrl))
+                                    .resizable()
+                                    .scaledToFill()
+                                    .clipped()
+                                    .frame(width: 50, height: 50)
+                                    .cornerRadius(120/2)
+                                    .shadow(radius: 4)
+                                    .padding()
+                                VStack {
+                                    HStack {
+                                        Text("@\(contribution.username) contributed to this recipe:")
+                                        Spacer()
+                                    }
+                                    
+                                    NavigationLink(
+                                        destination: LazyView(ContributionDetailedView(contribution: contribution, received: true)),
+                                        label: {
+                                            HStack {
+                                                RecipeTitleView(username: .constant(user.username), recipeName: .constant(contribution.recipeName))
+                                                Spacer()
+                                            }
+                                        }).foregroundColor(.black)
+                                    
                                 }
                                 
-                                NavigationLink(
-                                    destination: LazyView(ContributionDetailedView(contribution: contribution, received: true)),
-                                    label: {
-                                        HStack {
-                                            RecipeTitleView(username: .constant(user.username), recipeName: .constant(contribution.recipeName))
-                                            Spacer()
-                                        }
-                                    }).foregroundColor(.black)
-                                
-                            }
-                            
-                        }.padding()
+                            }.padding()
+                        }
+                        Divider()
                     }
-                    Divider()
+                    
+                } else {
+                    Image("burger")
+                        .resizable()
+                        .scaledToFill()
+                        .clipped()
+                        .frame(width: 100, height: 100)
                 }
                 Spacer()
             }

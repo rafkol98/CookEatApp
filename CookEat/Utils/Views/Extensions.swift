@@ -69,21 +69,19 @@ struct StandardBtn: ViewModifier {
     }
 }
 
-struct dynamicBtn: ViewModifier {
-    var color: Color
-    var width: Int
-    var height: Int
-    
-    func body(content: Content) -> some View {
-        content
-            .font(.headline)
-            .foregroundColor(.white)
-            .frame(width: 300, height: 45)
-            .background(color)
-            .clipShape(Capsule())
-            .padding()
-    }
-}
+//struct dynamicBtn: ViewModifier {
+//    var color: Color
+//    
+//    func body(content: Content) -> some View {
+//        content
+//            .font(.headline)
+//            .foregroundColor(.white)
+//            .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: .infinity, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: 50, maxHeight: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//            .background(color)
+//            .clipShape(Capsule())
+//            .padding()
+//    }
+//}
 
 
 struct adjustBtn: ViewModifier {
@@ -107,9 +105,9 @@ extension View {
         self.modifier(StandardBtn())
     }
     
-    func dynamicButton(with color: Color, width: Int, height: Int) -> some View {
-        self.modifier(dynamicBtn(color: color, width: width, height: height))
-    }
+//    func dynamicButton(with color: Color, width: Int, height: Int) -> some View {
+//        self.modifier(dynamicBtn(color: color, width: width, height: height))
+//    }
     
     func adjustButton(with color: Color) -> some View {
         self.modifier(adjustBtn(color: color))

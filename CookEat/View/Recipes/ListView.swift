@@ -29,7 +29,9 @@ struct ListView: View {
                     Text(ingredient)
                 }
                 .onDelete(perform: deleteIngredient)
+                .onMove(perform: moveIngredient)
             }
+            .environment(\.editMode, Binding.constant(EditMode.active))
         }
         .overlay(
             RoundedRectangle(cornerRadius: 10)
@@ -49,7 +51,11 @@ struct ListView: View {
                     Text(instruction)
                 }
                 .onDelete(perform: deleteInstruction)
+                .onMove(perform: moveInstruction)
+
             }
+            .environment(\.editMode, Binding.constant(EditMode.active))
+            
         }.overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(instructions.isEmpty ? Color(.systemGray3) : Color.green, lineWidth: 2)
@@ -78,4 +84,12 @@ struct ListView: View {
     func deleteInstruction(at offsets: IndexSet) {
         instructions.remove(atOffsets: offsets)
     }
+    
+    func moveInstruction(from source: IndexSet, to destination: Int) {
+         instructions.move(fromOffsets: source, toOffset: destination)
+     }
+    
+    func moveIngredient(from source: IndexSet, to destination: Int) {
+         ingredients.move(fromOffsets: source, toOffset: destination)
+     }
 }

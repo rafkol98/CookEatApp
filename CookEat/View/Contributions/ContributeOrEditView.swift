@@ -26,7 +26,7 @@ struct ContributeOrEditView: View {
     @State private var addedInstructions = [String]()
     @State private var removedIngredients = [String]()
     @State private var removedInstructions = [String]()
-//    @State private var flag = false
+    //    @State private var flag = false
     
     
     init(recipe: Recipe, editFlag: Bool) {
@@ -38,39 +38,48 @@ struct ContributeOrEditView: View {
     var body: some View {
         ScrollView {
             
-        if editFlag {
-            TitleView(text: "Edit", iconName: "pencil")
-        } else {
-            TitleView(text: "Contribute", iconName: "rectangle.stack.badge.plus")
-        }
-        
-        
-        HStack{
-            RecipeTitleView(username: .constant(recipe.username), recipeName: .constant(recipe.recipeName))
-            Spacer()
-        }.padding()
-        
-        VStack {
-            
             if editFlag {
-                EditNameDescriptionView(name: $name, description: $description).padding(.horizontal)
-            }
-            
-            ListView(newIngredient: $newIngredient, ingredients: $ingredients, newInstruction: $newInstruction, instructions: $instructions).padding(.horizontal)
-
-          
-            Button(action: {
-                if editFlag {
-                    viewModel.edit(name: name, description: description, ingredients: ingredients, instructions: instructions)
-                } else {
-                    viewModel.contributeRecipe(addedIngredients: addedIngredients, addedInstructions: addedInstructions, removedIngredients: removedIngredients, removedInstructions: removedInstructions, suggestedIngredients: ingredients, suggestedInstructions: instructions)
+                HStack {
+                    TitleView(text: "Edit", iconName: "pencil")
                 }
                 
-            }, label: {
-                Text(editFlag ? "Edit" : "Contribute")
-                    .standardButton()
-            })
-        }
+            } else {
+                TitleView(text: "Contribute", iconName: "rectangle.stack.badge.plus")
+            }
+            
+            
+            HStack{
+                RecipeTitleView(username: .constant(recipe.username), recipeName: .constant(recipe.recipeName))
+                Spacer()
+                if editFlag {
+                    Image(systemName: "trash.fill")
+                        .font(.system(size:20))
+                        .frame(width:32, height:32)
+                        .foregroundColor(.red)
+                }
+            }.padding()
+            
+            VStack {
+                
+                if editFlag {
+                    EditNameDescriptionView(name: $name, description: $description).padding(.horizontal)
+                }
+                
+                ListView(newIngredient: $newIngredient, ingredients: $ingredients, newInstruction: $newInstruction, instructions: $instructions).padding(.horizontal)
+                
+                
+                Button(action: {
+                    if editFlag {
+                        viewModel.edit(name: name, description: description, ingredients: ingredients, instructions: instructions)
+                    } else {
+                        viewModel.contributeRecipe(addedIngredients: addedIngredients, addedInstructions: addedInstructions, removedIngredients: removedIngredients, removedInstructions: removedInstructions, suggestedIngredients: ingredients, suggestedInstructions: instructions)
+                    }
+                    
+                }, label: {
+                    Text(editFlag ? "Update" : "Contribute")
+                        .standardButton()
+                })
+            }
         }.onAppear {
             self.name = recipe.recipeName
             self.description = recipe.description

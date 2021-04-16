@@ -39,7 +39,7 @@ struct Settings: View {
                 .padding()
                 
                 NavigationLink(
-                    destination: LazyView(EditProfileView()),
+                    destination: LazyView(EditProfileView(user: viewModel.user!)),
                     label: {
                         SettingsOption(icon: "square.and.pencil", text: "Edit Profile")
                     })
@@ -62,9 +62,6 @@ struct Settings: View {
                     label: {
                         SettingsOption(icon: "tray.and.arrow.down.fill", text: "Requests Received")
                     })
-                
-                
-                
                 
                 
                 Spacer()

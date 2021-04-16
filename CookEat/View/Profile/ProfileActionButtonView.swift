@@ -13,17 +13,6 @@ struct ProfileActionButtonView: View {
     
     var body: some View {
         if !viewModel.user.currentUser {
-//            NavigationLink(
-//                destination: Text("Profile"),
-//                label: {
-//                    Button(action: {}, label: {
-//                        Text("Edit Profile")
-//                            .standardButton()
-//                    })
-//                    .cornerRadius(20)
-//                })
-            
-//        } else {
             HStack {
                 Button(action: {
                     //If they are not following the user -> follow them. If they are following them -> unfollow them.

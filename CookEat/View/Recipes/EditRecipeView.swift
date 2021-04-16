@@ -1,17 +1,16 @@
 //
-//  Contribute.swift
+//  EditRecipeView.swift
 //  CookEat
 //
-//  Created by Rafael Kollyfas on 06/04/2021.
+//  Created by Rafael Kollyfas on 16/04/2021.
 //
 
 import SwiftUI
 
 
-struct ContributeView: View {
+struct EditRecipeView: View {
     
     let recipe: Recipe
-    let editFlag : Bool
     
     @State private var ingredients = [String]()
     @State private var instructions = [String]()
@@ -24,25 +23,16 @@ struct ContributeView: View {
     @State private var addedInstructions = [String]()
     @State private var removedIngredients = [String]()
     @State private var removedInstructions = [String]()
-//    @State private var flag = false
+    @State private var flag = false
     
     
-    init(recipe: Recipe, editFlag: Bool) {
+    init(recipe: Recipe) {
         self.recipe = recipe
-        self.editFlag = editFlag
         self.viewModel = RecipeViewModel(recipe: recipe)
     }
     
-    //    @State private var x = viewModel.fetchIngredients()
     
     var body: some View {
-        
-        if editFlag {
-            TitleView(text: "Edit", iconName: "pencil")
-        } else {
-            TitleView(text: "Contribute", iconName: "rectangle.stack.badge.plus")
-        }
-        
         
         HStack{
             RecipeTitleView(username: .constant(recipe.username), recipeName: .constant(recipe.recipeName))
@@ -53,12 +43,12 @@ struct ContributeView: View {
 
             HeadingView(name: "Ingredients", image: "applescript")
             
+            //Add ingredients.
             TextField("Enter an ingredient", text : $newIngredient, onCommit: {
                 add(text: &newIngredient, added: &addedIngredients, original: &ingredients)
             })
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding(.horizontal)
-
             
             List {
                 ForEach(ingredients, id: \.self) { ingredient in
@@ -68,8 +58,10 @@ struct ContributeView: View {
             }
             
             Divider()
+    
             HeadingView(name: "Instructions", image: "list.number")
             
+            //Add instructions.
             TextField("Enter an instruction", text : $newInstruction, onCommit: {
                 add(text: &newInstruction, added: &addedInstructions, original: &instructions)
             })
@@ -83,16 +75,11 @@ struct ContributeView: View {
                 .onDelete(perform: deleteInstruction)
             }
             
-          
+            
             Button(action: {
-                if editFlag {
-                    //TODO: edit
-                } else {
-                    viewModel.contributeRecipe(addedIngredients: addedIngredients, addedInstructions: addedInstructions, removedIngredients: removedIngredients, removedInstructions: removedInstructions, suggestedIngredients: ingredients, suggestedInstructions: instructions)
-                }
                 
             }, label: {
-                Text(editFlag ? "Edit" : "Contribute")
+                Text("Edit")
                     .standardButton()
             })
           
@@ -107,32 +94,32 @@ struct ContributeView: View {
     //Add ingredient/instruction.
     func add(text: inout String, added: inout Array<String>, original: inout Array<String>) {
         let item = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        
+
         guard item.count > 0 else {
             return
         }
-        
+
         added.insert(item, at: 0)
         original.insert(item, at: 0)
         text = ""
     }
-    
+
     //Delete ingredient.
     func deleteIngredient(at offsets: IndexSet) {
         let index = offsets[offsets.startIndex]
-        
+
         removedIngredients.insert(ingredients[index], at: 0)
         ingredients.remove(atOffsets: offsets)
-        
+
     }
-    
+
     //Delete instruction.
     func deleteInstruction(at offsets: IndexSet) {
         let index = offsets[offsets.startIndex]
-        
+
         removedInstructions.insert(instructions[index], at: 0)
         instructions.remove(atOffsets: offsets)
     }
-    
+
 }
 

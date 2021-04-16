@@ -7,11 +7,51 @@
 
 import SwiftUI
 
-//extension Collection where Indices.Iterator.Element == Index {
-//   public subscript(safe index: Index) -> Iterator.Element? {
-//     return (startIndex <= index && index < endIndex) ? self[index] : nil
-//   }
-//}
+//Small input text.
+struct SmallInput: View {
+    let name: String
+    let existingText: String
+    let iconName: String
+    @Binding
+    var stringIn: String
+    var valid: Color
+    
+    var body: some View {
+        HeadingView(name: name, image: iconName)
+        TextField(existingText, text: $stringIn)
+            .foregroundColor(Color.black)
+            .font(.custom("HelveticaNeue", size: 14))
+            .padding()
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(stringIn.isEmpty ? Color(.systemGray3) : valid, lineWidth: 2)
+            )
+    }
+}
+
+//Large input text.
+struct LargeInput: View {
+    let name: String
+    let iconName: String
+    @Binding
+    var stringIn: String
+    var valid: Color
+    
+    var body: some View {
+        HeadingView(name: name, image: iconName)
+        TextEditor(text:  $stringIn)
+            .foregroundColor(Color.black)
+            .font(.custom("HelveticaNeue", size: 14))
+            .padding()
+            .lineSpacing(5)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(stringIn.isEmpty ? Color(.systemGray3) : valid, lineWidth: 2)
+            )
+            .frame(height: 100)
+        
+    }
+}
 
 
 struct StandardBtn: ViewModifier {
@@ -42,6 +82,7 @@ struct dynamicBtn: ViewModifier {
             .padding()
     }
 }
+
 
 struct adjustBtn: ViewModifier {
     var color: Color

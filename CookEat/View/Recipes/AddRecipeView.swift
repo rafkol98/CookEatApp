@@ -106,7 +106,7 @@ struct AddRecipeView: View {
                     })
                 }
                 
-                SmallInput(name: "RecipeName", iconName: "textformat", stringIn: $name, valid: validName)
+                SmallInput(name: "RecipeName", existingText: "", iconName: "textformat", stringIn: $name, valid: validName)
                 LargeInput(name: "Description",  iconName: "bubble.right", stringIn: $description, valid: validBox(varIn: description))
                 ListView(newIngredient: $newIngredient, ingredients: $ingredients, newInstruction: $newInstruction, instructions: $instructions)
                 
@@ -135,53 +135,6 @@ struct AddRecipeView: View {
     
     
 }
-
-
-//Small input text.
-struct SmallInput: View {
-    let name: String
-    let iconName: String
-    @Binding
-    var stringIn: String
-    var valid: Color
-    
-    var body: some View {
-        HeadingView(name: name, image: iconName)
-        TextField("", text: $stringIn)
-            .foregroundColor(Color.black)
-            .font(.custom("HelveticaNeue", size: 14))
-            .padding()
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(stringIn.isEmpty ? Color(.systemGray3) : valid, lineWidth: 2)
-            )
-    }
-}
-
-//Large input text.
-struct LargeInput: View {
-    let name: String
-    let iconName: String
-    @Binding
-    var stringIn: String
-    var valid: Color
-    
-    var body: some View {
-        HeadingView(name: name, image: iconName)
-        TextEditor(text:  $stringIn)
-            .foregroundColor(Color.black)
-            .font(.custom("HelveticaNeue", size: 14))
-            .padding()
-            .lineSpacing(5)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(stringIn.isEmpty ? Color(.systemGray3) : valid, lineWidth: 2)
-            )
-            .frame(height: 100)
-        
-    }
-}
-
 
 // Ingredients and Instructions list.
 struct ListView: View {

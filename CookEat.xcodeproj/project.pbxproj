@@ -27,6 +27,7 @@
 		CB4DAB222602A7D0009E44E8 /* RecipeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4DAB212602A7D0009E44E8 /* RecipeDetailsView.swift */; };
 		CB4DAB252602AD55009E44E8 /* RecipeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4DAB242602AD55009E44E8 /* RecipeTitleView.swift */; };
 		CB506E0A25FA293C00A28D92 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB506E0925FA293C00A28D92 /* ImagePicker.swift */; };
+		CB6061512629C5E500F4D70B /* EditRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6061502629C5E500F4D70B /* EditRecipeView.swift */; };
 		CB6C3DBD25EC253C00149528 /* CookEatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C3DBC25EC253C00149528 /* CookEatApp.swift */; };
 		CB6C3DBF25EC253C00149528 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C3DBE25EC253C00149528 /* ContentView.swift */; };
 		CB6C3DC125EC253E00149528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB6C3DC025EC253E00149528 /* Assets.xcassets */; };
@@ -78,6 +79,7 @@
 		CB4DAB212602A7D0009E44E8 /* RecipeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsView.swift; sourceTree = "<group>"; };
 		CB4DAB242602AD55009E44E8 /* RecipeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTitleView.swift; sourceTree = "<group>"; };
 		CB506E0925FA293C00A28D92 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		CB6061502629C5E500F4D70B /* EditRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecipeView.swift; sourceTree = "<group>"; };
 		CB6C3DB925EC253C00149528 /* CookEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6C3DBC25EC253C00149528 /* CookEatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookEatApp.swift; sourceTree = "<group>"; };
 		CB6C3DBE25EC253C00149528 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				CB101302260AA6AD00C32A21 /* AddRecipeView.swift */,
 				CBEB887F2604FCED00F8B497 /* DropdownView.swift */,
 				CB1B9BA8261E55D200DCF4A7 /* RecipeDescriptionView.swift */,
+				CB6061502629C5E500F4D70B /* EditRecipeView.swift */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				CBFB076B261BC21900546E38 /* ContributeView.swift in Sources */,
 				CB07E79B26245D5100556132 /* ContributionDetailedView.swift in Sources */,
 				CB2250B52620FEB9002196D2 /* Contribution.swift in Sources */,
+				CB6061512629C5E500F4D70B /* EditRecipeView.swift in Sources */,
 				CBADCDF32624835B0028C694 /* AcceptRejectViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

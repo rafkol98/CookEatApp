@@ -88,7 +88,7 @@ struct RecipeDetailsView: View {
                             })
                             
                             NavigationLink(
-                                destination: LazyView(ContributeView(recipe: recipe)),  isActive: $isLinkActive,
+                                destination: LazyView(ContributeView(recipe: recipe, editFlag: false)),  isActive: $isLinkActive,
                                 label: {
                                     Button(action: {
                                         self.isLinkActive = true

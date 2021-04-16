@@ -97,12 +97,7 @@ struct RegistrationView: View {
                     viewModel.registerUser(email: email, password: password, username: username, fullname: fullname, profileImage: image)
                 }, label: {
                     Text("Sign Up")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .frame(width: 360, height: 50)
-                        .background(Color.red)
-                        .clipShape(Capsule())
-                        .padding()
+                        .standardButton()
                 })
                 
                 

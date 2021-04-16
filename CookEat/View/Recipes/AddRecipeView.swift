@@ -121,12 +121,8 @@ struct AddRecipeView: View {
                     selectedUIImage = nil
                 }, label: {
                     Text("Add Recipe")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .frame(width: 360, height: 50)
-                        .background(buttonColor)
-                        .clipShape(Capsule())
-                        .padding()
+                        .dynamicButton(with: buttonColor, width: 360, height: 50)
+                    
                 }).disabled(disableButton)
                 
                 

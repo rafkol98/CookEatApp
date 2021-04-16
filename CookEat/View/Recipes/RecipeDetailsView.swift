@@ -75,7 +75,7 @@ struct RecipeDetailsView: View {
                         }
                         
                         RecipeDescriptionView(recipe: recipe)
- 
+                        
                         IngredientsInstructionsView(ingredients: .constant(recipe.ingredients), instructions: .constant(recipe.instructions))
                         Spacer()
                         HStack{
@@ -83,12 +83,7 @@ struct RecipeDetailsView: View {
                                 viewModel.forkRecipe()
                             }, label: {
                                 Text("Fork")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: .infinity, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: 50, maxHeight: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                    .background(Color.red)
-                                    .clipShape(Capsule())
-                                    .padding()
+                                    .adjustButton(with: Color.red)
                                 
                             })
                             
@@ -99,16 +94,11 @@ struct RecipeDetailsView: View {
                                         self.isLinkActive = true
                                     }, label: {
                                         Text("Contribute")
-                                            .font(.headline)
-                                            .foregroundColor(.white)
-                                            .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: .infinity, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: 50, maxHeight: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                            .background(Color.red)
-                                            .clipShape(Capsule())
-                                            .padding()
+                                            .adjustButton(with: Color.red)
                                         
                                     })
                                 })
-                         
+                            
                             
                         }
                         

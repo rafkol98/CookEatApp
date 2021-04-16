@@ -61,12 +61,7 @@ struct LoginView: View {
                         viewModel.login(withEmail: email, password: password)
                     }, label: {
                         Text("Sign In")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .frame(width: 300, height: 50)
-                            .background(Color.red)
-                            .clipShape(Capsule())
-                            .padding()
+                            .standardButton()
                     })
                     //                Push everything to the top.
                     Spacer()

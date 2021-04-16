@@ -39,28 +39,29 @@ struct Settings: View {
                 .padding()
                 
                 NavigationLink(
+                    destination: LazyView(EditProfileView()),
+                    label: {
+                        SettingsOption(icon: "square.and.pencil", text: "Edit Profile")
+                    })
+                
+                NavigationLink(
                     destination: LazyView(UserProfileView(user: viewModel.user!)),
                     label: {
-                        //                            Place user in a userCell.
                         SettingsOption(icon: "person.crop.circle", text: "View Profile")
                     })
-                    .foregroundColor(.black)
+
                 
                 NavigationLink(
                     destination: LazyView(ContributionsView(user: viewModel.user!)),
                     label: {
-                        //                            Place user in a userCell.
                         SettingsOption(icon: "square.stack.3d.up.fill", text: "Contributions")
                     })
-                    .foregroundColor(.black)
                 
                 NavigationLink(
                     destination: LazyView(RequestsReceivedView(user: viewModel.user!)),
                     label: {
-                        //                            Place user in a userCell.
                         SettingsOption(icon: "tray.and.arrow.down.fill", text: "Requests Received")
                     })
-                    .foregroundColor(.black)
                 
                 
                 
@@ -71,22 +72,11 @@ struct Settings: View {
                     viewModel.signOut()
                 }, label: {
                     Text("Sign out")
-                        .font(.system(size: 22, weight: .semibold))
-                        .padding()
-                        .frame(width: 300, height: 45, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        .standardButton()
                     
                 })
-                .background(Color(.systemRed))
-                .foregroundColor(.white)
-                .clipShape(Capsule())
-                .padding()    }
+            }.foregroundColor(.black)
         }
     }
     
-}
-
-struct Settings_Previews: PreviewProvider {
-    static var previews: some View {
-        Settings()
-    }
 }

@@ -102,26 +102,14 @@ struct ContributionDetailedView: View {
                         viewModel.accept()
                     }, label: {
                         Text("Accept")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: .infinity, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: 50, maxHeight: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            .background(Color.green)
-                            .clipShape(Capsule())
-                            .padding()
-                        
+                            .adjustButton(with: Color.green)
                     })
                     
                     Button(action: {
                         viewModel.reject()
                     }, label: {
                         Text("Decline")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: .infinity, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: 50, maxHeight: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            .background(Color.red)
-                            .clipShape(Capsule())
-                            .padding()
-                        
+                            .adjustButton(with: Color.red)
                     })
                 }
             }

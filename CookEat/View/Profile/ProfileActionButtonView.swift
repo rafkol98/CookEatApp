@@ -12,25 +12,25 @@ struct ProfileActionButtonView: View {
     @Binding var isFollowed: Bool
     
     var body: some View {
-        if viewModel.user.currentUser {
-            Button(action: {}, label: {
-                Text("Edit Profile")
-                .frame(width: 360, height: 40)
-                .background(Color.red)
-                .foregroundColor(.white)
-        })
-        .cornerRadius(20)
+        if !viewModel.user.currentUser {
+//            NavigationLink(
+//                destination: Text("Profile"),
+//                label: {
+//                    Button(action: {}, label: {
+//                        Text("Edit Profile")
+//                            .standardButton()
+//                    })
+//                    .cornerRadius(20)
+//                })
             
-        } else {
+//        } else {
             HStack {
                 Button(action: {
                     //If they are not following the user -> follow them. If they are following them -> unfollow them.
                     isFollowed ? viewModel.unfollow(): viewModel.follow()
                 }, label: {
                     Text(isFollowed ? "Following" : "Follow")
-                        .frame(width: 360, height: 40)
-                        .background(Color.red)
-                        .foregroundColor(.white)
+                        .standardButton()
                 })
             }
             .cornerRadius(20)

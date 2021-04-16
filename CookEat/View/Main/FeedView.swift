@@ -11,20 +11,23 @@ struct FeedView: View {
     @ObservedObject var viewModel = FeedViewModel()
     
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
-            ScrollView {
-                VStack {
-                    ForEach(viewModel.recipes) { recipe in
-                        NavigationLink(
-                            destination: LazyView(RecipeDetailsView(recipe: recipe)),
-                            label: {
-                                //Place user in a userCell.
-                                RecipeCell(recipe: recipe)
-                            }).foregroundColor(.black)
-                    }
-                }.padding()
+        VStack {
+            ZStack(alignment: .bottomTrailing) {
+                ScrollView {
+                    VStack {
+                        
+                        ForEach(viewModel.recipes) { recipe in
+                            NavigationLink(
+                                destination: LazyView(RecipeDetailsView(recipe: recipe)),
+                                label: {
+                                    //Place user in a userCell.
+                                    RecipeCell(recipe: recipe)
+                                }).foregroundColor(.black)
+                        }
+                    }.padding()
+                }
+                
             }
-            
         }
     }
 }

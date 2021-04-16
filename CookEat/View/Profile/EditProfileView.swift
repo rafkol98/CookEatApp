@@ -52,11 +52,12 @@ struct EditProfileView: View {
             
            Spacer()
             
-//            Button(action: {
-//
-//            }, label: {
-//               CustomButton(name: "Edit Profile")
-//            })
+            Button(action: {
+                
+            }, label: {
+               Text("Edit Profile")
+                .standardButton()
+            })
         }
         .padding()
     }

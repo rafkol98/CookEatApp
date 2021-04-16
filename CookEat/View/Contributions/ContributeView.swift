@@ -79,15 +79,9 @@ struct ContributeView: View {
                 viewModel.contributeRecipe(addedIngredients: addedIngredients, addedInstructions: addedInstructions, removedIngredients: removedIngredients, removedInstructions: removedInstructions, suggestedIngredients: ingredients, suggestedInstructions: instructions)
             }, label: {
                 Text("Contribute")
-                    .font(.system(size: 22, weight: .semibold))
-                    .padding()
-                    .frame(width: 300, height: 45, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                
+                    .standardButton()
             })
-            .background(Color(.systemRed))
-            .foregroundColor(.white)
-            .clipShape(Capsule())
-            .padding()
+          
         }.onAppear {
             // Prefer, Life cycle method
             self.ingredients = recipe.ingredients
@@ -128,13 +122,3 @@ struct ContributeView: View {
     
 }
 
-struct Heading: View {
-    @State var name: String
-    var body: some View {
-        HStack{
-            Text(name).font(.title2).bold()
-            Spacer()
-        }
-        .padding()
-    }
-}

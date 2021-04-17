@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ContributeOrEditView: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
     let recipe: Recipe
     let editFlag : Bool
     
@@ -87,8 +89,10 @@ struct ContributeOrEditView: View {
                 Button(action: {
                     if editFlag {
                         viewModel.edit(name: name, description: description, ingredients: ingredients, instructions: instructions)
+                        self.presentationMode.wrappedValue.dismiss()
                     } else {
                         viewModel.contributeRecipe(addedIngredients: addedIngredients, addedInstructions: addedInstructions, removedIngredients: removedIngredients, removedInstructions: removedInstructions, suggestedIngredients: ingredients, suggestedInstructions: instructions)
+                        self.presentationMode.wrappedValue.dismiss()
                     }
                     
                 }, label: {

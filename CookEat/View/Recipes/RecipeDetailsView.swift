@@ -104,19 +104,32 @@ struct RecipeDetailsView: View {
                                 })
                             }
                             
-                            NavigationLink(
-                                destination: LazyView(ContributeOrEditView(recipe: recipe, editFlag: flag)),  isActive: $isLinkActive,
-                                label: {
-                                    Button(action: {
-                                        self.isLinkActive = true
-                                    }, label: {
-                                        HStack {
-                                            Image(systemName: flag ? "pencil" : "rectangle.stack.badge.plus")
-                                            Text(flag ? "Edit" : "Contribute")
-                                        } .adjustButton(with: Color.red)
-                                        
-                                    })
-                                })
+                            Button(action: {
+                                self.isLinkActive.toggle()
+                            }, label: {
+                                HStack {
+                                    Image(systemName: flag ? "pencil" : "rectangle.stack.badge.plus")
+                                    Text(flag ? "Edit" : "Contribute")
+                                } .adjustButton(with: Color.red)
+                              
+                            })
+                            .sheet(isPresented: $isLinkActive, content: {
+                                LazyView(ContributeOrEditView(recipe: recipe, editFlag: flag))
+                            })
+                            
+                            //                            NavigationLink(
+                            //                                destination: LazyView(ContributeOrEditView(recipe: recipe, editFlag: flag)),  isActive: $isLinkActive,
+                            //                                label: {
+                            //                                    Button(action: {
+                            //                                        self.isLinkActive = true
+                            //                                    }, label: {
+                            //                                        HStack {
+                            //                                            Image(systemName: flag ? "pencil" : "rectangle.stack.badge.plus")
+                            //                                            Text(flag ? "Edit" : "Contribute")
+                            //                                        } .adjustButton(with: Color.red)
+                            //
+                            //                                    })
+                            //                                })
                         }
                         
                         

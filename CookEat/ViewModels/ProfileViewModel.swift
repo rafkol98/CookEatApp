@@ -49,7 +49,6 @@ class ProfileViewModel: ObservableObject {
         followingRef.document(self.user.id).delete { _ in
             followersRef.document(userUid).delete { _ in
                 self.isFollowed = false
-                
             }
         }
     }

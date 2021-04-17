@@ -26,7 +26,7 @@ struct ContributeOrEditView: View {
     @State private var addedInstructions = [String]()
     @State private var removedIngredients = [String]()
     @State private var removedInstructions = [String]()
-    //    @State private var flag = false
+    @State private var showingAlert = false
     
     
     init(recipe: Recipe, editFlag: Bool) {
@@ -52,10 +52,26 @@ struct ContributeOrEditView: View {
                 RecipeTitleView(username: .constant(recipe.username), recipeName: .constant(recipe.recipeName))
                 Spacer()
                 if editFlag {
-                    Image(systemName: "trash.fill")
-                        .font(.system(size:20))
-                        .frame(width:32, height:32)
-                        .foregroundColor(.red)
+                    Button(action: {
+                        showingAlert = true
+                    }, label: {
+                        Image(systemName: "trash.fill")
+                            .font(.system(size:20))
+                            .frame(width:32, height:32)
+                            .foregroundColor(.red)
+                    })
+                    //Ask the user if they want to delete this.
+                    .alert(isPresented: $showingAlert) {
+                        Alert(
+                            title: Text("Are you sure you want to delete this?"),
+                            message: Text("There is no undo"),
+                            primaryButton: .destructive(Text("Delete")) {
+                                print("Deleting...")
+                                viewModel.deleteRecipe()
+                            },
+                            secondaryButton: .cancel()
+                        )
+                    }
                 }
             }.padding()
             

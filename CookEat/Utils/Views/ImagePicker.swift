@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//Allows the user to choose an image
 struct ImagePicker: UIViewControllerRepresentable {
 //    UI kit image.
     @Binding var image: UIImage?

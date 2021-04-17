@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//CustomTextField that gets input and shows an image on the left.
 struct CustomTextField: View {
     @Binding var text: String
     let placeholder: Text

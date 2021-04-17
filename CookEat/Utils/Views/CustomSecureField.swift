@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//Used for entering passwords.
 struct CustomSecureField: View {
     @Binding var text: String
     let placeholder: Text

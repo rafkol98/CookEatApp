@@ -13,7 +13,8 @@ struct RecipeDetailsView: View {
     let heightBox = UIScreen.main.bounds.height / 1.3
     @State private var isExpanded = false
     @State private var isExpandedInstr = false
-    @State var isLinkActive = false
+    @State private var isLinkActive = false
+    @State private var forked = false
     
     
     
@@ -93,17 +94,23 @@ struct RecipeDetailsView: View {
                         Spacer()
                         
                         HStack{
+                            //if the view is not for a user's own recipes then show the fork button.
                             if !flag {
                                 Button(action: {
                                     viewModel.forkRecipe()
+                                    forked.toggle()
                                 }, label: {
                                     HStack {
                                         Image(systemName: "tuningfork")
                                         Text("Fork")
-                                    } .adjustButton(with: Color.red)
+                                    }.adjustButton(with: Color.red)
                                 })
+                                .alert(isPresented: $forked) {
+                                    Alert(title: Text("Forked"), message: Text("The recipe was forked successfully, you can edit it on Account -> View Profile -> Recipe -> Edit"), dismissButton: .default(Text("Awesome")))
+                                }
                             }
                             
+                            //If the recipe is of the user show the button as edit, otherwise as contribute.
                             Button(action: {
                                 self.isLinkActive.toggle()
                             }, label: {
@@ -111,25 +118,12 @@ struct RecipeDetailsView: View {
                                     Image(systemName: flag ? "pencil" : "rectangle.stack.badge.plus")
                                     Text(flag ? "Edit" : "Contribute")
                                 } .adjustButton(with: Color.red)
-                              
+                                
                             })
                             .sheet(isPresented: $isLinkActive, content: {
+                                //Open ContributeOrEditView, the editFlag variable determines if the view will be transformed for edit or contribute.
                                 LazyView(ContributeOrEditView(recipe: recipe, editFlag: flag))
                             })
-                            
-                            //                            NavigationLink(
-                            //                                destination: LazyView(ContributeOrEditView(recipe: recipe, editFlag: flag)),  isActive: $isLinkActive,
-                            //                                label: {
-                            //                                    Button(action: {
-                            //                                        self.isLinkActive = true
-                            //                                    }, label: {
-                            //                                        HStack {
-                            //                                            Image(systemName: flag ? "pencil" : "rectangle.stack.badge.plus")
-                            //                                            Text(flag ? "Edit" : "Contribute")
-                            //                                        } .adjustButton(with: Color.red)
-                            //
-                            //                                    })
-                            //                                })
                         }
                         
                         

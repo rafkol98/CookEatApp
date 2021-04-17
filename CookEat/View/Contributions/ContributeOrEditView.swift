@@ -70,6 +70,7 @@ struct ContributeOrEditView: View {
                             primaryButton: .destructive(Text("Delete")) {
                                 print("Deleting...")
                                 viewModel.deleteRecipe()
+                                self.presentationMode.wrappedValue.dismiss()
                             },
                             secondaryButton: .cancel()
                         )

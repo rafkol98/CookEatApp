@@ -22,7 +22,7 @@ struct ContributionsView: View {
     var body: some View {
         VStack{
             TitleView(text: "Contributions Sent", iconName: "square.stack.3d.up.fill")
-            
+            if viewModel.contributedRecipes.count != 0 {
             ForEach(viewModel.contributedRecipes) { contribution in
                 VStack {
                     HStack {
@@ -55,6 +55,20 @@ struct ContributionsView: View {
                     
                 }
                 Divider()
+            }
+            
+            } else  {
+                VStack {
+            
+                    Image("req_received")
+                        .resizable()
+                        .scaledToFill()
+                        .clipped()
+                        .frame(width: 180, height: 180)
+                    
+                    Text("No requests received...").font(.system(size: 22, weight: .medium)).italic()
+//                            Spacer()
+                }
             }
             Spacer()
         }

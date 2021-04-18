@@ -58,15 +58,22 @@ struct RequestsReceivedView: View {
                         }
                         Divider()
                     }
-                    
-                } else {
-                    Image("burger")
-                        .resizable()
-                        .scaledToFill()
-                        .clipped()
-                        .frame(width: 100, height: 100)
+                    Spacer()
                 }
-                Spacer()
+                // If the user made no contributions, display appropriate image.
+                else {
+                        VStack {
+                           
+                            Image("contribution_sent")
+                                .resizable()
+                                .scaledToFill()
+                                .clipped()
+                                .frame(width: 180, height: 180)
+                            
+                            Text("You contribute to any recipes yet...").font(.system(size: 22, weight: .medium)).italic()
+//                            Spacer()
+                        }
+                }
             }
         }
     }

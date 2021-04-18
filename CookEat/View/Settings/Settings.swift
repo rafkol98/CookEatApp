@@ -15,8 +15,11 @@ struct Settings: View {
     @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
-        //        do {
+        
         ScrollView{
+            if viewModel.user == nil {
+                SettingErrorView()
+            } else {
                 VStack{
                     HStack{
                         KFImage(URL(string: viewModel.user!.profileImageUrl))
@@ -27,6 +30,7 @@ struct Settings: View {
                             .cornerRadius(120/2)
                             .shadow(radius: 10)
                             .padding()
+                        //                        print("meta img")
                         
                         VStack {
                             Text(viewModel.user!.fullname)
@@ -75,8 +79,8 @@ struct Settings: View {
                     })
                 }.foregroundColor(.black)
                 
+            }
         }
-        
     }
     
 }

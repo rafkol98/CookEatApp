@@ -25,10 +25,18 @@ struct RegistrationView: View {
         image = Image(uiImage: selectedImage)
     }
     
+    //Disable button
+    var disableButton: Bool {
+        return !isValidEmail(email: email) || invalid(varIn: password, minBoundary: 6, maxBoundary: 40) || invalid(varIn: username, minBoundary: 5, maxBoundary: 20) || invalid(varIn: fullname, minBoundary: 5, maxBoundary: 50) || selectedUIImage==nil
+    }
+    
+    //Add red color to the submit button when all the inputs are valid.
+    var buttonColor: Color {
+        return disableButton ? .accentColor : .red
+    }
+    
     var body: some View {
-        
-        ZStack{
-            
+        ScrollView {
             VStack {
                 Button(action: { addImage.toggle() }, label: {
                     ZStack {
@@ -56,6 +64,10 @@ struct RegistrationView: View {
                 }).sheet(isPresented: $addImage, onDismiss: loadImage, content: {
                     ImagePicker(image: $selectedUIImage)
                 })
+                
+                if (selectedUIImage==nil) {
+                    InvalidView(stringIn: "Please upload a picture for your account")
+                }
                 
                 // Email, fullname, username and password fields.
                 VStack {
@@ -95,15 +107,13 @@ struct RegistrationView: View {
                     viewModel.registerUser(email: email, password: password, username: username, fullname: fullname, profileImage: image)
                 }, label: {
                     Text("Sign Up")
-                        .standardButton()
+                        .adjustButton(with: buttonColor)
                 })
+                .disabled(disableButton)
                 
-                
-                Spacer()
                 
             }
             .padding()
-            
         }
     }
 }

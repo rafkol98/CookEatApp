@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Shows the description of a recipe in a formatted textEditor.
 struct RecipeDescriptionView: View {
     
     let recipe: Recipe

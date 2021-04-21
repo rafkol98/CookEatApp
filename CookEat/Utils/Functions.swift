@@ -23,3 +23,7 @@ func validBorder(varIn: String, boundary: Int) -> Color {
 func invalidArray(varIn: Array<String>) -> Bool {
     return varIn.isEmpty
 }
+
+func equalString(stringOne: String, stringTwo: String) -> Bool {
+    return stringOne == stringTwo
+}

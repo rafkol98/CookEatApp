@@ -39,7 +39,7 @@ struct ContributeListView: View {
         }
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(ingredients.isEmpty ? Color(.systemGray3) : Color.green, lineWidth: 2)
+                .stroke(addedIngredients.isEmpty ? Color(.systemGray3) : Color.green, lineWidth: 2)
         )
         .frame(height:200)
         
@@ -62,7 +62,7 @@ struct ContributeListView: View {
             
         }.overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(instructions.isEmpty ? Color(.systemGray3) : Color.green, lineWidth: 2)
+                .stroke(addedInstructions.isEmpty ? Color(.systemGray3) : Color.green, lineWidth: 2)
         )
         .frame(height:200)
     }
@@ -105,3 +105,4 @@ struct ContributeListView: View {
         ingredients.move(fromOffsets: source, toOffset: destination)
     }
 }
+

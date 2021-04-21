@@ -71,7 +71,7 @@ struct RequestsReceivedView: View {
                                 .clipped()
                                 .frame(width: 180, height: 180)
                             
-                            Text("You contribute to any recipes yet...").font(.system(size: 22, weight: .medium)).italic()
+                            Text("You didn't contribute to any recipes yet...").font(.system(size: 16, weight: .medium)).italic()
                         }
                 }
             }

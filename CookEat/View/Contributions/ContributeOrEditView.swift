@@ -37,6 +37,21 @@ struct ContributeOrEditView: View {
         self.viewModel = RecipeViewModel(recipe: recipe)
     }
     
+    //Disable button
+    var disableButton: Bool {
+        if editFlag {
+            return addedIngredients.isEmpty && addedInstructions.isEmpty && equalString(stringOne: recipe.recipeName, stringTwo: name) && equalString(stringOne: recipe.description, stringTwo: description)
+        } else {
+            return addedIngredients.isEmpty && addedInstructions.isEmpty
+        }
+        
+    }
+    
+    //Add red color to the submit button when all the inputs are valid.
+    var buttonColor: Color {
+        return disableButton ? .accentColor : .red
+    }
+    
     var body: some View {
         ScrollView {
             
@@ -81,7 +96,7 @@ struct ContributeOrEditView: View {
             VStack {
                 
                 if editFlag {
-                    EditNameDescriptionView(name: $name, description: $description).padding(.horizontal)
+                    EditNameDescriptionView(recipe: recipe, name: $name, description: $description).padding(.horizontal)
                     
                 }
                 
@@ -100,8 +115,9 @@ struct ContributeOrEditView: View {
                     
                 }, label: {
                     Text(editFlag ? "Update" : "Contribute")
-                        .standardButton()
+                        .adjustButton(with: buttonColor)
                 })
+                .disabled(disableButton)
             }
         }.onAppear {
             self.name = recipe.recipeName

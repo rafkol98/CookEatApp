@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct EditNameDescriptionView: View {
+    let recipe: Recipe
     @Binding var name: String
     @Binding var description: String
     @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         VStack {
-            SmallInput(name: "New Recipe Name", existingText: viewModel.user?.username ?? "Error", iconName: "textformat", stringIn: $name, valid: Color.green)
+            SmallInput(name: "New Recipe Name", existingText: recipe.recipeName, iconName: "textformat", stringIn: $name, valid: !equalString(stringOne: recipe.recipeName, stringTwo: name))
             
-            LargeInput(name: "New Description",  iconName: "bubble.right", stringIn: $description, valid: Color.green)
+            LargeInput(name: "New Description",  iconName: "bubble.right", stringIn: $description, valid: !equalString(stringOne: recipe.description, stringTwo: description))
         }
     }
 }

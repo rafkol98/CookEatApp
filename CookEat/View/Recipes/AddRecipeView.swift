@@ -83,13 +83,13 @@ struct AddRecipeView: View {
                     InvalidView(stringIn: "Please upload a picture for your recipe")
                 }
                 
-                SmallInput(name: "RecipeName", existingText: "", iconName: "textformat", stringIn: $name, valid: validBorder(varIn: name, boundary: 50))
+                SmallInput(name: "Recipe Name", existingText: "", iconName: "textformat", stringIn: $name, valid: !invalid(varIn: name, boundary: 50))
                 //Show message if invalid.
                 if (invalid(varIn: name, boundary:50)) {
                     InvalidView(stringIn: "Ensure that recipe name is not empty and it's under 50 characters")
                 }
                 
-                LargeInput(name: "Description",  iconName: "bubble.right", stringIn: $description, valid: validBorder(varIn: description, boundary: 1000))
+                LargeInput(name: "Description",  iconName: "bubble.right", stringIn: $description, valid: !invalid(varIn: description, boundary: 1000))
                 //Show message if invalid.
                 if (invalid(varIn: description, boundary:1000)) {
                     InvalidView(stringIn: "Ensure the description is not empty and it's under 1000 characters")

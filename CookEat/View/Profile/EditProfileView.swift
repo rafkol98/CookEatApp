@@ -13,7 +13,7 @@ struct EditProfileView: View {
     
     var body: some View {
         VStack {
-            SmallInput(name: "Username", existingText: user.username, iconName: "textformat", stringIn: $name, valid: Color.green)
+            SmallInput(name: "Username", existingText: user.username, iconName: "textformat", stringIn: $name, valid: !invalid(varIn: user.username, boundary: 50))
             
            Spacer()
             

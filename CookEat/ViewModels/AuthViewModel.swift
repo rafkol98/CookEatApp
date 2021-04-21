@@ -42,6 +42,8 @@ class AuthViewModel: ObservableObject {
     //    Register new user.
     func registerUser(email: String, password: String, username: String, fullname: String, profileImage: UIImage) {
 
+        if (isValidEmail(email: email) && !invalid(varIn: password, minBoundary: 6, maxBoundary: 40) && !invalid(varIn: username, minBoundary: 5, maxBoundary: 20) && !invalid(varIn: fullname, minBoundary: 5, maxBoundary: 50)) {
+        
         guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
         let filename = NSUUID().uuidString
         let storageRef = Storage.storage().reference().child(filename)
@@ -73,7 +75,9 @@ class AuthViewModel: ObservableObject {
                     }
                 }
             }
-
+        }
+        } else {
+            print("invalid")
         }
     }
 

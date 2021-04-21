@@ -35,6 +35,19 @@ struct adjustBtn: ViewModifier {
     }
 }
 
+struct inputMod: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .background(Color(.init(white: 0.5, alpha: 0.05)))
+            .cornerRadius(10)
+            .padding(.horizontal)
+        
+    }
+}
+
+
 
 extension View {
     func standardButton() -> some View {
@@ -43,5 +56,9 @@ extension View {
     
     func adjustButton(with color: Color) -> some View {
         self.modifier(adjustBtn(color: color))
+    }
+    
+    func inputModifier() -> some View {
+        self.modifier(inputMod())
     }
 }

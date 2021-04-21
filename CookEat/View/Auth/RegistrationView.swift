@@ -40,12 +40,10 @@ struct RegistrationView: View {
                                 .cornerRadius(75)
                                 .padding()
                             
-                            
-                            
                         } else {
                             Image("add_photo")
                                 .resizable()
-                                //                    Rendering mode allows us to add a colour to the image.
+                                // Rendering mode template allows us to add a colour to the image.
                                 .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
                                 .scaledToFill()
                                 .frame(width: 150, height: 150)
@@ -59,40 +57,40 @@ struct RegistrationView: View {
                     ImagePicker(image: $selectedUIImage)
                 })
                 
-                
-                
-                
-                //                Email and password fields.
-                VStack(spacing:16) {
+                // Email, fullname, username and password fields.
+                VStack {
                     CustomTextField(text: $email, placeholder: Text("Email"), imageName: "envelope")
-                        .padding()
-                        .background(Color(.init(white: 0.5, alpha: 0.05)))
-                        .cornerRadius(10)
-                        .padding(.horizontal)
+                        .inputModifier()
+                    if (!isValidEmail(email: email)) {
+                        InvalidView(stringIn: "Ensure that the entered email is valid")
+                            .padding()
+                    }
                     
-                    CustomTextField(text: $fullname, placeholder: Text("Full Name"), imageName: "person")
-                        .padding()
-                        .background(Color(.init(white: 0.5, alpha: 0.05)))
-                        .cornerRadius(10)
-                        .padding(.horizontal)
+                    CustomTextField(text: $fullname, placeholder: Text("Full Name"), imageName: "textformat")
+                        .inputModifier()
+                    if (invalid(varIn: fullname, minBoundary: 5, maxBoundary:50)) {
+                        InvalidView(stringIn: "Ensure that full name is between 5 to 50 characters")
+                            .padding()
+                    }
                     
-                    CustomTextField(text: $username, placeholder: Text("Username"), imageName: "envelope")
-                        .padding()
-                        .background(Color(.init(white: 0.5, alpha: 0.05)))
-                        .cornerRadius(10)
-                        .padding(.horizontal)
+                    CustomTextField(text: $username, placeholder: Text("Username"), imageName: "person")
+                        .inputModifier()
+                    if (invalid(varIn: username, minBoundary:5, maxBoundary:20)) {
+                        InvalidView(stringIn: "Ensure that username is between 5 to 20 characters")
+                            .padding()
+                    }
                     
                     CustomSecureField(text: $password, placeholder: Text("Password..."))
-                        .padding()
-                        .background(Color(.init(white: 0.5, alpha: 0.05)))
-                        .cornerRadius(10)
-                        .padding(.horizontal)
+                        .inputModifier()
+                    if (invalid(varIn: password, minBoundary:6, maxBoundary: 40)) {
+                        InvalidView(stringIn: "Ensure that password is between 6 to 40 characters")
+                            .padding()
+                    }
                     
                 }
                 
-                //                Sign up button
+                // Sign up button
                 Button(action: {
-                    //                    print("hereee")
                     guard let image = selectedUIImage else { return }
                     viewModel.registerUser(email: email, password: password, username: username, fullname: fullname, profileImage: image)
                 }, label: {

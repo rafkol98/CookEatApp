@@ -26,44 +26,21 @@ struct LoginView: View {
                     //                Email and password fields.
                     VStack(spacing:16) {
                         CustomTextField(text: $email, placeholder: Text("Email..."), imageName: "envelope")
-                            .padding()
-                            .background(Color(.init(white: 0.5, alpha: 0.05)))
-                            .cornerRadius(10)
-                            .padding(.horizontal)
+                            .inputModifier()
                         
                         CustomSecureField(text: $password, placeholder: Text("Password..."))
-                            .padding()
-                            .background(Color(.init(white: 0.5, alpha: 0.05)))
-                            .cornerRadius(10)
-                            .padding(.horizontal)
+                            .inputModifier()
                         
                     }
                     
-                    //                    Forgot password.
-                    
-                    HStack {
-                        Spacer()
-                        
-                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                            Text("Forgot Password?")
-                                .font(.system(size: 16, weight: .semibold))
-                                .bold()
-                                .foregroundColor(.red)
-                                .padding(.horizontal)
-                                .padding(.top)
-                        })
-                    }
-                    
-                    
-                    
-                    //                Sign in button
+                    // Sign in button
                     Button(action: {
                         viewModel.login(withEmail: email, password: password)
                     }, label: {
                         Text("Sign In")
                             .standardButton()
                     })
-                    //                Push everything to the top.
+                    // Push everything to the top.
                     Spacer()
                     
                     NavigationLink(

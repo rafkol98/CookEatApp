@@ -32,7 +32,7 @@ struct AddRecipeView: View {
     
     //Disable button
     var disableButton: Bool {
-        return invalid(varIn: name, boundary: 50) ||  invalid(varIn: description, boundary: 1000) ||  invalidArray(varIn: ingredients) ||  invalidArray(varIn: instructions) || selectedUIImage==nil
+        return invalid(varIn: name, minBoundary: 5, maxBoundary: 50) ||  invalid(varIn: description, minBoundary: 10, maxBoundary: 1000) ||  invalidArray(varIn: ingredients) ||  invalidArray(varIn: instructions) || selectedUIImage==nil
     }
     
     //Add red color to the submit button when all the inputs are valid.
@@ -83,16 +83,16 @@ struct AddRecipeView: View {
                     InvalidView(stringIn: "Please upload a picture for your recipe")
                 }
                 
-                SmallInput(name: "Recipe Name", existingText: "", iconName: "textformat", stringIn: $name, valid: !invalid(varIn: name, boundary: 50))
+                SmallInput(name: "Recipe Name", existingText: "", iconName: "textformat", stringIn: $name, valid: !invalid(varIn: name, minBoundary: 5, maxBoundary: 50))
                 //Show message if invalid.
-                if (invalid(varIn: name, boundary:50)) {
-                    InvalidView(stringIn: "Ensure that recipe name is not empty and it's under 50 characters")
+                if (invalid(varIn: name, minBoundary: 5, maxBoundary:50)) {
+                    InvalidView(stringIn: "Ensure that recipe name is between 5 to 50 characters")
                 }
                 
-                LargeInput(name: "Description",  iconName: "bubble.right", stringIn: $description, valid: !invalid(varIn: description, boundary: 1000))
+                LargeInput(name: "Description",  iconName: "bubble.right", stringIn: $description, valid: !invalid(varIn: description, minBoundary: 10, maxBoundary: 1000))
                 //Show message if invalid.
-                if (invalid(varIn: description, boundary:1000)) {
-                    InvalidView(stringIn: "Ensure the description is not empty and it's under 1000 characters")
+                if (invalid(varIn: description, minBoundary: 10, maxBoundary: 1000)) {
+                    InvalidView(stringIn: "Ensure the description is between 10 to 1000 characters")
                 }
                 
                 ListView2(newIngredient: $newIngredient, ingredients: $ingredients, newInstruction: $newInstruction, instructions: $instructions)

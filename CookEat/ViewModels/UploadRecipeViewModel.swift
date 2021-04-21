@@ -14,7 +14,7 @@ class UploadRecipeViewModel: ObservableObject {
         guard let user = AuthViewModel.shared.user else {return}
         
         //Check if all the values are valid
-        if (!invalid(varIn: name, boundary: 50) && !invalid(varIn: description, boundary: 1000) && !invalidArray(varIn: ingredients) && !invalidArray(varIn: instructions)) {
+        if (!invalid(varIn: name, minBoundary: 5, maxBoundary: 50) && !invalid(varIn: description, minBoundary: 10, maxBoundary: 1000) && !invalidArray(varIn: ingredients) && !invalidArray(varIn: instructions)) {
             
             //upload image.
             guard let imageData = image.jpegData(compressionQuality: 0.3) else { return }

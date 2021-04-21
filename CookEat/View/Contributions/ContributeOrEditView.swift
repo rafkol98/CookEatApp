@@ -42,7 +42,7 @@ struct ContributeOrEditView: View {
         if editFlag {
             return addedIngredients.isEmpty && addedInstructions.isEmpty && equalString(stringOne: recipe.recipeName, stringTwo: name) && equalString(stringOne: recipe.description, stringTwo: description)
         } else {
-            return addedIngredients.isEmpty && addedInstructions.isEmpty
+            return addedIngredients.isEmpty && removedIngredients.isEmpty && addedInstructions.isEmpty && removedInstructions.isEmpty
         }
         
     }

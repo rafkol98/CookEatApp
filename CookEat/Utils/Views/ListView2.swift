@@ -37,6 +37,9 @@ struct ListView2: View {
                 .stroke(ingredients.isEmpty ? Color(.systemGray3) : Color.green, lineWidth: 2)
         )
         .frame(height:200)
+        if (invalidArray(varIn: ingredients)) {
+            InvalidView(stringIn: "Ensure that you added at least one ingredient.")
+        }
         
         HeadingView(name: "Instruction", image: "list.number")
         VStack{
@@ -60,6 +63,9 @@ struct ListView2: View {
                 .stroke(instructions.isEmpty ? Color(.systemGray3) : Color.green, lineWidth: 2)
         )
         .frame(height:200)
+        if (invalidArray(varIn: instructions)) {
+            InvalidView(stringIn: "Ensure that you added at least one instruction.")
+        }
     }
     
     //Add ingredient/instruction.

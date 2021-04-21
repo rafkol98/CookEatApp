@@ -85,7 +85,7 @@ struct ContributeOrEditView: View {
                     
                 }
                 
-                ListView(newIngredient: $newIngredient, ingredients: $ingredients, newInstruction: $newInstruction, instructions: $instructions, addedIngredients: $addedIngredients, addedInstructions: $addedInstructions, removedIngredients: $removedIngredients, removedInstructions: $removedInstructions).padding(.horizontal)
+                ContributeListView(newIngredient: $newIngredient, ingredients: $ingredients, newInstruction: $newInstruction, instructions: $instructions, addedIngredients: $addedIngredients, addedInstructions: $addedInstructions, removedIngredients: $removedIngredients, removedInstructions: $removedInstructions).padding(.horizontal)
                 
                 Button(action: {
                     if editFlag {

@@ -54,7 +54,7 @@
 		CBA8C5C026239A7500313596 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA8C5BF26239A7500313596 /* Extensions.swift */; };
 		CBADCDF32624835B0028C694 /* AcceptRejectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADCDF22624835B0028C694 /* AcceptRejectViewModel.swift */; };
 		CBAE68202628F0EF008C4A2D /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAE681F2628F0EF008C4A2D /* EditProfileView.swift */; };
-		CBCB32712629DE9F00136B4F /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB32702629DE9F00136B4F /* ListView.swift */; };
+		CBCB32712629DE9F00136B4F /* ContributeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB32702629DE9F00136B4F /* ContributeListView.swift */; };
 		CBCC83E7262C394A0035B686 /* SettingErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC83E6262C394A0035B686 /* SettingErrorView.swift */; };
 		CBCF8C90260FF3DE00416611 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCF8C8F260FF3DE00416611 /* RecipeViewModel.swift */; };
 		CBD308DB2629D70A00D3DD19 /* EditNameDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD308DA2629D70A00D3DD19 /* EditNameDescriptionView.swift */; };
@@ -115,7 +115,7 @@
 		CBA8C5BF26239A7500313596 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CBADCDF22624835B0028C694 /* AcceptRejectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptRejectViewModel.swift; sourceTree = "<group>"; };
 		CBAE681F2628F0EF008C4A2D /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
-		CBCB32702629DE9F00136B4F /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		CBCB32702629DE9F00136B4F /* ContributeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributeListView.swift; sourceTree = "<group>"; };
 		CBCC83E6262C394A0035B686 /* SettingErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingErrorView.swift; sourceTree = "<group>"; };
 		CBCF8C8F260FF3DE00416611 /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		CBD308DA2629D70A00D3DD19 /* EditNameDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameDescriptionView.swift; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 				CBA8C5BF26239A7500313596 /* Extensions.swift */,
 				CB07E79E2624639100556132 /* TitleView.swift */,
 				CB2250B12620F447002196D2 /* HeadingView.swift */,
-				CBCB32702629DE9F00136B4F /* ListView.swift */,
+				CBCB32702629DE9F00136B4F /* ContributeListView.swift */,
 				CB5D2F11262A475A00EFBEF7 /* ListView2.swift */,
 				CB5D2F09262A289000EFBEF7 /* BtnView.swift */,
 				CB573C1426302F8100432C2F /* InvalidView.swift */,
@@ -423,7 +423,7 @@
 				CB6C3DD225EC2BA200149528 /* FeedView.swift in Sources */,
 				CB7EDDD52608DDC800A1E3A8 /* ProfileViewModel.swift in Sources */,
 				CBCF8C90260FF3DE00416611 /* RecipeViewModel.swift in Sources */,
-				CBCB32712629DE9F00136B4F /* ListView.swift in Sources */,
+				CBCB32712629DE9F00136B4F /* ContributeListView.swift in Sources */,
 				CB101303260AA6AD00C32A21 /* AddRecipeView.swift in Sources */,
 				CB453D0925FD6C4B001C6DB4 /* Constants.swift in Sources */,
 				CBEAAC5A25F80E050064A32B /* LoginView.swift in Sources */,

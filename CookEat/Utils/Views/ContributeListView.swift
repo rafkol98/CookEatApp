@@ -8,7 +8,7 @@
 import SwiftUI
 
 // Ingredients and Instructions list.
-struct ListView: View {
+struct ContributeListView: View {
     @Binding var newIngredient: String
     @Binding var ingredients: Array<String>
     @Binding var newInstruction: String

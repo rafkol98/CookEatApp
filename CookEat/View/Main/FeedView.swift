@@ -26,7 +26,10 @@ struct FeedView: View {
                         }
                     }.padding()
                 }
-                
+                HStack{
+                    Spacer()
+                    AddRecipeButton()
+                }
             }
         }
     }

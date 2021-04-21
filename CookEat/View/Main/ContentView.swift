@@ -27,12 +27,6 @@ struct ContentView: View {
                                 Text("Search")
                             }
                         
-                        AddRecipeView()
-                            .tabItem {
-                                Image(systemName: "plus")
-                                Text("Add")
-                            }
-                        
                         Settings()
                             .tabItem {
                                 Image(systemName: "person.crop.circle.fill")

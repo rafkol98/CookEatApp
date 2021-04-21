@@ -9,6 +9,9 @@ import SwiftUI
 import Kingfisher
 
 struct AddRecipeView: View {
+    
+    @Binding var showAdd : Bool
+    
     @State var name: String = ""
     @State var description: String = ""
     
@@ -29,29 +32,12 @@ struct AddRecipeView: View {
     
     //Disable button
     var disableButton: Bool {
-        return invalid(varIn: name) ||  invalid(varIn: description) ||  invalidArray(varIn: ingredients) ||  invalidArray(varIn: instructions) || selectedUIImage==nil
+        return invalid(varIn: name, boundary: 50) ||  invalid(varIn: description, boundary: 1000) ||  invalidArray(varIn: ingredients) ||  invalidArray(varIn: instructions) || selectedUIImage==nil
     }
     
-    var validName: Color {
-        //Check if input is valid.
-        return (name.count <= 50) ? .green : .accentColor
-    }
     
-    func validBox(varIn: String) -> Color {
-        //Check if input is valid.
-        return (varIn.count <= 1000) ? .green : .accentColor
-    }
     
-    //Invalid input
-    func invalid(varIn: String) -> Bool {
-        return varIn.isEmpty || varIn.count > 1000
-    }
-    
-    func invalidArray(varIn: Array<String>) -> Bool {
-        return varIn.isEmpty
-    }
-    
-    //Add red color to the button when all the inputs are valid.
+    //Add red color to the submit button when all the inputs are valid.
     var buttonColor: Color {
         return disableButton ? .accentColor : .red
     }
@@ -65,18 +51,8 @@ struct AddRecipeView: View {
     var body: some View {
         ScrollView{
             VStack{
-                
-                if added {
-                    Text("The recipe was added!")
-                        .font(.system(size:20))
-                        .foregroundColor(Color.black)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 18)
-                                .stroke(Color.green, lineWidth: 2)
-                        )
-                }
-                
+                TitleView(text: "Add Recipe", iconName: "plus.app")
+
                 HStack(alignment: .top ){
                     Button(action: { addImage.toggle() }, label: {
                         ZStack {
@@ -106,24 +82,37 @@ struct AddRecipeView: View {
                     })
                 }
                 
-                SmallInput(name: "RecipeName", existingText: "", iconName: "textformat", stringIn: $name, valid: validName)
-                LargeInput(name: "Description",  iconName: "bubble.right", stringIn: $description, valid: validBox(varIn: description))
+                SmallInput(name: "RecipeName", existingText: "", iconName: "textformat", stringIn: $name, valid: validBorder(varIn: name, boundary: 50))
+                if (invalid(varIn: name, boundary:50)) {
+                    InvalidView(stringIn: "Ensure that recipe name is not empty and it's under 50 characters")
+                }
+                
+                LargeInput(name: "Description",  iconName: "bubble.right", stringIn: $description, valid: validBorder(varIn: description, boundary: 1000))
+                if (invalid(varIn: description, boundary:1000)) {
+                    InvalidView(stringIn: "Ensure the description is not empty and it's under 1000 characters")
+                }
+                
                 ListView2(newIngredient: $newIngredient, ingredients: $ingredients, newInstruction: $newInstruction, instructions: $instructions)
                 
                 Button(action: {
                     guard let image = selectedUIImage else { return }
                     viewModel.upload(name: name, description: description, ingredients: ingredients, instructions: instructions, image: image)
                     added.toggle()
-                    name = ""
-                    description = ""
-                    ingredients = []
-                    instructions = []
-                    selectedUIImage = nil
+                    
                 }, label: {
                     Text("Add Recipe")
                         .adjustButton(with: buttonColor)
                     
-                }).disabled(disableButton)
+                })
+                .alert(isPresented: $added) {
+                    Alert(title: Text("Recipe Added"),
+                        message: Text("Your recipe was added succesfully!"),
+                        dismissButton: Alert.Button.default(
+                            Text("Awesome"), action: { showAdd.toggle() }
+                        )
+                    )
+                }
+                .disabled(disableButton)
                 
                 
             }.padding()

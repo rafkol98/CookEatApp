@@ -55,7 +55,7 @@ struct ContributeOrEditView: View {
                 Spacer()
                 if editFlag {
                     Button(action: {
-                        showingAlert = true
+                        showingAlert.toggle()
                     }, label: {
                         Image(systemName: "trash.fill")
                             .font(.system(size:20))
@@ -66,7 +66,7 @@ struct ContributeOrEditView: View {
                     .alert(isPresented: $showingAlert) {
                         Alert(
                             title: Text("Are you sure you want to delete this?"),
-                            message: Text("There is no undo"),
+                            message: Text("This recipe will be permanently deleted."),
                             primaryButton: .destructive(Text("Delete")) {
                                 print("Deleting...")
                                 viewModel.deleteRecipe()
@@ -89,9 +89,11 @@ struct ContributeOrEditView: View {
                 
                 Button(action: {
                     if editFlag {
+                        //Edit recipe.
                         viewModel.edit(name: name, description: description, ingredients: ingredients, instructions: instructions)
                         self.presentationMode.wrappedValue.dismiss()
                     } else {
+                        //Contribute to recipe.
                         viewModel.contributeRecipe(addedIngredients: addedIngredients, addedInstructions: addedInstructions, removedIngredients: removedIngredients, removedInstructions: removedInstructions, suggestedIngredients: ingredients, suggestedInstructions: instructions)
                         self.presentationMode.wrappedValue.dismiss()
                     }

@@ -50,7 +50,8 @@ struct RequestsReceivedView: View {
                                                 RecipeTitleView(username: .constant(user.username), recipeName: .constant(contribution.recipeName))
                                                 Spacer()
                                             }
-                                        }).foregroundColor(.black)
+                                        })
+                                        .foregroundColor(.black)
                                     
                                 }
                                 
@@ -71,7 +72,6 @@ struct RequestsReceivedView: View {
                                 .frame(width: 180, height: 180)
                             
                             Text("You contribute to any recipes yet...").font(.system(size: 22, weight: .medium)).italic()
-//                            Spacer()
                         }
                 }
             }

@@ -20,11 +20,12 @@ struct RequestsReceivedView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack{
-                TitleView(text: "Requests Received", iconName: "tray.and.arrow.down.fill")
-                
-                if viewModel.receivedRecipes.count != 0 {
+        
+        TitleView(text: "Requests Received", iconName: "tray.and.arrow.down.fill")
+        
+        if viewModel.receivedRecipes.count != 0 {
+            ScrollView {
+                VStack{
                     
                     ForEach(viewModel.receivedRecipes) { contribution in
                         VStack {
@@ -60,20 +61,19 @@ struct RequestsReceivedView: View {
                         Divider()
                     }
                     Spacer()
-                }
-                // If the user made no contributions, display appropriate image.
-                else {
-                        VStack {
-                           
-                            Image("req_received")
-                                .resizable()
-                                .scaledToFill()
-                                .clipped()
-                                .frame(width: 180, height: 180)
-                            
-                            Text("You didn't receive any requests...").font(.system(size: 16, weight: .medium)).italic()
-                        }
-                }
+                }}}
+        // If the user made no contributions, display appropriate image.
+        else {
+            VStack {
+                Spacer().frame(height: 100)
+                Image("req_received")
+                    .resizable()
+                    .scaledToFill()
+                    .clipped()
+                    .frame(width: 180, height: 180)
+                
+                Text("You didn't receive any requests...").font(.system(size: 16, weight: .medium)).italic()
+                Spacer()
             }
         }
     }

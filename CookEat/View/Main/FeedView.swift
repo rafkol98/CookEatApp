@@ -13,9 +13,10 @@ struct FeedView: View {
     var body: some View {
         VStack {
             ZStack(alignment: .bottomTrailing) {
-                ScrollView {
-                    VStack {
-                        if(viewModel.recipes.count != 0){
+                // If there are recipes of users following, show them.
+                if(viewModel.recipes.count != 0) {
+                    ScrollView {
+                        VStack {
                             ForEach(viewModel.recipes) { recipe in
                                 NavigationLink(
                                     destination: LazyView(RecipeDetailsView(recipe: recipe)),
@@ -24,31 +25,34 @@ struct FeedView: View {
                                         RecipeCell(recipe: recipe)
                                     }).foregroundColor(.black)
                             }
-                        } else {
-                            Spacer()
-                            VStack {
-                                Text("Follow a user to get their recipes on your feed...").font(.system(size: 16)).italic()
-                                
-                                Image("feed")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .clipped()
-                                    .frame(width: 180, height: 180)
-                                
-                               
-                            }.padding()
-                        }
+                        }.padding()
                     }
-                    .padding()
                 }
-                HStack{
-                    Spacer()
-                    AddRecipeButton()
+                // If there are not recipes display an image.
+                else {
+                    VStack {
+                        Spacer()
+                        Text("Follow a user to get their recipes on your feed...").font(.system(size: 16)).italic()
+                        
+                        Image("feed")
+                            .resizable()
+                            .scaledToFill()
+                            .clipped()
+                            .frame(width: 180, height: 180)
+                        
+                        Spacer()
+                    }
                 }
+                
+            }
+            HStack{
+                Spacer()
+                AddRecipeButton()
             }
         }
     }
 }
+
 
 struct FeedView_Previews: PreviewProvider {
     static var previews: some View {

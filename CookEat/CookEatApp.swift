@@ -26,10 +26,12 @@ struct CookEatApp: App {
     }
 }
 
+//App delegate.
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
+        
+        // Sentry integration.
         SentrySDK.start { options in
             options.dsn = "https://c5681a814f534878be914a0067660399@o577693.ingest.sentry.io/5733824"
             options.debug = true // Enabled debug when first installing is always helpful

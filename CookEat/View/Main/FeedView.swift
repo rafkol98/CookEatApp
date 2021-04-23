@@ -11,7 +11,10 @@ struct FeedView: View {
     @ObservedObject var viewModel = FeedViewModel()
     
     var body: some View {
+       
         VStack {
+            TitleView(text: "Feed View", iconName: "livephoto")
+            Divider()
             ZStack(alignment: .bottomTrailing) {
                 // If there are recipes of users following, show them.
                 if(viewModel.recipes.count != 0) {

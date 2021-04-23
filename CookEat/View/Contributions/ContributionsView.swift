@@ -68,7 +68,7 @@ struct ContributionsView: View {
                     .clipped()
                     .frame(width: 180, height: 180)
                 
-                Text("You didn't send any contributions...").font(.system(size: 16, weight: .medium)).italic()
+                Text("You didn't send any contributions...").font(.system(size: 16)).italic()
                 Spacer()
             }
         }

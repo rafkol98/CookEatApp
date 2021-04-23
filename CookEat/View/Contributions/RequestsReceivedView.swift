@@ -72,7 +72,7 @@ struct RequestsReceivedView: View {
                     .clipped()
                     .frame(width: 180, height: 180)
                 
-                Text("You didn't receive any requests...").font(.system(size: 16, weight: .medium)).italic()
+                Text("You didn't receive any requests...").font(.system(size: 16)).italic()
                 Spacer()
             }
         }

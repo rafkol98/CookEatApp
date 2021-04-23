@@ -66,7 +66,7 @@ struct RegistrationView: View {
                 })
                 
                 if (selectedUIImage==nil) {
-                    InvalidView(stringIn: "Please upload a picture for your account")
+                    InvalidView(stringIn: "Upload a profile picture").padding()
                 }
                 
                 // Email, fullname, username and password fields.
@@ -74,28 +74,28 @@ struct RegistrationView: View {
                     CustomTextField(text: $email, placeholder: Text("Email"), imageName: "envelope")
                         .inputModifier()
                     if (!isValidEmail(email: email)) {
-                        InvalidView(stringIn: "Ensure that the entered email is valid")
+                        InvalidView(stringIn: "Enter a valid email")
                             .padding()
                     }
                     
                     CustomTextField(text: $fullname, placeholder: Text("Full Name"), imageName: "textformat")
                         .inputModifier()
                     if (invalid(varIn: fullname, minBoundary: 5, maxBoundary:50)) {
-                        InvalidView(stringIn: "Ensure that full name is between 5 to 50 characters")
+                        InvalidView(stringIn: "Between 5 to 50 characters")
                             .padding()
                     }
                     
                     CustomTextField(text: $username, placeholder: Text("Username"), imageName: "person")
                         .inputModifier()
                     if (invalid(varIn: username, minBoundary:5, maxBoundary:20)) {
-                        InvalidView(stringIn: "Ensure that username is between 5 to 20 characters")
+                        InvalidView(stringIn: "Between 5 to 20 characters")
                             .padding()
                     }
                     
                     CustomSecureField(text: $password, placeholder: Text("Password..."))
                         .inputModifier()
                     if (invalid(varIn: password, minBoundary:6, maxBoundary: 40)) {
-                        InvalidView(stringIn: "Ensure that password is between 6 to 40 characters")
+                        InvalidView(stringIn: "Between 6 to 40 characters")
                             .padding()
                     }
                     

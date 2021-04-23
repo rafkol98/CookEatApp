@@ -65,13 +65,13 @@ struct RequestsReceivedView: View {
                 else {
                         VStack {
                            
-                            Image("contribution_sent")
+                            Image("req_received")
                                 .resizable()
                                 .scaledToFill()
                                 .clipped()
                                 .frame(width: 180, height: 180)
                             
-                            Text("You didn't contribute to any recipes yet...").font(.system(size: 16, weight: .medium)).italic()
+                            Text("You didn't receive any requests...").font(.system(size: 16, weight: .medium)).italic()
                         }
                 }
             }

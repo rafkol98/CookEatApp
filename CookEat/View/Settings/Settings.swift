@@ -43,11 +43,6 @@ struct Settings: View {
                     }
                     .padding()
                     
-                    NavigationLink(
-                        destination: LazyView(EditProfileView(user: viewModel.user!)),
-                        label: {
-                            SettingsOption(icon: "square.and.pencil", text: "Edit Profile")
-                        })
                     
                     NavigationLink(
                         destination: LazyView(UserProfileView(user: viewModel.user!)),

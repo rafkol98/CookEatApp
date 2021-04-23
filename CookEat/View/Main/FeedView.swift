@@ -15,16 +15,31 @@ struct FeedView: View {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
                     VStack {
-                        
-                        ForEach(viewModel.recipes) { recipe in
-                            NavigationLink(
-                                destination: LazyView(RecipeDetailsView(recipe: recipe)),
-                                label: {
-                                    //Place user in a userCell.
-                                    RecipeCell(recipe: recipe)
-                                }).foregroundColor(.black)
+                        if(viewModel.recipes.count != 0){
+                            ForEach(viewModel.recipes) { recipe in
+                                NavigationLink(
+                                    destination: LazyView(RecipeDetailsView(recipe: recipe)),
+                                    label: {
+                                        //Place user in a userCell.
+                                        RecipeCell(recipe: recipe)
+                                    }).foregroundColor(.black)
+                            }
+                        } else {
+                            Spacer()
+                            VStack {
+                                Text("Follow a user to get their recipes on your feed...").font(.system(size: 16)).italic()
+                                
+                                Image("feed")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .clipped()
+                                    .frame(width: 180, height: 180)
+                                
+                               
+                            }.padding()
                         }
-                    }.padding()
+                    }
+                    .padding()
                 }
                 HStack{
                     Spacer()

@@ -60,13 +60,13 @@ struct ContributionsView: View {
             } else  {
                 VStack {
             
-                    Image("req_received")
+                    Image("contribution_sent")
                         .resizable()
                         .scaledToFill()
                         .clipped()
                         .frame(width: 180, height: 180)
                     
-                    Text("No requests received...").font(.system(size: 22, weight: .medium)).italic()
+                    Text("You didn't send any contributions...").font(.system(size: 16, weight: .medium)).italic()
 //                            Spacer()
                 }
             }

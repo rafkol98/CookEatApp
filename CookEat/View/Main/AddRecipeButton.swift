@@ -13,8 +13,9 @@ struct AddRecipeButton: View {
     
     var body: some View {
         
+        // Add recipe button.
         Button(action: {
-            //Toggle flag to open sheet.
+            // Toggle flag to open sheet.
             showAdd.toggle()
         }) {
             ZStack {

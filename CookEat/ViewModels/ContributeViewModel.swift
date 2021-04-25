@@ -22,7 +22,7 @@ class ContributeViewModel: ObservableObject {
     }
     
     
-    //Fetch recipes of the user.
+    // Fetch contributions that the user received.
     func fetchReceivedRecipes() {
         
         COLLECTION_USERS.document(user.id).collection("received").addSnapshotListener { (querySnaphot, error) in
@@ -37,7 +37,7 @@ class ContributeViewModel: ObservableObject {
         }
     }
     
-    //Fetch recipes of the user.
+    // Fetch contributions that the user sent.
     func fetchSuggestedRecipes() {
         
         COLLECTION_USERS.document(user.id).collection("suggested").addSnapshotListener { (querySnaphot, error) in

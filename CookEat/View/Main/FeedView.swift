@@ -31,7 +31,7 @@ struct FeedView: View {
                         }.padding()
                     }
                 }
-                // If there are not recipes display an image.
+                // If there are no recipes of followed users, display the appropriate image.
                 else {
                     VStack {
                         Spacer()
@@ -39,9 +39,7 @@ struct FeedView: View {
                         
                         Image("feed")
                             .resizable()
-                            .scaledToFill()
-                            .clipped()
-                            .frame(width: 180, height: 180)
+                            .standardImg()
                         
                         Spacer()
                     }

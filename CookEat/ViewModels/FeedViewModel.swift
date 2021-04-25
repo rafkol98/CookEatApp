@@ -15,11 +15,11 @@ class FeedViewModel: ObservableObject {
         fetchRecipes()
     }
     
-    
+    // fetch recipes of followed users.
     func fetchRecipes(){
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         
-//        Fetch recipes of only the users we are following.
+        // Fetch recipes of only the users we are following.
         COLLECTION_USERS.document(userUid).collection("users-following").addSnapshotListener { (querySnapshot, err) in
             self.recipes = []
             if let err = err {
@@ -27,6 +27,7 @@ class FeedViewModel: ObservableObject {
             } else {
                 for document in querySnapshot!.documents {
                     
+                    //look for recipes only where uid equals the current document returned from the querySnapshot above.
                     COLLECTION_RECIPES.whereField("uid", in: [document.documentID]).addSnapshotListener { (querySnaphot, error) in
                         guard let documents = querySnaphot?.documents else { return }
                         

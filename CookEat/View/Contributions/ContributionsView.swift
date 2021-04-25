@@ -22,6 +22,7 @@ struct ContributionsView: View {
     var body: some View {
         
         TitleView(text: "Contributions Sent", iconName: "square.stack.3d.up.fill")
+        // If user contributed to at least one recipe, show the recipes.
         if viewModel.contributedRecipes.count != 0 {
             VStack{
                 ForEach(viewModel.contributedRecipes) { contribution in
@@ -59,14 +60,14 @@ struct ContributionsView: View {
                 }
                 
             }
-        } else  {
+        }
+        // If user didn't contribute to any recipes, show the appropriate image.
+        else  {
             VStack {
                 Spacer().frame(height: 100)
                 Image("contribution_sent")
                     .resizable()
-                    .scaledToFill()
-                    .clipped()
-                    .frame(width: 180, height: 180)
+                    .standardImg()
                 
                 Text("You didn't send any contributions...").font(.system(size: 16)).italic()
                 Spacer()

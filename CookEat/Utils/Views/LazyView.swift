@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//Load view when it comes to view.
+//Load view only when user clicks on the view.
 struct LazyView<Content: View>: View {
     let build: () -> Content
     init(_ build: @autoclosure @escaping() -> Content) {

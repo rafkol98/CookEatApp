@@ -11,7 +11,7 @@ struct ContentView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     var body: some View {
         Group {
-            //If user is signed in, display the main content.
+            // If user is signed in, display the main content.
             if viewModel.userSession != nil {
                 NavigationView {
                     
@@ -38,7 +38,7 @@ struct ContentView: View {
                     .navigationBarTitleDisplayMode(.inline)
                 }
             }
-//            If user is not logged in, display the loginView.
+            // If user is not logged in, display the loginView.
             else {
                 LoginView()
             }

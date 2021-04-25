@@ -33,7 +33,7 @@ struct UserProfileView: View {
                     NavigationLink(
                         destination: LazyView(RecipeDetailsView(recipe: recipe)),
                         label: {
-//                            Place user in a userCell.
+                            // Place user in a userCell.
                             RecipeCell(recipe: recipe)
                         })
                         .foregroundColor(.black)

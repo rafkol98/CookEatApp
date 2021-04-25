@@ -25,7 +25,7 @@ class ProfileViewModel: ObservableObject {
         getCount()
     }
     
-    //    Follow user displayed.
+    // Follow user displayed.
     func follow() {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         
@@ -39,7 +39,7 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    //  Unfollow user displayed.
+    // Unfollow user displayed.
     func unfollow() {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         
@@ -53,7 +53,7 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    //   Check if the current user is following the user displayed now.
+    //  Check if the current user is following the user displayed now.
     func checkIfFollowing() {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         let followingRef = COLLECTION_USERS.document(userUid).collection("users-following")
@@ -90,7 +90,7 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    //Get count of followers and followings.
+    // Get count of followers and followings.
     func getCount() {
         COLLECTION_USERS.document(user.id).collection("users-followers").addSnapshotListener { snapshot, _ in
             guard let followerCount = snapshot?.documents.count else { return }
@@ -102,7 +102,7 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    //Used for the filter between recipes and likes.
+    // Used for the filter between recipes and likes.
     func recipes(forFilter filter: FilterOptions) -> [Recipe] {
         switch filter {
         case .one: return userRecipes

@@ -14,7 +14,7 @@ class SearchViewModel: ObservableObject {
     
   
     
-    //    Populate users array.
+    // Populate users array.
     func fetchUsers() {
 
         COLLECTION_USERS.addSnapshotListener { snapshot, _ in
@@ -30,6 +30,7 @@ class SearchViewModel: ObservableObject {
         }
     }
     
+    // Fetch recipes of user.
     func fetchRecipes() {
      
         COLLECTION_RECIPES.addSnapshotListener { (querySnaphot, error) in

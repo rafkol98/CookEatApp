@@ -12,6 +12,7 @@ struct RecipeTitleView: View {
     @Binding var recipeName: String
     
     var body: some View {
+        // Title for recipe.
         HStack {
             Image("icon")
                 .resizable()
@@ -22,6 +23,7 @@ struct RecipeTitleView: View {
             Text(username)
             Text("/")
             Text(recipeName)
+            Spacer()
                 
         }.font(.system(size: 18, weight: .semibold))
     }

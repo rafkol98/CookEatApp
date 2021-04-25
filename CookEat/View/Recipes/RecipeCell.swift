@@ -11,24 +11,14 @@ import Kingfisher
 struct RecipeCell: View {
     
     let recipe: Recipe
+    @State var username = ""
+    @State var name = ""
     
     var body: some View {
         VStack {
             HStack( alignment: .top) {
                 VStack(alignment: .leading) {
-                    HStack {
-                        Image("icon")
-                            .resizable()
-                            .scaledToFill()
-                            .clipped()
-                            .frame(width: 15, height: 15)
-                        
-                        Text(recipe.username)
-                        Text("/")
-                        Text(recipe.recipeName)
-                        Spacer()
-                            
-                    }.font(.system(size: 18, weight: .semibold))
+                    RecipeTitleView(username: $username, recipeName: $name)
                     
                     Text(recipe.description)
                 
@@ -40,6 +30,9 @@ struct RecipeCell: View {
             
             Divider()
             
+        }.onAppear {
+            username = recipe.username
+            name = recipe.recipeName
         }
         
     }

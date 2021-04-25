@@ -23,6 +23,7 @@ struct RequestsReceivedView: View {
         
         TitleView(text: "Requests Received", iconName: "tray.and.arrow.down.fill")
         
+        // If contributions received are not equal to 0, then display them.
         if viewModel.receivedRecipes.count != 0 {
             ScrollView {
                 VStack{
@@ -62,15 +63,13 @@ struct RequestsReceivedView: View {
                     }
                     Spacer()
                 }}}
-        // If the user made no contributions, display appropriate image.
+        // If the user received no requests, display appropriate image.
         else {
             VStack {
                 Spacer().frame(height: 100)
                 Image("req_received")
                     .resizable()
-                    .scaledToFill()
-                    .clipped()
-                    .frame(width: 180, height: 180)
+                    .standardImg()
                 
                 Text("You didn't receive any requests...").font(.system(size: 16)).italic()
                 Spacer()

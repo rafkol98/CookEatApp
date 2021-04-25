@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Standard button style.
 struct StandardBtn: ViewModifier {
     
     func body(content: Content) -> some View {
@@ -20,6 +21,7 @@ struct StandardBtn: ViewModifier {
     }
 }
 
+// Button that adjusts its size according to the space available.
 struct adjustBtn: ViewModifier {
     var color: Color
     
@@ -35,6 +37,7 @@ struct adjustBtn: ViewModifier {
     }
 }
 
+// Modifier for the input boxes.
 struct inputMod: ViewModifier {
     
     func body(content: Content) -> some View {
@@ -47,8 +50,20 @@ struct inputMod: ViewModifier {
     }
 }
 
+// Modifier for the images that appear on the app.
+struct stdImg: ViewModifier {
+
+    func body(content: Content) -> some View {
+        content
+            .scaledToFill()
+            .clipped()
+            .frame(width: 180, height: 180)
+        
+    }
+}
 
 
+//Create functions that will be callable from the structs.
 extension View {
     func standardButton() -> some View {
         self.modifier(StandardBtn())
@@ -60,5 +75,9 @@ extension View {
     
     func inputModifier() -> some View {
         self.modifier(inputMod())
+    }
+    
+    func standardImg() -> some View {
+        self.modifier(stdImg())
     }
 }

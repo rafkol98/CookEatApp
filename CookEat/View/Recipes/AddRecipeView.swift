@@ -57,20 +57,15 @@ struct AddRecipeView: View {
                             if let image = image {
                                 image
                                     .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 120, height: 120)
-                                    .cornerRadius(60)
-                                    .padding()
+                                    .circularImg()
                                 
                             } else {
                                 Image("add_photo")
                                     .resizable()
-                                    //Rendering mode allows us to add a colour to the image.
                                     .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
-                                    .scaledToFill()
-                                    .frame(width: 120, height: 120)
-                                    .padding()
                                     .foregroundColor(.red)
+                                    .circularImg()
+                                    
                             }
                             
                         }
@@ -95,7 +90,7 @@ struct AddRecipeView: View {
                     InvalidView(stringIn: "Ensure the description is between 10 to 1000 characters")
                 }
                 
-                ListView2(newIngredient: $newIngredient, ingredients: $ingredients, newInstruction: $newInstruction, instructions: $instructions)
+                AddListView(newIngredient: $newIngredient, ingredients: $ingredients, newInstruction: $newInstruction, instructions: $instructions)
                 
                 Button(action: {
                     guard let image = selectedUIImage else { return }

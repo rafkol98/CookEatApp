@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// SearchView used for searching recipes and profiles.
 struct SearchView: View {
     @State var searchText = ""
     @State var selectedFilter: FilterOptions2 = .one
@@ -22,10 +23,11 @@ struct SearchView: View {
             
             switch selectedFilter {
             
+            // Case two is users - profiles.
             case .two:
                 VStack(alignment: .leading) {
                     
-                    //Loop through users.
+                    // Loop through users.
                     let users = viewModel.users
                     ForEach(users.filter({"\($0)".contains(searchText) || searchText.isEmpty})) { user in
                         HStack {Spacer()}
@@ -38,10 +40,11 @@ struct SearchView: View {
                             })
                     }
                 }.padding(.leading)
-                
+            
+            // Recipes.
             default:
                 VStack(alignment: .leading) {
-                    //                Loop through users.
+                    // Loop through recipes.
                     let recipes = viewModel.recipes
                     ForEach(recipes.filter({"\($0)".contains(searchText) || searchText.isEmpty})) { recipe in
                         HStack {Spacer()}
@@ -59,6 +62,7 @@ struct SearchView: View {
             
             
         }.onAppear {
+            // fetch recipes and users.
             self.viewModel.fetchUsers()
             self.viewModel.fetchRecipes()
         }

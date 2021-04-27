@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListView2: View {
+struct AddListView: View {
     @Binding var newIngredient: String
     @Binding var ingredients: Array<String>
     @Binding var newInstruction: String

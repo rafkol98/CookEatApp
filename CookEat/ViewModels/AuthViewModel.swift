@@ -9,10 +9,10 @@ import SwiftUI
 import Firebase
 
 class AuthViewModel: ObservableObject {
-    //    Logged in variable.
+    // Logged in variable.
     @Published var userSession: FirebaseAuth.User?
     @Published var isAuthenticating = false
-    //    Message to the user.
+    // Message to the user.
     @Published var error: Error?
     @Published var user: User?
     
@@ -24,7 +24,7 @@ class AuthViewModel: ObservableObject {
         fetchUser()
     }
     
-    //Login user.
+    // Login user.
     func login(withEmail email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
@@ -38,10 +38,10 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    //    Register new user.
+    // Register new user.
     func registerUser(email: String, password: String, username: String, fullname: String, profileImage: UIImage) {
         
-        //Check if input is valid.
+        // Check if input is valid.
         if (isValidEmail(email: email) && !invalid(varIn: password, minBoundary: 6, maxBoundary: 40) && !invalid(varIn: username, minBoundary: 5, maxBoundary: 20) && !invalid(varIn: fullname, minBoundary: 5, maxBoundary: 50)) {
             
             guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
@@ -58,13 +58,13 @@ class AuthViewModel: ObservableObject {
                     guard let profileImageUrl = url?.absoluteString else { return }
                     
                     Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                        //            Print error
+                        // Print error
                         if let error = error {
                             print("Error \(error.localizedDescription)")
                             return
                         }
                         
-                        //Check if user exists.
+                        // Check if user exists.
                         guard let user = result?.user else { return }
                         
                         let data = ["email": email, "username": username.lowercased(), "fullname": fullname, "profileImageUrl": profileImageUrl, "uid": user.uid]
@@ -81,7 +81,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    //Sign out of the application.
+    // Sign out of the application.
     func signOut() {
         userSession = nil
         try? Auth.auth().signOut()
@@ -92,11 +92,15 @@ class AuthViewModel: ObservableObject {
         guard let uid = userSession?.uid else { return }
         
         //Get user from firestore and place them in a User variable.
-        Firestore.firestore().collection("users").document(uid).getDocument { snapshot, _ in
+        Firestore.firestore().collection("users").document(uid).getDocument { snapshot, error in
+            if let error = error {
+                print("Failed to fetch user: \(error.localizedDescription)")
+                return
+            }
+            
             guard let data = snapshot?.data() else { return }
             self.user = User(dictionary: data)
-            
-        }
+        } 
     }
     
     

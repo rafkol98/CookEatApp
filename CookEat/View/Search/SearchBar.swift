@@ -11,6 +11,7 @@ struct SearchBar: View {
     @Binding var text: String
     
     var body: some View {
+        // Searchbar style.
         HStack {
             TextField("Search...",text: $text)
                 .padding(8)
@@ -25,11 +26,5 @@ struct SearchBar: View {
                 })
         }
         .padding(.horizontal, 10)
-    }
-}
-
-struct SearchBar_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchBar(text: .constant("Search"))
     }
 }

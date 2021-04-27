@@ -62,6 +62,21 @@ struct stdImg: ViewModifier {
     }
 }
 
+// Modifier for circular images.
+struct circImg: ViewModifier {
+
+    func body(content: Content) -> some View {
+        content
+            .scaledToFill()
+            .clipped()
+            .frame(width: 120, height: 120)
+            .cornerRadius(120/2)
+            .shadow(radius: 10)
+            .padding()
+    }
+}
+
+
 
 //Create functions that will be callable from the structs.
 extension View {
@@ -79,5 +94,9 @@ extension View {
     
     func standardImg() -> some View {
         self.modifier(stdImg())
+    }
+    
+    func circularImg() -> some View {
+        self.modifier(circImg())
     }
 }

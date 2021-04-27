@@ -9,7 +9,7 @@ import Firebase
 
 
 struct Recipe: Identifiable {
-//    User data
+    // Recipe data
     let id: String
     let recipeName: String
     let description: String
@@ -24,7 +24,7 @@ struct Recipe: Identifiable {
     let foodImageUrl: String
 
 
-//    Initialize variables from dictionary that we get from Firebase.
+    // Initialize variables from dictionary that we get from Firebase.
     init(dictionary: [String: Any]) {
         self.id = dictionary["id"] as? String ?? ""
         self.recipeName = dictionary["recipeName"] as? String ?? ""

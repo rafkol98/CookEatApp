@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Used for showing the profile of a user.
 struct UserProfileView: View {
     
     //Selected filter for the view.
@@ -28,6 +29,7 @@ struct UserProfileView: View {
                 FilterButtonView(selectedOption: $selectedFilter)
                     .padding()
                 
+                // Switch between user's own recipes and their likes.
                 ForEach(viewModel.recipes(forFilter: selectedFilter)) { recipe in
                     
                     NavigationLink(

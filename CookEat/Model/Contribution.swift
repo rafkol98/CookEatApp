@@ -9,6 +9,7 @@ import Firebase
 
 
 struct Contribution: Identifiable {
+    // Contribution data. Contains both new data that was contributed and data of the original recipe.
     let id: String
     let status: String
     let originalId: String
@@ -34,7 +35,7 @@ struct Contribution: Identifiable {
 
 
 
-//    Initialize variables from dictionary that we get from Firebase.
+    // Initialize variables from dictionary that we get from Firebase.
     init(dictionary: [String: Any]) {
         self.id = dictionary["id"] as? String ?? ""
         self.status = dictionary["status"] as? String ?? ""

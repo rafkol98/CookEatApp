@@ -24,13 +24,8 @@ struct Settings: View {
                     HStack{
                         KFImage(URL(string: viewModel.user!.profileImageUrl))
                             .resizable()
-                            .scaledToFill()
-                            .clipped()
-                            .frame(width: 120, height: 120)
-                            .cornerRadius(120/2)
-                            .shadow(radius: 10)
-                            .padding()
-                        //                        print("meta img")
+                            .circularImg()
+
                         
                         VStack {
                             Text(viewModel.user!.fullname)

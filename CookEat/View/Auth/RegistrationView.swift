@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 09/03/2021.
 //
+//  Registration - Sign up view.
 
 import SwiftUI
 

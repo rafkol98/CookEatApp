@@ -95,6 +95,7 @@ struct ContributeOrEditView: View {
             
             VStack {
                 
+                // if edit flag, then display the editNameDescriptionView struct, allowing the user to update name and description of the recipe.
                 if editFlag {
                     EditNameDescriptionView(recipe: recipe, name: $name, description: $description).padding(.horizontal)
                     

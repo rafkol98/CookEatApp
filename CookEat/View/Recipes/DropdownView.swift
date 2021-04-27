@@ -15,19 +15,20 @@ struct DropdownView: View {
     @Binding var text: Array<String>
     @Binding var isExpanded: Bool
     
-    
+    // Dropdownview containing a passed in title and text.
     var body: some View {
         
         HStack{
             Image(systemName: imageName)
             DisclosureGroup(title, isExpanded: $isExpanded) {
-                    ScrollView{
+                    ScrollView {
                         TextEditor(text: .constant(text.joined(separator:", \n")))
                             .frame(width: .infinity, height: 80)
                             .padding(.horizontal)
                             .foregroundColor(Color(red: 40/255, green: 40/255, blue: 40/255))
                     }
-            }.font(.system(size: 18))
+            }
+            .font(.system(size: 18))
             
         }
         

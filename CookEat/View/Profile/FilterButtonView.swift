@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-
+// Switch between recipes and likes, used for the profile of a user.
 enum FilterOptions: Int, CaseIterable {
     case one
     case two
@@ -21,6 +21,7 @@ enum FilterOptions: Int, CaseIterable {
     }
 }
 
+// Switch between recipes and profiles, used for the search feature.
 enum FilterOptions2: Int, CaseIterable {
     case one
     case two
@@ -34,6 +35,7 @@ enum FilterOptions2: Int, CaseIterable {
     }
 }
 
+//TODO: fix repetitiveness!!
 struct FilterButtonView: View {
     @Binding var selectedOption: FilterOptions
     
@@ -107,4 +109,3 @@ struct FilterButtonView2: View {
         }
     }
 }
-

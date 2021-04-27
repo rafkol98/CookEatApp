@@ -12,6 +12,7 @@ struct ProfileActionButtonView: View {
     @Binding var isFollowed: Bool
     
     var body: some View {
+        // Only display button if the profile does not belong to the current user.
         if !viewModel.user.currentUser {
             HStack {
                 Button(action: {

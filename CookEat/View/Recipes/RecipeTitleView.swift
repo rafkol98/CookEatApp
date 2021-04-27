@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 17/03/2021.
 //
+//  Used to show a title of the recipe.
 
 import SwiftUI
 
@@ -26,11 +27,5 @@ struct RecipeTitleView: View {
             Spacer()
                 
         }.font(.system(size: 18, weight: .semibold))
-    }
-}
-
-struct RecipeTitleView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecipeTitleView(username: .constant("Username"), recipeName:.constant("Recipe"))
     }
 }

@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 17/03/2021.
 //
+//  Display a recipe in detail.
 
 import SwiftUI
 import Kingfisher
@@ -33,6 +34,7 @@ struct RecipeDetailsView: View {
         self.viewModel = RecipeViewModel(recipe: recipe)
     }
     
+    // Detailed view for recipe, contains all the recipe's information.
     var body: some View {
         
         VStack {

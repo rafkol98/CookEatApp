@@ -27,7 +27,7 @@
 		CB4DAB222602A7D0009E44E8 /* RecipeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4DAB212602A7D0009E44E8 /* RecipeDetailsView.swift */; };
 		CB4DAB252602AD55009E44E8 /* RecipeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4DAB242602AD55009E44E8 /* RecipeTitleView.swift */; };
 		CB506E0A25FA293C00A28D92 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB506E0925FA293C00A28D92 /* ImagePicker.swift */; };
-		CB5D2F12262A475A00EFBEF7 /* ListView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D2F11262A475A00EFBEF7 /* ListView2.swift */; };
+		CB5D2F12262A475A00EFBEF7 /* AddListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D2F11262A475A00EFBEF7 /* AddListView.swift */; };
 		CB6264CB26335ACF004758F5 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = CB6264CA26335ACF004758F5 /* Sentry */; };
 		CB6C3DBD25EC253C00149528 /* CookEatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C3DBC25EC253C00149528 /* CookEatApp.swift */; };
 		CB6C3DBF25EC253C00149528 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C3DBE25EC253C00149528 /* ContentView.swift */; };
@@ -51,7 +51,6 @@
 		CB96D59D25ED3F4600457589 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96D59C25ED3F4600457589 /* UserCell.swift */; };
 		CBA8C5C026239A7500313596 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA8C5BF26239A7500313596 /* Extensions.swift */; };
 		CBADCDF32624835B0028C694 /* AcceptRejectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADCDF22624835B0028C694 /* AcceptRejectViewModel.swift */; };
-		CBAE68202628F0EF008C4A2D /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAE681F2628F0EF008C4A2D /* EditProfileView.swift */; };
 		CBCB32712629DE9F00136B4F /* ContributeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB32702629DE9F00136B4F /* ContributeListView.swift */; };
 		CBCC83E7262C394A0035B686 /* SettingErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC83E6262C394A0035B686 /* SettingErrorView.swift */; };
 		CBCF8C90260FF3DE00416611 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCF8C8F260FF3DE00416611 /* RecipeViewModel.swift */; };
@@ -82,7 +81,7 @@
 		CB4DAB212602A7D0009E44E8 /* RecipeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsView.swift; sourceTree = "<group>"; };
 		CB4DAB242602AD55009E44E8 /* RecipeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTitleView.swift; sourceTree = "<group>"; };
 		CB506E0925FA293C00A28D92 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		CB5D2F11262A475A00EFBEF7 /* ListView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView2.swift; sourceTree = "<group>"; };
+		CB5D2F11262A475A00EFBEF7 /* AddListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListView.swift; sourceTree = "<group>"; };
 		CB6C3DB925EC253C00149528 /* CookEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6C3DBC25EC253C00149528 /* CookEatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookEatApp.swift; sourceTree = "<group>"; };
 		CB6C3DBE25EC253C00149528 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -107,7 +106,6 @@
 		CB96D59C25ED3F4600457589 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		CBA8C5BF26239A7500313596 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CBADCDF22624835B0028C694 /* AcceptRejectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptRejectViewModel.swift; sourceTree = "<group>"; };
-		CBAE681F2628F0EF008C4A2D /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		CBCB32702629DE9F00136B4F /* ContributeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributeListView.swift; sourceTree = "<group>"; };
 		CBCC83E6262C394A0035B686 /* SettingErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingErrorView.swift; sourceTree = "<group>"; };
 		CBCF8C8F260FF3DE00416611 /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
@@ -180,7 +178,7 @@
 				CB80AA442613AB0E004AF9F2 /* LazyView.swift */,
 				CBA8C5BF26239A7500313596 /* Extensions.swift */,
 				CBCB32702629DE9F00136B4F /* ContributeListView.swift */,
-				CB5D2F11262A475A00EFBEF7 /* ListView2.swift */,
+				CB5D2F11262A475A00EFBEF7 /* AddListView.swift */,
 				CB77C8532630490900331B90 /* UtilsViews.swift */,
 			);
 			path = Views;
@@ -268,7 +266,6 @@
 				CB903FD725F404AE00297DD9 /* ProfileActionButtonView.swift */,
 				CB903FDA25F404D500297DD9 /* FilterButtonView.swift */,
 				CB96D59C25ED3F4600457589 /* UserCell.swift */,
-				CBAE681F2628F0EF008C4A2D /* EditProfileView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -398,8 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB5D2F12262A475A00EFBEF7 /* ListView2.swift in Sources */,
-				CBAE68202628F0EF008C4A2D /* EditProfileView.swift in Sources */,
+				CB5D2F12262A475A00EFBEF7 /* AddListView.swift in Sources */,
 				CB2F488B26301AA400264F0C /* AddRecipeButton.swift in Sources */,
 				CB453D0625FD6BC0001C6DB4 /* SearchViewModel.swift in Sources */,
 				CB1E5E0825FA457700049676 /* AuthViewModel.swift in Sources */,

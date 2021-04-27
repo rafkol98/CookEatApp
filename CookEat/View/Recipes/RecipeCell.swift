@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 01/03/2021.
 //
+//  Used for showing recipes in the FeedView or SearchView
 
 import SwiftUI
 import Kingfisher
@@ -14,6 +15,7 @@ struct RecipeCell: View {
     @State var username = ""
     @State var name = ""
     
+    // Recipe cell contains recipe title, description and a View Recipe text.
     var body: some View {
         VStack {
             HStack( alignment: .top) {

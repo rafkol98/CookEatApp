@@ -26,6 +26,11 @@ class ContributeViewModel: ObservableObject {
     func fetchReceivedRecipes() {
         
         COLLECTION_USERS.document(user.id).collection("received").addSnapshotListener { (querySnaphot, error) in
+            // Catch error.
+            if let error = error {
+                print("Failed to upload image \(error.localizedDescription)")
+                return
+            }
             guard let documents = querySnaphot?.documents else { return }
             
             self.receivedRecipes = documents.map{ (queryDocumentSnapshot) -> Contribution in
@@ -41,6 +46,12 @@ class ContributeViewModel: ObservableObject {
     func fetchSuggestedRecipes() {
         
         COLLECTION_USERS.document(user.id).collection("suggested").addSnapshotListener { (querySnaphot, error) in
+            // Catch error.
+            if let error = error {
+                print("Failed to upload image \(error.localizedDescription)")
+                return
+            }
+            
             guard let documents = querySnaphot?.documents else { return }
             
             self.contributedRecipes = documents.map{ (queryDocumentSnapshot) -> Contribution in

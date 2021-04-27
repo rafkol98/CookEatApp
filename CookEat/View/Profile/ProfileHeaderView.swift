@@ -13,15 +13,12 @@ struct ProfileHeaderView: View {
     @Binding var isFollowed: Bool
     let viewModel: ProfileViewModel
     
+    // The header view of the profile.
     var body: some View {
         VStack {
             KFImage(URL(string: viewModel.user.profileImageUrl))
                 .resizable()
-                .scaledToFill()
-                .clipped()
-                .frame(width: 120, height: 120)
-                .cornerRadius(120/2)
-                .shadow(radius: 10)
+                .circularImg()
             
             Text(viewModel.user.fullname)
                 .font(.system(size: 16, weight:.semibold))
@@ -31,6 +28,7 @@ struct ProfileHeaderView: View {
                 .font(.subheadline)
                 .foregroundColor(.gray)
             
+            // Followers and following counters.
             HStack(spacing: 40) {
                 VStack {
                     Text("\(viewModel.followers)")
@@ -39,7 +37,6 @@ struct ProfileHeaderView: View {
                     Text("Followers")
                         .font(.footnote)
                         .foregroundColor(.gray)
-                    
                 }
                 
                 VStack {
@@ -54,6 +51,7 @@ struct ProfileHeaderView: View {
             }
             .padding()
             
+            // Include button which changes from follow to following depending if the current user is following the displayed user.
             ProfileActionButtonView(viewModel: viewModel, isFollowed: $isFollowed)
             
             Spacer()

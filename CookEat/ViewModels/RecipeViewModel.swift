@@ -62,24 +62,25 @@ class RecipeViewModel: ObservableObject {
         }
     }
     
-    // Edit a recipe. TODO: VALIDATION.
+    // Edit a recipe.
     func edit(name: String, description: String, ingredients: Array<String>, instructions: Array<String>) {
-        //        let docRef = COLLECTION_RECIPES.document(recipe.id)
         
-        
-        COLLECTION_RECIPES.document(recipe.id).updateData([
-            "recipeName": name,
-            "description": description,
-            "ingredients": ingredients,
-            "instructions": instructions
-        ]) { err in
-            if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                print("Document successfully updated")
+        //Validation of updated data.
+        if (!invalid(varIn: name, minBoundary: 5, maxBoundary: 50) && !invalid(varIn: description, minBoundary: 10, maxBoundary: 1000) && !invalidArray(varIn: ingredients) && !invalidArray(varIn: instructions)) {
+            
+            COLLECTION_RECIPES.document(recipe.id).updateData([
+                "recipeName": name,
+                "description": description,
+                "ingredients": ingredients,
+                "instructions": instructions
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
             }
         }
-        
         
     }
     
@@ -137,51 +138,59 @@ class RecipeViewModel: ObservableObject {
             data.updateValue(0, forKey: "likes")
             data.updateValue(Timestamp(date: Date()), forKey: "timestamp")
             
-            docRef.setData(data) { (_) in
-                print("Successfully uploaded recipe")
+            docRef.setData(data) {  err in
+                if let err = err {
+                    print("Error forking reecipe: \(err)")
+                } else {
+                    print("Documents successfully forked")
+                }
             }
         }
     }
     
-    // Contribute to a recipe. TODO: VALIDATION.
+    // Contribute to a recipe.
     func contributeRecipe(addedIngredients: Array<String>, addedInstructions: Array<String>, removedIngredients: Array<String>, removedInstructions: Array<String>, suggestedIngredients: Array<String>, suggestedInstructions: Array<String>) {
-        guard let user = AuthViewModel.shared.user else {return}
         
-        let userSuggestedRef = COLLECTION_USERS.document(user.id).collection("suggested").document()
-        let userReceivedRef = COLLECTION_USERS.document(recipe.uid).collection("received").document(userSuggestedRef.documentID)
-        
-        
-        let data : [String: Any] = [
-            "id": userSuggestedRef.documentID,
-            "status": "Waiting",
-            "originalId": recipe.id,
-            "uid": user.id,
-            "originalUid": recipe.uid,
-            "recipeName": recipe.recipeName,
-            "addedIngredients": addedIngredients,
-            "addedInstructions": addedInstructions,
-            "removedIngredients": removedIngredients,
-            "removedInstructions": removedInstructions,
-            "originalIngredients": recipe.ingredients,
-            "originalInstructions": recipe.instructions,
-            "suggestedIngredients": suggestedIngredients,
-            "suggestedInstructions": suggestedInstructions,
-            "fullname": user.fullname,
-            "originalFullname": recipe.fullname,
-            "timestamp": Timestamp(date: Date()),
-            "originalTimestamp": recipe.timestamp,
-            "username": user.username,
-            "originalUsername": recipe.username,
-            "originalProfileImageUrl": recipe.profileImageUrl,
-            "profileImageUrl": user.profileImageUrl]
-        
-        userSuggestedRef.setData(data) { (_) in
-            print("Successfully contributed to recipe")
-            userReceivedRef.setData(data) { (_) in
-                print("Successfully received the suggestion")
+        //Validation that the suggested ingredients & instructions are not empty (user deleted all elements).
+        if ( !invalidArray(varIn: suggestedIngredients) && !invalidArray(varIn: suggestedInstructions)) {
+            
+            guard let user = AuthViewModel.shared.user else {return}
+            
+            let userSuggestedRef = COLLECTION_USERS.document(user.id).collection("suggested").document()
+            let userReceivedRef = COLLECTION_USERS.document(recipe.uid).collection("received").document(userSuggestedRef.documentID)
+            
+            
+            let data : [String: Any] = [
+                "id": userSuggestedRef.documentID,
+                "status": "Waiting",
+                "originalId": recipe.id,
+                "uid": user.id,
+                "originalUid": recipe.uid,
+                "recipeName": recipe.recipeName,
+                "addedIngredients": addedIngredients,
+                "addedInstructions": addedInstructions,
+                "removedIngredients": removedIngredients,
+                "removedInstructions": removedInstructions,
+                "originalIngredients": recipe.ingredients,
+                "originalInstructions": recipe.instructions,
+                "suggestedIngredients": suggestedIngredients,
+                "suggestedInstructions": suggestedInstructions,
+                "fullname": user.fullname,
+                "originalFullname": recipe.fullname,
+                "timestamp": Timestamp(date: Date()),
+                "originalTimestamp": recipe.timestamp,
+                "username": user.username,
+                "originalUsername": recipe.username,
+                "originalProfileImageUrl": recipe.profileImageUrl,
+                "profileImageUrl": user.profileImageUrl]
+            
+            userSuggestedRef.setData(data) { (_) in
+                print("Successfully contributed to recipe")
+                userReceivedRef.setData(data) { (_) in
+                    print("Successfully received the suggestion")
+                }
             }
         }
-        
         
     }
     

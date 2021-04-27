@@ -32,9 +32,21 @@ class ProfileViewModel: ObservableObject {
         let followingRef = COLLECTION_USERS.document(userUid).collection("users-following")
         let followersRef = COLLECTION_USERS.document(user.id).collection("users-followers")
         
-        followingRef.document(self.user.id).setData([:]) { _ in
-            followersRef.document(userUid).setData([:]) { _ in
-                self.isFollowed = true
+        // Add followed user's uid to the current user.
+        followingRef.document(self.user.id).setData([:]) { err in
+            // Catch error.
+            if let err = err {
+                print("Error following user: \(err)")
+            } else {
+                //Add current user's uid to the followed user.
+                followersRef.document(userUid).setData([:]) { err in
+                    // Catch error.
+                    if let err = err {
+                        print("Error following user: \(err)")
+                    } else {
+                        self.isFollowed = true
+                    }
+                }
             }
         }
     }
@@ -46,9 +58,18 @@ class ProfileViewModel: ObservableObject {
         let followingRef = COLLECTION_USERS.document(userUid).collection("users-following")
         let followersRef = COLLECTION_USERS.document(user.id).collection("users-followers")
         
-        followingRef.document(self.user.id).delete { _ in
-            followersRef.document(userUid).delete { _ in
-                self.isFollowed = false
+        followingRef.document(self.user.id).delete { err in
+            // Catch error.
+            if let err = err {
+                print("Error unfollowing user: \(err)")
+            } else {
+                followersRef.document(userUid).delete { err in
+                    if let err = err {
+                        print("Error unfollowing user: \(err)")
+                    } else {
+                        self.isFollowed = false
+                    }
+                }
             }
         }
     }
@@ -58,7 +79,12 @@ class ProfileViewModel: ObservableObject {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         let followingRef = COLLECTION_USERS.document(userUid).collection("users-following")
         
-        followingRef.document(self.user.id).getDocument { snapshot, _ in
+        followingRef.document(self.user.id).getDocument { snapshot, error in
+            if let error = error {
+                print("Failed to fetch liked recipes: \(error.localizedDescription)")
+                return
+            }
+            
             guard let isFollowed = snapshot?.exists else {return}
             self.isFollowed = isFollowed
         }
@@ -66,21 +92,39 @@ class ProfileViewModel: ObservableObject {
     
     //Fetch recipes of the user.
     func fetchUserRecipes() {
-        COLLECTION_RECIPES.whereField("uid", isEqualTo: user.id).addSnapshotListener { snapshot, _ in
+        COLLECTION_RECIPES.whereField("uid", isEqualTo: user.id).addSnapshotListener { snapshot, error in
+            // Catch error.
+            if let error = error {
+                print("Failed to fetch user's recipes: \(error.localizedDescription)")
+                return
+            }
+            
             guard let documents = snapshot?.documents else { return }
             //Populate user recipes.
             self.userRecipes = documents.map({ Recipe(dictionary: $0.data()) })
         }
     }
     
-    //Fetch recipes that the user likes.
+    // Fetch recipes that the user likes.
     func fetchLikedRecipes() {
-        COLLECTION_USERS.document(user.id).collection("user-likes").addSnapshotListener { snapshot, _ in
+        COLLECTION_USERS.document(user.id).collection("user-likes").addSnapshotListener { snapshot, error in
+            // Catch error.
+            if let error = error {
+                print("Failed to fetch liked recipes: \(error.localizedDescription)")
+                return
+            }
+            
             guard let documents = snapshot?.documents else { return }
             let recipeIDs = documents.map({$0.documentID})
             
             recipeIDs.forEach { id in
-                COLLECTION_RECIPES.document(id).addSnapshotListener { snapshot, _ in
+                COLLECTION_RECIPES.document(id).addSnapshotListener { snapshot, error in
+                    // Catch error.
+                    if let error = error {
+                        print("Failed to fetch liked recipes: \(error.localizedDescription)")
+                        return
+                    }
+                    
                     guard let data = snapshot?.data() else { return }
                     let recipe = Recipe(dictionary: data)
                     self.likedRecipes.append(recipe)
@@ -92,11 +136,21 @@ class ProfileViewModel: ObservableObject {
     
     // Get count of followers and followings.
     func getCount() {
-        COLLECTION_USERS.document(user.id).collection("users-followers").addSnapshotListener { snapshot, _ in
+        COLLECTION_USERS.document(user.id).collection("users-followers").addSnapshotListener { snapshot, error in
+            if let error = error {
+                print("Failed to get count of followers: \(error.localizedDescription)")
+                return
+            }
+            
             guard let followerCount = snapshot?.documents.count else { return }
             self.followers = followerCount
         }
-        COLLECTION_USERS.document(user.id).collection("users-following").addSnapshotListener { snapshot, _ in
+        COLLECTION_USERS.document(user.id).collection("users-following").addSnapshotListener { snapshot, error in
+            if let error = error {
+                print("Failed to get count of followers: \(error.localizedDescription)")
+                return
+            }
+            
             guard let followingCount = snapshot?.documents.count else { return }
             self.following = followingCount
         }

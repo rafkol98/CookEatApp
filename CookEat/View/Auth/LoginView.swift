@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 09/03/2021.
 //
+//  Login view.
 
 import SwiftUI
 
@@ -23,7 +24,7 @@ struct LoginView: View {
                         .padding(.top)
                         .padding(.bottom, 32)
                     
-                    //                Email and password fields.
+                    //  Email and password fields.
                     VStack(spacing:16) {
                         CustomTextField(text: $email, placeholder: Text("Email..."), imageName: "envelope")
                             .inputModifier()

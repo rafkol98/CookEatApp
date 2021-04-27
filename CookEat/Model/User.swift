@@ -24,7 +24,6 @@ struct User: Identifiable {
         self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
         self.email = dictionary["email"] as? String ?? ""
         self.fullname = dictionary["fullname"] as? String ?? ""
-//        Set boolean to true if user trying to fetch is the current user.
         self.currentUser = Auth.auth().currentUser?.uid == self.id
     }
 }

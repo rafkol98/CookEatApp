@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 03/04/2021.
 //
+//  Used to display an option in the settings page.
 
 import SwiftUI
 

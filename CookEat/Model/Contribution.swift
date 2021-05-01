@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 10/04/2021.
 //
+//  Model containing the fields of a contribution.
 
 import Firebase
 

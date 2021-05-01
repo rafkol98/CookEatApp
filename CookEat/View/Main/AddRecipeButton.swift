@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 21/04/2021.
 //
+//  Add a new recipe button.
 
 import SwiftUI
 
@@ -13,7 +14,6 @@ struct AddRecipeButton: View {
     
     var body: some View {
         
-        // Add recipe button.
         Button(action: {
             // Toggle flag to open sheet.
             showAdd.toggle()

@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 21/04/2021.
 //
+//  Functions used for validating data.
 
 import Foundation
 import SwiftUI

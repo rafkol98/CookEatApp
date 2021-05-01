@@ -4,10 +4,11 @@
 //
 //  Created by Rafael Kollyfas on 08/04/2021.
 //
+// Shows the description of a recipe in a formatted textEditor.
 
 import SwiftUI
 
-// Shows the description of a recipe in a formatted textEditor.
+
 struct RecipeDescriptionView: View {
     
     let recipe: Recipe

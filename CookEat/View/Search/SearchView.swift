@@ -4,10 +4,12 @@
 //
 //  Created by Rafael Kollyfas on 01/03/2021.
 //
+//  SearchView used for searching recipes and profiles.
+
 
 import SwiftUI
 
-// SearchView used for searching recipes and profiles.
+
 struct SearchView: View {
     @State var searchText = ""
     @State var selectedFilter: FilterOptions2 = .one

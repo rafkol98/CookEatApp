@@ -4,6 +4,8 @@
 //
 //  Created by Rafael Kollyfas on 06/04/2021.
 //
+//  Struct used to show all the contributions sent.
+
 
 import SwiftUI
 import Kingfisher

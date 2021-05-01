@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 28/03/2021.
 //
+//  ViewModel containing all the functions associated with interacting with a recipe.
 
 import SwiftUI
 import Firebase

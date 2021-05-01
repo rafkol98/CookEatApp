@@ -4,6 +4,9 @@
 //
 //  Created by Rafael Kollyfas on 06/04/2021.
 //
+//  View that dynamically changes between editing and contributing to a recipe depending on if the user that opened the recipe is the
+//  owner.
+
 
 import SwiftUI
 

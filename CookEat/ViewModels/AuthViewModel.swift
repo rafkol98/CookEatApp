@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 11/03/2021.
 //
+//  ViewModel containing all the functions associated with user authentication.
 
 import SwiftUI
 import Firebase

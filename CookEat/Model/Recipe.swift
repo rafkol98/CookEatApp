@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 26/03/2021.
 //
+//  Model containing the fields of a recipe.
 
 import Firebase
 

@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 02/03/2021.
 //
+//  User cell displaying a user's profile image, username and name.
 
 import SwiftUI
 import Kingfisher

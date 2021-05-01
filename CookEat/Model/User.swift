@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 14/03/2021.
 //
+//  Model containing the fields of a user.
 
 import Foundation
 import Firebase

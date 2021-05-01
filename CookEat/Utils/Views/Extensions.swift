@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 11/04/2021.
 //
+//  Class containing various extensions used throughout the app.
 
 import SwiftUI
 

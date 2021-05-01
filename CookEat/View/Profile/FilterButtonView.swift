@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 07/03/2021.
 //
+//  Used to filter between two different options.
 
 import SwiftUI
 

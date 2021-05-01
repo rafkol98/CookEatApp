@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 28/02/2021.
 //
+//  Manages the content displayed to the user.
 
 import SwiftUI
 
@@ -13,6 +14,8 @@ struct ContentView: View {
         Group {
             // If user is signed in, display the main content.
             if viewModel.userSession != nil {
+                
+                // Bottom navigation.
                 NavigationView {
                     
                     TabView {

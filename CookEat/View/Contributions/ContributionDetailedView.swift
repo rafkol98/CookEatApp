@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 12/04/2021.
 //
+//  View showing a contribution in detail.
 
 import SwiftUI
 import Kingfisher

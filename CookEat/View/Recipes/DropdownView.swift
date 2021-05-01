@@ -4,10 +4,9 @@
 //
 //  Created by Rafael Kollyfas on 19/03/2021.
 //
+//  View used to create a dropdown view with a title and text passed in.
 
 import SwiftUI
-
-
 
 struct DropdownView: View {
     let imageName: String

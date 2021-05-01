@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 06/03/2021.
 //
+//  The header view of the profile.
 
 import SwiftUI
 import Kingfisher
@@ -13,7 +14,7 @@ struct ProfileHeaderView: View {
     @Binding var isFollowed: Bool
     let viewModel: ProfileViewModel
     
-    // The header view of the profile.
+    
     var body: some View {
         VStack {
             KFImage(URL(string: viewModel.user.profileImageUrl))

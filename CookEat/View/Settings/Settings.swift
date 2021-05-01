@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 24/03/2021.
 //
+//  View displaying settings/account tab.
 
 import SwiftUI
 import Kingfisher

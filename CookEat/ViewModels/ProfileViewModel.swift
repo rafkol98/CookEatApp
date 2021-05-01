@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 22/03/2021.
 //
+//  All the functions associated with a profile of a user. Offers functionalities to follow other users, like their recipes etc.
 
 import SwiftUI
 import Firebase

@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 16/04/2021.
 //
+//  Manage ingredients and instructions for contribute or edit view.
 
 import SwiftUI
 

@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 28/02/2021.
 //
+//  View showing the feed of the user.
 
 import SwiftUI
 

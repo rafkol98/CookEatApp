@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 26/03/2021.
 //
+//  ViewModel used on the feed view of the app.
 
 import SwiftUI
 import Firebase
@@ -15,7 +16,7 @@ class FeedViewModel: ObservableObject {
         fetchRecipes()
     }
     
-    // fetch recipes of followed users.
+    // fetch recipes of only followed users.
     func fetchRecipes(){
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         

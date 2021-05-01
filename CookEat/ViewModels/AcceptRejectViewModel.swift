@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 12/04/2021.
 //
+//  Functions used to accept or reject a contribution received.
 
 import SwiftUI
 import Firebase

@@ -4,10 +4,10 @@
 //
 //  Created by Rafael Kollyfas on 16/04/2021.
 //
+//  Struct used to edit the name and description of a recipe.
 
 import SwiftUI
 
-// Struct used to edit the name and description of a recipe.
 struct EditNameDescriptionView: View {
     let recipe: Recipe
     @Binding var name: String

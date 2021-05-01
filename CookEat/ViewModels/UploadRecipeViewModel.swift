@@ -4,13 +4,13 @@
 //
 //  Created by Rafael Kollyfas on 25/03/2021.
 //
+//  ViewModel containing a function used to upload a recipe to the database.
 
 import SwiftUI
 import Firebase
 
 class UploadRecipeViewModel: ObservableObject {
     
-    //  Upload recipe.
     func upload(name: String, description: String, ingredients: Array<String>, instructions: Array<String>, image: UIImage) {
         guard let user = AuthViewModel.shared.user else {return}
         

@@ -4,10 +4,11 @@
 //
 //  Created by Rafael Kollyfas on 06/03/2021.
 //
+//  Used for showing the profile of a user.
 
 import SwiftUI
 
-// Used for showing the profile of a user.
+
 struct UserProfileView: View {
     
     //Selected filter for the view.

@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 14/03/2021.
 //
+//  ViewModel for the search view. Fetch all recipes and users.
 
 import SwiftUI
 import Firebase

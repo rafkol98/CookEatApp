@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 25/03/2021.
 //
+//  View used to add a new recipe.
 
 import SwiftUI
 import Kingfisher

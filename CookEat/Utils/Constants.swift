@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 14/03/2021.
 //
+//  Constants used commonly on the app.
 
 import Firebase
 

@@ -4,10 +4,11 @@
 //
 //  Created by Rafael Kollyfas on 11/03/2021.
 //
+//  Image picker allowing the user to choose an image.
 
 import SwiftUI
 
-//Allows the user to choose an image
+
 struct ImagePicker: UIViewControllerRepresentable {
 //    UI kit image.
     @Binding var image: UIImage?
@@ -30,7 +31,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     
 }
 
-//Pick an image.
+//  Pick an image.
 extension ImagePicker {
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         let parent: ImagePicker

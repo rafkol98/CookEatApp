@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 01/03/2021.
 //
+//  The style of the searchbar.
 
 import SwiftUI
 

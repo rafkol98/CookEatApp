@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 21/04/2021.
 //
+//  Contains various small structs used throughout the application e.g. titles for every struct.
 
 import SwiftUI
 

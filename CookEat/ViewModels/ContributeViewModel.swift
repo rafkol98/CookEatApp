@@ -4,6 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 10/04/2021.
 //
+//  ViewModel used for fetching contributions sent and received.
 
 import Foundation
 import SwiftUI

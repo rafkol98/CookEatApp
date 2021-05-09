@@ -24,7 +24,7 @@ struct RequestsReceivedView: View {
         
         TitleView(text: "Requests Received", iconName: "tray.and.arrow.down.fill")
         
-        // If contributions received are not equal to 0, then display them.
+        // If requests received are not equal to 0, then display them.
         if viewModel.receivedRecipes.count != 0 {
             ScrollView {
                 VStack{

@@ -28,6 +28,7 @@ struct LoginView: View {
                     VStack(spacing:16) {
                         CustomTextField(text: $email, placeholder: Text("Email..."), imageName: "envelope")
                             .inputModifier()
+                            
                         
                         CustomSecureField(text: $password, placeholder: Text("Password..."))
                             .inputModifier()
@@ -41,6 +42,8 @@ struct LoginView: View {
                         Text("Sign In")
                             .standardButton()
                     })
+    
+                    
                     // Push everything to the top.
                     Spacer()
                     

@@ -50,6 +50,7 @@ struct FeedView: View {
             HStack{
                 Spacer()
                 AddRecipeButton()
+                    .accessibility(identifier: "add_recipe")
             }
         }
     }

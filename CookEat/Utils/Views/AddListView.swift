@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+
 struct AddListView: View {
     @Binding var newIngredient: String
     @Binding var ingredients: Array<String>

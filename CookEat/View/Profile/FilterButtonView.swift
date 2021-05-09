@@ -36,7 +36,7 @@ enum FilterOptions2: Int, CaseIterable {
     }
 }
 
-//TODO: fix repetitiveness!!
+// Filter button for profiles.
 struct FilterButtonView: View {
     @Binding var selectedOption: FilterOptions
     
@@ -74,6 +74,7 @@ struct FilterButtonView: View {
     }
 }
 
+// Filter button for recipes.
 struct FilterButtonView2: View {
     @Binding var selectedOption: FilterOptions2
     

@@ -54,6 +54,7 @@ struct CustomSecureField: View {
                     .frame(width: 20, height: 20)
                 
                 SecureField("", text: $text)
+                    .accessibilityLabel("password")
             }
         }
     }

@@ -20,7 +20,8 @@ struct ContentView: View {
                     
                     TabView {
                         FeedView()
-                            .tabItem { Image(systemName: "livephoto")
+                            .tabItem {
+                                Image(systemName: "livephoto")
                                 Text("Feed")
                             }
                         
@@ -29,6 +30,7 @@ struct ContentView: View {
                                 Image(systemName: "magnifyingglass")
                                 Text("Search")
                             }
+                            
                         
                         Settings()
                             .tabItem {
@@ -40,6 +42,7 @@ struct ContentView: View {
                     .accentColor(.red)
                     .navigationBarTitleDisplayMode(.inline)
                 }
+                .accessibility(identifier: "Nav")
             }
             // If user is not logged in, display the loginView.
             else {

@@ -28,10 +28,12 @@ struct LoginView: View {
                     VStack(spacing:16) {
                         CustomTextField(text: $email, placeholder: Text("Email..."), imageName: "envelope")
                             .inputModifier()
+                            .accessibilityLabel("email")
                             
                         
                         CustomSecureField(text: $password, placeholder: Text("Password..."))
                             .inputModifier()
+                            
                         
                     }
                     

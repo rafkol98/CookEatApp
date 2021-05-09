@@ -64,10 +64,12 @@ struct Settings: View {
                     Button(action: {
                         viewModel.signOut()
                     }, label: {
-                        Text("Sign out")
+                        Text("Sign Out")
                             .standardButton()
                         
                     })
+                    .accessibilityLabel("Sign Out")
+                    
                 }.foregroundColor(.black)
                 
             }

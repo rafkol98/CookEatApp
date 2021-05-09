@@ -12,7 +12,7 @@ import SwiftUI
 enum FilterOptions: Int, CaseIterable {
     case one
     case two
-  
+    
     
     var title : String {
         switch self {
@@ -26,7 +26,7 @@ enum FilterOptions: Int, CaseIterable {
 enum FilterOptions2: Int, CaseIterable {
     case one
     case two
-  
+    
     
     var title : String {
         switch self {

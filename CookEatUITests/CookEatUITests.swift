@@ -9,7 +9,7 @@ import XCTest
 
 class CookEatUITests: XCTestCase {
     
-    //IMPORTANT: FOR THE TESTS TO RUN, ON THE SIMULATOR ON THE "I/O" SETTING SELECT "Keyboard" AND THEN DEACTIVATE "Connect Hardware Keyboard".
+    //IMPORTANT: FOR THE TESTS TO RUN, ON THE SIMULATOR CLICK THE "I/O" SETTING AND THEN SELECT "Keyboard" AND FINALLY DEACTIVATE "Connect Hardware Keyboard".
     private var app: XCUIApplication!
     private var loggedIn = false
 
@@ -63,7 +63,7 @@ class CookEatUITests: XCTestCase {
         XCTAssertTrue(message.waitForExistence(timeout: 5))
     }
     
-    //Test search view.
+    //Test account view.
     func testAccount() {
         app.buttons["Account"].tap()
         
@@ -71,5 +71,41 @@ class CookEatUITests: XCTestCase {
         XCTAssertTrue(message.waitForExistence(timeout: 5))
     }
     
+    //Test Contributions view.
+    func testContributions() {
+        app.buttons["Account"].tap()
+        
+        sleep(2)
+        
+        app.buttons["Contributions"].tap()
+        
+        let message = app.staticTexts["Contributions Sent"]
+        XCTAssertTrue(message.waitForExistence(timeout: 5))
+    }
+    
+    //Test Requests view.
+    func testRequests() {
+        app.buttons["Account"].tap()
+        
+        sleep(2)
+        
+        app.buttons["Requests"].tap()
+        
+        let message = app.staticTexts["Requests Received"]
+        XCTAssertTrue(message.waitForExistence(timeout: 5))
+    }
+    
+    //Test profile view.
+    func testProfile() {
+        app.buttons["Account"].tap()
+        
+        sleep(2)
+        
+        app.buttons["Profile"].tap()
+        
+        let message = app.staticTexts["Followers"]
+        XCTAssertTrue(message.waitForExistence(timeout: 5))
+    }
+
     
 }

@@ -16,7 +16,7 @@ class SearchViewModel: ObservableObject {
     
     // Populate users array.
     func fetchUsers() {
-
+        
         COLLECTION_USERS.addSnapshotListener { snapshot, error in
             // Catch error.
             if let error = error {
@@ -38,7 +38,7 @@ class SearchViewModel: ObservableObject {
     
     // Fetch recipes of user.
     func fetchRecipes() {
-     
+        
         COLLECTION_RECIPES.addSnapshotListener { (querySnaphot, error) in
             // Catch error.
             if let error = error {
@@ -57,6 +57,6 @@ class SearchViewModel: ObservableObject {
             }
         }
     }
-
+    
     
 }

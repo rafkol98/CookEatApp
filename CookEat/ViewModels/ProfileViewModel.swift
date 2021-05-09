@@ -34,16 +34,16 @@ class ProfileViewModel: ObservableObject {
         let followersRef = COLLECTION_USERS.document(user.id).collection("users-followers")
         
         // Add followed user's uid to the current user.
-        followingRef.document(self.user.id).setData([:]) { err in
+        followingRef.document(self.user.id).setData([:]) { error in
             // Catch error.
-            if let err = err {
-                print("Error following user: \(err)")
+            if let error = error {
+                print("Error following user: \(error)")
             } else {
                 //Add current user's uid to the followed user.
-                followersRef.document(userUid).setData([:]) { err in
+                followersRef.document(userUid).setData([:]) { error in
                     // Catch error.
-                    if let err = err {
-                        print("Error following user: \(err)")
+                    if let error = error {
+                        print("Error following user: \(error)")
                     } else {
                         self.isFollowed = true
                     }
@@ -59,14 +59,14 @@ class ProfileViewModel: ObservableObject {
         let followingRef = COLLECTION_USERS.document(userUid).collection("users-following")
         let followersRef = COLLECTION_USERS.document(user.id).collection("users-followers")
         
-        followingRef.document(self.user.id).delete { err in
+        followingRef.document(self.user.id).delete { error in
             // Catch error.
-            if let err = err {
-                print("Error unfollowing user: \(err)")
+            if let error = error {
+                print("Error unfollowing user: \(error)")
             } else {
-                followersRef.document(userUid).delete { err in
-                    if let err = err {
-                        print("Error unfollowing user: \(err)")
+                followersRef.document(userUid).delete { error in
+                    if let error = error {
+                        print("Error unfollowing user: \(error)")
                     } else {
                         self.isFollowed = false
                     }

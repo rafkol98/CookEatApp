@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 struct User: Identifiable {
-//    User data
+    // User data
     let id: String
     let email: String
     let username: String
@@ -18,7 +18,7 @@ struct User: Identifiable {
     let fullname: String
     let currentUser: Bool
     
-//    Initialize variables from dictionary that we get from Firebase.
+    // Initialize variables from dictionary that we get from Firebase.
     init(dictionary: [String: Any]) {
         self.id = dictionary["uid"] as? String ?? ""
         self.username = dictionary["username"] as? String ?? ""

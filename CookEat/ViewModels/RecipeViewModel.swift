@@ -26,8 +26,10 @@ class RecipeViewModel: ObservableObject {
         let recipeLikesRef = COLLECTION_RECIPES.document(recipe.id).collection("recipe-likes")
         let userLikesRef = COLLECTION_USERS.document(uid).collection("user-likes")
         
+        // Increment the likes counter and set the uid of the current user as a child in the recipe-likes document.
         COLLECTION_RECIPES.document(recipe.id).updateData(["likes": recipe.likes + 1 ]){ _ in
             recipeLikesRef.document(uid).setData([:]) { _ in
+                // Add the recipe id under the "user-likes" document.
                 userLikesRef.document(self.recipe.id).setData([:]) { _ in
                     self.didLike = true
                 }
@@ -74,9 +76,9 @@ class RecipeViewModel: ObservableObject {
                 "description": description,
                 "ingredients": ingredients,
                 "instructions": instructions
-            ]) { err in
-                if let err = err {
-                    print("Error updating document: \(err)")
+            ]) { error in
+                if let error = error {
+                    print("Error updating document: \(error)")
                 } else {
                     print("Document successfully updated")
                 }
@@ -98,14 +100,14 @@ class RecipeViewModel: ObservableObject {
                         let temp = Contribution(dictionary: document.data())
                         
                         //Delete all the received contributions
-                        receivedRef.document(document.documentID).delete() { err in
-                            if let err = err {
-                                print("Error deleting document: \(err)")
+                        receivedRef.document(document.documentID).delete() { error in
+                            if let error = error {
+                                print("Error deleting document: \(error)")
                             } else {
                                 //delete the suggested contirbution sent by another user.
-                                COLLECTION_USERS.document(temp.uid).collection("suggested").document(document.documentID).delete() { err in
-                                    if let err = err {
-                                        print("Error deleting document: \(err)")
+                                COLLECTION_USERS.document(temp.uid).collection("suggested").document(document.documentID).delete() { error in
+                                    if let error = error {
+                                        print("Error deleting document: \(error)")
                                     } else {
                                         print("Documents successfully deleted")
                                     }
@@ -139,9 +141,9 @@ class RecipeViewModel: ObservableObject {
             data.updateValue(0, forKey: "likes")
             data.updateValue(Timestamp(date: Date()), forKey: "timestamp")
             
-            docRef.setData(data) {  err in
-                if let err = err {
-                    print("Error forking reecipe: \(err)")
+            docRef.setData(data) {  error in
+                if let error = error {
+                    print("Error forking reecipe: \(error)")
                 } else {
                     print("Documents successfully forked")
                 }
@@ -194,11 +196,5 @@ class RecipeViewModel: ObservableObject {
         }
         
     }
-    
-    func fetchIngredients() -> Array<String> {
-        return recipe.ingredients
-    }
-    
-    
     
 }

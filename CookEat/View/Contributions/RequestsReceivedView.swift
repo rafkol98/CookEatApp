@@ -63,7 +63,9 @@ struct RequestsReceivedView: View {
                         Divider()
                     }
                     Spacer()
-                }}}
+                }
+            }
+        }
         // If the user received no requests, display appropriate image.
         else {
             VStack {
@@ -77,4 +79,5 @@ struct RequestsReceivedView: View {
             }
         }
     }
+    
 }

@@ -45,6 +45,7 @@ struct Settings: View {
                         label: {
                             SettingsOption(icon: "person.crop.circle", text: "View Profile")
                         })
+                        .accessibilityLabel("Profile")
                     
                     
                     NavigationLink(
@@ -52,12 +53,14 @@ struct Settings: View {
                         label: {
                             SettingsOption(icon: "square.stack.3d.up.fill", text: "Contributions")
                         })
+                        .accessibilityLabel("Contributions")
                     
                     NavigationLink(
                         destination: LazyView(RequestsReceivedView(user: viewModel.user!)),
                         label: {
                             SettingsOption(icon: "tray.and.arrow.down.fill", text: "Requests Received")
                         })
+                        .accessibilityLabel("Requests")
                     
                     
                     Spacer()

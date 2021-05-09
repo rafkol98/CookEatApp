@@ -4,7 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 06/03/2021.
 //
-//  Action button shown in profile.
+//  Action button shown in profile. Changes between "following" and "follow" accordingly.
 
 import SwiftUI
 

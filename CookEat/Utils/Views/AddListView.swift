@@ -82,20 +82,22 @@ struct AddListView: View {
         text = ""
     }
     
-    //Delete ingredient.
+    // Delete ingredient.
     func deleteIngredient(at offsets: IndexSet) {
         ingredients.remove(atOffsets: offsets)
     }
     
-    //Delete ingredient.
+    // Delete ingredient.
     func deleteInstruction(at offsets: IndexSet) {
         instructions.remove(atOffsets: offsets)
     }
     
+    // Move instruction.
     func moveInstruction(from source: IndexSet, to destination: Int) {
          instructions.move(fromOffsets: source, toOffset: destination)
      }
     
+    // Move ingredient.
     func moveIngredient(from source: IndexSet, to destination: Int) {
          ingredients.move(fromOffsets: source, toOffset: destination)
      }

@@ -33,9 +33,9 @@ struct Contribution: Identifiable {
     let originalTimestamp: Timestamp
     let originalIngredients: Array<String>
     let originalInstructions: Array<String>
-
-
-
+    
+    
+    
     // Initialize variables from dictionary that we get from Firebase.
     init(dictionary: [String: Any]) {
         self.id = dictionary["id"] as? String ?? ""
@@ -60,7 +60,7 @@ struct Contribution: Identifiable {
         self.originalUid = dictionary["originalUid"] as? String ?? ""
         self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
         self.originalTimestamp = dictionary["originalTimestamp"] as? Timestamp ?? Timestamp(date: Date())
-
+        
     }
     
     

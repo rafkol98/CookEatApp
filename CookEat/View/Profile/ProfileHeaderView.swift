@@ -4,7 +4,7 @@
 //
 //  Created by Rafael Kollyfas on 06/03/2021.
 //
-//  The header view of the profile.
+//  The header view of the profile. Contains the profile picture of user, their name and number of followers and following.
 
 import SwiftUI
 import Kingfisher

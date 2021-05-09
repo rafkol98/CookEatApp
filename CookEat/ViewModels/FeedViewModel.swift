@@ -21,11 +21,11 @@ class FeedViewModel: ObservableObject {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         
         // Fetch recipes of only the users we are following.
-        COLLECTION_USERS.document(userUid).collection("users-following").addSnapshotListener { (querySnapshot, err) in
+        COLLECTION_USERS.document(userUid).collection("users-following").addSnapshotListener { (querySnapshot, error) in
             self.recipes = []
             //Catch error.
-            if let err = err {
-                print("Error getting documents: \(err)")
+            if let error = error {
+                print("Error getting documents: \(error)")
             } else {
                 for document in querySnapshot!.documents {
                     

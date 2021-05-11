@@ -11,6 +11,7 @@ import Firebase
 
 class UploadRecipeViewModel: ObservableObject {
     
+    // Upload recipe to database.
     func upload(name: String, description: String, ingredients: Array<String>, instructions: Array<String>, image: UIImage) {
         guard let user = AuthViewModel.shared.user else {return}
         
@@ -22,6 +23,7 @@ class UploadRecipeViewModel: ObservableObject {
             let filename = NSUUID().uuidString
             let storageRef = Storage.storage().reference().child(filename)
             
+            // Store image to firebase storage.
             storageRef.putData(imageData, metadata: nil) { _, error in
                 if let error = error {
                     print("Failed to upload image \(error.localizedDescription)")

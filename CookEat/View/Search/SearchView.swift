@@ -25,7 +25,7 @@ struct SearchView: View {
             
             switch selectedFilter {
             
-            // Case two is users - profiles.
+            // Case two is users profiles.
             case .two:
                 VStack(alignment: .leading) {
                     
@@ -37,7 +37,7 @@ struct SearchView: View {
                         NavigationLink(
                             destination: LazyView(UserProfileView(user: user)),
                             label: {
-                                //                            Place user in a userCell.
+                                // Place user in a userCell.
                                 UserCell(user: user)
                             })
                     }
@@ -54,7 +54,7 @@ struct SearchView: View {
                         NavigationLink(
                             destination: RecipeDetailsView(recipe: recipe),
                             label: {
-                                //                            Place user in a userCell.
+                                // Place user in a userCell.
                                 RecipeCell(recipe: recipe)
                             }).foregroundColor(.black)
                     }

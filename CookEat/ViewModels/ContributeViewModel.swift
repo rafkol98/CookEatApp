@@ -34,6 +34,7 @@ class ContributeViewModel: ObservableObject {
             }
             guard let documents = querySnaphot?.documents else { return }
             
+            // Assign received contributions to the receivedRecipes.
             self.receivedRecipes = documents.map{ (queryDocumentSnapshot) -> Contribution in
                 let data = queryDocumentSnapshot.data()
                 
@@ -55,6 +56,7 @@ class ContributeViewModel: ObservableObject {
             
             guard let documents = querySnaphot?.documents else { return }
             
+            // Assign contributions to the contributedRecipes.
             self.contributedRecipes = documents.map{ (queryDocumentSnapshot) -> Contribution in
                 let data = queryDocumentSnapshot.data()
                 

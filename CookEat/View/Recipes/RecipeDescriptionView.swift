@@ -18,7 +18,7 @@ struct RecipeDescriptionView: View {
     }
     
     var body: some View {
-        //Description.
+        //Description of recipe in a TextEditor.
         ScrollView{
             TextEditor(text: .constant(recipe.description))
                 .frame(width: .infinity, height: 80)

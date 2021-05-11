@@ -15,7 +15,7 @@ struct CustomTextField: View {
     let imageName: String
     
     var body: some View {
-        ZStack(alignment: .leading){
+        ZStack(alignment: .leading) {
             if text.isEmpty {
                 placeholder
                     .foregroundColor(Color.black)
@@ -40,7 +40,7 @@ struct CustomSecureField: View {
     let placeholder: Text
     
     var body: some View {
-        ZStack(alignment: .leading){
+        ZStack(alignment: .leading) {
             if text.isEmpty {
                 placeholder
                     .foregroundColor(Color.black)
@@ -73,7 +73,8 @@ struct TitleView: View {
             
             
             Spacer()
-        }.padding()
+        }
+        .padding()
         
     }
 }
@@ -90,7 +91,8 @@ struct HeadingView: View {
             Text(name)
                 .font(.system(size: 22, weight: .semibold))
             Spacer()
-        }.padding(.vertical)
+        }
+        .padding(.vertical)
     }
 }
 

@@ -33,7 +33,7 @@ class AuthViewModel: ObservableObject {
                 return
             }
             
-            //            attach user to the user session.
+            // attach user to the user session.
             self.userSession = result?.user
             self.fetchUser()
         }
@@ -49,6 +49,7 @@ class AuthViewModel: ObservableObject {
             let filename = NSUUID().uuidString
             let storageRef = Storage.storage().reference().child(filename)
             
+            // Put image to firebase storage.
             storageRef.putData(imageData, metadata: nil) { _, error in
                 if let error = error {
                     print("Failed to upload image \(error.localizedDescription)")

@@ -47,6 +47,7 @@ struct FeedView: View {
                 }
                 
             }
+            // Add a new recipe button.
             HStack{
                 Spacer()
                 AddRecipeButton()

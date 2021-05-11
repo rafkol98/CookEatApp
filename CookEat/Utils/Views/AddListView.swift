@@ -25,6 +25,7 @@ struct AddListView: View {
             })
             .textFieldStyle(RoundedBorderTextFieldStyle())
             
+            // Display ingredients
             List {
                 ForEach(ingredients, id: \.self) { ingredient in
                     Text(ingredient)
@@ -34,6 +35,7 @@ struct AddListView: View {
             }
             .environment(\.editMode, Binding.constant(EditMode.active))
         }
+        // Border.
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(ingredients.isEmpty ? Color(.systemGray3) : Color.green, lineWidth: 2)
@@ -50,6 +52,7 @@ struct AddListView: View {
             })
             .textFieldStyle(RoundedBorderTextFieldStyle())
             
+            // Display instructions.
             List {
                 ForEach(instructions, id: \.self) { instruction in
                     Text(instruction)
@@ -60,7 +63,9 @@ struct AddListView: View {
             }
             .environment(\.editMode, Binding.constant(EditMode.active))
             
-        }.overlay(
+        }
+        // Border.
+        .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(instructions.isEmpty ? Color(.systemGray3) : Color.green, lineWidth: 2)
         )

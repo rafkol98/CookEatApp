@@ -33,7 +33,7 @@ struct AddRecipeButton: View {
                     .frame(width: 40, height: 40)
             }
         }
-        //Open add new recipe view as a sheet.
+        // Open add new recipe view as a sheet.
         .sheet(isPresented: $showAdd, content: {
             LazyView(AddRecipeView(showAdd: $showAdd))
         })

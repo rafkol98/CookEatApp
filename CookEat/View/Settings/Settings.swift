@@ -12,17 +12,18 @@ import Kingfisher
 
 struct Settings: View {
     
-    //    Get environmentObject of whether user is logged in.
+    // Get environmentObject of whether user is logged in.
     @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         
         ScrollView{
+            // If cant find current user show the error message.
             if viewModel.user == nil {
                 SettingErrorView()
             } else {
-                VStack{
-                    HStack{
+                VStack {
+                    HStack {
                         KFImage(URL(string: viewModel.user!.profileImageUrl))
                             .resizable()
                             .circularImg()
@@ -40,7 +41,7 @@ struct Settings: View {
                     .padding()
                     
                     
-                    NavigationLink(
+                    NavigationLink (
                         destination: LazyView(UserProfileView(user: viewModel.user!)),
                         label: {
                             SettingsOption(icon: "person.crop.circle", text: "View Profile")
@@ -48,14 +49,14 @@ struct Settings: View {
                         .accessibilityLabel("Profile")
                     
                     
-                    NavigationLink(
+                    NavigationLink (
                         destination: LazyView(ContributionsView(user: viewModel.user!)),
                         label: {
                             SettingsOption(icon: "square.stack.3d.up.fill", text: "Contributions")
                         })
                         .accessibilityLabel("Contributions")
                     
-                    NavigationLink(
+                    NavigationLink ( 
                         destination: LazyView(RequestsReceivedView(user: viewModel.user!)),
                         label: {
                             SettingsOption(icon: "tray.and.arrow.down.fill", text: "Requests Received")
@@ -64,6 +65,8 @@ struct Settings: View {
                     
                     
                     Spacer()
+                    
+                    // Sign out button.
                     Button(action: {
                         viewModel.signOut()
                     }, label: {

@@ -45,7 +45,9 @@ class RecipeViewModel: ObservableObject {
         let recipeLikesRef = COLLECTION_RECIPES.document(recipe.id).collection("recipe-likes")
         let userLikesRef = COLLECTION_USERS.document(uid).collection("user-likes")
         
+        // Update likes counter of recipe.
         COLLECTION_RECIPES.document(recipe.id).updateData(["likes": recipe.likes - 1]){ _ in
+            // Delete the like association of user with the recipe.
             recipeLikesRef.document(uid).delete { _ in
                 userLikesRef.document(self.recipe.id).delete { _ in
                     self.didLike = false

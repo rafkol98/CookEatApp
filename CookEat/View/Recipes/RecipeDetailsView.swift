@@ -140,7 +140,7 @@ struct RecipeDetailsView: View {
     
 }
 
-
+// Used for displaying the ingredients and instructions in RecipeDetailsView.
 struct IngredientsInstructionsView: View {
     @Binding var ingredients: Array<String>
     @Binding var instructions: Array<String>

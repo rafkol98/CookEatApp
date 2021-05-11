@@ -58,6 +58,7 @@ struct ContributeOrEditView: View {
     var body: some View {
         ScrollView {
             
+            // Display different title depending on whether the view is used for editing or contributing.
             if editFlag {
                 HStack {
                     TitleView(text: "Edit", iconName: "pencil")
@@ -104,7 +105,8 @@ struct ContributeOrEditView: View {
                     
                 }
                 
-                ContributeListView(newIngredient: $newIngredient, ingredients: $ingredients, newInstruction: $newInstruction, instructions: $instructions, addedIngredients: $addedIngredients, addedInstructions: $addedInstructions, removedIngredients: $removedIngredients, removedInstructions: $removedInstructions).padding(.horizontal)
+                // Display the contribution or edit boxes.
+                ContributeEditListView(newIngredient: $newIngredient, ingredients: $ingredients, newInstruction: $newInstruction, instructions: $instructions, addedIngredients: $addedIngredients, addedInstructions: $addedInstructions, removedIngredients: $removedIngredients, removedInstructions: $removedInstructions).padding(.horizontal)
                 
                 Button(action: {
                     if editFlag {

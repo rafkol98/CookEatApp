@@ -59,8 +59,7 @@ class AcceptRejectViewModel: ObservableObject {
                 }
             }
         })
-        
-        
     }
+    
     
 }

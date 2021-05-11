@@ -143,6 +143,7 @@ class ProfileViewModel: ObservableObject {
                 return
             }
             
+            // Assign followers count.
             guard let followerCount = snapshot?.documents.count else { return }
             self.followers = followerCount
         }
@@ -152,6 +153,7 @@ class ProfileViewModel: ObservableObject {
                 return
             }
             
+            // Assign following count.
             guard let followingCount = snapshot?.documents.count else { return }
             self.following = followingCount
         }

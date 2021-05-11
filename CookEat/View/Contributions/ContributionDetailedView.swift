@@ -30,6 +30,7 @@ struct ContributionDetailedView: View {
         VStack{
             TitleView(text: "Contribution Details", iconName: "square.2.stack.3d.top.fill")
             
+            // If its a contribution the user sent, then show the current status.
             if !received {
                 HStack {
                     Text("Status:").font(.system(size: 22, weight: .semibold))

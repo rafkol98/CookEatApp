@@ -40,6 +40,7 @@ class FeedViewModel: ObservableObject {
                         
                         guard let documents = querySnaphot?.documents else { return }
                         
+                        // Append recipe to the user's recipes variable.
                         self.recipes.append( contentsOf: documents.map{ (queryDocumentSnapshot) -> Recipe in
                             let data = queryDocumentSnapshot.data()
                             

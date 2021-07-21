@@ -57,15 +57,14 @@ struct RecipeDetailsView: View {
                     VStack{
                         
                         HStack {
-                            ForEach(0..<1) { _ in
-                                KFImage(URL(string: recipe.profileImageUrl))
-                                    .resizable()
-                                    .scaledToFill()
-                                    .clipped()
-                                    .frame(width: 40, height: 40)
-                                    .cornerRadius(50/2)
-                                    .shadow(radius: 2)
-                            }
+                            KFImage(URL(string: recipe.profileImageUrl))
+                                .resizable()
+                                .scaledToFill()
+                                .clipped()
+                                .frame(width: 40, height: 40)
+                                .cornerRadius(50/2)
+                                .shadow(radius: 2)
+                            
                             Spacer()
                         }
                         .padding(10)

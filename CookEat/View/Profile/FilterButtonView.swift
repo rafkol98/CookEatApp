@@ -74,7 +74,7 @@ struct FilterButtonView: View {
     }
 }
 
-// Filter button for recipes.
+// Filter button for search feature.
 struct FilterButtonView2: View {
     @Binding var selectedOption: FilterOptions2
     

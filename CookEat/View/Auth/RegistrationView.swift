@@ -17,21 +17,21 @@ struct RegistrationView: View {
     @State var selectedUIImage: UIImage?
     @State var image: Image?
     
-    //    Create instance of AuthViewModel
+    // Create instance of AuthViewModel
     @EnvironmentObject var viewModel: AuthViewModel
     
-    //convert a ui image into a SwiftUI image.
+    // Convert a ui image into a SwiftUI image.
     func loadImage() {
         guard let selectedImage = selectedUIImage else {return}
         image = Image(uiImage: selectedImage)
     }
     
-    //Disable button
+    // Disable button
     var disableButton: Bool {
         return !isValidEmail(email: email) || invalid(varIn: password, minBoundary: 6, maxBoundary: 40) || invalid(varIn: username, minBoundary: 5, maxBoundary: 20) || invalid(varIn: fullname, minBoundary: 5, maxBoundary: 50) || selectedUIImage==nil
     }
     
-    //Add red color to the submit button when all the inputs are valid.
+    // Add red color to the submit button when all the inputs are valid.
     var buttonColor: Color {
         return disableButton ? .accentColor : .red
     }

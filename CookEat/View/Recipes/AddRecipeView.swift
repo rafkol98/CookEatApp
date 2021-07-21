@@ -91,6 +91,7 @@ struct AddRecipeView: View {
                     InvalidView(stringIn: "Ensure the description is between 10 to 1000 characters")
                 }
                 
+                //List views used for ingredients and instructions.
                 AddListView(newIngredient: $newIngredient, ingredients: $ingredients, newInstruction: $newInstruction, instructions: $instructions)
                 
                 Button(action: {
@@ -103,6 +104,7 @@ struct AddRecipeView: View {
                         .adjustButton(with: buttonColor)
                     
                 })
+                //If message was added, alert user.
                 .alert(isPresented: $added) {
                     Alert(title: Text("Recipe Added"),
                         message: Text("Your recipe was added succesfully!"),

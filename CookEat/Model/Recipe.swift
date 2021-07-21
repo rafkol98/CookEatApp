@@ -39,7 +39,6 @@ struct Recipe: Identifiable {
         self.likes = dictionary["likes"] as? Int ?? 0
         self.uid = dictionary["uid"] as? String ?? ""
         self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
-        
     }
     
     

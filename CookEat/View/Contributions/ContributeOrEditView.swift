@@ -40,7 +40,7 @@ struct ContributeOrEditView: View {
         self.viewModel = RecipeViewModel(recipe: recipe)
     }
     
-    //Disable button
+    // Disable button
     var disableButton: Bool {
         if editFlag {
             return addedIngredients.isEmpty && addedInstructions.isEmpty && equalString(stringOne: recipe.recipeName, stringTwo: name) && equalString(stringOne: recipe.description, stringTwo: description)
@@ -133,7 +133,7 @@ struct ContributeOrEditView: View {
         }
         
     }
-    //Add ingredient/instruction.
+    // Add ingredient/instruction.
     func add(text: inout String, added: inout Array<String>, original: inout Array<String>) {
         let item = text.trimmingCharacters(in: .whitespacesAndNewlines)
         
@@ -146,7 +146,7 @@ struct ContributeOrEditView: View {
         text = ""
     }
     
-    //Delete ingredient.
+    // Delete ingredient.
     func deleteIngredient(at offsets: IndexSet) {
         let index = offsets[offsets.startIndex]
         
@@ -155,7 +155,7 @@ struct ContributeOrEditView: View {
         
     }
     
-    //Delete instruction.
+    // Delete instruction.
     func deleteInstruction(at offsets: IndexSet) {
         let index = offsets[offsets.startIndex]
         

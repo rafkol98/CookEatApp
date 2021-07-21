@@ -59,8 +59,7 @@ struct Contribution: Identifiable {
         self.uid = dictionary["uid"] as? String ?? ""
         self.originalUid = dictionary["originalUid"] as? String ?? ""
         self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
-        self.originalTimestamp = dictionary["originalTimestamp"] as? Timestamp ?? Timestamp(date: Date())
-        
+        self.originalTimestamp = dictionary["originalTimestamp"] as? Timestamp ?? Timestamp(date: Date())  
     }
     
     

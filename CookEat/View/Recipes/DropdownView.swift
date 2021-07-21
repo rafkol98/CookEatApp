@@ -30,14 +30,11 @@ struct DropdownView: View {
             .font(.system(size: 18))
             
         }
-        
         .accentColor(.red)
         .padding(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color(.systemGray2), lineWidth: 3)
-            
-            
+                .stroke(Color(.systemGray2), lineWidth: 3) 
         )
         .padding()
         

@@ -32,7 +32,8 @@ struct RecipeCell: View {
             
             Divider()
             
-        }.onAppear {
+        }
+        .onAppear {
             username = recipe.username
             name = recipe.recipeName
         }

@@ -39,7 +39,7 @@ struct ContributionsView: View {
                                 .shadow(radius: 4)
                                 .padding()
                             NavigationLink(
-                                destination: LazyView(ContributionDetailedView(contribution: contribution, received: false)),
+                                destination: ContributionDetailedView(contribution: contribution, received: false),
                                 label: {
                                     VStack {
                                         HStack {

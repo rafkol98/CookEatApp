@@ -23,7 +23,7 @@ struct FeedView: View {
                         VStack {
                             ForEach(viewModel.recipes) { recipe in
                                 NavigationLink(
-                                    destination: LazyView(RecipeDetailsView(recipe: recipe)),
+                                    destination: RecipeDetailsView(recipe: recipe),
                                     label: {
                                         //Place user in a userCell.
                                         RecipeCell(recipe: recipe)

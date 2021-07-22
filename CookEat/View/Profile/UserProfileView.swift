@@ -34,7 +34,7 @@ struct UserProfileView: View {
                 ForEach(viewModel.recipes(forFilter: selectedFilter)) { recipe in
                     
                     NavigationLink(
-                        destination: LazyView(RecipeDetailsView(recipe: recipe)),
+                        destination: RecipeDetailsView(recipe: recipe),
                         label: {
                             // Place user in a userCell.
                             RecipeCell(recipe: recipe)

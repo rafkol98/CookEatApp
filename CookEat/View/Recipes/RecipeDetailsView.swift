@@ -123,7 +123,7 @@ struct RecipeDetailsView: View {
                             })
                             .sheet(isPresented: $isLinkActive, content: {
                                 //Open ContributeOrEditView, the editFlag variable determines if the view will be transformed for edit or contribute.
-                                LazyView(ContributeOrEditView(recipe: recipe, editFlag: flag))
+                                ContributeOrEditView(recipe: recipe, editFlag: flag)
                             })
                         }
                         

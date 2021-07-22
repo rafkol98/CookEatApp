@@ -72,7 +72,6 @@ struct circImg: ViewModifier {
             .clipped()
             .frame(width: 120, height: 120)
             .cornerRadius(120/2)
-            .shadow(radius: 10)
             .padding()
     }
 }

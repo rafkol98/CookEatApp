@@ -27,7 +27,7 @@ struct Settings: View {
                         KFImage(URL(string: viewModel.user!.profileImageUrl))
                             .resizable()
                             .circularImg()
-
+                        
                         
                         VStack {
                             Text(viewModel.user!.fullname)
@@ -42,22 +42,21 @@ struct Settings: View {
                     
                     
                     NavigationLink (
-                        destination: LazyView(UserProfileView(user: viewModel.user!)),
+                        destination: UserProfileView(user: viewModel.user!),
                         label: {
                             SettingsOption(icon: "person.crop.circle", text: "View Profile")
                         })
                         .accessibilityLabel("Profile")
                     
-                    
                     NavigationLink (
-                        destination: LazyView(ContributionsView(user: viewModel.user!)),
+                        destination: ContributionsView(user: viewModel.user!),
                         label: {
                             SettingsOption(icon: "square.stack.3d.up.fill", text: "Contributions")
                         })
                         .accessibilityLabel("Contributions")
                     
-                    NavigationLink ( 
-                        destination: LazyView(RequestsReceivedView(user: viewModel.user!)),
+                    NavigationLink (
+                        destination: RequestsReceivedView(user: viewModel.user!),
                         label: {
                             SettingsOption(icon: "tray.and.arrow.down.fill", text: "Requests Received")
                         })

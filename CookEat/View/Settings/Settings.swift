@@ -23,23 +23,15 @@ struct Settings: View {
                 SettingErrorView()
             } else {
                 VStack {
-                    HStack {
+                    VStack{
                         KFImage(URL(string: viewModel.user!.profileImageUrl))
-                            .resizable()
-                            .circularImg()
+                                                    .resizable()
+                                                    .circularImg()
                         
-                        
-                        VStack {
-                            Text(viewModel.user!.fullname)
-                                .font(.system(size: 22, weight: .semibold))
-                            Text("@\(viewModel.user!.username)")
-                                .font(.system(size: 16))
-                        }
-                        Spacer()
-                        
+                        Text("@\(viewModel.user!.username)")
+                            .font(.system(size: 25))
                     }
                     .padding()
-                    
                     
                     NavigationLink (
                         destination: UserProfileView(user: viewModel.user!),

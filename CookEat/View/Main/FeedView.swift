@@ -12,7 +12,7 @@ struct FeedView: View {
     @ObservedObject var viewModel = FeedViewModel()
     
     var body: some View {
-       
+        
         VStack {
             TitleView(text: "Feed View", iconName: "livephoto")
             Divider()
@@ -45,14 +45,14 @@ struct FeedView: View {
                         Spacer()
                     }
                 }
-                
+                // Add a new recipe button.
+                HStack{
+                    Spacer()
+                    AddRecipeButton()
+                        .accessibility(identifier: "add_recipe")
+                }
             }
-            // Add a new recipe button.
-            HStack{
-                Spacer()
-                AddRecipeButton()
-                    .accessibility(identifier: "add_recipe")
-            }
+            
         }
     }
 }

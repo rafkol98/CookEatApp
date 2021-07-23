@@ -20,16 +20,24 @@ class AcceptRejectViewModel: ObservableObject {
     func accept() {
         //Delete the contribution from the receive and update the original recipe.
         COLLECTION_USERS.document(contribution.originalUid).collection("received").document(contribution.id).delete(completion: { _ in
-            COLLECTION_RECIPES.document(self.contribution.originalId).updateData([
-                "ingredients": self.contribution.suggestedIngredients,
-                "instructions": self.contribution.suggestedInstructions
-            ]) { error in
-                if let error = error {
-                    print("Error updating document: \(error)")
-                } else {
-                    print("Document successfully updated")
+            
+            COLLECTION_RECIPES.document(self.contribution.originalId).getDocument{ snapshot, _ in
+                guard let data = snapshot?.data() else { return }
+                
+                COLLECTION_RECIPES.document(self.contribution.originalId).updateData([
+                    "ingredients": self.contribution.suggestedIngredients,
+                    "instructions": self.contribution.suggestedInstructions,
+                    "history": data
+                ]) { error in
+                    if let error = error {
+                        print("Error updating document: \(error)")
+                    } else {
+                        print("Document successfully updated")
+                    }
                 }
             }
+            
+           
         })
         
         // Suggested recipe that the user suggested update status to approved.

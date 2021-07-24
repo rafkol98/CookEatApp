@@ -38,7 +38,6 @@ struct RequestsReceivedView: View {
                                     .clipped()
                                     .frame(width: 50, height: 50)
                                     .cornerRadius(120/2)
-                                    .shadow(radius: 4)
                                     .padding()
                                 VStack {
                                     HStack {

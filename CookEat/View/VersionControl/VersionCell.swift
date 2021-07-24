@@ -17,18 +17,21 @@ struct VersionCell: View {
     // Recipe cell contains recipe title, description and a View Recipe text.
     var body: some View {
         VStack {
-            HStack( alignment: .top) {
                 VStack(alignment: .leading) {
-                    RecipeTitleView(username: $username, recipeName: $name)
-                
+                    HStack {
+                        KFImage(URL(string: contribution.profileImageUrl))
+                            .resizable()
+                            .scaledToFill()
+                            .clipped()
+                            .frame(width: 60, height: 60)
+                            .cornerRadius(120/2)
+                            .padding()
+                        Text(contribution.username).font(.system(size: 18, weight: .semibold))
+                        Spacer()
+                    }
                     Text("View Contribution").foregroundColor(.red).padding(.trailing).padding(.top)
-                    
                 }
-                
-            }.padding(.top)
-            
             Divider()
-            
         }
         .onAppear {
             username = contribution.username

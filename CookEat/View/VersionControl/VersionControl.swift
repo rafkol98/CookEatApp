@@ -13,6 +13,8 @@ struct VersionControl: View {
     
     @ObservedObject var viewModel: VersionControlViewModel
     
+    @State private var versionControl = false
+    
     init(recipe: Recipe ) {
         self.recipe = recipe
         self.viewModel = VersionControlViewModel(recipe: recipe)
@@ -26,12 +28,27 @@ struct VersionControl: View {
                 ScrollView {
                     VStack {
                         ForEach(viewModel.contributions) { contribution in
-                            NavigationLink(
-                                destination: ContributionDetailedView(contribution: contribution, received: false),
-                                label: {
-                                    //Place user in a userCell.
-                                    VersionCell(contribution: contribution)
-                                }).foregroundColor(.black)
+                            
+                            // Button used to open version control of a recipe.
+                            Button(action: {
+                                // open sheet
+                                versionControl.toggle()
+                            }) {
+                                //Place user in a userCell.
+                                VersionCell(contribution: contribution).foregroundColor(.black)
+                            }
+                            // Open add new recipe view as a sheet.
+                            .sheet(isPresented: $versionControl, content: {
+                                ContributionDetailedView(contribution: contribution, received: false)
+                            })
+                            
+                            
+                            //                            NavigationLink(
+                            //                                destination: ContributionDetailedView(contribution: contribution, received: false),
+                            //                                label: {
+                            //                                    //Place user in a userCell.
+                            //                                    VersionCell(contribution: contribution)
+                            //                                }).foregroundColor(.black)
                         }
                     }.padding()
                 }

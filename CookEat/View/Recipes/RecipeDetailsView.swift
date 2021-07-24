@@ -16,7 +16,7 @@ struct RecipeDetailsView: View {
     @State private var isExpandedInstr = false
     @State private var isLinkActive = false
     @State private var forked = false
-    @State private var versionControl = false
+   
     
     
     let recipe: Recipe
@@ -86,21 +86,30 @@ struct RecipeDetailsView: View {
                                 ).padding()
                             }
                             
-                            // Button used to open version control of a recipe.
-                            Button(action: {
-                                // open sheet
-                                versionControl.toggle()
-                            }) {
-                                Image(systemName: "clock.arrow.2.circlepath")
-                                    .font(.system(size:20))
-                                    .frame(width:32, height:32)
-                                    .foregroundColor(.gray)
-                            }
-                            // Open add new recipe view as a sheet.
-                            .sheet(isPresented: $versionControl, content: {
-                                VersionControl(recipe: recipe)
-                            })
-                            .padding()
+                            NavigationLink(
+                                destination: VersionControl(recipe: recipe),
+                                label: {
+                                    Image(systemName: "clock.arrow.2.circlepath")
+                                        .font(.system(size:20))
+                                        .frame(width:32, height:32)
+                                        .foregroundColor(.gray)
+                                }).padding()
+                            
+//                            // Button used to open version control of a recipe.
+//                            Button(action: {
+//                                // open sheet
+//                                versionControl.toggle()
+//                            }) {
+//                                Image(systemName: "clock.arrow.2.circlepath")
+//                                    .font(.system(size:20))
+//                                    .frame(width:32, height:32)
+//                                    .foregroundColor(.gray)
+//                            }
+//                            // Open add new recipe view as a sheet.
+//                            .sheet(isPresented: $versionControl, content: {
+//                                VersionControl(recipe: recipe)
+//                            })
+//                            .padding()
                             
                             
                         }

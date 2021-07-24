@@ -54,6 +54,9 @@
 		CBADCDF32624835B0028C694 /* AcceptRejectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADCDF22624835B0028C694 /* AcceptRejectViewModel.swift */; };
 		CBCB32712629DE9F00136B4F /* ContributeEditListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB32702629DE9F00136B4F /* ContributeEditListView.swift */; };
 		CBCC83E7262C394A0035B686 /* SettingErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC83E6262C394A0035B686 /* SettingErrorView.swift */; };
+		CBCCA7AC26AC169600216676 /* VersionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCCA7AB26AC169600216676 /* VersionControl.swift */; };
+		CBCCA7B226AC1B8A00216676 /* VersionControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCCA7B126AC1B8A00216676 /* VersionControlViewModel.swift */; };
+		CBCCA7B626AC22EE00216676 /* VersionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCCA7B526AC22EE00216676 /* VersionCell.swift */; };
 		CBCF8C90260FF3DE00416611 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCF8C8F260FF3DE00416611 /* RecipeViewModel.swift */; };
 		CBD308DB2629D70A00D3DD19 /* EditNameDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD308DA2629D70A00D3DD19 /* EditNameDescriptionView.swift */; };
 		CBE119A525FD62E400AE4E22 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE119A425FD62E400AE4E22 /* User.swift */; };
@@ -122,6 +125,9 @@
 		CBADCDF22624835B0028C694 /* AcceptRejectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptRejectViewModel.swift; sourceTree = "<group>"; };
 		CBCB32702629DE9F00136B4F /* ContributeEditListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributeEditListView.swift; sourceTree = "<group>"; };
 		CBCC83E6262C394A0035B686 /* SettingErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingErrorView.swift; sourceTree = "<group>"; };
+		CBCCA7AB26AC169600216676 /* VersionControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionControl.swift; sourceTree = "<group>"; };
+		CBCCA7B126AC1B8A00216676 /* VersionControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionControlViewModel.swift; sourceTree = "<group>"; };
+		CBCCA7B526AC22EE00216676 /* VersionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionCell.swift; sourceTree = "<group>"; };
 		CBCF8C8F260FF3DE00416611 /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		CBD308DA2629D70A00D3DD19 /* EditNameDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameDescriptionView.swift; sourceTree = "<group>"; };
 		CBE119A425FD62E400AE4E22 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 				CBCF8C8F260FF3DE00416611 /* RecipeViewModel.swift */,
 				CB2250B72621088E002196D2 /* ContributeViewModel.swift */,
 				CBADCDF22624835B0028C694 /* AcceptRejectViewModel.swift */,
+				CBCCA7B126AC1B8A00216676 /* VersionControlViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -259,6 +266,7 @@
 		CB6C3DCF25EC2B7200149528 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CBCCA7AA26AC164200216676 /* VersionControl */,
 				CB07E799262458D200556132 /* Contributions */,
 				CB9156962617CB150086994B /* Search */,
 				CB9156942617CABB0086994B /* Main */,
@@ -333,6 +341,15 @@
 				CB9472852647E4A300BB94AE /* Info.plist */,
 			);
 			path = CookEatUITests;
+			sourceTree = "<group>";
+		};
+		CBCCA7AA26AC164200216676 /* VersionControl */ = {
+			isa = PBXGroup;
+			children = (
+				CBCCA7AB26AC169600216676 /* VersionControl.swift */,
+				CBCCA7B526AC22EE00216676 /* VersionCell.swift */,
+			);
+			path = VersionControl;
 			sourceTree = "<group>";
 		};
 		CBEAAC5825F80DD90064A32B /* Auth */ = {
@@ -462,7 +479,9 @@
 				CB453D0625FD6BC0001C6DB4 /* SearchViewModel.swift in Sources */,
 				CB1E5E0825FA457700049676 /* AuthViewModel.swift in Sources */,
 				CB96D59625ED3B6600457589 /* SearchBar.swift in Sources */,
+				CBCCA7B626AC22EE00216676 /* VersionCell.swift in Sources */,
 				CB6C3DBF25EC253C00149528 /* ContentView.swift in Sources */,
+				CBCCA7AC26AC169600216676 /* VersionControl.swift in Sources */,
 				CBEAAC6425F81B660064A32B /* RegistrationView.swift in Sources */,
 				CB6C3DD225EC2BA200149528 /* FeedView.swift in Sources */,
 				CB7EDDD52608DDC800A1E3A8 /* ProfileViewModel.swift in Sources */,
@@ -483,6 +502,7 @@
 				CB4DAB222602A7D0009E44E8 /* RecipeDetailsView.swift in Sources */,
 				CB903FD225F4041E00297DD9 /* UserProfileView.swift in Sources */,
 				CB903FD825F404AE00297DD9 /* ProfileActionButtonView.swift in Sources */,
+				CBCCA7B226AC1B8A00216676 /* VersionControlViewModel.swift in Sources */,
 				CB6C3DBD25EC253C00149528 /* CookEatApp.swift in Sources */,
 				CBA8C5C026239A7500313596 /* Extensions.swift in Sources */,
 				CB903FD525F4047700297DD9 /* ProfileHeaderView.swift in Sources */,

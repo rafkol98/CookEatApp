@@ -21,15 +21,28 @@ class AcceptRejectViewModel: ObservableObject {
         //Delete the contribution from the receive and update the original recipe.
         COLLECTION_USERS.document(contribution.originalUid).collection("received").document(contribution.id).delete(completion: { _ in
             let data : [String: Any] = [
+                "id": self.contribution.id,
+                "status": "Approved",
+                "originalId": self.contribution.originalId,
+                "uid": self.contribution.uid,
+                "originalUid": self.contribution.originalUid,
+                "recipeName": self.contribution.recipeName,
                 "addedIngredients": self.contribution.addedIngredients,
                 "addedInstructions": self.contribution.addedInstructions,
                 "removedIngredients": self.contribution.removedIngredients,
                 "removedInstructions": self.contribution.removedInstructions,
-                "id": self.contribution.id,
-                "fullname": self.contribution.fullname,
-                "profileImageUrl": self.contribution.profileImageUrl,
                 "originalIngredients": self.contribution.originalIngredients,
-                "originalInstructions": self.contribution.removedInstructions
+                "originalInstructions": self.contribution.originalInstructions,
+                "suggestedIngredients": self.contribution.suggestedIngredients,
+                "suggestedInstructions": self.contribution.suggestedInstructions,
+                "fullname": self.contribution.fullname,
+                "originalFullname": self.contribution.originalFullname,
+                "timestamp": self.contribution.timestamp,
+                "originalTimestamp": self.contribution.originalTimestamp,
+                "username": self.contribution.username,
+                "originalUsername": self.contribution.originalUsername,
+                "originalProfileImageUrl": self.contribution.originalProfileImageUrl,
+                "profileImageUrl": self.contribution.profileImageUrl
             ]
             
             // Get time - used for time version.
@@ -44,7 +57,7 @@ class AcceptRejectViewModel: ObservableObject {
                 if let error = error {
                     print("Error updating document: \(error)")
                 } else {
-                    // Store history of contribution - time version.
+                    // Store history of contribution - version control.
                     COLLECTION_RECIPES.document(self.contribution.originalId).collection("history").document(dateString).setData(data)
                     print("Document successfully updated")
                 }

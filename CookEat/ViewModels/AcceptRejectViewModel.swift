@@ -45,11 +45,6 @@ class AcceptRejectViewModel: ObservableObject {
                 "profileImageUrl": self.contribution.profileImageUrl
             ]
             
-            // Get time - used for time version.
-            let formatter = DateFormatter()
-            formatter.dateStyle = .long
-            let dateString = formatter.string(from: Date())
-            
             COLLECTION_RECIPES.document(self.contribution.originalId).updateData([
                 "ingredients": self.contribution.suggestedIngredients,
                 "instructions": self.contribution.suggestedInstructions
@@ -58,7 +53,7 @@ class AcceptRejectViewModel: ObservableObject {
                     print("Error updating document: \(error)")
                 } else {
                     // Store history of contribution - version control.
-                    COLLECTION_RECIPES.document(self.contribution.originalId).collection("history").document(dateString).setData(data)
+                    COLLECTION_RECIPES.document(self.contribution.originalId).collection("history").document(self.contribution.id).setData(data)
                     print("Document successfully updated")
                 }
             }
@@ -91,6 +86,26 @@ class AcceptRejectViewModel: ObservableObject {
                 }
             }
         })
+    }
+    
+    func revertChanges() {
+        // 1. Set in main recipe  2. set in history again
+        COLLECTION_RECIPES.document(self.contribution.originalId).updateData([
+            "ingredients": self.contribution.suggestedIngredients,
+            "instructions": self.contribution.suggestedInstructions
+        ]) { error in
+            if let error = error {
+                print("Error updating document: \(error)")
+            } else {
+                // Store history of contribution - version control.
+                COLLECTION_RECIPES.document(self.contribution.originalId).collection("history").document(self.contribution.id).updateData([
+                    "timestamp":  Timestamp(date: Date())
+                ])
+                print("Document successfully updated")
+            }
+        }
+        
+//        COLLECTION_RECIPES.document(self.contribution.originalId).collection("history").document(self.contribution.id).setData(data)
     }
     
     

@@ -32,7 +32,6 @@ struct VersionControl: View {
         VStack {
             TitleView(text: "Version Control", iconName: "clock.arrow.2.circlepath")
             
-            
             if(viewModel.contributions.count != 0) {
                 ScrollView {
                     VStack {
@@ -53,8 +52,6 @@ struct VersionControl: View {
                                         VersionCell(contribution: viewModel.contributions[i]).foregroundColor(.black)
                                     })
                             }
-                            
-                            
                         }
                     }.padding()
                 }

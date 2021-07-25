@@ -11,6 +11,8 @@ import Kingfisher
 
 struct ContributionDetailedView: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
     let contribution: Contribution
     let received: Bool
     let versionControlOwner: Bool
@@ -18,6 +20,7 @@ struct ContributionDetailedView: View {
     @ObservedObject var viewModel: AcceptRejectViewModel
     @State private var isExpandedIngr = false
     @State private var isExpandedInstr = false
+    @State private var showingAlert = false
     
     
     init(contribution: Contribution, received: Bool, versionControlOwner: Bool) {
@@ -121,10 +124,29 @@ struct ContributionDetailedView: View {
             // Revert to this version of contribution.
             if versionControlOwner {
                 HStack{
-                    Image(systemName: "clock.arrow.circlepath").foregroundColor(.red)
-                    Text("Revert to this version").foregroundColor(.red)
+                    Button(action: {
+                        showingAlert.toggle()
+                    }, label: {
+                        Image(systemName: "clock.arrow.circlepath").foregroundColor(.red)
+                        Text("Revert to this version").foregroundColor(.red)
+                    })
+                    //Ask the user if they really want to revert back to this version.
+                    .alert(isPresented: $showingAlert) {
+                        Alert(
+                            title: Text("Revert back to version"),
+                            message: Text("Are you sure you want to revert back to this version?"),
+                            primaryButton: .destructive(Text("Yes, revert.")) {
+                                print("Reverting...")
+                                viewModel.revertChanges()
+                                self.presentationMode.wrappedValue.dismiss()
+                            },
+                            secondaryButton: .cancel()
+                        )
+                    }
+                    
                 }
             }
+            
            
         }
     }

@@ -7,6 +7,7 @@
 //  Functions used for validating data.
 
 import Foundation
+import Firebase
 import SwiftUI
 
 // Check if string is invalid
@@ -41,4 +42,10 @@ func invalidArray(varIn: Array<String>) -> Bool {
 // Check if two strings are equal
 func equalString(stringOne: String, stringTwo: String) -> Bool {
     return stringOne == stringTwo
+}
+
+func getDate(timestamp: Timestamp) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "EEEE, dd 'of' MMMM YYYY"
+    return formatter.string(from: timestamp.dateValue())
 }

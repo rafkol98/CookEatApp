@@ -13,15 +13,17 @@ struct ContributionDetailedView: View {
     
     let contribution: Contribution
     let received: Bool
+    let versionControlOwner: Bool
     
     @ObservedObject var viewModel: AcceptRejectViewModel
     @State private var isExpandedIngr = false
     @State private var isExpandedInstr = false
     
     
-    init(contribution: Contribution, received: Bool) {
+    init(contribution: Contribution, received: Bool, versionControlOwner: Bool) {
         self.contribution = contribution
         self.received = received
+        self.versionControlOwner = versionControlOwner
         self.viewModel = AcceptRejectViewModel(contribution: contribution)
     }
     
@@ -29,6 +31,10 @@ struct ContributionDetailedView: View {
     var body: some View {
         VStack{
             TitleView(text: "Contribution Details", iconName: "square.2.stack.3d.top.fill")
+            
+            if versionControlOwner {
+                Text("Revert Changes!")
+            }
             
             // If its a contribution the user sent, then show the current status.
             if !received {

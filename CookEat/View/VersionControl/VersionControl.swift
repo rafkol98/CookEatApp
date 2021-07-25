@@ -12,6 +12,7 @@ struct VersionControl: View {
     let recipe: Recipe
     
     @ObservedObject var viewModel: VersionControlViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     @State private var versionControl = false
     
@@ -19,6 +20,13 @@ struct VersionControl: View {
         self.recipe = recipe
         self.viewModel = VersionControlViewModel(recipe: recipe)
     }
+    
+    //Flag determines if the current user is the owner of the recipe.
+    var flag: Bool {
+        let currentUid = authViewModel.user?.id
+        return currentUid == recipe.uid ? true : false
+    }
+
     
     var body: some View {
         VStack {
@@ -30,25 +38,10 @@ struct VersionControl: View {
                         ForEach(viewModel.contributions) { contribution in
                             
                             NavigationLink(
-                                destination: ContributionDetailedView(contribution: contribution, received: false),
+                                destination: ContributionDetailedView(contribution: contribution, received: false, versionControlOwner: flag),
                                 label: {
                                     VersionCell(contribution: contribution).foregroundColor(.black)
                                 })
-                            
-                            
-                            
-//                            // Button used to open version control of a recipe.
-//                            Button(action: {
-//                                // open sheet
-//                                versionControl.toggle()
-//                            }) {
-//                                // Show contribution in a cell.
-//                                VersionCell(contribution: contribution).foregroundColor(.black)
-//                            }
-//                            // Open detaailed contribution view as a sheet.
-//                            .sheet(isPresented: $versionControl, content: {
-//                                ContributionDetailedView(contribution: contribution, received: false)
-//                            })
                         }
                     }.padding()
                 }

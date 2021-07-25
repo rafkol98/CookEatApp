@@ -187,7 +187,8 @@ class RecipeViewModel: ObservableObject {
                 "username": user.username,
                 "originalUsername": recipe.username,
                 "originalProfileImageUrl": recipe.profileImageUrl,
-                "profileImageUrl": user.profileImageUrl]
+                "profileImageUrl": user.profileImageUrl,
+                "reverted": false]
             
             userSuggestedRef.setData(data) { (_) in
                 print("Successfully contributed to recipe")

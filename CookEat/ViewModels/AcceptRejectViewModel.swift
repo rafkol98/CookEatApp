@@ -42,7 +42,8 @@ class AcceptRejectViewModel: ObservableObject {
                 "username": self.contribution.username,
                 "originalUsername": self.contribution.originalUsername,
                 "originalProfileImageUrl": self.contribution.originalProfileImageUrl,
-                "profileImageUrl": self.contribution.profileImageUrl
+                "profileImageUrl": self.contribution.profileImageUrl,
+                "reverted": false
             ]
             
             COLLECTION_RECIPES.document(self.contribution.originalId).updateData([
@@ -99,7 +100,8 @@ class AcceptRejectViewModel: ObservableObject {
             } else {
                 // Store history of contribution - version control.
                 COLLECTION_RECIPES.document(self.contribution.originalId).collection("history").document(self.contribution.id).updateData([
-                    "timestamp":  Timestamp(date: Date())
+                    "timestamp":  Timestamp(date: Date()),
+                    "reverted": true
                 ])
                 print("Document successfully updated")
             }

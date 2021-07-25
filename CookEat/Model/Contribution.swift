@@ -33,6 +33,7 @@ struct Contribution: Identifiable {
     let originalTimestamp: Timestamp
     let originalIngredients: Array<String>
     let originalInstructions: Array<String>
+    let reverted: Bool
     
     
     
@@ -59,7 +60,8 @@ struct Contribution: Identifiable {
         self.uid = dictionary["uid"] as? String ?? ""
         self.originalUid = dictionary["originalUid"] as? String ?? ""
         self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
-        self.originalTimestamp = dictionary["originalTimestamp"] as? Timestamp ?? Timestamp(date: Date())  
+        self.originalTimestamp = dictionary["originalTimestamp"] as? Timestamp ?? Timestamp(date: Date())
+        self.reverted = dictionary["originalTimestamp"] as? Bool ?? false
     }
     
     

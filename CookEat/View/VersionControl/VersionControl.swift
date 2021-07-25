@@ -26,22 +26,35 @@ struct VersionControl: View {
         let currentUid = authViewModel.user?.id
         return currentUid == recipe.uid ? true : false
     }
-
+    
     
     var body: some View {
         VStack {
             TitleView(text: "Version Control", iconName: "clock.arrow.2.circlepath")
             
+            
             if(viewModel.contributions.count != 0) {
                 ScrollView {
                     VStack {
-                        ForEach(viewModel.contributions) { contribution in
+                        ForEach(viewModel.contributions.indices) { i in
                             
-                            NavigationLink(
-                                destination: ContributionDetailedView(contribution: contribution, received: false, versionControlOwner: flag),
-                                label: {
-                                    VersionCell(contribution: contribution).foregroundColor(.black)
-                                })
+                            if i == 0 {
+                                NavigationLink(
+                                    destination: ContributionDetailedView(contribution: viewModel.contributions[i], received: false, versionControlOwner: false),
+                                    label: {
+                                        HStack {
+                                            VersionCell(contribution: viewModel.contributions[i]).foregroundColor(.red)
+                                        }
+                                    })
+                            } else {
+                                NavigationLink(
+                                    destination: ContributionDetailedView(contribution: viewModel.contributions[i], received: false, versionControlOwner: flag),
+                                    label: {
+                                        VersionCell(contribution: viewModel.contributions[i]).foregroundColor(.black)
+                                    })
+                            }
+                            
+                            
                         }
                     }.padding()
                 }

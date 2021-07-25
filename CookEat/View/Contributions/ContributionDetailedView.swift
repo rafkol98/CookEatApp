@@ -32,10 +32,6 @@ struct ContributionDetailedView: View {
         VStack{
             TitleView(text: "Contribution Details", iconName: "square.2.stack.3d.top.fill")
             
-            if versionControlOwner {
-                Text("Revert Changes!")
-            }
-            
             // If its a contribution the user sent, then show the current status.
             if !received {
                 HStack {
@@ -121,9 +117,15 @@ struct ContributionDetailedView: View {
                     })
                 }
             }
+            
+            // Revert to this version of contribution.
+            if versionControlOwner {
+                HStack{
+                    Image(systemName: "clock.arrow.circlepath").foregroundColor(.red)
+                    Text("Revert to this version").foregroundColor(.red)
+                }
+            }
            
         }
-        
-        
     }
 }

@@ -40,15 +40,14 @@ struct ContributionDetailedView: View {
                 HStack {
                     Text("Status:").font(.system(size: 22, weight: .semibold))
                     Text(contribution.status).font(.system(size: 22))
-                    // Reverted image.
-                    if contribution.reverted {
+                    Spacer()
+                    // Reverted image (only on the first version appearing).
+                    if contribution.reverted && !versionControlOwner {
                         VStack {
                             Image(systemName: "gobackward").foregroundColor(.red)
                             Text("Reverted").foregroundColor(.red)
                         }
                     }
-                    
-                    Spacer()
                     
                 }.padding(.horizontal)
             }

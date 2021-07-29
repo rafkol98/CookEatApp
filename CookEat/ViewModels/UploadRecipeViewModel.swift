@@ -49,6 +49,20 @@ class UploadRecipeViewModel: ObservableObject {
                     
                     docRef.setData(data) { (_) in
                         print("Successfully uploaded recipe")
+                        let data : [String: Any] = ["uid": user.id,
+                                                    "recipeName": name,
+                                                    "description": description,
+                                                    "addedIngredients": ingredients,
+                                                    "addedInstructions": instructions,
+                                                    "suggestedIngredients": ingredients,
+                                                    "suggestedInstructions": instructions,
+                                                    "fullname": user.fullname,
+                                                    "timestamp": Timestamp(date: Date()),
+                                                    "username": user.username,
+                                                    "profileImageUrl": user.profileImageUrl
+                                                  ]
+                        
+                        COLLECTION_RECIPES.document(docRef.documentID).collection("history").document(docRef.documentID).setData(data)
                     }
                     
                 }

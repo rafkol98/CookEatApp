@@ -47,9 +47,14 @@ class UploadRecipeViewModel: ObservableObject {
                                                 "likes":0, "id": docRef.documentID,
                                                 "foodImageUrl": foodImageUrl]
                     
+                    // Set initial commit to history.
+                    let versionControlRef = COLLECTION_RECIPES.document(docRef.documentID).collection("history").document()
+                    
                     docRef.setData(data) { (_) in
                         print("Successfully uploaded recipe")
                         let data : [String: Any] = ["uid": user.id,
+                                                    "originalId": docRef.documentID,
+                                                    "id": versionControlRef.documentID,
                                                     "recipeName": name,
                                                     "description": description,
                                                     "addedIngredients": ingredients,
@@ -59,10 +64,11 @@ class UploadRecipeViewModel: ObservableObject {
                                                     "fullname": user.fullname,
                                                     "timestamp": Timestamp(date: Date()),
                                                     "username": user.username,
-                                                    "profileImageUrl": user.profileImageUrl
-                                                  ]
+                                                    "profileImageUrl": user.profileImageUrl,
+                                                    "status": "Initial Commit"
+                        ]
                         
-                        COLLECTION_RECIPES.document(docRef.documentID).collection("history").document(docRef.documentID).setData(data)
+                        versionControlRef.setData(data)
                     }
                     
                 }

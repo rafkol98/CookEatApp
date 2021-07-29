@@ -19,6 +19,16 @@ struct VersionCell: View {
         VStack {
                 VStack(alignment: .leading) {
                     HStack {
+                        
+                        if contribution.status == "Initial Commit" {
+                            Image(systemName: "1.square.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 22, height: 22)
+                                .foregroundColor(.green)
+                                
+                        }
+                        
                         VStack {
                             KFImage(URL(string: contribution.profileImageUrl))
                                 .resizable()
@@ -26,8 +36,8 @@ struct VersionCell: View {
                                 .clipped()
                                 .frame(width: 60, height: 60)
                                 .cornerRadius(120/2)
-//                            Text("@\(contribution.username)").font(.system(size: 17))
                         }
+                        
                         Text(getDate(timestamp: contribution.timestamp)).font(.system(size: 20)).padding()
                         
                         Spacer()

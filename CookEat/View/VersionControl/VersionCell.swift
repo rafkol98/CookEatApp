@@ -25,8 +25,7 @@ struct VersionCell: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 22, height: 22)
-                                .foregroundColor(.green)
-                                
+                                .foregroundColor(.green)    
                         }
                         
                         VStack {

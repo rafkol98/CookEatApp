@@ -46,6 +46,8 @@ struct SearchView: View {
             // Recipes.
             default:
                 VStack(alignment: .leading) {
+                    Text("Top 50 🔥").importantTxt()
+                    
                     // Loop through recipes.
                     let recipes = viewModel.recipes
                     ForEach(recipes.filter({"\($0)".contains(searchText) || searchText.isEmpty})) { recipe in

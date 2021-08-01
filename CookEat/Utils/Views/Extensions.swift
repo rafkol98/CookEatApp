@@ -76,6 +76,16 @@ struct circImg: ViewModifier {
     }
 }
 
+// Modifier for important texts.
+struct importantText: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 24, weight: .bold))
+    }
+}
+
+
 
 
 //Create functions that will be callable from the structs.
@@ -98,5 +108,9 @@ extension View {
     
     func circularImg() -> some View {
         self.modifier(circImg())
+    }
+    
+    func importantTxt() -> some View {
+        self.modifier(importantText())
     }
 }

@@ -82,7 +82,7 @@ class ProfileViewModel: ObservableObject {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         let followingRef = COLLECTION_USERS.document(userUid).collection("users-following")
         
-        followingRef.document(self.user.id).getDocument { snapshot, error in
+        followingRef.document(self.user.id).addSnapshotListener { snapshot, error in
             if let error = error {
                 print("Failed to fetch liked recipes: \(error.localizedDescription)")
                 return

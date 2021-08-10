@@ -16,8 +16,7 @@ class SearchViewModel: ObservableObject {
     
     // Populate users array.
     func fetchUsers() {
-        
-        COLLECTION_USERS.addSnapshotListener { snapshot, error in
+        COLLECTION_USERS.getDocuments { snapshot, error in
             // Catch error.
             if let error = error {
                 print("Failed to fetch user: \(error.localizedDescription)")
@@ -38,7 +37,6 @@ class SearchViewModel: ObservableObject {
     
     // Fetch recipes of user.
     func fetchRecipes() {
-        
         COLLECTION_RECIPES.order(by: "likes", descending: true).limit(to: 50).getDocuments { (querySnaphot, error) in
             // Catch error.
             if let error = error {

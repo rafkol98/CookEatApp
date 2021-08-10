@@ -25,12 +25,20 @@ struct UserProfileView: View {
         ScrollView{
             VStack {
                 ProfileHeaderView(isFollowed: $viewModel.isFollowed, viewModel: viewModel)
+                
+                NavigationLink (
+                    destination: ContributionsView(user: user),
+                    label: {
+                        SettingsOption(icon: "square.stack.3d.up.fill", text: "Contributions Made")
+                    })
+                    .accessibilityLabel("Contributions")
+                    .foregroundColor(.black)
                     .padding()
                 
                 FilterButtonView(selectedOption: $selectedFilter)
                     .padding()
                 
-                // Switch between user's own recipes and their likes.
+                    
                 ForEach(viewModel.recipes(forFilter: selectedFilter)) { recipe in
                     
                     NavigationLink(

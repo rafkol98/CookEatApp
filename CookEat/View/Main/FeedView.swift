@@ -10,6 +10,8 @@ import SwiftUI
 
 struct FeedView: View {
     @ObservedObject var viewModel = FeedViewModel()
+    @State var recipes:[Recipe] = []
+    @State var done = false
     
     var body: some View {
         
@@ -29,6 +31,7 @@ struct FeedView: View {
                                         RecipeCell(recipe: recipe)
                                     }).foregroundColor(.black)
                             }
+                            
                         }.padding()
                     }
                 }

@@ -44,13 +44,11 @@ struct RecipeDetailsView: View {
                 .clipped()
                 .frame(maxWidth: .infinity, maxHeight: 100)
                 .padding(.top)
-                .shadow(radius: 2)
             
             ZStack {
                 
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(Color(red: 255/255, green: 255/255, blue: 255/255))
-                    .shadow(radius: 10)
                 
                 //Users contributed.
                 ScrollView {
@@ -63,7 +61,6 @@ struct RecipeDetailsView: View {
                                 .clipped()
                                 .frame(width: 40, height: 40)
                                 .cornerRadius(50/2)
-                                .shadow(radius: 2)
                             
                             Spacer()
                         }

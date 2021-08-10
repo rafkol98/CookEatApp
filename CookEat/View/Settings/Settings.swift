@@ -29,7 +29,7 @@ struct Settings: View {
                                                     .circularImg()
                         
                         Text("@\(viewModel.user!.username)")
-                            .font(.system(size: 25))
+                            .font(.system(size: 22, weight:.semibold))
                     }
                     .padding()
                     

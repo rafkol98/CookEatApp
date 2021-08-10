@@ -69,7 +69,7 @@ class AuthViewModel: ObservableObject {
                         // Check if user exists.
                         guard let user = result?.user else { return }
                         
-                        let data = ["email": email, "username": username.lowercased(), "fullname": fullname, "profileImageUrl": profileImageUrl, "uid": user.uid]
+                        let data : [String : Any] = ["email": email, "username": username.lowercased(), "fullname": fullname, "profileImageUrl": profileImageUrl, "uid": user.uid]
                         
                         Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
                             self.userSession = user

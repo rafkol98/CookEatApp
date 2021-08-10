@@ -14,12 +14,14 @@ class ProfileViewModel: ObservableObject {
     @Published var isFollowed = false
     @Published var userRecipes = [Recipe]()
     @Published var likedRecipes = [Recipe]()
+    @Published var contributedRecipes = [Contribution]()
     @Published var followers = 0
     @Published var following = 0
     
     
     init(user: User) {
         self.user = user
+        self.contributedRecipes = ContributeViewModel(user: user).contributedRecipes
         checkIfFollowing()
         fetchUserRecipes()
         fetchLikedRecipes()
@@ -31,7 +33,7 @@ class ProfileViewModel: ObservableObject {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         
         let followingRef = COLLECTION_USERS.document(userUid).collection("users-following")
-        let followersRef = COLLECTION_USERS.document(user.id).collection("users-followers")
+        let followersRef = COLLECTION_USERS.document(user.id)
         
         // Add followed user's uid to the current user.
         followingRef.document(self.user.id).setData([:]) { error in
@@ -40,7 +42,7 @@ class ProfileViewModel: ObservableObject {
                 print("Error following user: \(error)")
             } else {
                 //Add current user's uid to the followed user.
-                followersRef.document(userUid).setData([:]) { error in
+                followersRef.collection("users-followers").document(userUid).setData([:]) { error in
                     // Catch error.
                     if let error = error {
                         print("Error following user: \(error)")

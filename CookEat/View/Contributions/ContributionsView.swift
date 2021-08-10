@@ -36,7 +36,6 @@ struct ContributionsView: View {
                                 .clipped()
                                 .frame(width: 50, height: 50)
                                 .cornerRadius(120/2)
-                                .shadow(radius: 4)
                                 .padding()
                             NavigationLink(
                                 destination: ContributionDetailedView(contribution: contribution, received: false, versionControlOwner: false),

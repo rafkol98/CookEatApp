@@ -28,7 +28,6 @@ class FeedViewModel: ObservableObject {
                 print("Error getting documents: \(error)")
             } else {
                 for document in querySnapshot!.documents {
-                    
                     //look for recipes only where uid equals the current document returned from the querySnapshot above.
                     COLLECTION_RECIPES.whereField("uid", in: [document.documentID]).addSnapshotListener { (querySnaphot, error) in
                         

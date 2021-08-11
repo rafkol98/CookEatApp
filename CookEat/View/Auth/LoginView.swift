@@ -14,6 +14,7 @@ struct LoginView: View {
     @State private var error = false
     @EnvironmentObject var viewModel: AuthViewModel
     
+    
     var body: some View {
         NavigationView {
             ZStack{
@@ -30,27 +31,21 @@ struct LoginView: View {
                         CustomTextField(text: $email, placeholder: Text("Email..."), imageName: "envelope")
                             .inputModifier()
                             .accessibilityLabel("email")
-                            
+                        
                         
                         CustomSecureField(text: $password, placeholder: Text("Password..."))
                             .inputModifier()
-                            
+                        
                         
                     }
                     
                     // Sign in button
                     Button(action: {
                         viewModel.login(withEmail: email, password: password)
-//                        if viewModel.userSession == nil {
-//                            error.toggle()
-//                        }
                     }, label: {
                         Text("Sign In")
                             .standardButton()
                     })
-//                    .alert(isPresented: $error, content: {
-//                        Alert(title: Text("Verify your Email ID"), message: Text("Please click the link in the verification email sent to you"), dismissButton: .default(Text("Dismiss")))
-//                    })
                     
                     // Push everything to the top.
                     Spacer()

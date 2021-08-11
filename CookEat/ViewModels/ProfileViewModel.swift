@@ -95,7 +95,7 @@ class ProfileViewModel: ObservableObject {
     
     //Fetch recipes of the user.
     func fetchUserRecipes() {
-        COLLECTION_RECIPES.whereField("uid", isEqualTo: user.id).addSnapshotListener { snapshot, error in
+        COLLECTION_RECIPES.whereField("uid", isEqualTo: user.id).order(by: "timestamp", descending: true).addSnapshotListener { snapshot, error in
             // Catch error.
             if let error = error {
                 print("Failed to fetch user's recipes: \(error.localizedDescription)")

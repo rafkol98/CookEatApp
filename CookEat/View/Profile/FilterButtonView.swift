@@ -36,6 +36,20 @@ enum FilterOptions2: Int, CaseIterable {
     }
 }
 
+// Switch between new and old requests received.
+enum FilterOptions3: Int, CaseIterable {
+    case one
+    case two
+    
+    
+    var title : String {
+        switch self {
+        case .one: return "New"
+        case .two: return "Past"
+        }
+    }
+}
+
 // Filter button for profiles.
 struct FilterButtonView: View {
     @Binding var selectedOption: FilterOptions
@@ -92,6 +106,43 @@ struct FilterButtonView2: View {
         VStack(alignment: .leading){
             HStack {
                 ForEach(FilterOptions2.allCases, id: \.self) { option in
+                    Button(action: {
+                        self.selectedOption = option
+                    }, label: {
+                        Text(option.title)
+                            .frame(width: underlineWidth)
+                            .foregroundColor(.red)
+                    })
+                    
+                    
+                }
+            }
+            Rectangle()
+                .frame(width: underlineWidth - 32, height: 3, alignment: .center)
+                .foregroundColor(.red)
+                .padding(.leading, padding)
+                .animation(.spring())
+        }
+    }
+}
+// Filter button for search feature.
+struct FilterButtonView3: View {
+    @Binding var selectedOption: FilterOptions3
+    
+    private let underlineWidth = UIScreen.main.bounds.width / CGFloat(FilterOptions3.allCases.count)
+    
+    
+    private var padding: CGFloat {
+        let rawValue = CGFloat(selectedOption.rawValue)
+        let count = CGFloat(FilterOptions3.allCases.count)
+        return ((UIScreen.main.bounds.width / count) * rawValue) + 16
+        
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading){
+            HStack {
+                ForEach(FilterOptions3.allCases, id: \.self) { option in
                     Button(action: {
                         self.selectedOption = option
                     }, label: {

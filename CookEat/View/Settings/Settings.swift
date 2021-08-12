@@ -14,6 +14,16 @@ struct Settings: View {
     
     // Get environmentObject of whether user is logged in.
     @EnvironmentObject var viewModel: AuthViewModel
+    @State var addImage = false
+    @State var selectedUIImage: UIImage?
+    @State var image: Image?
+    
+    // Convert a ui image into a SwiftUI image.
+    func loadImage() {
+        guard let selectedImage = selectedUIImage else {return}
+        image = Image(uiImage: selectedImage)
+        viewModel.updateProfilePicture(profileImage: selectedUIImage!)
+    }
     
     var body: some View {
         
@@ -24,12 +34,32 @@ struct Settings: View {
             } else {
                 VStack {
                     VStack{
-                        KFImage(URL(string: viewModel.user!.profileImageUrl))
-                                                    .resizable()
-                                                    .circularImg()
                         
-                        Text("@\(viewModel.user!.username)")
-                            .font(.system(size: 22, weight:.semibold))
+                        Button(action: { addImage.toggle() }, label: {
+                            ZStack {
+                                if let image = image {
+                                    image
+                                        .resizable()
+                                        .circularImg()
+                                } else {
+                                    KFImage(URL(string: viewModel.user!.profileImageUrl))
+                                                                .resizable()
+                                                                .circularImg()
+                                }
+                            }
+                            
+                        }).sheet(isPresented: $addImage, onDismiss: loadImage, content: {
+                            ImagePicker(image: $selectedUIImage)
+                        })
+                        
+                        
+                        
+                        
+                        
+                        
+//                        KFImage(URL(string: viewModel.user!.profileImageUrl))
+//                                                    .resizable()
+//                                                    .circularImg()
                     }
                     .padding()
                     

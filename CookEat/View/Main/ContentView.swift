@@ -30,7 +30,7 @@ struct ContentView: View {
                                 Image(systemName: "magnifyingglass")
                                 Text("Search")
                             }
-                            
+                        
                         
                         Settings()
                             .tabItem {
@@ -39,17 +39,36 @@ struct ContentView: View {
                             }
                         
                     }
-                    .accentColor(.red)
+                    
                     .navigationBarTitleDisplayMode(.inline)
+                    .toolbar(content: {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button("Cook.eat"){
+                                print("info")
+                            }.foregroundColor(.black)
+                        }
+                        
+                        
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                print("settings")
+                            }, label: {
+                                Label("Settings", systemImage: "gearshape.fill")
+                            })
+                        }
+                        
+                    })
+                    
                 }
+                .accentColor(.red)
                 .accessibility(identifier: "Nav")
             }
             // If user is not logged in, display the loginView.
             else {
                 LoginView()
             }
+        }
     }
-}
 }
 
 struct ContentView_Previews: PreviewProvider {

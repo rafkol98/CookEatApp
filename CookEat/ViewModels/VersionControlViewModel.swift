@@ -19,7 +19,7 @@ class VersionControlViewModel: ObservableObject {
     
     func fetchVersions() {
         // Fetch recipes of only the users we are following.
-        COLLECTION_RECIPES.document(recipe.id).collection("history").order(by: "timestamp", descending: true).getDocuments { (querySnapshot, error) in
+        COLLECTION_RECIPES.document(recipe.id).collection("history").order(by: "timestamp", descending: true).addSnapshotListener { (querySnapshot, error) in
             print("I am here")
             self.contributions = []
             //Catch error.

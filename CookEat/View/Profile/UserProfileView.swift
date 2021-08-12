@@ -53,6 +53,9 @@ struct UserProfileView: View {
                 }.padding(.horizontal)
                 
             }.scaledToFit()
+            .onAppear {
+                viewModel.fetchUserRecipes()
+            }
         }
     }
 }

@@ -48,7 +48,6 @@ struct RegistrationView: View {
                                 .frame(width: 150, height: 150)
                                 .cornerRadius(75)
                                 .padding()
-                            
                         } else {
                             Image("add_photo")
                                 .resizable()
@@ -59,7 +58,6 @@ struct RegistrationView: View {
                                 .padding()
                                 .foregroundColor(.red)
                         }
-                        
                     }
                     
                 }).sheet(isPresented: $addImage, onDismiss: loadImage, content: {

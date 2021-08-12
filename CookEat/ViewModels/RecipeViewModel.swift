@@ -95,7 +95,7 @@ class RecipeViewModel: ObservableObject {
         let receivedRef = COLLECTION_USERS.document(uid).collection("received")
         
         COLLECTION_RECIPES.document(recipe.id).delete { _ in
-            receivedRef.whereField("originalId", in: [self.recipe.id]).getDocuments { (snapshot, error) in
+            receivedRef.whereField("originalId", in: [self.recipe.id]).addSnapshotListener { (snapshot, error) in
                 if let snapshot = snapshot?.documents {
                     for document in snapshot {
                         //create a temporary contribution object
@@ -130,7 +130,7 @@ class RecipeViewModel: ObservableObject {
         guard let user = AuthViewModel.shared.user else {return}
         guard let uid = AuthViewModel.shared.userSession?.uid else { return }
         
-        COLLECTION_RECIPES.document(recipe.id).getDocument{ snapshot, _ in
+        COLLECTION_RECIPES.document(recipe.id).addSnapshotListener { snapshot, _ in
             guard var data = snapshot?.data() else { return }
             let docRef = COLLECTION_RECIPES.document()
             

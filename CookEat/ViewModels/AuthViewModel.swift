@@ -94,7 +94,7 @@ class AuthViewModel: ObservableObject {
         guard let uid = userSession?.uid else { return }
         
         //Get user from firestore and place them in a User variable.
-        Firestore.firestore().collection("users").document(uid).getDocument { snapshot, error in
+        Firestore.firestore().collection("users").document(uid).addSnapshotListener { snapshot, error in
             if let error = error {
                 print("Failed to fetch user: \(error.localizedDescription)")
                 return
@@ -105,7 +105,36 @@ class AuthViewModel: ObservableObject {
         } 
     }
     
-    
-    
-    
+    // Update profile picture
+    func updateProfilePicture(profileImage: UIImage) {
+        guard let uid = userSession?.uid else { return }
+        
+        
+        guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
+        let filename = NSUUID().uuidString
+        let storageRef = Storage.storage().reference().child(filename)
+        
+        // Put image to firebase storage.
+        storageRef.putData(imageData, metadata: nil) { _, error in
+            if let error = error {
+                print("Failed to upload image \(error.localizedDescription)")
+                return
+            }
+            // Get an image url for the picture.
+            storageRef.downloadURL { url, _ in
+                guard let profileImageUrl = url?.absoluteString else { return }
+                
+                
+                //Get user from firestore and place them in a User variable.
+                Firestore.firestore().collection("users").document(uid).updateData(["profileImageUrl": profileImageUrl]){ error in
+                    if let error = error {
+                        print("Error updating profile picture: \(error)")
+                    } else {
+                        print("Profile picture successfully updated")
+                    }
+                }
+            }
+        }
+    }
+     
 }

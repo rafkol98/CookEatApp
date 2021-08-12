@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SettingErrorView: View {
+struct AccountErrorView: View {
     var body: some View {
         Text("Couldn't get user!")
     }

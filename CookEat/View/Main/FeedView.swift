@@ -16,7 +16,7 @@ struct FeedView: View {
     var body: some View {
         
         VStack {
-            TitleView(text: "Feed View", iconName: "livephoto")
+            TitleView(text: "Feed", iconName: "livephoto")
             Divider()
             ZStack(alignment: .bottomTrailing) {
                 // If there are recipes of users following, show them.

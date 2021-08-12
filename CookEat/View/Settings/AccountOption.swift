@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SettingsOption: View {
+struct AccountOption: View {
    
     let icon: String
     let text: String

@@ -110,6 +110,23 @@ struct InvalidView: View {
     }
 }
 
+//Invalid instructions.
+struct InfoView: View {
+    var stringIn : String
+    var body: some View {
+        HStack {
+            Image(systemName: "info.circle")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 16, height: 16)
+                .foregroundColor(.gray)
+            Text(stringIn)
+                .font(.subheadline)
+                .foregroundColor(.gray)
+        }
+    }
+}
+
 //Small input text.
 struct SmallInput: View {
     let name: String

@@ -29,7 +29,7 @@ struct UserProfileView: View {
                 NavigationLink (
                     destination: ContributionsView(user: user),
                     label: {
-                        SettingsOption(icon: "square.stack.3d.up.fill", text: "Contributions Made")
+                        AccountOption(icon: "square.stack.3d.up.fill", text: "Contributions Made")
                     })
                     .accessibilityLabel("Contributions")
                     .foregroundColor(.black)

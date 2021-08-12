@@ -10,7 +10,7 @@ import SwiftUI
 import Kingfisher
 
 
-struct Settings: View {
+struct Account: View {
     
     // Get environmentObject of whether user is logged in.
     @EnvironmentObject var viewModel: AuthViewModel
@@ -30,11 +30,13 @@ struct Settings: View {
         ScrollView{
             // If cant find current user show the error message.
             if viewModel.user == nil {
-                SettingErrorView()
+                AccountErrorView()
             } else {
                 VStack {
+                    TitleView(text: "Account", iconName: "person.fill")
+                    
                     VStack{
-                        
+
                         Button(action: { addImage.toggle() }, label: {
                             ZStack {
                                 if let image = image {
@@ -47,40 +49,34 @@ struct Settings: View {
                                                                 .circularImg()
                                 }
                             }
-                            
+
                         }).sheet(isPresented: $addImage, onDismiss: loadImage, content: {
                             ImagePicker(image: $selectedUIImage)
                         })
-                        
-                        
-                        
-                        
-                        
-                        
-//                        KFImage(URL(string: viewModel.user!.profileImageUrl))
-//                                                    .resizable()
-//                                                    .circularImg()
+                       InfoView(stringIn: "Tap on the picture to update")
+
                     }
-                    .padding()
+                    .padding(.bottom)
+                    Divider()
                     
                     NavigationLink (
                         destination: UserProfileView(user: viewModel.user!),
                         label: {
-                            SettingsOption(icon: "person.crop.circle", text: "View Profile")
+                            AccountOption(icon: "person.crop.circle", text: "View Profile")
                         })
                         .accessibilityLabel("Profile")
                     
                     NavigationLink (
                         destination: ContributionsView(user: viewModel.user!),
                         label: {
-                            SettingsOption(icon: "square.stack.3d.up.fill", text: "Contributions")
+                            AccountOption(icon: "square.stack.3d.up.fill", text: "Contributions")
                         })
                         .accessibilityLabel("Contributions")
                     
                     NavigationLink (
                         destination: RequestsReceivedView(user: viewModel.user!),
                         label: {
-                            SettingsOption(icon: "tray.and.arrow.down.fill", text: "Requests Received")
+                            AccountOption(icon: "tray.and.arrow.down.fill", text: "Requests Received")
                         })
                         .accessibilityLabel("Requests")
                     

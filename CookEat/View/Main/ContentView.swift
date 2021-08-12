@@ -7,6 +7,8 @@
 //  Manages the content displayed to the user.
 
 import SwiftUI
+import Kingfisher
+
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: AuthViewModel
@@ -32,7 +34,7 @@ struct ContentView: View {
                             }
                         
                         
-                        Settings()
+                        Account()
                             .tabItem {
                                 Image(systemName: "person.crop.circle.fill")
                                 Text("Account")
@@ -41,19 +43,25 @@ struct ContentView: View {
                     }
                     
                     .navigationBarTitleDisplayMode(.inline)
-                    .toolbar(content: {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Button("Cook.eat"){
-                                print("info")
-                            }.foregroundColor(.black)
-                        }
+                    .navigationBarItems(leading: Button(action: {
                         
+                    }, label: {
+                        if let user = viewModel.user {
+                            KFImage(URL(string: user.profileImageUrl ))
+                                .resizable()
+                                .scaledToFill()
+                                .clipped()
+                                .frame(width: 32, height: 32)
+                                .cornerRadius(16)
+                        }
+                    }))
+                    .toolbar(content: {
                         
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button(action: {
                                 print("settings")
                             }, label: {
-                                Label("Settings", systemImage: "gearshape.fill")
+                                Label("Settings", systemImage: "gearshape")
                             })
                         }
                         

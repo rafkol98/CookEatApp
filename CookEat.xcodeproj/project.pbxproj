@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		CB07E79B26245D5100556132 /* ContributionDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB07E79A26245D5100556132 /* ContributionDetailedView.swift */; };
 		CB101303260AA6AD00C32A21 /* AddRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB101302260AA6AD00C32A21 /* AddRecipeView.swift */; };
-		CB101306260AAB8A00C32A21 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB101305260AAB8A00C32A21 /* Account.swift */; };
+		CB101306260AAB8A00C32A21 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB101305260AAB8A00C32A21 /* AccountView.swift */; };
 		CB1B9BA9261E55D200DCF4A7 /* RecipeDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1B9BA8261E55D200DCF4A7 /* RecipeDescriptionView.swift */; };
 		CB1E5DFB25FA40B900049676 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB1E5DFA25FA40B900049676 /* GoogleService-Info.plist */; };
 		CB1E5DFF25FA428A00049676 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = CB1E5DFE25FA428A00049676 /* FirebaseFunctions */; };
@@ -39,6 +39,7 @@
 		CB77C8542630490900331B90 /* UtilsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB77C8532630490900331B90 /* UtilsViews.swift */; };
 		CB7EDDD52608DDC800A1E3A8 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7EDDD42608DDC800A1E3A8 /* ProfileViewModel.swift */; };
 		CB80AA452613AB0E004AF9F2 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80AA442613AB0E004AF9F2 /* LazyView.swift */; };
+		CB81910326C67D1500282156 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB81910226C67D1500282156 /* SettingsView.swift */; };
 		CB822034260E8AF3001EECE7 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB822033260E8AF3001EECE7 /* Recipe.swift */; };
 		CB822037260E8DFC001EECE7 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB822036260E8DFC001EECE7 /* FeedViewModel.swift */; };
 		CB903FD225F4041E00297DD9 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB903FD125F4041E00297DD9 /* UserProfileView.swift */; };
@@ -82,7 +83,7 @@
 /* Begin PBXFileReference section */
 		CB07E79A26245D5100556132 /* ContributionDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributionDetailedView.swift; sourceTree = "<group>"; };
 		CB101302260AA6AD00C32A21 /* AddRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeView.swift; sourceTree = "<group>"; };
-		CB101305260AAB8A00C32A21 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		CB101305260AAB8A00C32A21 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		CB1B9BA8261E55D200DCF4A7 /* RecipeDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDescriptionView.swift; sourceTree = "<group>"; };
 		CB1E5DFA25FA40B900049676 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB1E5E0725FA457700049676 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -109,6 +110,7 @@
 		CB77C8532630490900331B90 /* UtilsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsViews.swift; sourceTree = "<group>"; };
 		CB7EDDD42608DDC800A1E3A8 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		CB80AA442613AB0E004AF9F2 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
+		CB81910226C67D1500282156 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CB822033260E8AF3001EECE7 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		CB822036260E8DFC001EECE7 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		CB903FD125F4041E00297DD9 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
@@ -284,9 +286,10 @@
 		CB6DA2C5260CA10800C73C7A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				CB101305260AAB8A00C32A21 /* Account.swift */,
+				CB101305260AAB8A00C32A21 /* AccountView.swift */,
 				CB91569A2617D0430086994B /* AccountOption.swift */,
 				CBCC83E6262C394A0035B686 /* AccountErrorView.swift */,
+				CB81910226C67D1500282156 /* SettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -512,10 +515,11 @@
 				CB96D59D25ED3F4600457589 /* UserCell.swift in Sources */,
 				CB77C8542630490900331B90 /* UtilsViews.swift in Sources */,
 				CBEB88802604FCED00F8B497 /* DropdownView.swift in Sources */,
-				CB101306260AAB8A00C32A21 /* Account.swift in Sources */,
+				CB101306260AAB8A00C32A21 /* AccountView.swift in Sources */,
 				CB2250B82621088E002196D2 /* ContributeViewModel.swift in Sources */,
 				CB4DAB252602AD55009E44E8 /* RecipeTitleView.swift in Sources */,
 				CB1B9BA9261E55D200DCF4A7 /* RecipeDescriptionView.swift in Sources */,
+				CB81910326C67D1500282156 /* SettingsView.swift in Sources */,
 				CBFB0768261BB9BC00546E38 /* ContributionsView.swift in Sources */,
 				CB2250BB262109E9002196D2 /* RequestsReceivedView.swift in Sources */,
 				CB2AC36626303B70002015F3 /* Functions.swift in Sources */,

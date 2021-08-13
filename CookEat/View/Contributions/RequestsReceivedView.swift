@@ -81,7 +81,7 @@ struct RequestsReceivedView: View {
                         .resizable()
                         .standardImg()
                     
-                    Text("You didn't receive any requests...").font(.system(size: 16)).italic()
+                    Text("No requests received...").font(.system(size: 16)).italic()
                     Spacer()
                 }
             }
@@ -137,7 +137,7 @@ struct RequestsReceivedView: View {
                         .resizable()
                         .standardImg()
                     
-                    Text("Past").font(.system(size: 16)).italic()
+                    Text("No past requests were maade...").font(.system(size: 16)).italic()
                     Spacer()
                 }
             }

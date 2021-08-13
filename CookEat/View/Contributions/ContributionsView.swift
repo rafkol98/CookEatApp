@@ -71,7 +71,7 @@ struct ContributionsView: View {
                         .resizable()
                         .standardImg()
                     
-                    Text("You didn't send any contributions...").font(.system(size: 16)).italic()
+                    Text("No contributions sent...").font(.system(size: 16)).italic()
                     Spacer()
                 }
             }

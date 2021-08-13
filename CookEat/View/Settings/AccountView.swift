@@ -10,7 +10,7 @@ import SwiftUI
 import Kingfisher
 
 
-struct Account: View {
+struct AccountView: View {
     
     // Get environmentObject of whether user is logged in.
     @EnvironmentObject var viewModel: AuthViewModel

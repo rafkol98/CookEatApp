@@ -12,6 +12,8 @@ import Kingfisher
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: AuthViewModel
+    @State private var openSettings = false
+    
     var body: some View {
         Group {
             // If user is signed in, display the main content.
@@ -34,7 +36,7 @@ struct ContentView: View {
                             }
                         
                         
-                        Account()
+                        AccountView()
                             .tabItem {
                                 Image(systemName: "person.crop.circle.fill")
                                 Text("Account")
@@ -55,16 +57,21 @@ struct ContentView: View {
                                 .cornerRadius(16)
                         }
                     }))
+                    
                     .toolbar(content: {
-                        
+
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button(action: {
-                                print("settings")
+                                openSettings.toggle()
                             }, label: {
-                                Label("Settings", systemImage: "gearshape")
+                                Image(systemName: "gear")
+                                  .font(Font.title.weight(.light))
+                            }).sheet(isPresented: $openSettings, content: {
+                                //Open SettingsView
+                                SettingsView()
                             })
                         }
-                        
+
                     })
                     
                 }

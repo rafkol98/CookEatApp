@@ -9,12 +9,37 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+            TitleView(text: "Settings", iconName: "gear")
+            
+            Divider()
+            
+            NavigationLink (
+                destination: FeedView(),
+                label: {
+                    AccountOption(icon: "ellipsis.rectangle", text: "Change Password")
+                }
+            )
+            
+            NavigationLink (
+                destination: FeedView(),
+                label: {
+                    AccountOption(icon: "person.crop.circle.badge.questionmark", text: "Change Username")
+                }
+            )
+            
+            NavigationLink (
+                destination: FeedView(),
+                label: {
+                    AccountOption(icon: "delete.right.fill", text: "Delete Account")
+                }
+            )
+            
+            
+            
+            Spacer()
+            
+        }.foregroundColor(.black)
     }
 }
-
-//struct SettingsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SettingsView()
-//    }
-//}

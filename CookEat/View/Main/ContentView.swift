@@ -61,15 +61,24 @@ struct ContentView: View {
                     .toolbar(content: {
 
                         ToolbarItem(placement: .navigationBarTrailing) {
-                            Button(action: {
-                                openSettings.toggle()
-                            }, label: {
-                                Image(systemName: "gear")
-                                  .font(Font.title.weight(.light))
-                            }).sheet(isPresented: $openSettings, content: {
-                                //Open SettingsView
-                                SettingsView()
-                            })
+                            
+                            NavigationLink (
+                                destination: SettingsView(),
+                                label: {
+                                    Image(systemName: "gear")
+                                      .font(Font.title.weight(.light))
+                                }
+                            )
+                            
+//                            Button(action: {
+//                                openSettings.toggle()
+//                            }, label: {
+//                                Image(systemName: "gear")
+//                                  .font(Font.title.weight(.light))
+//                            }).sheet(isPresented: $openSettings, content: {
+//                                //Open SettingsView
+//                                SettingsView()
+//                            })
                         }
 
                     })

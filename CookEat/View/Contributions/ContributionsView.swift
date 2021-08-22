@@ -30,13 +30,6 @@ struct ContributionsView: View {
                     ForEach(viewModel.contributedRecipes) { contribution in
                         VStack {
                             HStack {
-                                KFImage(URL(string: contribution.originalProfileImageUrl))
-                                    .resizable()
-                                    .scaledToFill()
-                                    .clipped()
-                                    .frame(width: 50, height: 50)
-                                    .cornerRadius(120/2)
-                                    .padding()
                                 NavigationLink(
                                     destination: ContributionDetailedView(contribution: contribution, received: false, versionControlOwner: false),
                                     label: {
@@ -52,7 +45,7 @@ struct ContributionsView: View {
                                             }
                                         }
                                     }).foregroundColor(.black)
-                            }.padding(.top)
+                            }.padding()
                             
                             ContributionDate(contribution: contribution)
                             

@@ -24,6 +24,7 @@
 		CB265A4926CAD20F00BD7951 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB265A4826CAD20F00BD7951 /* ChangePasswordView.swift */; };
 		CB2AC36626303B70002015F3 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2AC36526303B70002015F3 /* Functions.swift */; };
 		CB2F488B26301AA400264F0C /* AddRecipeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2F488A26301AA400264F0C /* AddRecipeButton.swift */; };
+		CB39A82026D27D9000D67498 /* ChangeEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39A81F26D27D9000D67498 /* ChangeEmailView.swift */; };
 		CB453D0625FD6BC0001C6DB4 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB453D0525FD6BC0001C6DB4 /* SearchViewModel.swift */; };
 		CB453D0925FD6C4B001C6DB4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB453D0825FD6C4B001C6DB4 /* Constants.swift */; };
 		CB4DAB222602A7D0009E44E8 /* RecipeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4DAB212602A7D0009E44E8 /* RecipeDetailsView.swift */; };
@@ -96,6 +97,7 @@
 		CB265A4826CAD20F00BD7951 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		CB2AC36526303B70002015F3 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		CB2F488A26301AA400264F0C /* AddRecipeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeButton.swift; sourceTree = "<group>"; };
+		CB39A81F26D27D9000D67498 /* ChangeEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailView.swift; sourceTree = "<group>"; };
 		CB453D0525FD6BC0001C6DB4 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		CB453D0825FD6C4B001C6DB4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CB4DAB212602A7D0009E44E8 /* RecipeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsView.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				CBCC83E6262C394A0035B686 /* AccountErrorView.swift */,
 				CB81910226C67D1500282156 /* SettingsView.swift */,
 				CB265A4826CAD20F00BD7951 /* ChangePasswordView.swift */,
+				CB39A81F26D27D9000D67498 /* ChangeEmailView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				CB2250B82621088E002196D2 /* ContributeViewModel.swift in Sources */,
 				CB4DAB252602AD55009E44E8 /* RecipeTitleView.swift in Sources */,
 				CB1B9BA9261E55D200DCF4A7 /* RecipeDescriptionView.swift in Sources */,
+				CB39A82026D27D9000D67498 /* ChangeEmailView.swift in Sources */,
 				CB81910326C67D1500282156 /* SettingsView.swift in Sources */,
 				CBFB0768261BB9BC00546E38 /* ContributionsView.swift in Sources */,
 				CB2250BB262109E9002196D2 /* RequestsReceivedView.swift in Sources */,

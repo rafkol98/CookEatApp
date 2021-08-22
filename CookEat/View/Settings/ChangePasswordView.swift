@@ -27,43 +27,49 @@ struct ChangePasswordView: View {
     }
     
     var body: some View {
-        
-        VStack {
-            TitleView(text: "Change Password", iconName: "ellipsis.rectangle")
+        ScrollView {
             
-            CustomSecureField(text: $currentPassword    , placeholder: Text("Current Password..."))
-                .inputModifier()
-            
-            if (invalid(varIn: currentPassword, minBoundary: 6, maxBoundary:40)) {
-                InvalidView(stringIn: "Ensure that the Current Password entered is between 6 and 40 characters.")
+            VStack {
+                TitleView(text: "Change Password", iconName: "ellipsis.rectangle")
+                    .padding(.top)
+                    
+                CustomSecureField(text: $currentPassword    , placeholder: Text("Current Password..."))
+                    .inputModifier()
+                
+                if (invalid(varIn: currentPassword, minBoundary: 6, maxBoundary:40)) {
+                    InvalidView(stringIn: "Ensure that the Current Password entered is between 6 and 40 characters.")
+                        .padding()
+                }
+                
+                CustomSecureField(text: $newPassword    , placeholder: Text("New Password..."))
+                    .inputModifier()
+                
+                if (invalid(varIn: newPassword, minBoundary: 6, maxBoundary:40)) {
+                    InvalidView(stringIn: "Ensure that your New Password is between 6 and 40 characters.")
+                        .padding()
+                }
+                
+                CustomSecureField(text: $confirmPassword    , placeholder: Text("Confirm New Password..."))
+                    .inputModifier()
+                
+                if (invalid(varIn: confirmPassword, minBoundary: 6, maxBoundary:40) || !equalString(stringOne: newPassword, stringTwo: confirmPassword)) {
+                    InvalidView(stringIn: "Ensure that the password matches the one entered above and is between 6 and 40 characters.")
+                        .padding()
+                }
+                
+                
+                Button(action: {
+                    // Change password of user.
+                    viewModel.changePassword(currentPassword: currentPassword, newPassword: newPassword, confirmPassword: confirmPassword)
+                }, label: {
+                    Text("Change Password")
+                        .adjustButton(with: buttonColor)
+                })
+                .disabled(disableButton)
+                
+                Spacer()
             }
-            
-            CustomSecureField(text: $newPassword    , placeholder: Text("New Password..."))
-                .inputModifier()
-            
-            if (invalid(varIn: newPassword, minBoundary: 6, maxBoundary:40)) {
-                InvalidView(stringIn: "Ensure that your New Password is between 6 and 40 characters.")
-            }
-            
-            CustomSecureField(text: $confirmPassword    , placeholder: Text("Confirm New Password..."))
-                .inputModifier()
-            
-            if (invalid(varIn: confirmPassword, minBoundary: 6, maxBoundary:40) || !equalString(stringOne: newPassword, stringTwo: confirmPassword)) {
-                InvalidView(stringIn: "Ensure that the password matches the one entered above and is between 6 and 40 characters.")
-            }
-            
-            Button(action: {
-                // Change password of user.
-                viewModel.changePassword(currentPassword: currentPassword, newPassword: newPassword, confirmPassword: confirmPassword)
-            }, label: {
-                Text("Change Password")
-                    .adjustButton(with: buttonColor)
-            })
-            .disabled(disableButton)
-            
-            Spacer()
         }
-        .padding()
     }
 }
 

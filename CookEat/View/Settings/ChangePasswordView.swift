@@ -12,6 +12,11 @@ struct ChangePasswordView: View {
     @State var newPassword: String = ""
     @State var confirmPassword: String = ""
     
+    @Environment(\.presentationMode) var presentationMode
+    
+    @State private var showAlert = false
+    @State private var errorString: String?
+    
     
     @ObservedObject var viewModel = SettingsViewModel()
     
@@ -60,13 +65,27 @@ struct ChangePasswordView: View {
                 
                 Button(action: {
                     // Change password of user.
-                    viewModel.changePassword(currentPassword: currentPassword, newPassword: newPassword, confirmPassword: confirmPassword)
+                    viewModel.changePassword(currentPassword: currentPassword, newPassword: newPassword, confirmPassword: confirmPassword) { (result) in
+                        
+                        switch result {
+                        case .failure(let error):
+                            self.errorString = error.localizedDescription
+                        case .success( _):
+                            break
+                        }
+                        self.showAlert = true
+                    }
                 }, label: {
                     Text("Change Password")
                         .adjustButton(with: buttonColor)
                 })
                 .disabled(disableButton)
-                
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("Password Change") , message: Text(self.errorString ?? "Success. Your password was changed successfully."), dismissButton: .default(Text("OK")) {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                    )
+                }
                 Spacer()
             }
         }

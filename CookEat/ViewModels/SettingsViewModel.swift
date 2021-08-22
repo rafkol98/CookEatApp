@@ -14,7 +14,7 @@ class SettingsViewModel: ObservableObject {
     }
     
     // Change password of user.
-    func changePassword(currentPassword: String, newPassword: String, confirmPassword: String) {
+    func changePassword(currentPassword: String, newPassword: String, confirmPassword: String, resetCompletion:@escaping (Result<Bool,Error>) -> Void) {
         if !currentPassword.isEmpty || !newPassword.isEmpty || !confirmPassword.isEmpty {
             
             if !invalid(varIn: newPassword, minBoundary: 6, maxBoundary: 40) {
@@ -25,14 +25,17 @@ class SettingsViewModel: ObservableObject {
                     user?.reauthenticate(with: credential, completion: { (_, error) in
                         if let error = error {
                             // An error happened.
+                            resetCompletion(.failure(error))
                             print("Error reauthenticating: %@", error)
                         } else {
                             // User re-authenticated.
                             Auth.auth().currentUser?.updatePassword(to: newPassword, completion: { (error) in
                                 if let error = error {
                                     // An error happened.
+                                    resetCompletion(.failure(error))
                                     print("Error updating password: %@", error)
                                 } else {
+                                    resetCompletion(.success(true))
                                     print("successfully updated password")
                                 }
                             })

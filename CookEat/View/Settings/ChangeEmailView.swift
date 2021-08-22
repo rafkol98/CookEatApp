@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct ChangeEmailView: View {
-
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var newEmail: String = ""
     @State var confirmNewEmail: String = ""
     @State var password: String = ""
+    
+    // Error alert.
+    @State private var showAlert = false
+    @State private var errorString: String?
     
     @ObservedObject var viewModel = SettingsViewModel()
     
@@ -57,12 +63,26 @@ struct ChangeEmailView: View {
                 }
                 
                 Button(action: {
-                    viewModel.updateEmail(newEmail: newEmail, confirmNewEmail: confirmNewEmail, password: password )
+                    viewModel.updateEmail(newEmail: newEmail, confirmNewEmail: confirmNewEmail, password: password ) { (result) in
+                        switch result {
+                        case .failure(let error):
+                            self.errorString = error.localizedDescription
+                        case .success( _):
+                            break
+                        }
+                        self.showAlert = true
+                    }
                 }, label: {
                     Text("Update Email")
                         .adjustButton(with: buttonColor)
                 })
                 .disabled(disableButton)
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("Message") , message: Text(self.errorString ?? "Success. Your email was changed successfully."), dismissButton: .default(Text("OK")) {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                    )
+                }
                 
             }
         }

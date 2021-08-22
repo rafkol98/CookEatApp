@@ -9,11 +9,17 @@
 import SwiftUI
 
 struct LoginView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var email = ""
     @State var password = ""
     @State private var error = false
     @EnvironmentObject var viewModel: AuthViewModel
     
+    // Error alert.
+    @State private var showAlert = false
+    @State private var errorString: String?
     
     var body: some View {
         NavigationView {
@@ -41,11 +47,26 @@ struct LoginView: View {
                     
                     // Sign in button
                     Button(action: {
-                        viewModel.login(withEmail: email, password: password)
+                        viewModel.login(withEmail: email, password: password) { (result) in
+                            switch result {
+                            case .failure(let error):
+                                self.errorString = error.localizedDescription
+                                self.showAlert = true
+                            case .success( _):
+                                break
+                            }
+                        }
                     }, label: {
                         Text("Sign In")
                             .standardButton()
                     })
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Error Message") , message: Text(self.errorString ?? "There was an error."), dismissButton: .default(Text("OK")) {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                        )
+                    }
+                    
                     
                     // Push everything to the top.
                     Spacer()

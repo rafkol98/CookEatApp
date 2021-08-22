@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ChangePasswordView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var currentPassword: String = ""
     @State var newPassword: String = ""
     @State var confirmPassword: String = ""
     
-    @Environment(\.presentationMode) var presentationMode
-    
+    // Error alert.
     @State private var showAlert = false
     @State private var errorString: String?
     
@@ -37,7 +39,7 @@ struct ChangePasswordView: View {
             VStack {
                 TitleView(text: "Change Password", iconName: "ellipsis.rectangle")
                     .padding(.top)
-                    
+                
                 CustomSecureField(text: $currentPassword    , placeholder: Text("Current Password..."))
                     .inputModifier()
                 
@@ -66,7 +68,6 @@ struct ChangePasswordView: View {
                 Button(action: {
                     // Change password of user.
                     viewModel.changePassword(currentPassword: currentPassword, newPassword: newPassword, confirmPassword: confirmPassword) { (result) in
-                        
                         switch result {
                         case .failure(let error):
                             self.errorString = error.localizedDescription
@@ -81,7 +82,7 @@ struct ChangePasswordView: View {
                 })
                 .disabled(disableButton)
                 .alert(isPresented: $showAlert) {
-                    Alert(title: Text("Password Change") , message: Text(self.errorString ?? "Success. Your password was changed successfully."), dismissButton: .default(Text("OK")) {
+                    Alert(title: Text("Message") , message: Text(self.errorString ?? "Success. Your password was changed successfully."), dismissButton: .default(Text("OK")) {
                         self.presentationMode.wrappedValue.dismiss()
                     }
                     )

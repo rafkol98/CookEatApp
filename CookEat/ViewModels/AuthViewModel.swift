@@ -26,21 +26,23 @@ class AuthViewModel: ObservableObject {
     }
     
     // Login user.
-    func login(withEmail email: String, password: String) {
+    func login(withEmail email: String, password: String, resetCompletion:@escaping (Result<Bool,Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
+                resetCompletion(.failure(error))
                 print("Failed to login: \(error.localizedDescription)")
                 return
+            } else {
+                // attach user to the user session.
+                self.userSession = result?.user
+                self.fetchUser()
+                resetCompletion(.success(true))
             }
-            
-            // attach user to the user session.
-            self.userSession = result?.user
-            self.fetchUser()
         }
     }
     
     // Register new user.
-    func registerUser(email: String, password: String, username: String, fullname: String, profileImage: UIImage) {
+    func registerUser(email: String, password: String, username: String, fullname: String, profileImage: UIImage, resetCompletion:@escaping (Result<Bool,Error>) -> Void) {
         
         // Check if input is valid.
         if (isValidEmail(email: email) && !invalid(varIn: password, minBoundary: 6, maxBoundary: 40) && !invalid(varIn: username, minBoundary: 5, maxBoundary: 20) && !invalid(varIn: fullname, minBoundary: 5, maxBoundary: 50)) {
@@ -52,28 +54,33 @@ class AuthViewModel: ObservableObject {
             // Put image to firebase storage.
             storageRef.putData(imageData, metadata: nil) { _, error in
                 if let error = error {
+                    resetCompletion(.failure(error))
                     print("Failed to upload image \(error.localizedDescription)")
                     return
                 }
-                // Get an image url for the picture.
-                storageRef.downloadURL { url, _ in
-                    guard let profileImageUrl = url?.absoluteString else { return }
-                    
-                    Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                        // Print error
-                        if let error = error {
-                            print("Error \(error.localizedDescription)")
-                            return
-                        }
+                else {
+                    // Get an image url for the picture.
+                    storageRef.downloadURL { url, _ in
+                        guard let profileImageUrl = url?.absoluteString else { return }
                         
-                        // Check if user exists.
-                        guard let user = result?.user else { return }
-                        
-                        let data : [String : Any] = ["email": email, "username": username.lowercased(), "fullname": fullname, "profileImageUrl": profileImageUrl, "uid": user.uid]
-                        
-                        Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
-                            self.userSession = user
-                            self.fetchUser()
+                        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                            // Print error
+                            if let error = error {
+                                resetCompletion(.failure(error))
+                                print("Error \(error.localizedDescription)")
+                                return
+                            }
+                            
+                            // Check if user exists.
+                            guard let user = result?.user else { return }
+                            
+                            let data : [String : Any] = ["email": email, "username": username.lowercased(), "fullname": fullname, "profileImageUrl": profileImageUrl, "uid": user.uid]
+                            
+                            Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
+                                self.userSession = user
+                                self.fetchUser()
+                                resetCompletion(.success(true))
+                            }
                         }
                     }
                 }
@@ -136,5 +143,5 @@ class AuthViewModel: ObservableObject {
             }
         }
     }
-     
+    
 }

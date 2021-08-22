@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct RegistrationView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var fullname = ""
     @State var username = ""
     @State var email = ""
@@ -19,6 +22,10 @@ struct RegistrationView: View {
     
     // Create instance of AuthViewModel
     @EnvironmentObject var viewModel: AuthViewModel
+    
+    // Error alert.
+    @State private var showAlert = false
+    @State private var errorString: String?
     
     // Convert a ui image into a SwiftUI image.
     func loadImage() {
@@ -103,12 +110,27 @@ struct RegistrationView: View {
                 // Sign up button
                 Button(action: {
                     guard let image = selectedUIImage else { return }
-                    viewModel.registerUser(email: email, password: password, username: username, fullname: fullname, profileImage: image)
+                    viewModel.registerUser(email: email, password: password, username: username, fullname: fullname, profileImage: image) { (result) in
+                        switch result {
+                        case .failure(let error):
+                            self.errorString = error.localizedDescription
+                            self.showAlert = true
+                        case .success( _):
+                            break
+                        }
+                       
+                    }
                 }, label: {
                     Text("Sign Up")
                         .adjustButton(with: buttonColor)
                 })
                 .disabled(disableButton)
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("Error Message") , message: Text(self.errorString ?? "There was an error."), dismissButton: .default(Text("OK")) {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                    )
+                }
                 
                 
             }

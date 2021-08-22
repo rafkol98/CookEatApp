@@ -47,7 +47,7 @@ class SettingsViewModel: ObservableObject {
         }
     }
     
-    func updateEmail(newEmail: String ,confirmNewEmail: String, password: String) {
+    func updateEmail(newEmail: String ,confirmNewEmail: String, password: String, resetCompletion:@escaping (Result<Bool,Error>) -> Void) {
         if isValidEmail(email: newEmail) && isValidEmail(email: confirmNewEmail) && !invalid(varIn: password, minBoundary: 6, maxBoundary: 40) && equalString(stringOne: newEmail, stringTwo: confirmNewEmail){
  
             let user = Auth.auth().currentUser
@@ -56,14 +56,17 @@ class SettingsViewModel: ObservableObject {
             user?.reauthenticate(with: credential, completion: { (_, error) in
                 if let error = error {
                     // An error happened.
+                    resetCompletion(.failure(error))
                     print("Error reauthenticating: %@", error)
                 } else {
                     // User re-authenticated.
                     Auth.auth().currentUser?.updateEmail(to: newEmail, completion: { (error) in
                         if let error = error {
                             // An error happened.
+                            resetCompletion(.failure(error))
                             print("Error updating email: %@", error)
                         } else {
+                            resetCompletion(.success(true))
                             print("Successfully updated email")
                         }
                     })

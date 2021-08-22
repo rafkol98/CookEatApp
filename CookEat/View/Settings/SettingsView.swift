@@ -16,7 +16,7 @@ struct SettingsView: View {
             Divider()
             
             NavigationLink (
-                destination: FeedView(),
+                destination: ChangePasswordView(),
                 label: {
                     AccountOption(icon: "ellipsis.rectangle", text: "Change Password")
                 }

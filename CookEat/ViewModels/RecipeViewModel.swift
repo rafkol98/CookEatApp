@@ -83,6 +83,31 @@ class RecipeViewModel: ObservableObject {
                     print("Error updating document: \(error)")
                 } else {
                     print("Document successfully updated")
+//
+//                    // TODO: VERSION CONTROL - have to have addedIngredients, suggested, removed etc.
+//
+//
+//
+//                    // Set initial commit to history.
+//                    let versionControlRef = COLLECTION_RECIPES.document(recipe.id).collection("history").document()
+//
+//
+//                    let data : [String: Any] = ["uid": recipe.uid,
+//                                                    "id": recipe.id,
+//                                                    "recipeName": recipe.recipeName,
+//                                                    "description": recipe.,
+//                                                    "addedIngredients": ingredients,
+//                                                    "addedInstructions": instructions,
+//                                                    "suggestedIngredients": ingredients,
+//                                                    "suggestedInstructions": instructions,
+//                                                    "fullname": user.fullname,
+//                                                    "timestamp": Timestamp(date: Date()),
+//                                                    "username": user.username,
+//                                                    "profileImageUrl": user.profileImageUrl,
+//                                                    "status": "Initial Commit"
+//                        ]
+//
+//                        versionControlRef.setData(data)
                 }
             }
         }
@@ -132,6 +157,8 @@ class RecipeViewModel: ObservableObject {
         
         COLLECTION_RECIPES.document(recipe.id).addSnapshotListener { snapshot, _ in
             guard var data = snapshot?.data() else { return }
+            
+            
             let docRef = COLLECTION_RECIPES.document()
             
             //update values.
@@ -148,6 +175,27 @@ class RecipeViewModel: ObservableObject {
                     print("Error forking reecipe: \(error)")
                 } else {
                     print("Documents successfully forked")
+                    
+                    // Fetch history-version control.
+                    COLLECTION_RECIPES.document(self.recipe.id).collection("history").getDocuments { snapshot, _ in
+                        
+                        guard let documents = snapshot?.documents else { return }
+                        let historyIDs = documents.map({$0.documentID})
+                        
+                        historyIDs.forEach { id in
+                            COLLECTION_RECIPES.document(self.recipe.id).collection("history").document(id).getDocument { snapshot, error in
+                                // Catch error.
+                                if let error = error {
+                                    print("Failed to fetch liked recipes: \(error.localizedDescription)")
+                                    return
+                                }
+                                guard let data = snapshot?.data() else { return }
+                                docRef.collection("history").addDocument(data: data)
+                            }
+                        }
+                        
+                    }
+                    
                 }
             }
         }

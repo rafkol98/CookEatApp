@@ -81,7 +81,7 @@ struct RequestsReceivedView: View {
                         .resizable()
                         .standardImg()
                     
-                    Text("No requests received...").font(.system(size: 16)).italic()
+                    Text("No requests received...").font(.system(size: 18)).italic()
                     Spacer()
                 }
             }
@@ -92,7 +92,6 @@ struct RequestsReceivedView: View {
             if viewModel.pastReceivedRecipes.count != 0 {
                 ScrollView {
                     VStack{
-                        
                         ForEach(viewModel.pastReceivedRecipes) { contribution in
                             VStack {
                                 HStack {
@@ -110,7 +109,7 @@ struct RequestsReceivedView: View {
                                         }
                                         
                                         NavigationLink(
-                                            destination: ContributionDetailedView(contribution: contribution, received: true, versionControlOwner: false),
+                                            destination: ContributionDetailedView(contribution: contribution, received: false, versionControlOwner: false),
                                             label: {
                                                 HStack {
                                                     RecipeTitleView(username: .constant(user.username), recipeName: .constant(contribution.recipeName))
@@ -129,15 +128,16 @@ struct RequestsReceivedView: View {
                     }
                 }
             }
-            // If the user received no requests, display appropriate image.
+            // If the user received no requests in the past, display appropriate image.
             else {
                 VStack {
                     Spacer().frame(height: 100)
-                    Image("req_received")
+                    Image("past_recipes")
                         .resizable()
                         .standardImg()
+                        .padding()
                     
-                    Text("No past requests were maade...").font(.system(size: 16)).italic()
+                    Text("No past requests were made...").font(.system(size: 18)).italic()
                     Spacer()
                 }
             }

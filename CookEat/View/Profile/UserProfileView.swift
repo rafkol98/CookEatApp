@@ -38,7 +38,7 @@ struct UserProfileView: View {
                 FilterButtonView(selectedOption: $selectedFilter)
                     .padding()
                 
-                    
+                
                 ForEach(viewModel.recipes(forFilter: selectedFilter)) { recipe in
                     
                     NavigationLink(

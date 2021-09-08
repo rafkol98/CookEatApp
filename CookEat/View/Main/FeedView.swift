@@ -39,11 +39,17 @@ struct FeedView: View {
                 else {
                     VStack {
                         Spacer()
-                        Text("Follow a user to get their recipes on your feed...").font(.system(size: 16)).italic()
                         
                         Image("feed")
                             .resizable()
                             .standardImg()
+                            .padding()
+                        
+                        Text("Follow users to get recipes on your feed...")
+                            .font(.system(size: 18))
+                            .italic()
+                        
+                        Spacer()
                         
                         Spacer()
                     }

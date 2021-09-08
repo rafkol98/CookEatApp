@@ -113,7 +113,7 @@ class AuthViewModel: ObservableObject {
     }
     
     // Update profile picture
-    func updateProfilePicture(profileImage: UIImage) {
+    func updateProfilePicture(profileImage: UIImage, resetCompletion:@escaping (Result<Bool,Error>) -> Void) {
         guard let uid = userSession?.uid else { return }
         
         
@@ -124,6 +124,7 @@ class AuthViewModel: ObservableObject {
         // Put image to firebase storage.
         storageRef.putData(imageData, metadata: nil) { _, error in
             if let error = error {
+                resetCompletion(.failure(error))
                 print("Failed to upload image \(error.localizedDescription)")
                 return
             }
@@ -135,9 +136,11 @@ class AuthViewModel: ObservableObject {
                 //Get user from firestore and place them in a User variable.
                 Firestore.firestore().collection("users").document(uid).updateData(["profileImageUrl": profileImageUrl]){ error in
                     if let error = error {
+                        resetCompletion(.failure(error))
                         print("Error updating profile picture: \(error)")
                     } else {
                         print("Profile picture successfully updated")
+                        resetCompletion(.success(true))
                     }
                 }
             }
